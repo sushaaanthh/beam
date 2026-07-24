@@ -39,6 +39,8 @@ beam-api/
 
 1. Copy `.env.example` to `.env` and adjust the values for your environment.
 2. Ensure PostgreSQL is running and reachable from the backend.
+3. Install the authentication dependencies listed in `requirements.txt` before running the app.
+4. Import the Postman collection from `postman/B.E.A.M.-auth.postman_collection.json` to try the auth endpoints quickly.
 
 ## Run Locally
 
@@ -73,8 +75,15 @@ alembic upgrade head
 
 - `GET /` returns the project status.
 - `GET /api/v1/health` checks API and database connectivity.
+- `POST /api/v1/auth/register` creates a user account.
+- `POST /api/v1/auth/login` returns access and refresh JWTs.
+- `POST /api/v1/auth/refresh` rotates JWT access tokens.
+- `POST /api/v1/auth/logout` revokes the current JWT and any provided refresh token.
+- `GET /api/v1/users/me` returns the authenticated user.
 
 ## Notes
 
-- Authentication is intentionally not implemented.
+- JWT configuration is driven by `JWT_SECRET_KEY`, `JWT_ALGORITHM`, `ACCESS_TOKEN_EXPIRE_MINUTES`, `REFRESH_TOKEN_EXPIRE_DAYS`, and `JWT_ISSUER`.
+- JWT settings are loaded from environment variables in `app/core/config.py`.
+- The authorization middleware rejects invalid or expired bearer tokens before protected endpoints execute.
 - AI, scraping, and other future modules should be added behind the versioned API and service layer.

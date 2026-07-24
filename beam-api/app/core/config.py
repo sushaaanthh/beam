@@ -1,7 +1,6 @@
 from functools import lru_cache
-from typing import Any
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -31,6 +30,12 @@ class Settings(BaseSettings):
     DATABASE_URL: str | None = None
 
     LOG_LEVEL: str = "INFO"
+
+    JWT_SECRET_KEY: SecretStr = Field(default=SecretStr("change-me-in-development"))
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+    JWT_ISSUER: str = "beam-api"
 
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:

@@ -10,6 +10,7 @@ from app.api.v1.router import api_router
 from app.core.config import settings
 from app.core.logging import configure_logging
 from app.exceptions.handlers import create_exception_handlers
+from app.middleware.auth import add_auth_middleware
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +43,7 @@ def create_application() -> FastAPI:
             allow_headers=["*"],
         )
 
+    add_auth_middleware(application)
     create_exception_handlers(application)
     application.include_router(api_router, prefix=settings.API_V1_STR)
 
