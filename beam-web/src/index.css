@@ -4,30 +4,37 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
-    --beam-ink: #f8fafc;
-    --beam-muted: #cbd5e1;
-    --beam-bg: #040816;
+    color-scheme: light;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-    color: var(--beam-ink);
-    background:
-      radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 30%),
-      radial-gradient(circle at 80% 20%, rgba(244, 114, 182, 0.13), transparent 24%),
-      linear-gradient(180deg, #07111f 0%, var(--beam-bg) 100%);
-    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    font-family: Inter, "Segoe UI", system-ui, sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background:
+      radial-gradient(circle at top left, rgba(14, 165, 233, 0.08), transparent 30%),
+      radial-gradient(circle at top right, rgba(99, 102, 241, 0.08), transparent 26%),
+      linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  }
+
+  html.dark body {
+    background:
+      radial-gradient(circle at top left, rgba(14, 165, 233, 0.14), transparent 32%),
+      radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 26%),
+      linear-gradient(180deg, #060b16 0%, #0b1220 100%);
   }
 
   a {
@@ -37,5 +44,9 @@
 
   * {
     box-sizing: border-box;
+  }
+
+  ::selection {
+    background: rgba(14, 165, 233, 0.18);
   }
 }
