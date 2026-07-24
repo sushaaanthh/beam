@@ -13,7 +13,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       type="button"
       onClick={toggleTheme}
       className={classNames(
-        'inline-flex h-11 items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800',
+        'inline-flex h-11 items-center gap-3 rounded-[1rem] border border-white/10 bg-white/4 px-4 text-sm font-medium text-white/80 transition duration-200 hover:-translate-y-px hover:border-white/16 hover:bg-white/6 active:translate-y-px',
         className,
       )}
       aria-label="Toggle theme"

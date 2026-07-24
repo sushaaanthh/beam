@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        glow: '0 0 0 1px rgba(148, 163, 184, 0.14), 0 24px 80px rgba(15, 23, 42, 0.28)',
+        glow: '0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 24px 48px rgba(0, 0, 0, 0.38)',
       },
       fontFamily: {
-        sans: ['Inter', 'Segoe UI', 'system-ui', 'sans-serif'],
+        sans: ['Geist', 'Inter', 'Segoe UI', 'system-ui', 'sans-serif'],
       },
       colors: {
         beam: {

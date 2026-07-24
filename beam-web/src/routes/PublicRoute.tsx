@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom'
 
-import { Spinner } from '../components/Spinner'
+import { LoadingSkeleton } from '../components/LoadingSkeleton'
 import { useAuth } from '../hooks/useAuth'
 
 export function PublicRoute() {
@@ -8,8 +8,8 @@ export function PublicRoute() {
 
   if (isHydrating) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-50 dark:bg-beam-950">
-        <Spinner />
+      <div className="flex min-h-screen items-center justify-center bg-[#050505] px-4">
+        <LoadingSkeleton className="w-full max-w-md" />
       </div>
     )
   }

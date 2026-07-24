@@ -1,6 +1,7 @@
 import { Card } from '../components/Card'
+import { EmptyState } from '../components/EmptyState'
+import { MetricCard } from '../components/MetricCard'
 import { SectionHeading } from '../components/SectionHeading'
-import { StatCard } from '../components/StatCard'
 import { Button } from '../components/Button'
 
 const dashboardCards = [
@@ -37,25 +38,25 @@ export function DashboardPage() {
     <div className="space-y-8">
       <SectionHeading
         eyebrow="Dashboard"
-        title="Professional dashboard shell"
-        description="This area is intentionally placeholder-driven for now, but the layout is ready for real analysis components later."
+        title="Workspace overview"
+        description="A productivity-first shell for analysis, history, and session management. The layout stays quiet until the data layer is ready."
       />
 
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {dashboardCards.map((card) => (
-          <StatCard key={card.title} {...card} />
+          <MetricCard key={card.title} {...card} />
         ))}
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
         <Card className="space-y-5">
-          <SectionHeading title="Quick Actions" description="Common actions a researcher will take from the first release." />
+          <SectionHeading title="Quick actions" description="Common actions surfaced as keycap controls." />
           <div className="grid gap-4 sm:grid-cols-2">
             {quickActions.map((action) => (
               <button
                 key={action}
                 type="button"
-                className="rounded-[1.25rem] border border-slate-200 bg-slate-50 px-4 py-4 text-left text-sm font-medium text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-sky-500/40 dark:hover:bg-slate-900"
+                className="rounded-[1rem] border border-white/10 bg-white/4 px-4 py-4 text-left text-sm font-medium text-white/78 transition duration-200 hover:-translate-y-px hover:border-white/16 hover:bg-white/6 active:translate-y-px"
               >
                 {action}
               </button>
@@ -66,20 +67,20 @@ export function DashboardPage() {
           </Button>
         </Card>
 
-        <Card className="space-y-5">
-          <SectionHeading title="Session health" description="A compact summary of what the shell is ready to support." />
-          <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
-            {[
-              'Protected route access is active.',
-              'JWT session refresh is configured at the client layer.',
-              'React Query is ready for session and profile data.',
-            ].map((item) => (
-              <div key={item} className="rounded-2xl border border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950">
-                {item}
-              </div>
-            ))}
-          </div>
-        </Card>
+        <EmptyState
+          eyebrow="Session health"
+          title="No live analysis streams yet"
+          description="This shell is ready for future model output, audit notes, and session metrics. For now, the workspace stays intentionally quiet."
+          action={(
+            <div className="grid gap-3 sm:grid-cols-3">
+              {['Protected access', 'JWT refresh', 'Query ready'].map((item) => (
+                <div key={item} className="rounded-[1rem] border border-white/10 bg-white/4 px-4 py-3 text-sm text-white/68">
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+        />
       </div>
     </div>
   )

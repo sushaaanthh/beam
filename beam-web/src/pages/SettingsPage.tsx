@@ -19,8 +19,8 @@ export function SettingsPage() {
 
       <div className="grid gap-5 lg:grid-cols-2">
         <Card className="space-y-4">
-          <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Appearance</h3>
-          <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
+          <h3 className="text-lg font-semibold text-white">Appearance</h3>
+          <p className="text-sm leading-7 text-white/62">
             Current theme: <span className="font-semibold capitalize">{theme}</span>
           </p>
           <Button variant="secondary" onClick={toggleTheme}>
@@ -29,17 +29,17 @@ export function SettingsPage() {
         </Card>
 
         <Card className="space-y-4">
-          <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Notifications</h3>
-          <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
+          <h3 className="text-lg font-semibold text-white">Notifications</h3>
+          <p className="text-sm leading-7 text-white/62">
             These controls are placeholders for the production settings surface.
           </p>
-          <label className="flex items-center justify-between gap-4 rounded-2xl border border-slate-200 px-4 py-3 dark:border-slate-800">
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-200">Email notifications</span>
+          <label className="flex items-center justify-between gap-4 rounded-[1rem] border border-white/10 bg-white/4 px-4 py-3">
+            <span className="text-sm font-medium text-white/78">Email notifications</span>
             <input
               type="checkbox"
               checked={emailNotifications}
               onChange={(event) => setEmailNotifications(event.target.checked)}
-              className="h-4 w-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500"
+              className="h-4 w-4 rounded border-white/20 accent-[#a6b1ff] focus:ring-[#a6b1ff]"
             />
           </label>
         </Card>

@@ -49,11 +49,11 @@ export function LoginPage() {
   return (
     <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
       <div className="grid w-full gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.18),_transparent_35%),linear-gradient(180deg,rgba(15,23,42,0.95),rgba(2,6,23,0.96))] p-8 text-white shadow-glow lg:flex lg:flex-col lg:justify-between">
+        <Card className="hidden space-y-6 p-8 lg:flex lg:flex-col lg:justify-between">
           <div className="space-y-5">
-            <p className="text-xs font-semibold tracking-[0.32em] text-cyan-300 uppercase">Secure access</p>
-            <h1 className="text-4xl font-semibold tracking-tight">Sign in to B.E.A.M.</h1>
-            <p className="max-w-xl text-sm leading-7 text-slate-300">
+            <p className="text-[0.7rem] font-semibold tracking-[0.34em] text-white/42 uppercase">Secure access</p>
+            <h1 className="text-4xl font-semibold tracking-tight text-white">Sign in to B.E.A.M.</h1>
+            <p className="max-w-xl text-sm leading-7 text-white/62">
               Use your account to access the dashboard, review analysis history, update your profile, and manage settings.
             </p>
           </div>
@@ -64,12 +64,12 @@ export function LoginPage() {
               'FastAPI auth integration',
               'Session-aware dashboard shell',
             ].map((item) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-sm text-slate-200 backdrop-blur">
+              <div key={item} className="rounded-[1rem] border border-white/10 bg-white/4 px-4 py-4 text-sm text-white/72">
                 {item}
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         <Card className="space-y-6 p-8 sm:p-10">
           <SectionHeading
@@ -103,9 +103,9 @@ export function LoginPage() {
             </Button>
           </form>
 
-          <p className="text-sm text-slate-600 dark:text-slate-300">
+          <p className="text-sm text-white/62">
             New to the platform?{' '}
-            <Link to="/register" className="font-semibold text-sky-600 hover:text-sky-500 dark:text-sky-400">
+            <Link to="/register" className="font-semibold text-white/82 hover:text-white">
               Create an account
             </Link>
           </p>

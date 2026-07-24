@@ -15,7 +15,7 @@ type InputFieldProps = CommonProps & InputHTMLAttributes<HTMLInputElement>
 type TextAreaFieldProps = CommonProps & TextareaHTMLAttributes<HTMLTextAreaElement>
 
 const inputBaseClassName =
-  'mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500'
+  'mt-2 w-full rounded-[1rem] border border-white/10 bg-white/4 px-4 py-3 text-sm text-white/92 outline-none transition duration-200 placeholder:text-white/34 hover:border-white/16 focus:border-white/20 focus:bg-white/6 focus:ring-2 focus:ring-white/12'
 
 export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputField(
   { label, hint, error, className, action, ...inputProps },
@@ -23,12 +23,12 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function
 ) {
   return (
     <label className={classNames('block', className)}>
-      <div className="flex items-center justify-between gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+      <div className="flex items-center justify-between gap-3 text-sm font-medium text-white/88">
         <span>{label}</span>
         {action}
       </div>
       <input ref={ref} className={inputBaseClassName} {...inputProps} />
-      {hint && !error ? <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{hint}</p> : null}
+      {hint && !error ? <p className="mt-2 text-xs text-white/54">{hint}</p> : null}
       {error ? <p className="mt-2 text-xs font-medium text-rose-500">{error}</p> : null}
     </label>
   )
@@ -40,13 +40,21 @@ export const TextAreaField = forwardRef<HTMLTextAreaElement, TextAreaFieldProps>
 ) {
   return (
     <label className={classNames('block', className)}>
-      <div className="flex items-center justify-between gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+      <div className="flex items-center justify-between gap-3 text-sm font-medium text-white/88">
         <span>{label}</span>
         {action}
       </div>
       <textarea ref={ref} className={classNames(inputBaseClassName, 'min-h-32 resize-y')} {...textAreaProps} />
-      {hint && !error ? <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{hint}</p> : null}
+      {hint && !error ? <p className="mt-2 text-xs text-white/54">{hint}</p> : null}
       {error ? <p className="mt-2 text-xs font-medium text-rose-500">{error}</p> : null}
     </label>
   )
 })
+
+export function KeycapInputField(props: InputFieldProps) {
+  return <InputField {...props} />
+}
+
+export function KeycapTextAreaField(props: TextAreaFieldProps) {
+  return <TextAreaField {...props} />
+}

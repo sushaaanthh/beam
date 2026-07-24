@@ -1,4 +1,5 @@
 import { Card } from '../components/Card'
+import { MetricCard } from '../components/MetricCard'
 import { SectionHeading } from '../components/SectionHeading'
 import { UserAvatar } from '../components/UserAvatar'
 import { useAuth } from '../hooks/useAuth'
@@ -17,9 +18,9 @@ export function ProfilePage() {
       <Card className="flex flex-col gap-6 md:flex-row md:items-center">
         <UserAvatar name={user?.username ?? 'Researcher'} className="h-16 w-16 text-lg" />
         <div className="space-y-2">
-          <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">{user?.username ?? 'Researcher'}</h3>
-          <p className="text-sm text-slate-600 dark:text-slate-300">{user?.email ?? 'Signed in with a secure JWT session'}</p>
-          <p className="text-sm text-slate-500 dark:text-slate-400">Account status: {user?.is_active ? 'Active' : 'Inactive'}</p>
+          <h3 className="text-2xl font-semibold text-white">{user?.username ?? 'Researcher'}</h3>
+          <p className="text-sm text-white/62">{user?.email ?? 'Signed in with a secure JWT session'}</p>
+          <p className="text-sm text-white/44">Account status: {user?.is_active ? 'Active' : 'Inactive'}</p>
         </div>
       </Card>
 
@@ -29,10 +30,7 @@ export function ProfilePage() {
           { title: 'Access', value: 'Protected session' },
           { title: 'Profile sync', value: 'Live from /users/me' },
         ].map((item) => (
-          <Card key={item.title} className="space-y-2">
-            <p className="text-sm text-slate-500 dark:text-slate-400">{item.title}</p>
-            <p className="text-lg font-semibold text-slate-950 dark:text-white">{item.value}</p>
-          </Card>
+          <MetricCard key={item.title} title={item.title} value={item.value} description="Pulled from the authenticated account state." />
         ))}
       </div>
     </div>

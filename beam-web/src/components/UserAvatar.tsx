@@ -17,7 +17,7 @@ export function UserAvatar({ name, className }: UserAvatarProps) {
   return (
     <div
       className={classNames(
-        'flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-900 via-slate-700 to-cyan-500 text-sm font-semibold text-white dark:from-slate-100 dark:via-slate-200 dark:to-cyan-300 dark:text-slate-900',
+        'flex h-11 w-11 items-center justify-center rounded-[1rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] text-sm font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]',
         className,
       )}
       aria-label={name}

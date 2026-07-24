@@ -106,33 +106,35 @@ export function RegisterPage() {
             </Button>
           </form>
 
-          <p className="text-sm text-slate-600 dark:text-slate-300">
+          <p className="text-sm text-white/62">
             Already have an account?{' '}
-            <Link to="/login" className="font-semibold text-sky-600 hover:text-sky-500 dark:text-sky-400">
+            <Link to="/login" className="font-semibold text-white/82 hover:text-white">
               Sign in
             </Link>
           </p>
         </Card>
 
-        <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(2,6,23,0.96))] p-8 text-white shadow-glow">
-          <p className="text-xs font-semibold tracking-[0.32em] text-cyan-300 uppercase">Why register?</p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight">A clean starting point for the full B.E.A.M. experience</h1>
-          <p className="mt-4 text-sm leading-7 text-slate-300">
-            The frontend is intentionally focused on structure and workflow readiness, so the next phase can plug in analysis sessions, explainability views, and reporting without redesigning the interface.
-          </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <Card className="space-y-6 p-8 text-white">
+          <div className="space-y-4">
+            <p className="text-[0.7rem] font-semibold tracking-[0.34em] text-white/42 uppercase">Why register?</p>
+            <h1 className="text-4xl font-semibold tracking-tight">A clean starting point for the full B.E.A.M. experience</h1>
+            <p className="text-sm leading-7 text-white/62">
+              The frontend is intentionally focused on structure and workflow readiness, so the next phase can plug in analysis sessions, explainability views, and reporting without redesigning the interface.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
             {[
               'Quick account creation',
               'JWT session handling',
               'Responsive form validation',
               'Ready for dashboard access',
             ].map((item) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-sm text-slate-200">
+              <div key={item} className="rounded-[1rem] border border-white/10 bg-white/4 px-4 py-4 text-sm text-white/72">
                 {item}
               </div>
             ))}
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )

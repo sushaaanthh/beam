@@ -32,10 +32,10 @@ export function HistoryPage() {
         {historyEntries.map((entry) => (
           <Card key={entry.title} className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-slate-950 dark:text-white">{entry.title}</h3>
-              <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">{entry.description}</p>
+              <h3 className="text-lg font-semibold text-white">{entry.title}</h3>
+              <p className="mt-1 text-sm leading-7 text-white/62">{entry.description}</p>
             </div>
-            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{entry.meta}</p>
+            <p className="text-sm font-medium text-white/46">{entry.meta}</p>
           </Card>
         ))}
       </div>
