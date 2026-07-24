@@ -56,7 +56,7 @@ export function LandingPage() {
           <BrandMark />
 
           <div className="space-y-5">
-            <p className="inline-flex rounded-full border border-white/10 bg-white/4 px-4 py-2 text-[0.7rem] font-semibold tracking-[0.34em] text-white/58 uppercase">
+            <p className="kds-keycap inline-flex rounded-[12px] px-4 py-2 text-[0.7rem] font-semibold tracking-[0.34em] text-[#b2ff7d] uppercase">
               Keycap Design System
             </p>
             <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
@@ -88,7 +88,7 @@ export function LandingPage() {
 
           <div className="space-y-4">
             {snapshotRows.map((item) => (
-              <div key={item} className="rounded-[1rem] border border-white/10 bg-white/4 px-4 py-4 text-sm text-white/70">
+              <div key={item} className="kds-inset rounded-[14px] px-4 py-4 text-sm text-white/70">
                 {item}
               </div>
             ))}
@@ -101,7 +101,7 @@ export function LandingPage() {
               'Responsive sidebar and top navigation shell',
               'Persistent theme state for the shell',
             ].map((item) => (
-              <div key={item} className="rounded-[1rem] border border-white/10 bg-white/4 px-4 py-4 text-sm text-white/70">
+              <div key={item} className="kds-inset rounded-[14px] px-4 py-4 text-sm text-white/70">
                 {item}
               </div>
             ))}
@@ -140,7 +140,7 @@ export function LandingPage() {
             {stackItems.map((stackItem) => (
               <span
                 key={stackItem}
-                className="rounded-full border border-white/10 bg-white/4 px-4 py-2 text-sm font-medium text-white/72"
+                className="kds-keycap rounded-[12px] px-4 py-2 text-sm font-medium text-white/72"
               >
                 {stackItem}
               </span>
@@ -149,7 +149,7 @@ export function LandingPage() {
         </Card>
       </section>
 
-      <section className="rounded-[1.5rem] border border-white/10 bg-white/4 p-8">
+      <section className="kds-keycap rounded-[18px] p-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-[0.7rem] font-semibold tracking-[0.34em] text-white/42 uppercase">Ready to enter</p>

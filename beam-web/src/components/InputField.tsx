@@ -15,7 +15,7 @@ type InputFieldProps = CommonProps & InputHTMLAttributes<HTMLInputElement>
 type TextAreaFieldProps = CommonProps & TextareaHTMLAttributes<HTMLTextAreaElement>
 
 const inputBaseClassName =
-  'mt-2 w-full rounded-[1rem] border border-white/10 bg-white/4 px-4 py-3 text-sm text-white/92 outline-none transition duration-200 placeholder:text-white/34 hover:border-white/16 focus:border-white/20 focus:bg-white/6 focus:ring-2 focus:ring-white/12'
+  'kds-inset mt-2 w-full rounded-[14px] px-4 py-3 text-sm text-white/92 outline-none transition duration-150 placeholder:text-white/30 hover:border-white/16 focus:border-[#b2ff7d]/55 focus:ring-2 focus:ring-[#b2ff7d]/10'
 
 export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputField(
   { label, hint, error, className, action, ...inputProps },

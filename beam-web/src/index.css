@@ -26,17 +26,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: rgba(255, 255, 255, 0.9);
-    background:
-      radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.08), transparent 24%),
-      radial-gradient(circle at 82% 0%, rgba(255, 255, 255, 0.05), transparent 20%),
-      linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+    background: #050505;
   }
 
   html.dark body {
-    background:
-      radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.08), transparent 24%),
-      radial-gradient(circle at 82% 0%, rgba(255, 255, 255, 0.05), transparent 20%),
-      linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+    background: #050505;
   }
 
   a {
@@ -49,7 +43,7 @@
   }
 
   ::selection {
-    background: rgba(166, 177, 255, 0.22);
+    background: rgba(178, 255, 125, 0.26);
     color: #ffffff;
   }
 }

@@ -21,7 +21,7 @@ export function NavigationBar({ brand, items, actions, onMenuToggle, menuOpen, c
   return (
     <header
       className={classNames(
-        'relative z-30 border-b border-white/8 bg-[#050505]/96 shadow-[inset_0_-1px_0_rgba(255,255,255,0.04)]',
+        'relative z-30 border-b border-white/10 bg-[#080808] shadow-[inset_0_-1px_0_rgba(255,255,255,0.04)]',
         className,
       )}
     >
@@ -31,7 +31,7 @@ export function NavigationBar({ brand, items, actions, onMenuToggle, menuOpen, c
             <button
               type="button"
               onClick={onMenuToggle}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[1rem] border border-white/10 bg-white/4 text-white/78 transition duration-200 hover:-translate-y-px hover:border-white/16 hover:bg-white/6 active:translate-y-px lg:hidden"
+              className="kds-keycap kds-keycap-interactive inline-flex h-11 w-11 items-center justify-center rounded-[14px] text-white/78 lg:hidden"
               aria-label="Toggle navigation"
               aria-expanded={menuOpen}
             >
@@ -52,9 +52,9 @@ export function NavigationBar({ brand, items, actions, onMenuToggle, menuOpen, c
                 to={item.to}
                 className={({ isActive }) =>
                   classNames(
-                    'rounded-[1rem] border px-4 py-3 text-sm font-medium tracking-tight transition duration-200 active:translate-y-px',
+                    'kds-keycap-interactive rounded-[14px] border px-4 py-3 text-sm font-medium tracking-tight',
                     isActive
-                      ? 'border-white/14 bg-white/8 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]'
+                      ? 'kds-inset border-[#b2ff7d]/35 text-white'
                       : 'border-transparent text-white/68 hover:border-white/10 hover:bg-white/5 hover:text-white',
                   )
                 }

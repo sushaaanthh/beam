@@ -4,16 +4,16 @@ export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'border-white/12 bg-[linear-gradient(180deg,rgba(248,248,248,0.98),rgba(215,215,215,0.94))] text-[#050505] shadow-[inset_0_1px_0_rgba(255,255,255,0.42),0_14px_28px_rgba(0,0,0,0.42)] hover:-translate-y-px hover:border-white/18 hover:bg-[linear-gradient(180deg,rgba(252,252,252,1),rgba(225,225,225,0.96))] focus-visible:ring-white/30',
+    'border-[#b2ff7d]/45 bg-[#b2ff7d] text-[#081004] shadow-[inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-1px_0_rgba(0,0,0,0.22),0_2px_0_#497b2e,0_10px_20px_rgba(0,0,0,0.35)] hover:border-[#d1ffb3] hover:bg-[#c1ff99] focus-visible:ring-[#b2ff7d]/40',
   secondary:
-    'border-white/10 bg-white/4 text-white/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] hover:-translate-y-px hover:border-white/16 hover:bg-white/6 focus-visible:ring-white/20',
-  ghost: 'border-transparent bg-transparent text-white/72 hover:bg-white/5 focus-visible:ring-white/20',
+    'kds-keycap border-white/12 text-white/88 hover:border-white/22 focus-visible:ring-white/20',
+  ghost: 'border-white/8 bg-transparent text-white/62 hover:border-white/16 hover:bg-white/5 focus-visible:ring-white/20',
   danger: 'border-rose-400/20 bg-rose-400/12 text-rose-100 hover:-translate-y-px hover:bg-rose-400/18 focus-visible:ring-rose-300/30',
 }
 
 export function buttonClassName(variant: ButtonVariant = 'primary', className?: string) {
   return classNames(
-    'inline-flex items-center justify-center gap-2 rounded-[1rem] border px-4 py-3 text-sm font-medium tracking-tight transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-55 active:translate-y-px',
+    'kds-keycap-interactive inline-flex items-center justify-center gap-2 rounded-[14px] border px-4 py-3 text-sm font-medium tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-55',
     variantClasses[variant],
     className,
   )

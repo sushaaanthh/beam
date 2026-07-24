@@ -25,8 +25,7 @@ export function AppLayout() {
   const displayName = useMemo(() => user?.username ?? 'Researcher', [user?.username])
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.06),_transparent_22%),radial-gradient(circle_at_bottom_left,_rgba(166,177,255,0.08),_transparent_24%)]" />
+    <div className="kds-page min-h-screen bg-[#050505] text-white">
 
       <NavigationBar
         brand={(
@@ -39,7 +38,7 @@ export function AppLayout() {
         actions={(
           <>
             <ThemeToggle />
-            <div className="hidden items-center gap-3 rounded-[1rem] border border-white/10 bg-white/4 px-3 py-2 lg:flex">
+            <div className="kds-keycap hidden items-center gap-3 rounded-[14px] px-3 py-2 lg:flex">
               <UserAvatar name={displayName} />
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-white">{displayName}</p>
@@ -56,7 +55,7 @@ export function AppLayout() {
       <div className="relative z-20 mx-auto flex w-full max-w-[1800px] gap-6 px-4 py-4 sm:px-6 lg:px-8">
         <aside
           className={classNames(
-            'fixed inset-y-0 left-0 z-40 w-72 border-r border-white/8 bg-[#070707] px-4 py-6 transition-transform duration-300 lg:static lg:z-auto lg:block lg:translate-x-0 lg:rounded-[1.5rem] lg:border',
+            'fixed inset-y-0 left-0 z-40 w-72 border-r border-white/10 bg-[#080808] px-4 py-6 transition-transform duration-300 lg:static lg:z-auto lg:block lg:translate-x-0 lg:rounded-[18px] lg:border',
             mobileNavOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0',
           )}
         >
@@ -76,7 +75,7 @@ export function AppLayout() {
               ))}
             </nav>
 
-            <div className="rounded-[1.25rem] border border-white/10 bg-white/4 p-5 text-sm text-white/64">
+            <div className="kds-inset rounded-[14px] p-5 text-sm text-white/64">
               <p className="text-[0.7rem] font-semibold tracking-[0.34em] text-white/42 uppercase">Session status</p>
               <p className="mt-3 leading-7">
                 Your JWT session is active. The shell is ready for analysis, history, profile, and settings flows.
@@ -97,7 +96,7 @@ export function AppLayout() {
         <main className="relative min-w-0 flex-1 space-y-6">
           <Outlet />
 
-          <footer className="rounded-[1.25rem] border border-white/8 bg-white/4 px-5 py-4 text-sm text-white/56">
+          <footer className="kds-inset rounded-[14px] px-5 py-4 text-sm text-white/56">
             B.E.A.M. frontend shell • Responsive dashboard layout • React Router protected routes • TanStack Query data layer
           </footer>
         </main>

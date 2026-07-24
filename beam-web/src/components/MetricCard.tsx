@@ -9,10 +9,10 @@ type MetricCardProps = {
 export function MetricCard({ title, value, description }: MetricCardProps) {
   return (
     <Card className="relative overflow-hidden space-y-3 p-5">
-      <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
+      <div className="absolute inset-x-0 top-0 h-px bg-white/14" />
       <div className="flex items-center justify-between gap-3">
         <p className="text-[0.7rem] uppercase tracking-[0.32em] text-white/42">{title}</p>
-        <span className="h-2 w-2 rounded-full bg-[#a6b1ff]/70" aria-hidden="true" />
+        <span className="h-2 w-2 rounded-[3px] bg-[#b2ff7d] shadow-[0_0_0_3px_rgba(178,255,125,0.08)]" aria-hidden="true" />
       </div>
       <p className="text-3xl font-semibold tracking-tight text-white">{value}</p>
       <p className="text-sm leading-6 text-white/62">{description}</p>
