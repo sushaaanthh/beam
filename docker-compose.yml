@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-beam_db}
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  beam-api:
+    build:
+      context: ./beam-api
+      dockerfile: Dockerfile
+    volumes:
+      - ./beam-api:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./beam-config/env/.env
+    environment:
+      - POSTGRES_SERVER=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  beam-web:
+    build:
+      context: ./beam-web
+      dockerfile: Dockerfile
+    volumes:
+      - ./beam-web:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./beam-config/env/.env
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - beam-api
+
+volumes:
+  postgres_data:

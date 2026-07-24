@@ -1,0 +1,2 @@
+# Placeholder requirements for the future Reddit scraping service.
+# This file stays intentionally minimal until the scraper is implemented.

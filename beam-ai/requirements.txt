@@ -1,0 +1,2 @@
+# Placeholder requirements for future training and inference workflows.
+# Add the AI stack here as the modules under beam-ai/ are implemented.
