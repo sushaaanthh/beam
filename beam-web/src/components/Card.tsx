@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode, ForwardRefExoticComponent, RefAttributes } from 'react'
 
-type CardProps = HTMLAttributes<HTMLDivElement> & {
+export type CardProps = HTMLAttributes<HTMLDivElement> & {
   variant?: 'default' | 'elevated' | 'glass' | 'outlined'
   padding?: 'none' | 'sm' | 'md' | 'lg'
   hover?: boolean
@@ -9,22 +9,19 @@ type CardProps = HTMLAttributes<HTMLDivElement> & {
 
 const variantStyles = {
   default: `
-    bg-apple-bgCard border border-apple-border
-    hover:border-apple-borderHover hover:bg-apple-bgCardHover
+    bg-[#101010] border border-[#222222] text-[#F5F5F0]
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_4px_16px_rgba(0,0,0,0.6)]
   `,
   elevated: `
-    bg-apple-bgCard border border-apple-border
-    shadow-apple-lg hover:shadow-apple-xl
+    bg-[#141414] border border-[#282828] text-[#F5F5F0]
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_8px_24px_rgba(0,0,0,0.8)]
   `,
   glass: `
-    bg-apple-glass border border-apple-glassBorder
-    backdrop-blur-apple backdrop-filter
-    hover:bg-apple-glassStrong hover:border-apple-glassBorderStrong
-    shadow-apple-glow
+    bg-[#101010]/80 backdrop-blur-md border border-[#222222] text-[#F5F5F0]
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_4px_16px_rgba(0,0,0,0.6)]
   `,
   outlined: `
-    bg-transparent border border-apple-border
-    hover:border-apple-borderHover hover:bg-apple-glass
+    bg-transparent border border-[#222222] text-[#F5F5F0]
   `,
 }
 
@@ -36,12 +33,8 @@ const paddingStyles = {
 }
 
 const hoverStyles = {
-  true: `
-    transition-all duration-apple-normal ease-apple
-    hover:-translate-y-1 hover:shadow-apple-lg
-    active:translate-y-0 active:shadow-apple-md active:transition-none
-  `,
-  false: 'transition-colors duration-apple-fast ease-apple',
+  true: 'transition-all duration-150 ease-out hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_6px_20px_rgba(0,0,0,0.8)] hover:-translate-y-[1px]',
+  false: 'transition-colors duration-150 ease-out',
 }
 
 export const Card = Object.assign(
@@ -58,7 +51,7 @@ export const Card = Object.assign(
     return (
       <div
         className={`
-          rounded-apple-xl
+          rounded-[14px]
           ${variantStyles[variant]}
           ${paddingStyles[padding]}
           ${hoverStyles[hover ? 'true' : 'false']}
