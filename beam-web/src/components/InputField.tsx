@@ -1,55 +1,193 @@
 import { forwardRef, type InputHTMLAttributes, type ReactNode, type TextareaHTMLAttributes } from 'react'
 
-import { classNames } from '../utils/classNames'
-
 type CommonProps = {
   label: string
-  hint?: string | undefined
-  error?: string | undefined
-  className?: string | undefined
-  action?: ReactNode | undefined
+  hint?: string
+  error?: string
+  className?: string
+  action?: ReactNode
 }
 
 type InputFieldProps = CommonProps & InputHTMLAttributes<HTMLInputElement>
 
 type TextAreaFieldProps = CommonProps & TextareaHTMLAttributes<HTMLTextAreaElement>
 
-const inputBaseClassName =
-  'kds-inset mt-2 w-full rounded-[14px] px-4 py-3 text-sm text-white/92 outline-none transition duration-150 placeholder:text-white/30 hover:border-white/16 focus:border-[#b2ff7d]/55 focus:ring-2 focus:ring-[#b2ff7d]/10'
+const inputBaseClassName = `
+  w-full rounded-apple-md
+  bg-apple-bg border border-apple-border
+  px-4 py-3 text-body-md text-apple-textPrimary
+  placeholder:text-apple-textTertiary
+  outline-none
+  transition-all duration-apple-fast ease-apple
+  hover:border-apple-borderHover hover:bg-apple-bgCard
+  focus:border-apple-accent focus:ring-2 focus:ring-apple-accent/20 focus:bg-apple-bg
+  disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-apple-border
+  error:border-apple-danger error:focus:border-apple-danger error:focus:ring-apple-danger/20
+`
 
-export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputField(
-  { label, hint, error, className, action, ...inputProps },
-  ref,
-) {
-  return (
-    <label className={classNames('block', className)}>
-      <div className="flex items-center justify-between gap-3 text-sm font-medium text-white/88">
-        <span>{label}</span>
-        {action}
-      </div>
-      <input ref={ref} className={inputBaseClassName} {...inputProps} />
-      {hint && !error ? <p className="mt-2 text-xs text-white/54">{hint}</p> : null}
-      {error ? <p className="mt-2 text-xs font-medium text-rose-500">{error}</p> : null}
-    </label>
-  )
-})
+const labelClassName = `
+  block text-caption-lg font-semibold tracking-wide text-apple-textSecondary
+  uppercase mb-2
+`
 
-export const TextAreaField = forwardRef<HTMLTextAreaElement, TextAreaFieldProps>(function TextAreaField(
-  { label, hint, error, className, action, ...textAreaProps },
-  ref,
-) {
-  return (
-    <label className={classNames('block', className)}>
-      <div className="flex items-center justify-between gap-3 text-sm font-medium text-white/88">
-        <span>{label}</span>
-        {action}
+const hintClassName = 'mt-2 text-caption-md text-apple-textTertiary'
+const errorClassName = 'mt-2 text-caption-md font-medium text-apple-danger'
+const actionClassName = 'text-caption-lg font-medium text-apple-accent hover:text-apple-accentLight transition-colors'
+
+export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
+  function InputField(
+    { label, hint, error, className, action, id, ...inputProps },
+    ref
+  ) {
+    const inputId = id || `input-${label.toLowerCase().replace(/\s+/g, '-')}`
+    const errorId = error ? `${inputId}-error` : undefined
+    const hintId = hint && !error ? `${inputId}-hint` : undefined
+
+    return (
+      <label className={className} htmlFor={inputId}>
+        <span className={labelClassName}>{label}</span>
+        <div className="relative">
+          <input
+            ref={ref}
+            id={inputId}
+            className={`${inputBaseClassName} ${error ? 'error' : ''}`}
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={errorId || hintId}
+            {...inputProps}
+          />
+          {action && (
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-apple-textTertiary">
+              {action}
+            </div>
+          )}
+        </div>
+        {error ? (
+          <p id={errorId} className={errorClassName} role="alert">
+            {error}
+          </p>
+        ) : hint ? (
+          <p id={hintId} className={hintClassName}>
+            {hint}
+          </p>
+        ) : null}
+      </label>
+    )
+  }
+)
+
+export const TextAreaField = forwardRef<HTMLTextAreaElement, TextAreaFieldProps>(
+  function TextAreaField(
+    { label, hint, error, className, action, id, ...textAreaProps },
+    ref
+  ) {
+    const inputId = id || `textarea-${label.toLowerCase().replace(/\s+/g, '-')}`
+    const errorId = error ? `${inputId}-error` : undefined
+    const hintId = hint && !error ? `${inputId}-hint` : undefined
+
+    return (
+      <label className={className} htmlFor={inputId}>
+        <span className={labelClassName}>{label}</span>
+        <div className="relative">
+          <textarea
+            ref={ref}
+            id={inputId}
+            className={`${inputBaseClassName} min-h-[120px] resize-y ${error ? 'error' : ''}`}
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={errorId || hintId}
+            {...textAreaProps}
+          />
+          {action && (
+            <div className="absolute right-4 top-4 text-apple-textTertiary">
+              {action}
+            </div>
+          )}
+        </div>
+        {error ? (
+          <p id={errorId} className={errorClassName} role="alert">
+            {error}
+          </p>
+        ) : hint ? (
+          <p id={hintId} className={hintClassName}>
+            {hint}
+          </p>
+        ) : null}
+      </label>
+    )
+  }
+)
+
+// Apple-style floating label input variant
+type FloatingInputProps = CommonProps & InputHTMLAttributes<HTMLInputElement> & {
+  placeholder?: string
+}
+
+export const FloatingInputField = forwardRef<HTMLInputElement, FloatingInputProps>(
+  function FloatingInputField(
+    { label, hint, error, className, placeholder, id, ...inputProps },
+    ref
+  ) {
+    const inputId = id || `floating-input-${label.toLowerCase().replace(/\s+/g, '-')}`
+    const errorId = error ? `${inputId}-error` : undefined
+    const hintId = hint && !error ? `${inputId}-hint` : undefined
+    const hasValue = inputProps.value || inputProps.defaultValue
+
+    return (
+      <div className={className}>
+        <div className="relative group">
+          <input
+            ref={ref}
+            id={inputId}
+            className={`
+              w-full rounded-apple-md
+              bg-apple-bg border border-apple-border
+              px-4 py-4 text-body-md text-apple-textPrimary
+              outline-none
+              transition-all duration-apple-fast ease-apple
+              hover:border-apple-borderHover hover:bg-apple-bgCard
+              focus:border-apple-accent focus:ring-2 focus:ring-apple-accent/20 focus:bg-apple-bg
+              disabled:opacity-40 disabled:cursor-not-allowed
+              peer
+              ${error ? 'border-apple-danger focus:border-apple-danger focus:ring-apple-danger/20' : ''}
+              ${hasValue ? 'pt-6 pb-2' : ''}
+            `}
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={errorId || hintId}
+            placeholder=" "
+            {...inputProps}
+          />
+          <label
+            htmlFor={inputId}
+            className={`
+              absolute left-4 top-1/2 -translate-y-1/2
+              text-body-md text-apple-textTertiary
+              pointer-events-none
+              transition-all duration-apple-fast ease-apple
+              peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-caption-lg peer-focus:text-apple-accent
+              peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-caption-lg peer-[&:not(:placeholder-shown)]:text-apple-textSecondary
+              ${hasValue ? 'top-2 -translate-y-3 text-caption-lg text-apple-textSecondary' : ''}
+            `}
+          >
+            {label}
+          </label>
+          {action && (
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-apple-textTertiary">
+              {action}
+            </div>
+          )}
+        </div>
+        {error ? (
+          <p id={errorId} className={errorClassName} role="alert">
+            {error}
+          </p>
+        ) : hint ? (
+          <p id={hintId} className={hintClassName}>
+            {hint}
+          </p>
+        ) : null}
       </div>
-      <textarea ref={ref} className={classNames(inputBaseClassName, 'min-h-32 resize-y')} {...textAreaProps} />
-      {hint && !error ? <p className="mt-2 text-xs text-white/54">{hint}</p> : null}
-      {error ? <p className="mt-2 text-xs font-medium text-rose-500">{error}</p> : null}
-    </label>
-  )
-})
+    )
+  }
+)
 
 export function KeycapInputField(props: InputFieldProps) {
   return <InputField {...props} />
