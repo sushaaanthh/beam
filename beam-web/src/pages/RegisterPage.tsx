@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { ArrowRight, ShieldCheck } from 'lucide-react'
 
+import { BrandMark } from '../components/BrandMark'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { InputField } from '../components/InputField'
-import { SectionHeading } from '../components/SectionHeading'
 import { useAuth } from '../hooks/useAuth'
 
 const registerSchema = z
@@ -54,19 +55,31 @@ export function RegisterPage() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
-      <div className="grid w-full gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <Card className="space-y-6 p-8 sm:p-10">
-          <SectionHeading
-            eyebrow="Register"
-            title="Create your research account"
-            description="Use a professional workspace for future behavioral analysis sessions."
-          />
+    <div className="min-h-[calc(100vh-140px)] flex items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-6">
+        <div className="text-center space-y-2">
+          <div className="inline-block">
+            <BrandMark />
+          </div>
+        </div>
 
-          <form className="grid gap-5" onSubmit={handleSubmit(onSubmit)}>
+        <Card variant="default" padding="none" className="p-8 space-y-6 border-[#242424] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_40px_rgba(0,0,0,0.8)]">
+          <div className="border-b border-[#1C1C1C] pb-4">
+            <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
+              REGISTRATION // NEW_WORKSPACE
+            </span>
+            <h2 className="font-display text-2xl font-bold text-[#F5F5F0] mt-1">
+              CREATE YOUR BEAM ACCOUNT
+            </h2>
+            <p className="text-xs text-[#73736F] mt-1">
+              Provision a verified workspace for behavioral emotion inference.
+            </p>
+          </div>
+
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <InputField
               label="Username"
-              placeholder="beam.research"
+              placeholder="beam.researcher"
               autoComplete="username"
               error={errors.username?.message}
               {...register('username')}
@@ -75,7 +88,7 @@ export function RegisterPage() {
             <InputField
               label="Email address"
               type="email"
-              placeholder="researcher@beam.dev"
+              placeholder="researcher@beam-lab.org"
               autoComplete="email"
               error={errors.email?.message}
               {...register('email')}
@@ -84,57 +97,52 @@ export function RegisterPage() {
             <InputField
               label="Password"
               type="password"
-              placeholder="Create a strong password"
+              placeholder="••••••••••••"
               autoComplete="new-password"
               error={errors.password?.message}
               {...register('password')}
             />
 
             <InputField
-              label="Confirm password"
+              label="Confirm Password"
               type="password"
-              placeholder="Repeat the password"
+              placeholder="••••••••••••"
               autoComplete="new-password"
               error={errors.confirmPassword?.message}
               {...register('confirmPassword')}
             />
 
-            {submitError ? <p className="text-sm font-medium text-rose-500">{submitError}</p> : null}
+            {submitError && (
+              <div className="p-3 rounded-lg bg-[#1F0C0C] border border-[#5A1C1C] text-xs text-[#FF6B6B]">
+                {submitError}
+              </div>
+            )}
 
-            <Button type="submit" className="w-full" isLoading={isSubmitting}>
-              Create account
+            <Button
+              type="submit"
+              variant="primary"
+              fullWidth
+              size="lg"
+              isLoading={isSubmitting}
+              rightIcon={<ArrowRight className="h-4 w-4" />}
+            >
+              CREATE ACCOUNT
             </Button>
           </form>
 
-          <p className="text-sm text-white/62">
-            Already have an account?{' '}
-            <Link to="/login" className="font-semibold text-white/82 hover:text-white">
-              Sign in
+          <div className="pt-4 border-t border-[#1C1C1C] text-center text-xs text-[#73736F]">
+            Already registered?{' '}
+            <Link to="/login" className="font-semibold text-[#F5F5F0] hover:text-[#C7FF4A] transition-colors">
+              Sign in to session →
             </Link>
-          </p>
+          </div>
         </Card>
 
-        <Card className="space-y-6 p-8 text-white">
-          <div className="space-y-4">
-            <p className="text-[0.7rem] font-semibold tracking-[0.34em] text-white/42 uppercase">Why register?</p>
-            <h1 className="text-4xl font-semibold tracking-tight">A clean starting point for the full B.E.A.M. experience</h1>
-            <p className="text-sm leading-7 text-white/62">
-              The frontend is intentionally focused on structure and workflow readiness, so the next phase can plug in analysis sessions, explainability views, and reporting without redesigning the interface.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              'Quick account creation',
-              'JWT session handling',
-              'Responsive form validation',
-              'Ready for dashboard access',
-            ].map((item) => (
-              <div key={item} className="rounded-[1rem] border border-white/10 bg-white/4 px-4 py-4 text-sm text-white/72">
-                {item}
-              </div>
-            ))}
-          </div>
-        </Card>
+        <div className="text-center">
+          <span className="font-mono text-[10px] text-[#555552] uppercase tracking-wider">
+            Academic Research & Engineering Standard
+          </span>
+        </div>
       </div>
     </div>
   )

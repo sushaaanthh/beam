@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode, ForwardRefExoticComponent, RefAttributes } from 'react'
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'glass'
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'icon' | 'glass'
   size?: 'sm' | 'md' | 'lg'
   leftIcon?: ReactNode
   rightIcon?: ReactNode
@@ -11,46 +11,46 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variantStyles = {
   primary: `
-    bg-apple-accent text-white
-    hover:bg-apple-accentHover active:bg-apple-accentHover
-    shadow-apple-md hover:shadow-accent-glow active:shadow-apple-sm
-    border border-transparent
+    bg-[#C7FF4A] text-[#050505] font-semibold border border-[#A8D83A]
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.45),inset_0_-1px_0_rgba(0,0,0,0.25),0_2px_6px_rgba(199,255,74,0.2)]
+    hover:bg-[#D4FF6A] hover:border-[#C7FF4A] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_4px_12px_rgba(199,255,74,0.3)]
+    active:bg-[#A8D83A] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]
   `,
   secondary: `
-    bg-apple-bgCard text-apple-textPrimary
-    hover:bg-apple-bgCardHover active:bg-apple-bgCard
-    border border-apple-border hover:border-apple-borderHover active:border-apple-border
-    shadow-apple-sm hover:shadow-apple-md active:shadow-apple-sm
+    bg-[#161616] text-[#F5F5F0] font-medium border border-[#262626]
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-1px_0_rgba(0,0,0,0.5),0_2px_4px_rgba(0,0,0,0.6)]
+    hover:border-[#383838] hover:text-white hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_4px_8px_rgba(0,0,0,0.8)]
+    active:bg-[#111111] active:border-[#1E1E1E] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]
   `,
   ghost: `
-    bg-transparent text-apple-textPrimary
-    hover:bg-apple-glass active:bg-apple-glassStrong
-    border border-transparent hover:border-apple-glassBorder active:border-apple-glassBorder
+    bg-transparent text-[#B8B8B0] font-medium border border-transparent
+    hover:bg-[#121212] hover:border-[#262626] hover:text-[#F5F5F0] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_2px_4px_rgba(0,0,0,0.4)]
+    active:bg-[#0D0D0D] active:shadow-[inset_0_2px_3px_rgba(0,0,0,0.6)]
   `,
   danger: `
-    bg-apple-danger text-white
-    hover:bg-apple-danger/90 active:bg-apple-danger
-    shadow-apple-md hover:shadow-[0_0_0_1px_rgba(255,69,58,0.3),0_0_24px_rgba(255,69,58,0.15)] active:shadow-apple-sm
-    border border-transparent
+    bg-[#180E0E] text-[#FF6B6B] font-medium border border-[#3E1C1C]
+    shadow-[inset_0_1px_0_rgba(255,107,107,0.15),inset_0_-1px_0_rgba(0,0,0,0.5),0_2px_4px_rgba(0,0,0,0.6)]
+    hover:bg-[#221313] hover:border-[#5A2525] hover:text-[#FF8888]
+    active:bg-[#140A0A] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]
+  `,
+  icon: `
+    bg-[#161616] text-[#B8B8B0] border border-[#262626]
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-1px_0_rgba(0,0,0,0.5),0_2px_4px_rgba(0,0,0,0.6)]
+    hover:border-[#383838] hover:text-[#F5F5F0]
+    active:bg-[#111111] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]
   `,
   glass: `
-    bg-apple-glass text-apple-textPrimary
-    hover:bg-apple-glassStrong active:bg-apple-glass
-    border border-apple-glassBorder hover:border-apple-glassBorderStrong active:border-apple-glassBorder
-    backdrop-blur-apple backdrop-filter
-    shadow-apple-sm hover:shadow-apple-md active:shadow-apple-sm
+    bg-[#121212]/80 backdrop-blur-md text-[#F5F5F0] font-medium border border-[#262626]
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_2px_6px_rgba(0,0,0,0.5)]
+    hover:border-[#383838] hover:bg-[#161616]
+    active:bg-[#0E0E0E]
   `,
 }
 
 const sizeStyles = {
-  sm: 'px-3 py-2 text-caption-lg gap-1.5',
-  md: 'px-5 py-3 text-body-md gap-2',
-  lg: 'px-7 py-4 text-body-lg gap-2.5',
-}
-
-const fullWidthStyles = {
-  true: 'w-full justify-center',
-  false: '',
+  sm: 'px-3 py-1.5 text-xs rounded-md gap-1.5',
+  md: 'px-4 py-2 text-sm rounded-lg gap-2',
+  lg: 'px-5 py-2.5 text-base rounded-lg gap-2.5',
 }
 
 export const Button = Object.assign(
@@ -74,23 +74,23 @@ export const Button = Object.assign(
     return (
       <button
         type={type}
+        disabled={isDisabled}
         className={`
-          relative inline-flex items-center justify-center font-semibold tracking-tight
-          rounded-apple-lg
-          transition-all duration-apple-fast ease-apple
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-apple-accent focus-visible:ring-offset-2 focus-visible:ring-offset-apple-bg
-          disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:transform-none disabled:active:transform-none
-          active:scale-[0.98] active:transition-none
-          ${variantStyles[variant]}
+          relative inline-flex items-center justify-center font-ui tracking-tight select-none cursor-pointer
+          transition-all duration-150 ease-out
+          hover:-translate-y-[1px]
+          active:translate-y-[1px]
+          disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C7FF4A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]
+          ${variantStyles[variant] || variantStyles.secondary}
           ${sizeStyles[size]}
-          ${fullWidthStyles[fullWidth ? 'true' : 'false']}
+          ${fullWidth ? 'w-full' : ''}
           ${className}
         `}
-        disabled={isDisabled}
         {...props}
       >
         {isLoading ? (
-          <span className="flex items-center justify-center">
+          <span className="flex items-center justify-center mr-1">
             <svg
               className="h-4 w-4 animate-spin text-current"
               xmlns="http://www.w3.org/2000/svg"
@@ -114,11 +114,11 @@ export const Button = Object.assign(
             </svg>
           </span>
         ) : leftIcon ? (
-          <span className="flex items-center justify-center" aria-hidden="true">{leftIcon}</span>
+          <span className="flex items-center justify-center shrink-0" aria-hidden="true">{leftIcon}</span>
         ) : null}
-        <span className="relative z-10">{children}</span>
+        <span>{children}</span>
         {!isLoading && rightIcon && (
-          <span className="flex items-center justify-center" aria-hidden="true">{rightIcon}</span>
+          <span className="flex items-center justify-center shrink-0" aria-hidden="true">{rightIcon}</span>
         )}
       </button>
     )

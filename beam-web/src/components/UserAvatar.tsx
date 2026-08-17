@@ -7,32 +7,13 @@ type UserAvatarProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 const sizeStyles = {
-  sm: 'h-8 w-8 text-caption-lg',
-  md: 'h-10 w-10 text-body-sm',
-  lg: 'h-12 w-12 text-body-md',
-  xl: 'h-16 w-16 text-heading-lg',
+  sm: 'h-7 w-7 text-[10px]',
+  md: 'h-9 w-9 text-xs',
+  lg: 'h-11 w-11 text-sm',
+  xl: 'h-14 w-14 text-base',
 }
 
-const gradientStyles = [
-  'from-apple-accent to-apple-accent/70',
-  'from-apple-success to-apple-success/70',
-  'from-apple-warning to-apple-warning/70',
-  'from-purple-500 to-purple-500/70',
-  'from-pink-500 to-pink-500/70',
-  'from-orange-500 to-orange-500/70',
-  'from-cyan-500 to-cyan-500/70',
-  'from-indigo-500 to-indigo-500/70',
-]
-
-function getGradientForName(name: string): string {
-  let hash = 0
-  for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 5) - hash)
-  }
-  return gradientStyles[Math.abs(hash) % gradientStyles.length]
-}
-
-export function UserAvatar({ name, src, size = 'md', className, ...props }: UserAvatarProps) {
+export function UserAvatar({ name, src, size = 'md', className = '', ...props }: UserAvatarProps) {
   const initials = name
     .split(' ')
     .filter(Boolean)
@@ -41,11 +22,9 @@ export function UserAvatar({ name, src, size = 'md', className, ...props }: User
     .join('')
     .toUpperCase()
 
-  const gradient = getGradientForName(name)
-
   return (
     <div
-      className={`relative flex items-center justify-center rounded-apple-full bg-gradient-to-br ${gradient} text-white font-semibold shadow-apple-sm ${sizeStyles[size]} ${className}`}
+      className={`relative flex items-center justify-center rounded-lg bg-[#181818] border border-[#2A2A2A] text-[#F5F5F0] font-display tracking-wider font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_2px_4px_rgba(0,0,0,0.5)] ${sizeStyles[size]} ${className}`}
       aria-label={name}
       {...props}
     >
@@ -53,13 +32,13 @@ export function UserAvatar({ name, src, size = 'md', className, ...props }: User
         <img
           src={src}
           alt=""
-          className="h-full w-full rounded-apple-full object-cover"
+          className="h-full w-full rounded-lg object-cover"
         />
       ) : (
         initials || 'U'
       )}
-      <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-apple-bg border-2 border-apple-bg" aria-hidden="true">
-        <span className="h-1.5 w-1.5 rounded-full bg-apple-success" />
+      <span className="absolute -bottom-0.5 -right-0.5 flex h-2 w-2 items-center justify-center" aria-hidden="true">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#C7FF4A] shadow-[0_0_4px_#C7FF4A]" />
       </span>
     </div>
   )
