@@ -25,3 +25,5 @@ beam-scraper/logs/
 # OS files
 .DS_Store
 Thumbs.db
+
+.arcide
