@@ -1,0 +1,18 @@
+[2026-08-01 09:15] I've been trying to understand recursion all evening. I finally get the basic idea, but I'm still confused about why the function keeps calling itself. I think I need to draw the call stack on paper.
+
+[2026-08-05 14:30] I spent three hours debugging this Python error and it turned out I had misspelled one variable. Honestly, I can't decide whether to laugh or close the laptop.
+
+[2026-08-10 18:45] Finally got my program working! It was a tiny bug, but seeing the output correctly after struggling with it for so long felt really satisfying.
+
+[2026-08-14 21:00] My project deadline is getting close and I still have a lot left to implement. I know I can probably finish it, but I'm starting to feel nervous about running out of time.
+
+[2026-08-18 16:20] I built my first small API without following a complete tutorial. It is definitely not perfect, but I'm pretty proud that I managed to connect the backend and frontend myself.
+
+[2026-08-22 11:10] I answered a question confidently in class today and then realized I had completely misunderstood what the professor was asking. Wanted the floor to swallow me.
+
+[2026-08-25 15:00] I did badly on the last test, but I'm going to use it as a reason to study differently. One bad result doesn't mean I can't improve.
+
+[2026-08-28 20:30] A classmate explained the database normalization concept to me today and it suddenly made sense. Really grateful for people who take the time to help.
+
+[2026-08-30 17:45] Things have been intense lately, but there are still small improvements every week. I'm trying to focus on those instead of expecting everything to change overnight.
+

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "TE-001",
+    "text": "Refactored the entire telemetry pipeline into Rust. Latency dropped by 80% and the memory footprint is now virtually flat across high concurrency.",
+    "source": "Twitter Feed",
+    "primary_emotion": "Joy / Fulfillment",
+    "sentiment": "positive",
+    "valence": 0.88,
+    "arousal": 0.65
+  },
+  {
+    "id": "TE-002",
+    "text": "Why does transformer inference latency spike so hard on cold start? Investigating attention caching layers.",
+    "source": "Twitter Feed",
+    "primary_emotion": "Intellectual Curiosity",
+    "sentiment": "neutral",
+    "valence": 0.20,
+    "arousal": 0.50
+  },
+  {
+    "id": "TE-003",
+    "text": "Server outage during deployment again. Absolutely frustrating to lose an entire morning of testing.",
+    "source": "Twitter Feed",
+    "primary_emotion": "Frustration / Friction",
+    "sentiment": "negative",
+    "valence": -0.82,
+    "arousal": 0.88
+  }
+]
+

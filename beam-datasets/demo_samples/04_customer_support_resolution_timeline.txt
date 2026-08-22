@@ -1,0 +1,8 @@
+[2026-08-01 10:15] Our production dashboard has been failing to load for 2 hours and we have customer demos in 30 minutes! This is completely unacceptable and stressful.
+
+[2026-08-01 11:30] Still waiting for an update from technical support. We had to postpone two executive stakeholder meetings. Extremely disappointed with the delay.
+
+[2026-08-01 13:45] Support engineer contacted us and identified the regional edge proxy timeout. They are applying a hotfix right now.
+
+[2026-08-01 14:30] Dashboard is back online and running significantly faster than before. Thank you for the swift turnaround and detailed root-cause explanation!
+

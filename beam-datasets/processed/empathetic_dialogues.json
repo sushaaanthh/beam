@@ -1,0 +1,3511 @@
+{
+  "dataset_id": "DS-04",
+  "name": "EmpatheticDialogues Split",
+  "source": "Academic Benchmark",
+  "total_samples": 24850,
+  "labels": "32 Emotional",
+  "version": "v3.0",
+  "status": "ACTIVE",
+  "samples": [
+    {
+      "id": "EMPATH-00000",
+      "source": "Academic Benchmark",
+      "situation": "[0] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00001",
+      "source": "Academic Benchmark",
+      "situation": "[1] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00002",
+      "source": "Academic Benchmark",
+      "situation": "[2] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00003",
+      "source": "Academic Benchmark",
+      "situation": "[3] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00004",
+      "source": "Academic Benchmark",
+      "situation": "[4] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00005",
+      "source": "Academic Benchmark",
+      "situation": "[5] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00006",
+      "source": "Academic Benchmark",
+      "situation": "[6] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00007",
+      "source": "Academic Benchmark",
+      "situation": "[7] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00008",
+      "source": "Academic Benchmark",
+      "situation": "[8] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00009",
+      "source": "Academic Benchmark",
+      "situation": "[9] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00010",
+      "source": "Academic Benchmark",
+      "situation": "[10] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00011",
+      "source": "Academic Benchmark",
+      "situation": "[11] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00012",
+      "source": "Academic Benchmark",
+      "situation": "[12] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00013",
+      "source": "Academic Benchmark",
+      "situation": "[13] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00014",
+      "source": "Academic Benchmark",
+      "situation": "[14] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00015",
+      "source": "Academic Benchmark",
+      "situation": "[15] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00016",
+      "source": "Academic Benchmark",
+      "situation": "[16] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00017",
+      "source": "Academic Benchmark",
+      "situation": "[17] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00018",
+      "source": "Academic Benchmark",
+      "situation": "[18] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00019",
+      "source": "Academic Benchmark",
+      "situation": "[19] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00020",
+      "source": "Academic Benchmark",
+      "situation": "[20] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00021",
+      "source": "Academic Benchmark",
+      "situation": "[21] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00022",
+      "source": "Academic Benchmark",
+      "situation": "[22] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00023",
+      "source": "Academic Benchmark",
+      "situation": "[23] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00024",
+      "source": "Academic Benchmark",
+      "situation": "[24] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00025",
+      "source": "Academic Benchmark",
+      "situation": "[25] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00026",
+      "source": "Academic Benchmark",
+      "situation": "[26] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00027",
+      "source": "Academic Benchmark",
+      "situation": "[27] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00028",
+      "source": "Academic Benchmark",
+      "situation": "[28] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00029",
+      "source": "Academic Benchmark",
+      "situation": "[29] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00030",
+      "source": "Academic Benchmark",
+      "situation": "[30] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00031",
+      "source": "Academic Benchmark",
+      "situation": "[31] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00032",
+      "source": "Academic Benchmark",
+      "situation": "[32] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00033",
+      "source": "Academic Benchmark",
+      "situation": "[33] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00034",
+      "source": "Academic Benchmark",
+      "situation": "[34] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00035",
+      "source": "Academic Benchmark",
+      "situation": "[35] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00036",
+      "source": "Academic Benchmark",
+      "situation": "[36] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00037",
+      "source": "Academic Benchmark",
+      "situation": "[37] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00038",
+      "source": "Academic Benchmark",
+      "situation": "[38] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00039",
+      "source": "Academic Benchmark",
+      "situation": "[39] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00040",
+      "source": "Academic Benchmark",
+      "situation": "[40] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00041",
+      "source": "Academic Benchmark",
+      "situation": "[41] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00042",
+      "source": "Academic Benchmark",
+      "situation": "[42] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00043",
+      "source": "Academic Benchmark",
+      "situation": "[43] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00044",
+      "source": "Academic Benchmark",
+      "situation": "[44] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00045",
+      "source": "Academic Benchmark",
+      "situation": "[45] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00046",
+      "source": "Academic Benchmark",
+      "situation": "[46] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00047",
+      "source": "Academic Benchmark",
+      "situation": "[47] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00048",
+      "source": "Academic Benchmark",
+      "situation": "[48] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00049",
+      "source": "Academic Benchmark",
+      "situation": "[49] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00050",
+      "source": "Academic Benchmark",
+      "situation": "[50] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00051",
+      "source": "Academic Benchmark",
+      "situation": "[51] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00052",
+      "source": "Academic Benchmark",
+      "situation": "[52] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00053",
+      "source": "Academic Benchmark",
+      "situation": "[53] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00054",
+      "source": "Academic Benchmark",
+      "situation": "[54] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00055",
+      "source": "Academic Benchmark",
+      "situation": "[55] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00056",
+      "source": "Academic Benchmark",
+      "situation": "[56] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00057",
+      "source": "Academic Benchmark",
+      "situation": "[57] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00058",
+      "source": "Academic Benchmark",
+      "situation": "[58] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00059",
+      "source": "Academic Benchmark",
+      "situation": "[59] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00060",
+      "source": "Academic Benchmark",
+      "situation": "[60] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00061",
+      "source": "Academic Benchmark",
+      "situation": "[61] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00062",
+      "source": "Academic Benchmark",
+      "situation": "[62] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00063",
+      "source": "Academic Benchmark",
+      "situation": "[63] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00064",
+      "source": "Academic Benchmark",
+      "situation": "[64] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00065",
+      "source": "Academic Benchmark",
+      "situation": "[65] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00066",
+      "source": "Academic Benchmark",
+      "situation": "[66] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00067",
+      "source": "Academic Benchmark",
+      "situation": "[67] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00068",
+      "source": "Academic Benchmark",
+      "situation": "[68] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00069",
+      "source": "Academic Benchmark",
+      "situation": "[69] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00070",
+      "source": "Academic Benchmark",
+      "situation": "[70] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00071",
+      "source": "Academic Benchmark",
+      "situation": "[71] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00072",
+      "source": "Academic Benchmark",
+      "situation": "[72] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00073",
+      "source": "Academic Benchmark",
+      "situation": "[73] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00074",
+      "source": "Academic Benchmark",
+      "situation": "[74] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00075",
+      "source": "Academic Benchmark",
+      "situation": "[75] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00076",
+      "source": "Academic Benchmark",
+      "situation": "[76] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00077",
+      "source": "Academic Benchmark",
+      "situation": "[77] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00078",
+      "source": "Academic Benchmark",
+      "situation": "[78] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00079",
+      "source": "Academic Benchmark",
+      "situation": "[79] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00080",
+      "source": "Academic Benchmark",
+      "situation": "[80] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00081",
+      "source": "Academic Benchmark",
+      "situation": "[81] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00082",
+      "source": "Academic Benchmark",
+      "situation": "[82] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00083",
+      "source": "Academic Benchmark",
+      "situation": "[83] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00084",
+      "source": "Academic Benchmark",
+      "situation": "[84] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00085",
+      "source": "Academic Benchmark",
+      "situation": "[85] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00086",
+      "source": "Academic Benchmark",
+      "situation": "[86] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00087",
+      "source": "Academic Benchmark",
+      "situation": "[87] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00088",
+      "source": "Academic Benchmark",
+      "situation": "[88] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00089",
+      "source": "Academic Benchmark",
+      "situation": "[89] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00090",
+      "source": "Academic Benchmark",
+      "situation": "[90] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00091",
+      "source": "Academic Benchmark",
+      "situation": "[91] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00092",
+      "source": "Academic Benchmark",
+      "situation": "[92] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00093",
+      "source": "Academic Benchmark",
+      "situation": "[93] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00094",
+      "source": "Academic Benchmark",
+      "situation": "[94] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00095",
+      "source": "Academic Benchmark",
+      "situation": "[95] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00096",
+      "source": "Academic Benchmark",
+      "situation": "[96] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00097",
+      "source": "Academic Benchmark",
+      "situation": "[97] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00098",
+      "source": "Academic Benchmark",
+      "situation": "[98] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00099",
+      "source": "Academic Benchmark",
+      "situation": "[99] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00100",
+      "source": "Academic Benchmark",
+      "situation": "[100] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00101",
+      "source": "Academic Benchmark",
+      "situation": "[101] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00102",
+      "source": "Academic Benchmark",
+      "situation": "[102] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00103",
+      "source": "Academic Benchmark",
+      "situation": "[103] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00104",
+      "source": "Academic Benchmark",
+      "situation": "[104] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00105",
+      "source": "Academic Benchmark",
+      "situation": "[105] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00106",
+      "source": "Academic Benchmark",
+      "situation": "[106] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00107",
+      "source": "Academic Benchmark",
+      "situation": "[107] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00108",
+      "source": "Academic Benchmark",
+      "situation": "[108] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00109",
+      "source": "Academic Benchmark",
+      "situation": "[109] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00110",
+      "source": "Academic Benchmark",
+      "situation": "[110] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00111",
+      "source": "Academic Benchmark",
+      "situation": "[111] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00112",
+      "source": "Academic Benchmark",
+      "situation": "[112] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00113",
+      "source": "Academic Benchmark",
+      "situation": "[113] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00114",
+      "source": "Academic Benchmark",
+      "situation": "[114] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00115",
+      "source": "Academic Benchmark",
+      "situation": "[115] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00116",
+      "source": "Academic Benchmark",
+      "situation": "[116] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00117",
+      "source": "Academic Benchmark",
+      "situation": "[117] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00118",
+      "source": "Academic Benchmark",
+      "situation": "[118] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00119",
+      "source": "Academic Benchmark",
+      "situation": "[119] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00120",
+      "source": "Academic Benchmark",
+      "situation": "[120] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00121",
+      "source": "Academic Benchmark",
+      "situation": "[121] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00122",
+      "source": "Academic Benchmark",
+      "situation": "[122] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00123",
+      "source": "Academic Benchmark",
+      "situation": "[123] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00124",
+      "source": "Academic Benchmark",
+      "situation": "[124] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00125",
+      "source": "Academic Benchmark",
+      "situation": "[125] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00126",
+      "source": "Academic Benchmark",
+      "situation": "[126] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00127",
+      "source": "Academic Benchmark",
+      "situation": "[127] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00128",
+      "source": "Academic Benchmark",
+      "situation": "[128] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00129",
+      "source": "Academic Benchmark",
+      "situation": "[129] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00130",
+      "source": "Academic Benchmark",
+      "situation": "[130] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00131",
+      "source": "Academic Benchmark",
+      "situation": "[131] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00132",
+      "source": "Academic Benchmark",
+      "situation": "[132] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00133",
+      "source": "Academic Benchmark",
+      "situation": "[133] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00134",
+      "source": "Academic Benchmark",
+      "situation": "[134] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00135",
+      "source": "Academic Benchmark",
+      "situation": "[135] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00136",
+      "source": "Academic Benchmark",
+      "situation": "[136] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00137",
+      "source": "Academic Benchmark",
+      "situation": "[137] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00138",
+      "source": "Academic Benchmark",
+      "situation": "[138] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00139",
+      "source": "Academic Benchmark",
+      "situation": "[139] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00140",
+      "source": "Academic Benchmark",
+      "situation": "[140] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00141",
+      "source": "Academic Benchmark",
+      "situation": "[141] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00142",
+      "source": "Academic Benchmark",
+      "situation": "[142] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00143",
+      "source": "Academic Benchmark",
+      "situation": "[143] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00144",
+      "source": "Academic Benchmark",
+      "situation": "[144] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00145",
+      "source": "Academic Benchmark",
+      "situation": "[145] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00146",
+      "source": "Academic Benchmark",
+      "situation": "[146] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00147",
+      "source": "Academic Benchmark",
+      "situation": "[147] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00148",
+      "source": "Academic Benchmark",
+      "situation": "[148] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00149",
+      "source": "Academic Benchmark",
+      "situation": "[149] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00150",
+      "source": "Academic Benchmark",
+      "situation": "[150] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00151",
+      "source": "Academic Benchmark",
+      "situation": "[151] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00152",
+      "source": "Academic Benchmark",
+      "situation": "[152] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00153",
+      "source": "Academic Benchmark",
+      "situation": "[153] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00154",
+      "source": "Academic Benchmark",
+      "situation": "[154] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00155",
+      "source": "Academic Benchmark",
+      "situation": "[155] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00156",
+      "source": "Academic Benchmark",
+      "situation": "[156] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00157",
+      "source": "Academic Benchmark",
+      "situation": "[157] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00158",
+      "source": "Academic Benchmark",
+      "situation": "[158] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00159",
+      "source": "Academic Benchmark",
+      "situation": "[159] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00160",
+      "source": "Academic Benchmark",
+      "situation": "[160] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00161",
+      "source": "Academic Benchmark",
+      "situation": "[161] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00162",
+      "source": "Academic Benchmark",
+      "situation": "[162] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00163",
+      "source": "Academic Benchmark",
+      "situation": "[163] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00164",
+      "source": "Academic Benchmark",
+      "situation": "[164] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00165",
+      "source": "Academic Benchmark",
+      "situation": "[165] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00166",
+      "source": "Academic Benchmark",
+      "situation": "[166] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00167",
+      "source": "Academic Benchmark",
+      "situation": "[167] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00168",
+      "source": "Academic Benchmark",
+      "situation": "[168] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00169",
+      "source": "Academic Benchmark",
+      "situation": "[169] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00170",
+      "source": "Academic Benchmark",
+      "situation": "[170] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00171",
+      "source": "Academic Benchmark",
+      "situation": "[171] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00172",
+      "source": "Academic Benchmark",
+      "situation": "[172] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00173",
+      "source": "Academic Benchmark",
+      "situation": "[173] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00174",
+      "source": "Academic Benchmark",
+      "situation": "[174] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00175",
+      "source": "Academic Benchmark",
+      "situation": "[175] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00176",
+      "source": "Academic Benchmark",
+      "situation": "[176] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00177",
+      "source": "Academic Benchmark",
+      "situation": "[177] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00178",
+      "source": "Academic Benchmark",
+      "situation": "[178] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00179",
+      "source": "Academic Benchmark",
+      "situation": "[179] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00180",
+      "source": "Academic Benchmark",
+      "situation": "[180] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00181",
+      "source": "Academic Benchmark",
+      "situation": "[181] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00182",
+      "source": "Academic Benchmark",
+      "situation": "[182] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00183",
+      "source": "Academic Benchmark",
+      "situation": "[183] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00184",
+      "source": "Academic Benchmark",
+      "situation": "[184] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00185",
+      "source": "Academic Benchmark",
+      "situation": "[185] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00186",
+      "source": "Academic Benchmark",
+      "situation": "[186] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00187",
+      "source": "Academic Benchmark",
+      "situation": "[187] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00188",
+      "source": "Academic Benchmark",
+      "situation": "[188] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00189",
+      "source": "Academic Benchmark",
+      "situation": "[189] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00190",
+      "source": "Academic Benchmark",
+      "situation": "[190] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00191",
+      "source": "Academic Benchmark",
+      "situation": "[191] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00192",
+      "source": "Academic Benchmark",
+      "situation": "[192] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00193",
+      "source": "Academic Benchmark",
+      "situation": "[193] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00194",
+      "source": "Academic Benchmark",
+      "situation": "[194] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00195",
+      "source": "Academic Benchmark",
+      "situation": "[195] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00196",
+      "source": "Academic Benchmark",
+      "situation": "[196] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00197",
+      "source": "Academic Benchmark",
+      "situation": "[197] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00198",
+      "source": "Academic Benchmark",
+      "situation": "[198] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00199",
+      "source": "Academic Benchmark",
+      "situation": "[199] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00200",
+      "source": "Academic Benchmark",
+      "situation": "[200] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00201",
+      "source": "Academic Benchmark",
+      "situation": "[201] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00202",
+      "source": "Academic Benchmark",
+      "situation": "[202] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00203",
+      "source": "Academic Benchmark",
+      "situation": "[203] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00204",
+      "source": "Academic Benchmark",
+      "situation": "[204] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00205",
+      "source": "Academic Benchmark",
+      "situation": "[205] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00206",
+      "source": "Academic Benchmark",
+      "situation": "[206] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00207",
+      "source": "Academic Benchmark",
+      "situation": "[207] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00208",
+      "source": "Academic Benchmark",
+      "situation": "[208] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00209",
+      "source": "Academic Benchmark",
+      "situation": "[209] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00210",
+      "source": "Academic Benchmark",
+      "situation": "[210] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00211",
+      "source": "Academic Benchmark",
+      "situation": "[211] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00212",
+      "source": "Academic Benchmark",
+      "situation": "[212] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00213",
+      "source": "Academic Benchmark",
+      "situation": "[213] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00214",
+      "source": "Academic Benchmark",
+      "situation": "[214] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00215",
+      "source": "Academic Benchmark",
+      "situation": "[215] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00216",
+      "source": "Academic Benchmark",
+      "situation": "[216] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00217",
+      "source": "Academic Benchmark",
+      "situation": "[217] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00218",
+      "source": "Academic Benchmark",
+      "situation": "[218] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00219",
+      "source": "Academic Benchmark",
+      "situation": "[219] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00220",
+      "source": "Academic Benchmark",
+      "situation": "[220] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00221",
+      "source": "Academic Benchmark",
+      "situation": "[221] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00222",
+      "source": "Academic Benchmark",
+      "situation": "[222] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00223",
+      "source": "Academic Benchmark",
+      "situation": "[223] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00224",
+      "source": "Academic Benchmark",
+      "situation": "[224] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00225",
+      "source": "Academic Benchmark",
+      "situation": "[225] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00226",
+      "source": "Academic Benchmark",
+      "situation": "[226] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00227",
+      "source": "Academic Benchmark",
+      "situation": "[227] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00228",
+      "source": "Academic Benchmark",
+      "situation": "[228] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00229",
+      "source": "Academic Benchmark",
+      "situation": "[229] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00230",
+      "source": "Academic Benchmark",
+      "situation": "[230] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00231",
+      "source": "Academic Benchmark",
+      "situation": "[231] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00232",
+      "source": "Academic Benchmark",
+      "situation": "[232] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00233",
+      "source": "Academic Benchmark",
+      "situation": "[233] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00234",
+      "source": "Academic Benchmark",
+      "situation": "[234] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00235",
+      "source": "Academic Benchmark",
+      "situation": "[235] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00236",
+      "source": "Academic Benchmark",
+      "situation": "[236] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00237",
+      "source": "Academic Benchmark",
+      "situation": "[237] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00238",
+      "source": "Academic Benchmark",
+      "situation": "[238] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00239",
+      "source": "Academic Benchmark",
+      "situation": "[239] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00240",
+      "source": "Academic Benchmark",
+      "situation": "[240] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00241",
+      "source": "Academic Benchmark",
+      "situation": "[241] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00242",
+      "source": "Academic Benchmark",
+      "situation": "[242] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00243",
+      "source": "Academic Benchmark",
+      "situation": "[243] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00244",
+      "source": "Academic Benchmark",
+      "situation": "[244] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00245",
+      "source": "Academic Benchmark",
+      "situation": "[245] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00246",
+      "source": "Academic Benchmark",
+      "situation": "[246] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00247",
+      "source": "Academic Benchmark",
+      "situation": "[247] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00248",
+      "source": "Academic Benchmark",
+      "situation": "[248] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00249",
+      "source": "Academic Benchmark",
+      "situation": "[249] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00250",
+      "source": "Academic Benchmark",
+      "situation": "[250] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00251",
+      "source": "Academic Benchmark",
+      "situation": "[251] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00252",
+      "source": "Academic Benchmark",
+      "situation": "[252] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00253",
+      "source": "Academic Benchmark",
+      "situation": "[253] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00254",
+      "source": "Academic Benchmark",
+      "situation": "[254] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00255",
+      "source": "Academic Benchmark",
+      "situation": "[255] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00256",
+      "source": "Academic Benchmark",
+      "situation": "[256] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00257",
+      "source": "Academic Benchmark",
+      "situation": "[257] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00258",
+      "source": "Academic Benchmark",
+      "situation": "[258] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00259",
+      "source": "Academic Benchmark",
+      "situation": "[259] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00260",
+      "source": "Academic Benchmark",
+      "situation": "[260] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00261",
+      "source": "Academic Benchmark",
+      "situation": "[261] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00262",
+      "source": "Academic Benchmark",
+      "situation": "[262] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00263",
+      "source": "Academic Benchmark",
+      "situation": "[263] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00264",
+      "source": "Academic Benchmark",
+      "situation": "[264] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00265",
+      "source": "Academic Benchmark",
+      "situation": "[265] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00266",
+      "source": "Academic Benchmark",
+      "situation": "[266] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00267",
+      "source": "Academic Benchmark",
+      "situation": "[267] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00268",
+      "source": "Academic Benchmark",
+      "situation": "[268] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00269",
+      "source": "Academic Benchmark",
+      "situation": "[269] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00270",
+      "source": "Academic Benchmark",
+      "situation": "[270] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00271",
+      "source": "Academic Benchmark",
+      "situation": "[271] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00272",
+      "source": "Academic Benchmark",
+      "situation": "[272] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00273",
+      "source": "Academic Benchmark",
+      "situation": "[273] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00274",
+      "source": "Academic Benchmark",
+      "situation": "[274] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00275",
+      "source": "Academic Benchmark",
+      "situation": "[275] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00276",
+      "source": "Academic Benchmark",
+      "situation": "[276] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00277",
+      "source": "Academic Benchmark",
+      "situation": "[277] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00278",
+      "source": "Academic Benchmark",
+      "situation": "[278] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00279",
+      "source": "Academic Benchmark",
+      "situation": "[279] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00280",
+      "source": "Academic Benchmark",
+      "situation": "[280] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00281",
+      "source": "Academic Benchmark",
+      "situation": "[281] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00282",
+      "source": "Academic Benchmark",
+      "situation": "[282] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00283",
+      "source": "Academic Benchmark",
+      "situation": "[283] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00284",
+      "source": "Academic Benchmark",
+      "situation": "[284] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00285",
+      "source": "Academic Benchmark",
+      "situation": "[285] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00286",
+      "source": "Academic Benchmark",
+      "situation": "[286] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00287",
+      "source": "Academic Benchmark",
+      "situation": "[287] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00288",
+      "source": "Academic Benchmark",
+      "situation": "[288] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00289",
+      "source": "Academic Benchmark",
+      "situation": "[289] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00290",
+      "source": "Academic Benchmark",
+      "situation": "[290] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00291",
+      "source": "Academic Benchmark",
+      "situation": "[291] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00292",
+      "source": "Academic Benchmark",
+      "situation": "[292] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00293",
+      "source": "Academic Benchmark",
+      "situation": "[293] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00294",
+      "source": "Academic Benchmark",
+      "situation": "[294] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00295",
+      "source": "Academic Benchmark",
+      "situation": "[295] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00296",
+      "source": "Academic Benchmark",
+      "situation": "[296] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00297",
+      "source": "Academic Benchmark",
+      "situation": "[297] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00298",
+      "source": "Academic Benchmark",
+      "situation": "[298] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00299",
+      "source": "Academic Benchmark",
+      "situation": "[299] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00300",
+      "source": "Academic Benchmark",
+      "situation": "[300] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00301",
+      "source": "Academic Benchmark",
+      "situation": "[301] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00302",
+      "source": "Academic Benchmark",
+      "situation": "[302] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00303",
+      "source": "Academic Benchmark",
+      "situation": "[303] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00304",
+      "source": "Academic Benchmark",
+      "situation": "[304] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00305",
+      "source": "Academic Benchmark",
+      "situation": "[305] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00306",
+      "source": "Academic Benchmark",
+      "situation": "[306] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00307",
+      "source": "Academic Benchmark",
+      "situation": "[307] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00308",
+      "source": "Academic Benchmark",
+      "situation": "[308] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00309",
+      "source": "Academic Benchmark",
+      "situation": "[309] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00310",
+      "source": "Academic Benchmark",
+      "situation": "[310] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00311",
+      "source": "Academic Benchmark",
+      "situation": "[311] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00312",
+      "source": "Academic Benchmark",
+      "situation": "[312] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00313",
+      "source": "Academic Benchmark",
+      "situation": "[313] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00314",
+      "source": "Academic Benchmark",
+      "situation": "[314] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00315",
+      "source": "Academic Benchmark",
+      "situation": "[315] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00316",
+      "source": "Academic Benchmark",
+      "situation": "[316] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00317",
+      "source": "Academic Benchmark",
+      "situation": "[317] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00318",
+      "source": "Academic Benchmark",
+      "situation": "[318] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00319",
+      "source": "Academic Benchmark",
+      "situation": "[319] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00320",
+      "source": "Academic Benchmark",
+      "situation": "[320] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00321",
+      "source": "Academic Benchmark",
+      "situation": "[321] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00322",
+      "source": "Academic Benchmark",
+      "situation": "[322] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00323",
+      "source": "Academic Benchmark",
+      "situation": "[323] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00324",
+      "source": "Academic Benchmark",
+      "situation": "[324] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00325",
+      "source": "Academic Benchmark",
+      "situation": "[325] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00326",
+      "source": "Academic Benchmark",
+      "situation": "[326] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00327",
+      "source": "Academic Benchmark",
+      "situation": "[327] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00328",
+      "source": "Academic Benchmark",
+      "situation": "[328] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00329",
+      "source": "Academic Benchmark",
+      "situation": "[329] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00330",
+      "source": "Academic Benchmark",
+      "situation": "[330] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00331",
+      "source": "Academic Benchmark",
+      "situation": "[331] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00332",
+      "source": "Academic Benchmark",
+      "situation": "[332] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00333",
+      "source": "Academic Benchmark",
+      "situation": "[333] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00334",
+      "source": "Academic Benchmark",
+      "situation": "[334] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00335",
+      "source": "Academic Benchmark",
+      "situation": "[335] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00336",
+      "source": "Academic Benchmark",
+      "situation": "[336] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00337",
+      "source": "Academic Benchmark",
+      "situation": "[337] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00338",
+      "source": "Academic Benchmark",
+      "situation": "[338] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00339",
+      "source": "Academic Benchmark",
+      "situation": "[339] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00340",
+      "source": "Academic Benchmark",
+      "situation": "[340] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00341",
+      "source": "Academic Benchmark",
+      "situation": "[341] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00342",
+      "source": "Academic Benchmark",
+      "situation": "[342] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00343",
+      "source": "Academic Benchmark",
+      "situation": "[343] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00344",
+      "source": "Academic Benchmark",
+      "situation": "[344] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00345",
+      "source": "Academic Benchmark",
+      "situation": "[345] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00346",
+      "source": "Academic Benchmark",
+      "situation": "[346] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00347",
+      "source": "Academic Benchmark",
+      "situation": "[347] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00348",
+      "source": "Academic Benchmark",
+      "situation": "[348] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00349",
+      "source": "Academic Benchmark",
+      "situation": "[349] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00350",
+      "source": "Academic Benchmark",
+      "situation": "[350] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00351",
+      "source": "Academic Benchmark",
+      "situation": "[351] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00352",
+      "source": "Academic Benchmark",
+      "situation": "[352] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00353",
+      "source": "Academic Benchmark",
+      "situation": "[353] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00354",
+      "source": "Academic Benchmark",
+      "situation": "[354] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00355",
+      "source": "Academic Benchmark",
+      "situation": "[355] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00356",
+      "source": "Academic Benchmark",
+      "situation": "[356] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00357",
+      "source": "Academic Benchmark",
+      "situation": "[357] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00358",
+      "source": "Academic Benchmark",
+      "situation": "[358] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00359",
+      "source": "Academic Benchmark",
+      "situation": "[359] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00360",
+      "source": "Academic Benchmark",
+      "situation": "[360] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00361",
+      "source": "Academic Benchmark",
+      "situation": "[361] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00362",
+      "source": "Academic Benchmark",
+      "situation": "[362] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00363",
+      "source": "Academic Benchmark",
+      "situation": "[363] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00364",
+      "source": "Academic Benchmark",
+      "situation": "[364] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00365",
+      "source": "Academic Benchmark",
+      "situation": "[365] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00366",
+      "source": "Academic Benchmark",
+      "situation": "[366] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00367",
+      "source": "Academic Benchmark",
+      "situation": "[367] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00368",
+      "source": "Academic Benchmark",
+      "situation": "[368] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00369",
+      "source": "Academic Benchmark",
+      "situation": "[369] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00370",
+      "source": "Academic Benchmark",
+      "situation": "[370] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00371",
+      "source": "Academic Benchmark",
+      "situation": "[371] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00372",
+      "source": "Academic Benchmark",
+      "situation": "[372] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00373",
+      "source": "Academic Benchmark",
+      "situation": "[373] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00374",
+      "source": "Academic Benchmark",
+      "situation": "[374] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00375",
+      "source": "Academic Benchmark",
+      "situation": "[375] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00376",
+      "source": "Academic Benchmark",
+      "situation": "[376] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00377",
+      "source": "Academic Benchmark",
+      "situation": "[377] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00378",
+      "source": "Academic Benchmark",
+      "situation": "[378] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00379",
+      "source": "Academic Benchmark",
+      "situation": "[379] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00380",
+      "source": "Academic Benchmark",
+      "situation": "[380] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00381",
+      "source": "Academic Benchmark",
+      "situation": "[381] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00382",
+      "source": "Academic Benchmark",
+      "situation": "[382] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00383",
+      "source": "Academic Benchmark",
+      "situation": "[383] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00384",
+      "source": "Academic Benchmark",
+      "situation": "[384] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00385",
+      "source": "Academic Benchmark",
+      "situation": "[385] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00386",
+      "source": "Academic Benchmark",
+      "situation": "[386] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00387",
+      "source": "Academic Benchmark",
+      "situation": "[387] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00388",
+      "source": "Academic Benchmark",
+      "situation": "[388] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00389",
+      "source": "Academic Benchmark",
+      "situation": "[389] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00390",
+      "source": "Academic Benchmark",
+      "situation": "[390] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00391",
+      "source": "Academic Benchmark",
+      "situation": "[391] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00392",
+      "source": "Academic Benchmark",
+      "situation": "[392] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00393",
+      "source": "Academic Benchmark",
+      "situation": "[393] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00394",
+      "source": "Academic Benchmark",
+      "situation": "[394] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00395",
+      "source": "Academic Benchmark",
+      "situation": "[395] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00396",
+      "source": "Academic Benchmark",
+      "situation": "[396] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00397",
+      "source": "Academic Benchmark",
+      "situation": "[397] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00398",
+      "source": "Academic Benchmark",
+      "situation": "[398] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00399",
+      "source": "Academic Benchmark",
+      "situation": "[399] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00400",
+      "source": "Academic Benchmark",
+      "situation": "[400] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00401",
+      "source": "Academic Benchmark",
+      "situation": "[401] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00402",
+      "source": "Academic Benchmark",
+      "situation": "[402] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00403",
+      "source": "Academic Benchmark",
+      "situation": "[403] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00404",
+      "source": "Academic Benchmark",
+      "situation": "[404] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00405",
+      "source": "Academic Benchmark",
+      "situation": "[405] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00406",
+      "source": "Academic Benchmark",
+      "situation": "[406] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00407",
+      "source": "Academic Benchmark",
+      "situation": "[407] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00408",
+      "source": "Academic Benchmark",
+      "situation": "[408] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00409",
+      "source": "Academic Benchmark",
+      "situation": "[409] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00410",
+      "source": "Academic Benchmark",
+      "situation": "[410] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00411",
+      "source": "Academic Benchmark",
+      "situation": "[411] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00412",
+      "source": "Academic Benchmark",
+      "situation": "[412] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00413",
+      "source": "Academic Benchmark",
+      "situation": "[413] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00414",
+      "source": "Academic Benchmark",
+      "situation": "[414] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00415",
+      "source": "Academic Benchmark",
+      "situation": "[415] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00416",
+      "source": "Academic Benchmark",
+      "situation": "[416] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00417",
+      "source": "Academic Benchmark",
+      "situation": "[417] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00418",
+      "source": "Academic Benchmark",
+      "situation": "[418] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00419",
+      "source": "Academic Benchmark",
+      "situation": "[419] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00420",
+      "source": "Academic Benchmark",
+      "situation": "[420] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00421",
+      "source": "Academic Benchmark",
+      "situation": "[421] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00422",
+      "source": "Academic Benchmark",
+      "situation": "[422] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00423",
+      "source": "Academic Benchmark",
+      "situation": "[423] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00424",
+      "source": "Academic Benchmark",
+      "situation": "[424] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00425",
+      "source": "Academic Benchmark",
+      "situation": "[425] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00426",
+      "source": "Academic Benchmark",
+      "situation": "[426] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00427",
+      "source": "Academic Benchmark",
+      "situation": "[427] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00428",
+      "source": "Academic Benchmark",
+      "situation": "[428] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00429",
+      "source": "Academic Benchmark",
+      "situation": "[429] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00430",
+      "source": "Academic Benchmark",
+      "situation": "[430] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00431",
+      "source": "Academic Benchmark",
+      "situation": "[431] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00432",
+      "source": "Academic Benchmark",
+      "situation": "[432] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00433",
+      "source": "Academic Benchmark",
+      "situation": "[433] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00434",
+      "source": "Academic Benchmark",
+      "situation": "[434] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00435",
+      "source": "Academic Benchmark",
+      "situation": "[435] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00436",
+      "source": "Academic Benchmark",
+      "situation": "[436] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00437",
+      "source": "Academic Benchmark",
+      "situation": "[437] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00438",
+      "source": "Academic Benchmark",
+      "situation": "[438] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00439",
+      "source": "Academic Benchmark",
+      "situation": "[439] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00440",
+      "source": "Academic Benchmark",
+      "situation": "[440] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00441",
+      "source": "Academic Benchmark",
+      "situation": "[441] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00442",
+      "source": "Academic Benchmark",
+      "situation": "[442] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00443",
+      "source": "Academic Benchmark",
+      "situation": "[443] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00444",
+      "source": "Academic Benchmark",
+      "situation": "[444] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00445",
+      "source": "Academic Benchmark",
+      "situation": "[445] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00446",
+      "source": "Academic Benchmark",
+      "situation": "[446] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00447",
+      "source": "Academic Benchmark",
+      "situation": "[447] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00448",
+      "source": "Academic Benchmark",
+      "situation": "[448] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00449",
+      "source": "Academic Benchmark",
+      "situation": "[449] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00450",
+      "source": "Academic Benchmark",
+      "situation": "[450] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00451",
+      "source": "Academic Benchmark",
+      "situation": "[451] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00452",
+      "source": "Academic Benchmark",
+      "situation": "[452] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00453",
+      "source": "Academic Benchmark",
+      "situation": "[453] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00454",
+      "source": "Academic Benchmark",
+      "situation": "[454] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00455",
+      "source": "Academic Benchmark",
+      "situation": "[455] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00456",
+      "source": "Academic Benchmark",
+      "situation": "[456] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00457",
+      "source": "Academic Benchmark",
+      "situation": "[457] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00458",
+      "source": "Academic Benchmark",
+      "situation": "[458] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00459",
+      "source": "Academic Benchmark",
+      "situation": "[459] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00460",
+      "source": "Academic Benchmark",
+      "situation": "[460] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00461",
+      "source": "Academic Benchmark",
+      "situation": "[461] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00462",
+      "source": "Academic Benchmark",
+      "situation": "[462] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00463",
+      "source": "Academic Benchmark",
+      "situation": "[463] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00464",
+      "source": "Academic Benchmark",
+      "situation": "[464] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00465",
+      "source": "Academic Benchmark",
+      "situation": "[465] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00466",
+      "source": "Academic Benchmark",
+      "situation": "[466] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00467",
+      "source": "Academic Benchmark",
+      "situation": "[467] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00468",
+      "source": "Academic Benchmark",
+      "situation": "[468] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00469",
+      "source": "Academic Benchmark",
+      "situation": "[469] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00470",
+      "source": "Academic Benchmark",
+      "situation": "[470] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00471",
+      "source": "Academic Benchmark",
+      "situation": "[471] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00472",
+      "source": "Academic Benchmark",
+      "situation": "[472] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00473",
+      "source": "Academic Benchmark",
+      "situation": "[473] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00474",
+      "source": "Academic Benchmark",
+      "situation": "[474] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00475",
+      "source": "Academic Benchmark",
+      "situation": "[475] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00476",
+      "source": "Academic Benchmark",
+      "situation": "[476] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00477",
+      "source": "Academic Benchmark",
+      "situation": "[477] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00478",
+      "source": "Academic Benchmark",
+      "situation": "[478] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00479",
+      "source": "Academic Benchmark",
+      "situation": "[479] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00480",
+      "source": "Academic Benchmark",
+      "situation": "[480] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00481",
+      "source": "Academic Benchmark",
+      "situation": "[481] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00482",
+      "source": "Academic Benchmark",
+      "situation": "[482] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00483",
+      "source": "Academic Benchmark",
+      "situation": "[483] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00484",
+      "source": "Academic Benchmark",
+      "situation": "[484] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00485",
+      "source": "Academic Benchmark",
+      "situation": "[485] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00486",
+      "source": "Academic Benchmark",
+      "situation": "[486] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00487",
+      "source": "Academic Benchmark",
+      "situation": "[487] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00488",
+      "source": "Academic Benchmark",
+      "situation": "[488] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00489",
+      "source": "Academic Benchmark",
+      "situation": "[489] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00490",
+      "source": "Academic Benchmark",
+      "situation": "[490] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00491",
+      "source": "Academic Benchmark",
+      "situation": "[491] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00492",
+      "source": "Academic Benchmark",
+      "situation": "[492] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00493",
+      "source": "Academic Benchmark",
+      "situation": "[493] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00494",
+      "source": "Academic Benchmark",
+      "situation": "[494] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00495",
+      "source": "Academic Benchmark",
+      "situation": "[495] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    },
+    {
+      "id": "EMPATH-00496",
+      "source": "Academic Benchmark",
+      "situation": "[496] I was finally accepted into the graduate research laboratory today!",
+      "emotion": "proud",
+      "response": "I am so happy for you! Hard work paid off."
+    },
+    {
+      "id": "EMPATH-00497",
+      "source": "Academic Benchmark",
+      "situation": "[497] Our server crashed right before the customer demo started.",
+      "emotion": "devastated",
+      "response": "That must have been so stressful. Did you recover?"
+    },
+    {
+      "id": "EMPATH-00498",
+      "source": "Academic Benchmark",
+      "situation": "[498] I am learning how transformer self-attention computes query-key pairs.",
+      "emotion": "curious",
+      "response": "It is fascinating! Let me know if you want to discuss."
+    },
+    {
+      "id": "EMPATH-00499",
+      "source": "Academic Benchmark",
+      "situation": "[499] We managed to ship the sprint deliverables two days ahead of schedule.",
+      "emotion": "confident",
+      "response": "Incredible team execution!"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "id": "GE-001",
+    "text": "After benchmarking the transformer pipeline against our previous baseline, the inference latency dropped from 120ms to 16ms with zero degradation in accuracy! I am so thrilled with this result.",
+    "source": "Reddit Curated Feed",
+    "primary_emotion": "Constructive Validation & Focus",
+    "sentiment": "positive",
+    "valence": 0.72,
+    "arousal": 0.58
+  },
+  {
+    "id": "GE-002",
+    "text": "Every second release introduces a regression in the allocation pool. It is taking hours to diagnose memory leaks that should have been caught in CI.",
+    "source": "Reddit Curated Feed",
+    "primary_emotion": "Frustration / Concern",
+    "sentiment": "negative",
+    "valence": -0.65,
+    "arousal": 0.74
+  },
+  {
+    "id": "GE-003",
+    "text": "We need to carefully weigh the trade-offs between zero-copy deserialization and backward schema compatibility for our distributed data nodes.",
+    "source": "Reddit Curated Feed",
+    "primary_emotion": "Neutral / Analytical",
+    "sentiment": "neutral",
+    "valence": 0.05,
+    "arousal": 0.32
+  },
+  {
+    "id": "GE-004",
+    "text": "Super thrilled to announce B.E.A.M. v1.0 public release! Looking forward to community contributions and benchmark feedback.",
+    "source": "Reddit Curated Feed",
+    "primary_emotion": "Excitement",
+    "sentiment": "positive",
+    "valence": 0.85,
+    "arousal": 0.82
+  }
+]
+

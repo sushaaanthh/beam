@@ -1,0 +1,3211 @@
+{
+  "dataset_id": "DS-03",
+  "name": "Technical Retrospective Corpus",
+  "source": "Engineering Logs",
+  "total_samples": 8920,
+  "labels": "12 Behavioral",
+  "version": "v1.0",
+  "status": "SYNCING",
+  "samples": [
+    {
+      "id": "RETRO-00000",
+      "source": "Engineering Logs",
+      "text": "[0] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00001",
+      "source": "Engineering Logs",
+      "text": "[1] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00002",
+      "source": "Engineering Logs",
+      "text": "[2] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00003",
+      "source": "Engineering Logs",
+      "text": "[3] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00004",
+      "source": "Engineering Logs",
+      "text": "[4] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00005",
+      "source": "Engineering Logs",
+      "text": "[5] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00006",
+      "source": "Engineering Logs",
+      "text": "[6] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00007",
+      "source": "Engineering Logs",
+      "text": "[7] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00008",
+      "source": "Engineering Logs",
+      "text": "[8] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00009",
+      "source": "Engineering Logs",
+      "text": "[9] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00010",
+      "source": "Engineering Logs",
+      "text": "[10] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00011",
+      "source": "Engineering Logs",
+      "text": "[11] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00012",
+      "source": "Engineering Logs",
+      "text": "[12] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00013",
+      "source": "Engineering Logs",
+      "text": "[13] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00014",
+      "source": "Engineering Logs",
+      "text": "[14] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00015",
+      "source": "Engineering Logs",
+      "text": "[15] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00016",
+      "source": "Engineering Logs",
+      "text": "[16] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00017",
+      "source": "Engineering Logs",
+      "text": "[17] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00018",
+      "source": "Engineering Logs",
+      "text": "[18] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00019",
+      "source": "Engineering Logs",
+      "text": "[19] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00020",
+      "source": "Engineering Logs",
+      "text": "[20] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00021",
+      "source": "Engineering Logs",
+      "text": "[21] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00022",
+      "source": "Engineering Logs",
+      "text": "[22] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00023",
+      "source": "Engineering Logs",
+      "text": "[23] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00024",
+      "source": "Engineering Logs",
+      "text": "[24] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00025",
+      "source": "Engineering Logs",
+      "text": "[25] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00026",
+      "source": "Engineering Logs",
+      "text": "[26] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00027",
+      "source": "Engineering Logs",
+      "text": "[27] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00028",
+      "source": "Engineering Logs",
+      "text": "[28] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00029",
+      "source": "Engineering Logs",
+      "text": "[29] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00030",
+      "source": "Engineering Logs",
+      "text": "[30] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00031",
+      "source": "Engineering Logs",
+      "text": "[31] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00032",
+      "source": "Engineering Logs",
+      "text": "[32] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00033",
+      "source": "Engineering Logs",
+      "text": "[33] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00034",
+      "source": "Engineering Logs",
+      "text": "[34] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00035",
+      "source": "Engineering Logs",
+      "text": "[35] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00036",
+      "source": "Engineering Logs",
+      "text": "[36] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00037",
+      "source": "Engineering Logs",
+      "text": "[37] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00038",
+      "source": "Engineering Logs",
+      "text": "[38] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00039",
+      "source": "Engineering Logs",
+      "text": "[39] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00040",
+      "source": "Engineering Logs",
+      "text": "[40] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00041",
+      "source": "Engineering Logs",
+      "text": "[41] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00042",
+      "source": "Engineering Logs",
+      "text": "[42] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00043",
+      "source": "Engineering Logs",
+      "text": "[43] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00044",
+      "source": "Engineering Logs",
+      "text": "[44] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00045",
+      "source": "Engineering Logs",
+      "text": "[45] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00046",
+      "source": "Engineering Logs",
+      "text": "[46] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00047",
+      "source": "Engineering Logs",
+      "text": "[47] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00048",
+      "source": "Engineering Logs",
+      "text": "[48] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00049",
+      "source": "Engineering Logs",
+      "text": "[49] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00050",
+      "source": "Engineering Logs",
+      "text": "[50] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00051",
+      "source": "Engineering Logs",
+      "text": "[51] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00052",
+      "source": "Engineering Logs",
+      "text": "[52] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00053",
+      "source": "Engineering Logs",
+      "text": "[53] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00054",
+      "source": "Engineering Logs",
+      "text": "[54] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00055",
+      "source": "Engineering Logs",
+      "text": "[55] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00056",
+      "source": "Engineering Logs",
+      "text": "[56] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00057",
+      "source": "Engineering Logs",
+      "text": "[57] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00058",
+      "source": "Engineering Logs",
+      "text": "[58] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00059",
+      "source": "Engineering Logs",
+      "text": "[59] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00060",
+      "source": "Engineering Logs",
+      "text": "[60] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00061",
+      "source": "Engineering Logs",
+      "text": "[61] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00062",
+      "source": "Engineering Logs",
+      "text": "[62] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00063",
+      "source": "Engineering Logs",
+      "text": "[63] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00064",
+      "source": "Engineering Logs",
+      "text": "[64] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00065",
+      "source": "Engineering Logs",
+      "text": "[65] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00066",
+      "source": "Engineering Logs",
+      "text": "[66] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00067",
+      "source": "Engineering Logs",
+      "text": "[67] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00068",
+      "source": "Engineering Logs",
+      "text": "[68] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00069",
+      "source": "Engineering Logs",
+      "text": "[69] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00070",
+      "source": "Engineering Logs",
+      "text": "[70] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00071",
+      "source": "Engineering Logs",
+      "text": "[71] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00072",
+      "source": "Engineering Logs",
+      "text": "[72] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00073",
+      "source": "Engineering Logs",
+      "text": "[73] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00074",
+      "source": "Engineering Logs",
+      "text": "[74] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00075",
+      "source": "Engineering Logs",
+      "text": "[75] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00076",
+      "source": "Engineering Logs",
+      "text": "[76] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00077",
+      "source": "Engineering Logs",
+      "text": "[77] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00078",
+      "source": "Engineering Logs",
+      "text": "[78] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00079",
+      "source": "Engineering Logs",
+      "text": "[79] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00080",
+      "source": "Engineering Logs",
+      "text": "[80] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00081",
+      "source": "Engineering Logs",
+      "text": "[81] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00082",
+      "source": "Engineering Logs",
+      "text": "[82] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00083",
+      "source": "Engineering Logs",
+      "text": "[83] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00084",
+      "source": "Engineering Logs",
+      "text": "[84] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00085",
+      "source": "Engineering Logs",
+      "text": "[85] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00086",
+      "source": "Engineering Logs",
+      "text": "[86] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00087",
+      "source": "Engineering Logs",
+      "text": "[87] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00088",
+      "source": "Engineering Logs",
+      "text": "[88] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00089",
+      "source": "Engineering Logs",
+      "text": "[89] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00090",
+      "source": "Engineering Logs",
+      "text": "[90] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00091",
+      "source": "Engineering Logs",
+      "text": "[91] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00092",
+      "source": "Engineering Logs",
+      "text": "[92] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00093",
+      "source": "Engineering Logs",
+      "text": "[93] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00094",
+      "source": "Engineering Logs",
+      "text": "[94] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00095",
+      "source": "Engineering Logs",
+      "text": "[95] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00096",
+      "source": "Engineering Logs",
+      "text": "[96] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00097",
+      "source": "Engineering Logs",
+      "text": "[97] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00098",
+      "source": "Engineering Logs",
+      "text": "[98] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00099",
+      "source": "Engineering Logs",
+      "text": "[99] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00100",
+      "source": "Engineering Logs",
+      "text": "[100] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00101",
+      "source": "Engineering Logs",
+      "text": "[101] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00102",
+      "source": "Engineering Logs",
+      "text": "[102] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00103",
+      "source": "Engineering Logs",
+      "text": "[103] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00104",
+      "source": "Engineering Logs",
+      "text": "[104] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00105",
+      "source": "Engineering Logs",
+      "text": "[105] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00106",
+      "source": "Engineering Logs",
+      "text": "[106] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00107",
+      "source": "Engineering Logs",
+      "text": "[107] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00108",
+      "source": "Engineering Logs",
+      "text": "[108] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00109",
+      "source": "Engineering Logs",
+      "text": "[109] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00110",
+      "source": "Engineering Logs",
+      "text": "[110] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00111",
+      "source": "Engineering Logs",
+      "text": "[111] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00112",
+      "source": "Engineering Logs",
+      "text": "[112] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00113",
+      "source": "Engineering Logs",
+      "text": "[113] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00114",
+      "source": "Engineering Logs",
+      "text": "[114] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00115",
+      "source": "Engineering Logs",
+      "text": "[115] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00116",
+      "source": "Engineering Logs",
+      "text": "[116] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00117",
+      "source": "Engineering Logs",
+      "text": "[117] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00118",
+      "source": "Engineering Logs",
+      "text": "[118] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00119",
+      "source": "Engineering Logs",
+      "text": "[119] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00120",
+      "source": "Engineering Logs",
+      "text": "[120] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00121",
+      "source": "Engineering Logs",
+      "text": "[121] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00122",
+      "source": "Engineering Logs",
+      "text": "[122] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00123",
+      "source": "Engineering Logs",
+      "text": "[123] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00124",
+      "source": "Engineering Logs",
+      "text": "[124] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00125",
+      "source": "Engineering Logs",
+      "text": "[125] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00126",
+      "source": "Engineering Logs",
+      "text": "[126] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00127",
+      "source": "Engineering Logs",
+      "text": "[127] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00128",
+      "source": "Engineering Logs",
+      "text": "[128] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00129",
+      "source": "Engineering Logs",
+      "text": "[129] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00130",
+      "source": "Engineering Logs",
+      "text": "[130] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00131",
+      "source": "Engineering Logs",
+      "text": "[131] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00132",
+      "source": "Engineering Logs",
+      "text": "[132] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00133",
+      "source": "Engineering Logs",
+      "text": "[133] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00134",
+      "source": "Engineering Logs",
+      "text": "[134] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00135",
+      "source": "Engineering Logs",
+      "text": "[135] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00136",
+      "source": "Engineering Logs",
+      "text": "[136] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00137",
+      "source": "Engineering Logs",
+      "text": "[137] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00138",
+      "source": "Engineering Logs",
+      "text": "[138] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00139",
+      "source": "Engineering Logs",
+      "text": "[139] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00140",
+      "source": "Engineering Logs",
+      "text": "[140] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00141",
+      "source": "Engineering Logs",
+      "text": "[141] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00142",
+      "source": "Engineering Logs",
+      "text": "[142] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00143",
+      "source": "Engineering Logs",
+      "text": "[143] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00144",
+      "source": "Engineering Logs",
+      "text": "[144] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00145",
+      "source": "Engineering Logs",
+      "text": "[145] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00146",
+      "source": "Engineering Logs",
+      "text": "[146] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00147",
+      "source": "Engineering Logs",
+      "text": "[147] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00148",
+      "source": "Engineering Logs",
+      "text": "[148] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00149",
+      "source": "Engineering Logs",
+      "text": "[149] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00150",
+      "source": "Engineering Logs",
+      "text": "[150] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00151",
+      "source": "Engineering Logs",
+      "text": "[151] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00152",
+      "source": "Engineering Logs",
+      "text": "[152] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00153",
+      "source": "Engineering Logs",
+      "text": "[153] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00154",
+      "source": "Engineering Logs",
+      "text": "[154] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00155",
+      "source": "Engineering Logs",
+      "text": "[155] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00156",
+      "source": "Engineering Logs",
+      "text": "[156] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00157",
+      "source": "Engineering Logs",
+      "text": "[157] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00158",
+      "source": "Engineering Logs",
+      "text": "[158] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00159",
+      "source": "Engineering Logs",
+      "text": "[159] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00160",
+      "source": "Engineering Logs",
+      "text": "[160] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00161",
+      "source": "Engineering Logs",
+      "text": "[161] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00162",
+      "source": "Engineering Logs",
+      "text": "[162] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00163",
+      "source": "Engineering Logs",
+      "text": "[163] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00164",
+      "source": "Engineering Logs",
+      "text": "[164] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00165",
+      "source": "Engineering Logs",
+      "text": "[165] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00166",
+      "source": "Engineering Logs",
+      "text": "[166] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00167",
+      "source": "Engineering Logs",
+      "text": "[167] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00168",
+      "source": "Engineering Logs",
+      "text": "[168] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00169",
+      "source": "Engineering Logs",
+      "text": "[169] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00170",
+      "source": "Engineering Logs",
+      "text": "[170] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00171",
+      "source": "Engineering Logs",
+      "text": "[171] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00172",
+      "source": "Engineering Logs",
+      "text": "[172] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00173",
+      "source": "Engineering Logs",
+      "text": "[173] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00174",
+      "source": "Engineering Logs",
+      "text": "[174] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00175",
+      "source": "Engineering Logs",
+      "text": "[175] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00176",
+      "source": "Engineering Logs",
+      "text": "[176] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00177",
+      "source": "Engineering Logs",
+      "text": "[177] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00178",
+      "source": "Engineering Logs",
+      "text": "[178] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00179",
+      "source": "Engineering Logs",
+      "text": "[179] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00180",
+      "source": "Engineering Logs",
+      "text": "[180] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00181",
+      "source": "Engineering Logs",
+      "text": "[181] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00182",
+      "source": "Engineering Logs",
+      "text": "[182] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00183",
+      "source": "Engineering Logs",
+      "text": "[183] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00184",
+      "source": "Engineering Logs",
+      "text": "[184] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00185",
+      "source": "Engineering Logs",
+      "text": "[185] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00186",
+      "source": "Engineering Logs",
+      "text": "[186] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00187",
+      "source": "Engineering Logs",
+      "text": "[187] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00188",
+      "source": "Engineering Logs",
+      "text": "[188] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00189",
+      "source": "Engineering Logs",
+      "text": "[189] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00190",
+      "source": "Engineering Logs",
+      "text": "[190] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00191",
+      "source": "Engineering Logs",
+      "text": "[191] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00192",
+      "source": "Engineering Logs",
+      "text": "[192] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00193",
+      "source": "Engineering Logs",
+      "text": "[193] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00194",
+      "source": "Engineering Logs",
+      "text": "[194] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00195",
+      "source": "Engineering Logs",
+      "text": "[195] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00196",
+      "source": "Engineering Logs",
+      "text": "[196] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00197",
+      "source": "Engineering Logs",
+      "text": "[197] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00198",
+      "source": "Engineering Logs",
+      "text": "[198] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00199",
+      "source": "Engineering Logs",
+      "text": "[199] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00200",
+      "source": "Engineering Logs",
+      "text": "[200] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00201",
+      "source": "Engineering Logs",
+      "text": "[201] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00202",
+      "source": "Engineering Logs",
+      "text": "[202] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00203",
+      "source": "Engineering Logs",
+      "text": "[203] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00204",
+      "source": "Engineering Logs",
+      "text": "[204] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00205",
+      "source": "Engineering Logs",
+      "text": "[205] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00206",
+      "source": "Engineering Logs",
+      "text": "[206] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00207",
+      "source": "Engineering Logs",
+      "text": "[207] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00208",
+      "source": "Engineering Logs",
+      "text": "[208] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00209",
+      "source": "Engineering Logs",
+      "text": "[209] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00210",
+      "source": "Engineering Logs",
+      "text": "[210] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00211",
+      "source": "Engineering Logs",
+      "text": "[211] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00212",
+      "source": "Engineering Logs",
+      "text": "[212] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00213",
+      "source": "Engineering Logs",
+      "text": "[213] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00214",
+      "source": "Engineering Logs",
+      "text": "[214] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00215",
+      "source": "Engineering Logs",
+      "text": "[215] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00216",
+      "source": "Engineering Logs",
+      "text": "[216] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00217",
+      "source": "Engineering Logs",
+      "text": "[217] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00218",
+      "source": "Engineering Logs",
+      "text": "[218] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00219",
+      "source": "Engineering Logs",
+      "text": "[219] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00220",
+      "source": "Engineering Logs",
+      "text": "[220] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00221",
+      "source": "Engineering Logs",
+      "text": "[221] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00222",
+      "source": "Engineering Logs",
+      "text": "[222] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00223",
+      "source": "Engineering Logs",
+      "text": "[223] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00224",
+      "source": "Engineering Logs",
+      "text": "[224] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00225",
+      "source": "Engineering Logs",
+      "text": "[225] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00226",
+      "source": "Engineering Logs",
+      "text": "[226] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00227",
+      "source": "Engineering Logs",
+      "text": "[227] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00228",
+      "source": "Engineering Logs",
+      "text": "[228] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00229",
+      "source": "Engineering Logs",
+      "text": "[229] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00230",
+      "source": "Engineering Logs",
+      "text": "[230] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00231",
+      "source": "Engineering Logs",
+      "text": "[231] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00232",
+      "source": "Engineering Logs",
+      "text": "[232] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00233",
+      "source": "Engineering Logs",
+      "text": "[233] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00234",
+      "source": "Engineering Logs",
+      "text": "[234] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00235",
+      "source": "Engineering Logs",
+      "text": "[235] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00236",
+      "source": "Engineering Logs",
+      "text": "[236] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00237",
+      "source": "Engineering Logs",
+      "text": "[237] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00238",
+      "source": "Engineering Logs",
+      "text": "[238] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00239",
+      "source": "Engineering Logs",
+      "text": "[239] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00240",
+      "source": "Engineering Logs",
+      "text": "[240] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00241",
+      "source": "Engineering Logs",
+      "text": "[241] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00242",
+      "source": "Engineering Logs",
+      "text": "[242] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00243",
+      "source": "Engineering Logs",
+      "text": "[243] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00244",
+      "source": "Engineering Logs",
+      "text": "[244] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00245",
+      "source": "Engineering Logs",
+      "text": "[245] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00246",
+      "source": "Engineering Logs",
+      "text": "[246] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00247",
+      "source": "Engineering Logs",
+      "text": "[247] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00248",
+      "source": "Engineering Logs",
+      "text": "[248] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00249",
+      "source": "Engineering Logs",
+      "text": "[249] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00250",
+      "source": "Engineering Logs",
+      "text": "[250] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00251",
+      "source": "Engineering Logs",
+      "text": "[251] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00252",
+      "source": "Engineering Logs",
+      "text": "[252] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00253",
+      "source": "Engineering Logs",
+      "text": "[253] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00254",
+      "source": "Engineering Logs",
+      "text": "[254] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00255",
+      "source": "Engineering Logs",
+      "text": "[255] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00256",
+      "source": "Engineering Logs",
+      "text": "[256] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00257",
+      "source": "Engineering Logs",
+      "text": "[257] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00258",
+      "source": "Engineering Logs",
+      "text": "[258] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00259",
+      "source": "Engineering Logs",
+      "text": "[259] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00260",
+      "source": "Engineering Logs",
+      "text": "[260] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00261",
+      "source": "Engineering Logs",
+      "text": "[261] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00262",
+      "source": "Engineering Logs",
+      "text": "[262] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00263",
+      "source": "Engineering Logs",
+      "text": "[263] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00264",
+      "source": "Engineering Logs",
+      "text": "[264] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00265",
+      "source": "Engineering Logs",
+      "text": "[265] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00266",
+      "source": "Engineering Logs",
+      "text": "[266] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00267",
+      "source": "Engineering Logs",
+      "text": "[267] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00268",
+      "source": "Engineering Logs",
+      "text": "[268] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00269",
+      "source": "Engineering Logs",
+      "text": "[269] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00270",
+      "source": "Engineering Logs",
+      "text": "[270] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00271",
+      "source": "Engineering Logs",
+      "text": "[271] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00272",
+      "source": "Engineering Logs",
+      "text": "[272] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00273",
+      "source": "Engineering Logs",
+      "text": "[273] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00274",
+      "source": "Engineering Logs",
+      "text": "[274] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00275",
+      "source": "Engineering Logs",
+      "text": "[275] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00276",
+      "source": "Engineering Logs",
+      "text": "[276] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00277",
+      "source": "Engineering Logs",
+      "text": "[277] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00278",
+      "source": "Engineering Logs",
+      "text": "[278] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00279",
+      "source": "Engineering Logs",
+      "text": "[279] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00280",
+      "source": "Engineering Logs",
+      "text": "[280] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00281",
+      "source": "Engineering Logs",
+      "text": "[281] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00282",
+      "source": "Engineering Logs",
+      "text": "[282] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00283",
+      "source": "Engineering Logs",
+      "text": "[283] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00284",
+      "source": "Engineering Logs",
+      "text": "[284] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00285",
+      "source": "Engineering Logs",
+      "text": "[285] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00286",
+      "source": "Engineering Logs",
+      "text": "[286] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00287",
+      "source": "Engineering Logs",
+      "text": "[287] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00288",
+      "source": "Engineering Logs",
+      "text": "[288] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00289",
+      "source": "Engineering Logs",
+      "text": "[289] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00290",
+      "source": "Engineering Logs",
+      "text": "[290] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00291",
+      "source": "Engineering Logs",
+      "text": "[291] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00292",
+      "source": "Engineering Logs",
+      "text": "[292] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00293",
+      "source": "Engineering Logs",
+      "text": "[293] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00294",
+      "source": "Engineering Logs",
+      "text": "[294] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00295",
+      "source": "Engineering Logs",
+      "text": "[295] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00296",
+      "source": "Engineering Logs",
+      "text": "[296] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00297",
+      "source": "Engineering Logs",
+      "text": "[297] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00298",
+      "source": "Engineering Logs",
+      "text": "[298] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00299",
+      "source": "Engineering Logs",
+      "text": "[299] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00300",
+      "source": "Engineering Logs",
+      "text": "[300] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00301",
+      "source": "Engineering Logs",
+      "text": "[301] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00302",
+      "source": "Engineering Logs",
+      "text": "[302] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00303",
+      "source": "Engineering Logs",
+      "text": "[303] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00304",
+      "source": "Engineering Logs",
+      "text": "[304] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00305",
+      "source": "Engineering Logs",
+      "text": "[305] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00306",
+      "source": "Engineering Logs",
+      "text": "[306] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00307",
+      "source": "Engineering Logs",
+      "text": "[307] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00308",
+      "source": "Engineering Logs",
+      "text": "[308] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00309",
+      "source": "Engineering Logs",
+      "text": "[309] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00310",
+      "source": "Engineering Logs",
+      "text": "[310] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00311",
+      "source": "Engineering Logs",
+      "text": "[311] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00312",
+      "source": "Engineering Logs",
+      "text": "[312] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00313",
+      "source": "Engineering Logs",
+      "text": "[313] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00314",
+      "source": "Engineering Logs",
+      "text": "[314] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00315",
+      "source": "Engineering Logs",
+      "text": "[315] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00316",
+      "source": "Engineering Logs",
+      "text": "[316] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00317",
+      "source": "Engineering Logs",
+      "text": "[317] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00318",
+      "source": "Engineering Logs",
+      "text": "[318] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00319",
+      "source": "Engineering Logs",
+      "text": "[319] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00320",
+      "source": "Engineering Logs",
+      "text": "[320] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00321",
+      "source": "Engineering Logs",
+      "text": "[321] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00322",
+      "source": "Engineering Logs",
+      "text": "[322] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00323",
+      "source": "Engineering Logs",
+      "text": "[323] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00324",
+      "source": "Engineering Logs",
+      "text": "[324] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00325",
+      "source": "Engineering Logs",
+      "text": "[325] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00326",
+      "source": "Engineering Logs",
+      "text": "[326] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00327",
+      "source": "Engineering Logs",
+      "text": "[327] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00328",
+      "source": "Engineering Logs",
+      "text": "[328] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00329",
+      "source": "Engineering Logs",
+      "text": "[329] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00330",
+      "source": "Engineering Logs",
+      "text": "[330] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00331",
+      "source": "Engineering Logs",
+      "text": "[331] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00332",
+      "source": "Engineering Logs",
+      "text": "[332] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00333",
+      "source": "Engineering Logs",
+      "text": "[333] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00334",
+      "source": "Engineering Logs",
+      "text": "[334] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00335",
+      "source": "Engineering Logs",
+      "text": "[335] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00336",
+      "source": "Engineering Logs",
+      "text": "[336] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00337",
+      "source": "Engineering Logs",
+      "text": "[337] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00338",
+      "source": "Engineering Logs",
+      "text": "[338] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00339",
+      "source": "Engineering Logs",
+      "text": "[339] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00340",
+      "source": "Engineering Logs",
+      "text": "[340] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00341",
+      "source": "Engineering Logs",
+      "text": "[341] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00342",
+      "source": "Engineering Logs",
+      "text": "[342] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00343",
+      "source": "Engineering Logs",
+      "text": "[343] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00344",
+      "source": "Engineering Logs",
+      "text": "[344] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00345",
+      "source": "Engineering Logs",
+      "text": "[345] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00346",
+      "source": "Engineering Logs",
+      "text": "[346] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00347",
+      "source": "Engineering Logs",
+      "text": "[347] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00348",
+      "source": "Engineering Logs",
+      "text": "[348] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00349",
+      "source": "Engineering Logs",
+      "text": "[349] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00350",
+      "source": "Engineering Logs",
+      "text": "[350] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00351",
+      "source": "Engineering Logs",
+      "text": "[351] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00352",
+      "source": "Engineering Logs",
+      "text": "[352] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00353",
+      "source": "Engineering Logs",
+      "text": "[353] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00354",
+      "source": "Engineering Logs",
+      "text": "[354] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00355",
+      "source": "Engineering Logs",
+      "text": "[355] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00356",
+      "source": "Engineering Logs",
+      "text": "[356] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00357",
+      "source": "Engineering Logs",
+      "text": "[357] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00358",
+      "source": "Engineering Logs",
+      "text": "[358] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00359",
+      "source": "Engineering Logs",
+      "text": "[359] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00360",
+      "source": "Engineering Logs",
+      "text": "[360] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00361",
+      "source": "Engineering Logs",
+      "text": "[361] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00362",
+      "source": "Engineering Logs",
+      "text": "[362] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00363",
+      "source": "Engineering Logs",
+      "text": "[363] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00364",
+      "source": "Engineering Logs",
+      "text": "[364] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00365",
+      "source": "Engineering Logs",
+      "text": "[365] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00366",
+      "source": "Engineering Logs",
+      "text": "[366] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00367",
+      "source": "Engineering Logs",
+      "text": "[367] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00368",
+      "source": "Engineering Logs",
+      "text": "[368] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00369",
+      "source": "Engineering Logs",
+      "text": "[369] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00370",
+      "source": "Engineering Logs",
+      "text": "[370] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00371",
+      "source": "Engineering Logs",
+      "text": "[371] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00372",
+      "source": "Engineering Logs",
+      "text": "[372] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00373",
+      "source": "Engineering Logs",
+      "text": "[373] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00374",
+      "source": "Engineering Logs",
+      "text": "[374] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00375",
+      "source": "Engineering Logs",
+      "text": "[375] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00376",
+      "source": "Engineering Logs",
+      "text": "[376] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00377",
+      "source": "Engineering Logs",
+      "text": "[377] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00378",
+      "source": "Engineering Logs",
+      "text": "[378] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00379",
+      "source": "Engineering Logs",
+      "text": "[379] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00380",
+      "source": "Engineering Logs",
+      "text": "[380] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00381",
+      "source": "Engineering Logs",
+      "text": "[381] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00382",
+      "source": "Engineering Logs",
+      "text": "[382] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00383",
+      "source": "Engineering Logs",
+      "text": "[383] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00384",
+      "source": "Engineering Logs",
+      "text": "[384] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00385",
+      "source": "Engineering Logs",
+      "text": "[385] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00386",
+      "source": "Engineering Logs",
+      "text": "[386] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00387",
+      "source": "Engineering Logs",
+      "text": "[387] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00388",
+      "source": "Engineering Logs",
+      "text": "[388] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00389",
+      "source": "Engineering Logs",
+      "text": "[389] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00390",
+      "source": "Engineering Logs",
+      "text": "[390] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00391",
+      "source": "Engineering Logs",
+      "text": "[391] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00392",
+      "source": "Engineering Logs",
+      "text": "[392] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00393",
+      "source": "Engineering Logs",
+      "text": "[393] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00394",
+      "source": "Engineering Logs",
+      "text": "[394] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00395",
+      "source": "Engineering Logs",
+      "text": "[395] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00396",
+      "source": "Engineering Logs",
+      "text": "[396] Post-mortem: DB connection pool exhaustion caused by unclosed cursor in worker thread",
+      "category": "Root Cause Discovery",
+      "tone": "Friction",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00397",
+      "source": "Engineering Logs",
+      "text": "[397] Action item: Implement automated retry with exponential backoff on HTTP 429",
+      "category": "Mitigation Execution",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00398",
+      "source": "Engineering Logs",
+      "text": "[398] Retrospective insight: Modularizing microservices accelerated test execution by 3x",
+      "category": "Architectural Review",
+      "tone": "Constructive",
+      "version": "v1.0"
+    },
+    {
+      "id": "RETRO-00399",
+      "source": "Engineering Logs",
+      "text": "[399] Telemetry review: High memory utilization spikes detected on consumer nodes",
+      "category": "Anomaly Detection",
+      "tone": "Concern",
+      "version": "v1.0"
+    }
+  ]
+}
