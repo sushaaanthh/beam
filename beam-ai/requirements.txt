@@ -1,2 +1,12 @@
-# Placeholder requirements for future training and inference workflows.
-# Add the AI stack here as the modules under beam-ai/ are implemented.
+torch>=2.0.0
+transformers>=4.35.0
+tokenizers>=0.14.0
+datasets>=2.14.0
+scikit-learn>=1.3.0
+scipy>=1.11.0
+pandas>=2.0.0
+numpy>=1.24.0
+nltk>=3.8.1
+spacy>=3.7.0
+accelerate>=0.24.0
+safetensors>=0.4.0
