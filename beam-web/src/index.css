@@ -1,27 +1,98 @@
+/* ==========================================================================
+   B.E.A.M. DESIGN SYSTEM — single source of truth
+   Tactile keycap interface. Monochrome graphite + restrained lime accent.
+   ========================================================================== */
+
 @import "tailwindcss";
+
+@theme {
+  /* ---- Color tokens ---------------------------------------------------- */
+  --color-base: #050505;
+  --color-deep: #080808;
+  --color-surface: #0d0d0d;
+  --color-raised: #121212;
+  --color-keycap: #161616;
+
+  --color-line: #262626;
+  --color-line-subtle: #1c1c1c;
+
+  --color-chalk: #f5f5f0;
+  --color-mist: #b8b8b0;
+  --color-dim: #73736f;
+
+  --color-lime: #c7ff4a;
+
+  /* ---- Typography tokens ----------------------------------------------- */
+  --font-display: "Oswald", "Arial Narrow", "Segoe UI", sans-serif;
+  --font-ui: "Product Sans", "Google Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* ---- Radii tokens ----------------------------------------------------- */
+  --radius-keycap: 7px;
+  --radius-module: 12px;
+  --radius-panel: 18px;
+
+  /* ---- Elevation / keycap depth tokens ---------------------------------- */
+  --shadow-keycap:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.38),
+    0 2px 5px rgba(0, 0, 0, 0.55);
+  --shadow-keycap-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.38),
+    0 4px 10px rgba(0, 0, 0, 0.65);
+  --shadow-keycap-pressed:
+    inset 0 2px 5px rgba(0, 0, 0, 0.75),
+    0 1px 1px rgba(0, 0, 0, 0.4);
+  --shadow-keycap-primary:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.22),
+    0 2px 6px rgba(199, 255, 74, 0.16);
+  --shadow-keycap-primary-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.22),
+    0 4px 12px rgba(199, 255, 74, 0.22);
+  --shadow-keycap-primary-pressed:
+    inset 0 2px 5px rgba(0, 0, 0, 0.28),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-module:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 24px -6px rgba(0, 0, 0, 0.7);
+  --shadow-well:
+    inset 0 2px 5px rgba(0, 0, 0, 0.6);
+
+  /* ---- Motion tokens ----------------------------------------------------- */
+  --ease-tactile: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:root {
+  /* Semantic aliases (usable anywhere, including non-Tailwind CSS) */
+  --beam-duration-tactile: 160ms;
+  --beam-keycap-lift: -1px;
+  --beam-keycap-press: 1px;
+}
 
 @layer base {
   :root {
     color-scheme: dark;
     --bg-primary: #050505;
     --bg-secondary: #080808;
-    --bg-surface: #0D0D0D;
+    --bg-surface: #0d0d0d;
     --bg-elevated: #121212;
     --bg-keycap: #161616;
     --border-main: #262626;
-    --border-subtle: #1C1C1C;
-    --text-primary: #F5F5F0;
-    --text-secondary: #B8B8B0;
-    --text-muted: #73736F;
-    --accent: #C7FF4A;
-    --accent-subtle: #A8D83A;
+    --border-subtle: #1c1c1c;
+    --text-primary: #f5f5f0;
+    --text-secondary: #b8b8b0;
+    --text-muted: #73736f;
+    --accent: #c7ff4a;
+    --accent-subtle: #a8d83a;
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #050505;
-    color: #F5F5F0;
-    font-family: "Product Sans", "Google Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-base);
+    color: var(--color-chalk);
+    font-family: var(--font-ui);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -30,8 +101,8 @@
   body {
     min-height: 100vh;
     margin: 0;
-    background-color: #050505;
-    color: #F5F5F0;
+    background-color: var(--color-base);
+    color: var(--color-chalk);
     overflow-x: hidden;
   }
 
@@ -40,236 +111,258 @@
   }
 
   ::selection {
-    background-color: #C7FF4A;
-    color: #050505;
+    background-color: var(--color-lime);
+    color: var(--color-base);
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #050505;
+    background: var(--color-base);
   }
   ::-webkit-scrollbar-thumb {
-    background: #262626;
+    background: var(--color-line);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #383838;
   }
 
-  /* Accessible Focus rings */
   *:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px #050505, 0 0 0 4px #C7FF4A;
+    box-shadow: 0 0 0 2px var(--color-base), 0 0 0 4px var(--color-lime);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-/* Typography styles */
-.font-display {
-  font-family: "Oswald", -apple-system, BlinkMacSystemFont, sans-serif;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
+/* --------------------------------------------------------------------------
+   Display typography
+   -------------------------------------------------------------------------- */
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
 
-.font-ui {
-  font-family: "Product Sans", "Google Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
+  .font-ui {
+    font-family: var(--font-ui);
+  }
 
-/* Keycap Physical Design System */
-.keycap {
+/* --------------------------------------------------------------------------
+   KEYCAP PRIMITIVE — tactile physical depth
+   Hover: translateY(-1px) · Pressed: translateY(1px) · 160ms
+   -------------------------------------------------------------------------- */
+.kc {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Product Sans", "Google Sans", "Inter", sans-serif;
-  font-weight: 500;
-  border-radius: 8px;
-  background: #161616;
-  border: 1px solid #262626;
-  color: #F5F5F0;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.09),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-    0 2px 4px rgba(0, 0, 0, 0.6);
+  gap: 0.5rem;
+  border-radius: var(--radius-keycap);
+  background: var(--color-keycap);
+  border: 1px solid var(--color-line);
+  color: var(--color-chalk);
+  box-shadow: var(--shadow-keycap);
   transform: translateY(0);
-  transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              border-color 160ms ease,
-              background-color 160ms ease,
-              color 160ms ease;
+  transition:
+    transform var(--beam-duration-tactile) var(--ease-tactile),
+    box-shadow var(--beam-duration-tactile) var(--ease-tactile),
+    border-color var(--beam-duration-tactile) ease,
+    background-color var(--beam-duration-tactile) ease,
+    color var(--beam-duration-tactile) ease;
   user-select: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.keycap:hover {
-  transform: translateY(-1px);
+.kc:hover:not(:disabled):not([aria-disabled="true"]) {
+  transform: translateY(var(--beam-keycap-lift));
   border-color: #383838;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-    0 3px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-keycap-hover);
 }
 
-.keycap:active, .keycap.active {
-  transform: translateY(1px);
+.kc:active:not(:disabled):not([aria-disabled="true"]),
+.kc[data-pressed="true"] {
+  transform: translateY(var(--beam-keycap-press));
   background: #111111;
   border-color: #202020;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.8),
-    0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-keycap-pressed);
 }
 
-/* Keycap Button Variants */
-.keycap-primary {
-  background: #C7FF4A;
-  border: 1px solid #A8D83A;
-  color: #050505;
+.kc:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-base), 0 0 0 4px var(--color-lime);
+}
+
+.kc:disabled,
+.kc[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Variant: lime primary */
+.kc--primary {
+  background: var(--color-lime);
+  border-color: var(--accent-subtle, #a8d83a);
+  color: var(--color-base);
   font-weight: 600;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-    0 2px 6px rgba(199, 255, 74, 0.18);
+  box-shadow: var(--shadow-keycap-primary);
+}
+.kc--primary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: #d4ff6a;
+  border-color: var(--color-lime);
+  box-shadow: var(--shadow-keycap-primary-hover);
+}
+.kc--primary:active:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--accent-subtle, #a8d83a);
+  box-shadow: var(--shadow-keycap-primary-pressed);
 }
 
-.keycap-primary:hover {
-  background: #D4FF6A;
-  border-color: #C7FF4A;
-  color: #000000;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-    0 4px 12px rgba(199, 255, 74, 0.25);
-}
-
-.keycap-primary:active, .keycap-primary.active {
-  background: #A8D83A;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.keycap-secondary {
-  background: #161616;
-  border: 1px solid #262626;
-  color: #F5F5F0;
-}
-
-.keycap-ghost {
+/* Variant: ghost */
+.kc--ghost {
   background: transparent;
-  border: 1px solid transparent;
-  color: #B8B8B0;
+  border-color: transparent;
+  color: var(--color-mist);
   box-shadow: none;
 }
-
-.keycap-ghost:hover {
-  background: #121212;
-  border-color: #262626;
-  color: #F5F5F0;
+.kc--ghost:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--color-raised);
+  border-color: var(--color-line);
+  color: var(--color-chalk);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-.keycap-danger {
-  background: #1A0D0D;
-  border: 1px solid #4A1A1A;
-  color: #FF5A5A;
+/* --------------------------------------------------------------------------
+   KEYCAP SURFACES — cards & panels
+   -------------------------------------------------------------------------- */
+.kc-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-subtle);
+  border-radius: var(--radius-module);
+  box-shadow: var(--shadow-module);
+  transition:
+    transform var(--beam-duration-tactile) var(--ease-tactile),
+    border-color var(--beam-duration-tactile) ease,
+    box-shadow var(--beam-duration-tactile) var(--ease-tactile);
 }
 
-.keycap-danger:hover {
-  background: #281111;
-  border-color: #6E2626;
-  color: #FF7777;
+.kc-card--interactive:hover {
+  transform: translateY(var(--beam-keycap-lift));
+  border-color: var(--color-line);
 }
 
-/* Keycap Card */
-.keycap-card {
-  background: #101010;
-  border: 1px solid #222222;
-  border-radius: 14px;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 8px 24px -6px rgba(0, 0, 0, 0.7);
-  transition: border-color 160ms ease, transform 160ms ease;
+.kc-panel {
+  position: relative;
+  background: var(--color-deep);
+  border: 1px solid var(--color-line-subtle);
+  border-radius: var(--radius-panel);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    var(--shadow-module);
 }
 
-.keycap-card-elevated {
-  background: #141414;
-  border: 1px solid #282828;
-  border-radius: 14px;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 12px 32px -8px rgba(0, 0, 0, 0.8);
-}
-
-.keycap-card-hover:hover {
-  border-color: #333333;
-}
-
-/* Keycap Input */
-.keycap-input {
+/* --------------------------------------------------------------------------
+   KEYCAP INPUT WELL — recessed
+   -------------------------------------------------------------------------- */
+.kc-input {
   width: 100%;
-  background: #0C0C0C;
-  border: 1px solid #222222;
-  border-radius: 8px;
+  background: #0c0c0c;
+  border: 1px solid var(--color-line-subtle);
+  border-radius: var(--radius-keycap);
   padding: 10px 14px;
-  color: #F5F5F0;
-  font-family: "Product Sans", "Google Sans", "Inter", sans-serif;
+  color: var(--color-chalk);
+  font-family: var(--font-ui);
   font-size: 14px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  box-shadow: var(--shadow-well);
+  transition:
+    border-color var(--beam-duration-tactile) ease,
+    box-shadow var(--beam-duration-tactile) ease;
 }
-
-.keycap-input:focus {
+.kc-input:focus {
   outline: none;
-  border-color: #C7FF4A;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 0 1px #C7FF4A;
+  border-color: var(--color-lime);
+  box-shadow: var(--shadow-well), 0 0 0 1px var(--color-lime);
 }
-
-.keycap-input::placeholder {
+.kc-input::placeholder {
   color: #555552;
 }
+.kc-input[aria-invalid="true"] {
+  border-color: #b45454;
+}
 
-/* Tech tag / chip */
-.tech-chip {
+/* --------------------------------------------------------------------------
+   TECHNICAL LABEL CHIP
+   -------------------------------------------------------------------------- */
+.tech-label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #0E0E0E;
-  border: 1px solid #1E1E1E;
+  background: var(--color-raised);
+  border: 1px solid var(--color-line-subtle);
   border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-family: "JetBrains Mono", monospace, "Product Sans", sans-serif;
-  color: #B8B8B0;
-  letter-spacing: 0.02em;
-  transition: all 160ms ease;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-mist);
+  white-space: nowrap;
+  transition:
+    border-color var(--beam-duration-tactile) ease,
+    color var(--beam-duration-tactile) ease,
+    background-color var(--beam-duration-tactile) ease;
+}
+.tech-label--lime {
+  color: var(--color-lime);
+  border-color: rgba(199, 255, 74, 0.25);
+  background: rgba(199, 255, 74, 0.05);
 }
 
-.tech-chip:hover {
-  border-color: #333333;
-  color: #F5F5F0;
-  background: #141414;
-}
+/* Legacy aliases kept for existing dashboard pages */
+.keycap-card { background: var(--color-surface); border: 1px solid var(--color-line-subtle); border-radius: var(--radius-module); box-shadow: var(--shadow-module); }
+.keycap-card-elevated { background: var(--color-raised); border: 1px solid var(--color-line); border-radius: var(--radius-module); }
+.keycap-card-hover:hover { border-color: var(--color-line); }
 
-.tech-chip-active {
-  border-color: rgba(199, 255, 74, 0.3);
-  color: #C7FF4A;
-  background: rgba(199, 255, 74, 0.04);
-}
-
-/* Grid backgrounds & technical accents */
+/* --------------------------------------------------------------------------
+   BACKDROPS
+   -------------------------------------------------------------------------- */
 .instrument-grid {
   background-size: 32px 32px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 .instrument-grid-dense {
   background-size: 16px 16px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Status pulse (restrained) */
+  .beam-pulse {
+    animation: beam-pulse 2.4s var(--ease-tactile) infinite;
+  }
+}
+
+@keyframes beam-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
 }
