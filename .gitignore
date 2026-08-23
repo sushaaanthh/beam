@@ -26,4 +26,9 @@ beam-scraper/logs/
 .DS_Store
 Thumbs.db
 
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
 .arcide

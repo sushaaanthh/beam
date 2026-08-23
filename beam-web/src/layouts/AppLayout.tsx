@@ -16,17 +16,21 @@ import {
   Search,
   Menu,
   X,
+  MessageSquare,
+  Bot,
 } from 'lucide-react'
 
 import { BrandMark } from '../components/BrandMark'
 import { Button } from '../components/Button'
 import { SidebarItem } from '../components/SidebarItem'
 import { UserAvatar } from '../components/UserAvatar'
+import { CompanionDrawer } from '../components/CompanionDrawer'
 import { useAuth } from '../hooks/useAuth'
 
 const mainNavItems = [
   { to: '/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="h-4 w-4" /> },
-  { to: '/analysis', label: 'Analyze', icon: <Brain className="h-4 w-4" /> },
+  { to: '/analysis', label: 'Journal Studio', icon: <Brain className="h-4 w-4" /> },
+  { to: '/reddit', label: 'Reddit Analysis', icon: <MessageSquare className="h-4 w-4 text-[#FF5722]" /> },
   { to: '/history', label: 'History', icon: <History className="h-4 w-4" /> },
   { to: '/datasets', label: 'Datasets', icon: <Database className="h-4 w-4" /> },
   { to: '/models', label: 'Models', icon: <Cpu className="h-4 w-4" /> },
@@ -35,13 +39,14 @@ const mainNavItems = [
 ]
 
 const secondaryNavItems = [
-  { to: '/settings', label: 'Settings', icon: <Settings className="h-4 w-4" /> },
+  { to: '/settings', label: 'Settings & Privacy', icon: <Settings className="h-4 w-4" /> },
   { to: '/profile', label: 'Profile', icon: <User className="h-4 w-4" /> },
 ]
 
 export function AppLayout() {
   const { user, logout } = useAuth()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [companionOpen, setCompanionOpen] = useState(false)
   const location = useLocation()
 
   const displayName = user?.username ?? 'Researcher'
@@ -62,8 +67,8 @@ export function AppLayout() {
             </button>
             <BrandMark compact />
             <div className="hidden sm:block border-l border-[#262626] pl-3 py-0.5">
-              <span className="text-[11px] font-mono tracking-widest text-[#73736F] uppercase">
-                Instrument Workspace
+              <span className="text-[11px] font-mono tracking-widest text-[#C7FF4A] uppercase">
+                BEAM AI v2.0
               </span>
             </div>
           </div>
@@ -74,7 +79,7 @@ export function AppLayout() {
               <Search className="h-3.5 w-3.5 text-[#555552]" />
               <input
                 type="text"
-                placeholder="Search analyses, models, logs..."
+                placeholder="Search reflections, models..."
                 className="bg-transparent text-xs text-[#F5F5F0] placeholder:text-[#555552] focus:outline-none w-full"
               />
               <span className="font-mono text-[10px] bg-[#1A1A1A] border border-[#2A2A2A] rounded px-1.5 py-0.5 text-[#73736F]">
@@ -83,18 +88,30 @@ export function AppLayout() {
             </div>
 
             <div className="flex items-center gap-2">
+              {/* Companion Quick Button */}
               <button
                 type="button"
-                className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#141414] border border-[#262626] text-[#B8B8B0] hover:text-white transition-colors"
+                onClick={() => setCompanionOpen(true)}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#141414] border border-[#262626] text-xs font-semibold text-[#C7FF4A] hover:bg-[#1E1E1E] transition-colors"
+                title="Open AI Companion"
+              >
+                <Bot className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">AI Companion</span>
+              </button>
+
+              <button
+                type="button"
+                className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#141414] border border-[#262626] text-[#B8B8B0] hover:text-white transition-colors relative"
                 title="Notifications"
                 aria-label="Notifications"
               >
                 <Bell className="h-3.5 w-3.5" />
+                <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-[#C7FF4A]" />
               </button>
 
               <Link to="/analysis">
                 <Button variant="primary" size="sm" leftIcon={<Plus className="h-3.5 w-3.5 stroke-[2.5]" />}>
-                  New Analysis
+                  New Entry
                 </Button>
               </Link>
 
@@ -102,7 +119,7 @@ export function AppLayout() {
                 <UserAvatar name={displayName} size="sm" />
                 <div className="min-w-0 hidden xl:block">
                   <p className="text-xs font-semibold text-[#F5F5F0] leading-none truncate">{displayName}</p>
-                  <p className="text-[10px] text-[#73736F] font-mono mt-0.5">AUTH_READY</p>
+                  <p className="text-[10px] text-[#73736F] font-mono mt-0.5">BEAM_ACTIVE</p>
                 </div>
                 <button
                   type="button"
@@ -132,7 +149,7 @@ export function AppLayout() {
           <div className="space-y-6">
             <div>
               <p className="px-3 text-[10px] font-semibold tracking-[0.16em] text-[#555552] uppercase mb-2">
-                Core Engine
+                BEAM AI Engine
               </p>
               <nav className="space-y-1">
                 {mainNavItems.map((item) => (
@@ -169,7 +186,7 @@ export function AppLayout() {
           <div className="mt-auto pt-4 border-t border-[#181818]">
             <div className="rounded-lg bg-[#0E0E0E] border border-[#1E1E1E] p-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-[#73736F] uppercase">System Status</span>
+                <span className="text-[10px] font-mono text-[#73736F] uppercase">Inference State</span>
                 <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[#C7FF4A]">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#C7FF4A] shadow-[0_0_4px_#C7FF4A]"></span>
                   ONLINE
@@ -177,7 +194,7 @@ export function AppLayout() {
               </div>
               <div className="mt-2.5 flex items-center justify-between text-xs text-[#B8B8B0] pt-2 border-t border-[#181818]">
                 <span className="text-[11px] text-[#73736F]">Active Model</span>
-                <span className="font-mono text-[11px] font-semibold text-[#F5F5F0]">RoBERTa-v1.2</span>
+                <span className="font-mono text-[11px] font-semibold text-[#F5F5F0]">Gemini 3.1 Flash Lite</span>
               </div>
             </div>
           </div>
@@ -197,6 +214,9 @@ export function AppLayout() {
           <Outlet />
         </main>
       </div>
+
+      {/* BEAM AI Companion Drawer */}
+      <CompanionDrawer isOpen={companionOpen} onClose={() => setCompanionOpen(false)} />
     </div>
   )
 }

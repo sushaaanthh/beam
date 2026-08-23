@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Brain,
@@ -9,319 +10,326 @@ import {
   Cpu,
   Layers,
   CheckCircle2,
+  HeartPulse,
+  Flame,
+  FileText,
+  Mic,
+  MessageSquare,
+  Sparkles,
+  RefreshCw,
 } from 'lucide-react'
 
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { MetricCard } from '../components/MetricCard'
+import { WeeklyCheckInModal } from '../components/WeeklyCheckInModal'
+import { CompanionDrawer } from '../components/CompanionDrawer'
 import { useAuth } from '../hooks/useAuth'
-
-const quickActions = [
-  {
-    title: 'ANALYZE TEXT',
-    desc: 'Launch real-time inference console',
-    to: '/analysis',
-    icon: <Brain className="h-5 w-5 text-[#C7FF4A]" />,
-  },
-  {
-    title: 'UPLOAD FILE',
-    desc: 'Batch process raw TXT / PDF files',
-    to: '/analysis',
-    icon: <Upload className="h-5 w-5 text-[#F5F5F0]" />,
-  },
-  {
-    title: 'IMPORT DATA',
-    desc: 'Ingest datasets from corpus sources',
-    to: '/datasets',
-    icon: <Database className="h-5 w-5 text-[#F5F5F0]" />,
-  },
-  {
-    title: 'VIEW INSIGHTS',
-    desc: 'Explore longitudinal behavioral patterns',
-    to: '/insights',
-    icon: <BarChart3 className="h-5 w-5 text-[#F5F5F0]" />,
-  },
-]
-
-const recentAnalyses = [
-  {
-    id: 'AN-8921',
-    title: 'Developer retrospective feedback #42',
-    source: 'Dev Community Corpus',
-    emotion: 'Joy / Fulfillment',
-    confidence: '96.4%',
-    date: '2026-08-17 16:30',
-    status: 'COMPLETED',
-  },
-  {
-    id: 'AN-8920',
-    title: 'Quarterly architecture review notes',
-    source: 'Technical Forum',
-    emotion: 'Contemplation',
-    confidence: '89.1%',
-    date: '2026-08-17 14:15',
-    status: 'COMPLETED',
-  },
-  {
-    id: 'AN-8919',
-    title: 'Bug report thread: memory allocation crash',
-    source: 'Issue Tracker',
-    emotion: 'Frustration / Concern',
-    confidence: '92.7%',
-    date: '2026-08-17 11:04',
-    status: 'COMPLETED',
-  },
-  {
-    id: 'AN-8918',
-    title: 'Open source release announcement discussion',
-    source: 'Reddit Feed',
-    emotion: 'Excitement',
-    confidence: '94.0%',
-    date: '2026-08-16 21:40',
-    status: 'COMPLETED',
-  },
-]
-
-const emotionDistribution = [
-  { label: 'Joy / Contentment', percentage: 38, count: 1842 },
-  { label: 'Frustration / Concern', percentage: 24, count: 1163 },
-  { label: 'Neutral / Analytical', percentage: 19, count: 921 },
-  { label: 'Anticipation', percentage: 12, count: 581 },
-  { label: 'Apprehension', percentage: 7, count: 339 },
-]
+import { beamApi, DashboardSummary, WellnessMetrics } from '../services/api/beam'
 
 export function DashboardPage() {
   const { user } = useAuth()
   const displayName = user?.username ?? 'Researcher'
 
+  const [summary, setSummary] = useState<DashboardSummary | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [checkInOpen, setCheckInOpen] = useState(false)
+  const [companionOpen, setCompanionOpen] = useState(false)
+
+  useEffect(() => {
+    loadDashboard()
+  }, [])
+
+  const loadDashboard = async () => {
+    setLoading(true)
+    try {
+      const res = await beamApi.getDashboardSummary()
+      if (res) {
+        setSummary(res)
+      }
+    } catch {
+      // Clean zero-initialized fallback for new accounts
+      setSummary({
+        wellness_gauge: 0,
+        dominant_emotion: 'Awaiting First Entry',
+        active_streak: 0,
+        consistency_score: 0,
+        positivity_ratio: 0,
+        reflection_meter: 0,
+        recovery_score: 0,
+        weekly_trend: [
+          { day: 'Mon', score: 0, dominant: 'No entries' },
+          { day: 'Tue', score: 0, dominant: 'No entries' },
+          { day: 'Wed', score: 0, dominant: 'No entries' },
+          { day: 'Thu', score: 0, dominant: 'No entries' },
+          { day: 'Fri', score: 0, dominant: 'No entries' },
+          { day: 'Sat', score: 0, dominant: 'No entries' },
+          { day: 'Sun', score: 0, dominant: 'No entries' },
+        ],
+        word_cloud: [],
+        calendar_heatmap: Array.from({ length: 28 }, (_, i) => ({
+          day_offset: 28 - i,
+          intensity: 0,
+          mood: 'No activity',
+        })),
+        total_journals: 0,
+        total_voice_notes: 0,
+        recent_journals: [],
+        recent_voice_notes: [],
+        ai_insights: [
+          'Welcome to BEAM AI! Create your first reflection in the Affective Studio to unlock longitudinal telemetry.',
+          'Complete a Sunday check-in or voice note to calibrate your personalized Wellness Score.',
+          'Longitudinal behavioral patterns will automatically populate as you record entries.',
+        ],
+        unread_notifications: 1,
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCheckInSuccess = (metrics: WellnessMetrics) => {
+    if (summary) {
+      setSummary({
+        ...summary,
+        wellness_gauge: metrics.wellness_score,
+        consistency_score: metrics.consistency_score,
+        positivity_ratio: metrics.positive_ratio,
+        reflection_meter: metrics.reflection_score,
+        dominant_emotion: metrics.dominant_emotion,
+        weekly_trend: metrics.weekly_trend,
+      })
+    }
+  }
+
+  const isNewAccount = (summary?.total_journals ?? 0) === 0
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-w-7xl mx-auto">
       {/* Dashboard Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#1C1C1C] pb-6">
         <div>
           <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
-            WORKSPACE // DASHBOARD
+            BEAM AI // LONGITUDINAL DASHBOARD
           </span>
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#F5F5F0] tracking-tight mt-1">
             Welcome back, {displayName}.
           </h1>
           <p className="text-xs sm:text-sm text-[#73736F] mt-1">
-            Ready to analyze textual behavior with transformer-backed interpretability?
+            Longitudinal affective timeline, explainable insights, and behavioral wellness modeling.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
+          <Button
+            variant="secondary"
+            size="md"
+            onClick={() => setCheckInOpen(true)}
+            leftIcon={<HeartPulse className="h-4 w-4 text-[#C7FF4A]" />}
+          >
+            Weekly Check-in
+          </Button>
+
+          <Button
+            variant="secondary"
+            size="md"
+            onClick={() => setCompanionOpen(true)}
+            leftIcon={<MessageSquare className="h-4 w-4 text-[#C7FF4A]" />}
+          >
+            AI Companion
+          </Button>
+
           <Link to="/analysis">
             <Button variant="primary" size="md" leftIcon={<Plus className="h-4 w-4 stroke-[2.5]" />}>
-              NEW ANALYSIS
+              NEW ENTRY
             </Button>
           </Link>
         </div>
       </div>
 
-      {/* Metrics Row */}
+      {/* Wellness & Behavioral Metrics Row */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
-          title="ANALYSES"
-          value="4,846"
-          description="+142 recorded today"
-          trend={{ value: "8.4%", direction: "up", label: "vs last week" }}
+          title="WELLNESS GAUGE"
+          value={isNewAccount ? "0 / 100" : `${summary?.wellness_gauge ?? 0} / 100`}
+          description={isNewAccount ? "Awaiting first reflection" : "Formula: (Cons×0.3)+(Pos×0.4)+(Eng×0.3)"}
+          trend={{ value: isNewAccount ? "Init" : "+4.2%", direction: isNewAccount ? "neutral" : "up" }}
+          icon={<HeartPulse className="h-4 w-4 text-[#C7FF4A]" />}
+          sparkline={isNewAccount ? [0, 0, 0, 0, 0, 0, 0] : [70, 75, 78, 80, 82, 85, summary?.wellness_gauge ?? 84]}
+        />
+        <MetricCard
+          title="ACTIVE STREAK"
+          value={`${summary?.active_streak ?? 0} Days`}
+          description={isNewAccount ? "Start your daily streak" : "Consistent daily journaling"}
+          trend={{ value: isNewAccount ? "0 Days" : "Active", direction: isNewAccount ? "neutral" : "up" }}
+          icon={<Flame className="h-4 w-4 text-[#FF6B6B]" />}
+          sparkline={isNewAccount ? [0, 0, 0, 0, 0, 0, 0] : [1, 2, 3, 4, 4, 4, 4]}
+        />
+        <MetricCard
+          title="REFLECTION DEPTH"
+          value={isNewAccount ? "0 / 100" : `${summary?.reflection_meter ?? 0} / 100`}
+          description={isNewAccount ? "Lexical depth metric" : "Lexical complexity & depth"}
+          trend={{ value: isNewAccount ? "Init" : "+12.0%", direction: isNewAccount ? "neutral" : "up" }}
           icon={<Brain className="h-4 w-4 text-[#C7FF4A]" />}
-          sparkline={[30, 45, 60, 50, 75, 80, 92]}
+          sparkline={isNewAccount ? [0, 0, 0, 0, 0, 0, 0] : [60, 70, 75, 80, 85, 88, summary?.reflection_meter ?? 89]}
         />
         <MetricCard
-          title="DATASETS"
-          value="12"
-          description="3 curated corpus active"
-          trend={{ value: "2 new", direction: "neutral" }}
-          icon={<Database className="h-4 w-4 text-[#B8B8B0]" />}
-          sparkline={[20, 30, 40, 40, 50, 60, 70]}
-        />
-        <MetricCard
-          title="MODELS"
-          value="4"
-          description="RoBERTa-v1.2 primary"
-          trend={{ value: "Active", direction: "up" }}
-          icon={<Cpu className="h-4 w-4 text-[#B8B8B0]" />}
-          sparkline={[60, 60, 70, 70, 80, 85, 95]}
-        />
-        <MetricCard
-          title="MODEL ACCURACY"
-          value="94.8%"
-          description="F1 validation score"
-          trend={{ value: "+0.6%", direction: "up", label: "checkpoint" }}
+          title="DOMINANT EMOTION"
+          value={summary?.dominant_emotion ?? "Awaiting Data"}
+          description={isNewAccount ? "Record first entry" : "Stable longitudinal state"}
+          trend={{ value: isNewAccount ? "No data" : "Positive", direction: isNewAccount ? "neutral" : "up" }}
           icon={<CheckCircle2 className="h-4 w-4 text-[#C7FF4A]" />}
-          sparkline={[85, 87, 89, 91, 93, 94, 94.8]}
+          sparkline={isNewAccount ? [0, 0, 0, 0, 0, 0, 0] : [80, 82, 85, 88, 90, 92, 94]}
         />
       </div>
 
-      {/* Quick Actions Modules */}
-      <div>
-        <p className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider mb-3">
-          KEYCAP QUICK ACTIONS
-        </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {quickActions.map((action) => (
-            <Link key={action.title} to={action.to} className="block">
-              <Card
-                variant="default"
-                padding="none"
-                hover
-                className="p-5 flex flex-col justify-between h-36 group cursor-pointer border-[#222222] hover:border-[#383838]"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="h-9 w-9 rounded-lg bg-[#141414] border border-[#262626] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-                    {action.icon}
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-[#555552] group-hover:text-[#C7FF4A] transition-colors" />
-                </div>
-                <div>
-                  <h3 className="font-display text-base font-bold text-[#F5F5F0] group-hover:text-white">
-                    {action.title}
-                  </h3>
-                  <p className="text-[11px] text-[#73736F] mt-0.5">
-                    {action.desc}
-                  </p>
-                </div>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Grid: Recent Analyses + Emotion Distribution */}
+      {/* Grid: Weekly Affective Oscillation + 28-Day Mood Heatmap */}
       <div className="grid lg:grid-cols-12 gap-6">
-        {/* Recent Analyses List (7 cols) */}
+        {/* Weekly Trend (7 cols) */}
         <div className="lg:col-span-7">
-          <Card variant="default" padding="none" className="p-6">
-            <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-4 mb-4">
+          <Card variant="default" padding="none" className="p-6 space-y-5 border-[#222222]">
+            <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
               <div>
                 <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
-                  INSPECTION FEED
+                  LONGITUDINAL TELEMETRY
                 </span>
                 <h3 className="font-display text-xl font-bold text-[#F5F5F0]">
-                  RECENT ANALYSES
+                  WEEKLY AFFECTIVE OSCILLATION
                 </h3>
               </div>
-              <Link to="/history">
-                <Button variant="ghost" size="sm" rightIcon={<ArrowUpRight className="h-3 w-3" />}>
-                  View All
-                </Button>
-              </Link>
-            </div>
-
-            <div className="space-y-2.5">
-              {recentAnalyses.map((item) => (
-                <div
-                  key={item.id}
-                  className="rounded-lg bg-[#0C0C0C] border border-[#1E1E1E] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-[#333333] transition-colors"
-                >
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-[10px] text-[#73736F] bg-[#141414] px-1.5 py-0.5 rounded border border-[#222222]">
-                        {item.id}
-                      </span>
-                      <p className="text-xs font-semibold text-[#F5F5F0] truncate">
-                        {item.title}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3 text-[11px] text-[#73736F] mt-1">
-                      <span>{item.source}</span>
-                      <span>•</span>
-                      <span>{item.date}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 shrink-0">
-                    <div className="text-right">
-                      <span className="text-xs font-mono text-[#C7FF4A] block">
-                        {item.emotion}
-                      </span>
-                      <span className="text-[10px] font-mono text-[#73736F]">
-                        {item.confidence} conf
-                      </span>
-                    </div>
-                    <Link to="/history">
-                      <Button variant="ghost" size="sm" className="px-2 py-1 text-[11px]">
-                        Inspect
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-
-        {/* Emotion Distribution + System Overview (5 cols) */}
-        <div className="lg:col-span-5 space-y-6">
-          {/* Emotion Distribution */}
-          <Card variant="default" padding="none" className="p-6">
-            <div className="border-b border-[#1C1C1C] pb-3 mb-4">
-              <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
-                AGGREGATE CORPUS
+              <span className="text-xs font-mono text-[#C7FF4A]">
+                {isNewAccount ? "0 entries recorded" : `Average: ${summary?.wellness_gauge ?? 0}%`}
               </span>
-              <h3 className="font-display text-xl font-bold text-[#F5F5F0]">
-                EMOTION DISTRIBUTION
-              </h3>
             </div>
 
-            <div className="space-y-3.5">
-              {emotionDistribution.map((item, idx) => (
-                <div key={item.label}>
-                  <div className="flex justify-between text-xs font-mono mb-1">
-                    <span className="text-[#B8B8B0]">{item.label}</span>
-                    <span className={idx === 0 ? 'text-[#C7FF4A]' : 'text-[#73736F]'}>
-                      {item.percentage}% ({item.count})
+            {/* Bar & Trend Visualizer */}
+            <div className="space-y-3.5 pt-1">
+              {summary?.weekly_trend.map((day) => (
+                <div key={day.day} className="space-y-1">
+                  <div className="flex justify-between text-xs font-mono">
+                    <span className="text-[#F5F5F0] font-semibold">{day.day}</span>
+                    <span className="text-[#73736F]">
+                      <strong className={day.score > 0 ? "text-[#C7FF4A]" : "text-[#555552]"}>{day.score}%</strong> • {day.dominant}
                     </span>
                   </div>
-                  <div className="h-2 rounded-full bg-[#161616] overflow-hidden">
+                  <div className="h-2.5 rounded-md bg-[#121212] overflow-hidden">
                     <div
-                      className={`h-full rounded-full transition-all duration-300 ${
-                        idx === 0 ? 'bg-[#C7FF4A]' : 'bg-[#444440]'
-                      }`}
-                      style={{ width: `${item.percentage}%` }}
+                      className="h-full bg-[#C7FF4A] rounded-md transition-all duration-500"
+                      style={{ width: `${day.score}%` }}
                     />
                   </div>
                 </div>
               ))}
             </div>
           </Card>
+        </div>
 
-          {/* System Overview */}
-          <Card variant="default" padding="none" className="p-6">
+        {/* 28-Day Calendar Activity Heatmap + Word Cloud (5 cols) */}
+        <div className="lg:col-span-5 space-y-6">
+          {/* Calendar Heatmap */}
+          <Card variant="default" padding="none" className="p-6 border-[#222222]">
             <div className="border-b border-[#1C1C1C] pb-3 mb-4">
               <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
-                TELEMETRY & HARDWARE
+                ACTIVITY & REFLECTION FREQUENCY
               </span>
-              <h3 className="font-display text-xl font-bold text-[#F5F5F0]">
-                SYSTEM OVERVIEW
+              <h3 className="font-display text-lg font-bold text-[#F5F5F0]">
+                28-DAY MOOD HEATMAP
               </h3>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="rounded-lg bg-[#0C0C0C] border border-[#1E1E1E] p-3">
-                <span className="text-[10px] text-[#73736F] uppercase font-mono block">Active Model</span>
-                <span className="font-mono font-semibold text-[#F5F5F0] mt-1 block">RoBERTa-v1.2</span>
-              </div>
-              <div className="rounded-lg bg-[#0C0C0C] border border-[#1E1E1E] p-3">
-                <span className="text-[10px] text-[#73736F] uppercase font-mono block">Inference Engine</span>
-                <span className="font-mono font-semibold text-[#F5F5F0] mt-1 block">TorchScript CUDA</span>
-              </div>
-              <div className="rounded-lg bg-[#0C0C0C] border border-[#1E1E1E] p-3">
-                <span className="text-[10px] text-[#73736F] uppercase font-mono block">Database</span>
-                <span className="font-mono font-semibold text-[#F5F5F0] mt-1 block">PostgreSQL 16</span>
-              </div>
-              <div className="rounded-lg bg-[#0C0C0C] border border-[#1E1E1E] p-3">
-                <span className="text-[10px] text-[#73736F] uppercase font-mono block">System Status</span>
-                <span className="inline-flex items-center gap-1.5 font-mono font-semibold text-[#C7FF4A] mt-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#C7FF4A] animate-pulse" /> ONLINE
-                </span>
-              </div>
+            {/* Heatmap Grid */}
+            <div className="grid grid-cols-7 gap-2">
+              {summary?.calendar_heatmap.map((item, idx) => (
+                <div
+                  key={idx}
+                  title={`Day ${item.day_offset}: ${item.mood}`}
+                  className={`h-7 rounded-md border transition-all flex items-center justify-center text-[10px] font-mono ${
+                    item.intensity === 4
+                      ? 'bg-[#C7FF4A] text-[#080808] border-[#C7FF4A]'
+                      : item.intensity === 3
+                      ? 'bg-[#C7FF4A]/60 text-white border-[#C7FF4A]/40'
+                      : item.intensity === 2
+                      ? 'bg-[#C7FF4A]/30 text-[#B8B8B0] border-[#C7FF4A]/20'
+                      : 'bg-[#121212] text-[#444440] border-[#1C1C1C]'
+                  }`}
+                >
+                  {item.day_offset}
+                </div>
+              ))}
             </div>
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#73736F] mt-3 pt-2 border-t border-[#1C1C1C]">
+              <span>No Activity</span>
+              <div className="flex items-center gap-1">
+                <span className="h-2 w-2 rounded bg-[#121212] border border-[#1C1C1C]" />
+                <span className="h-2 w-2 rounded bg-[#C7FF4A]/30" />
+                <span className="h-2 w-2 rounded bg-[#C7FF4A]/60" />
+                <span className="h-2 w-2 rounded bg-[#C7FF4A]" />
+              </div>
+              <span>Peak Positive</span>
+            </div>
+          </Card>
+
+          {/* Word Cloud Chips */}
+          <Card variant="default" padding="none" className="p-6 border-[#222222]">
+            <div className="border-b border-[#1C1C1C] pb-3 mb-3">
+              <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
+                KEYWORD ATTRIBUTION
+              </span>
+              <h3 className="font-display text-lg font-bold text-[#F5F5F0]">
+                AFFECTIVE WORD CLOUD
+              </h3>
+            </div>
+
+            {summary?.word_cloud && summary.word_cloud.length > 0 ? (
+              <div className="flex flex-wrap gap-2 pt-1">
+                {summary.word_cloud.map((w) => (
+                  <span
+                    key={w.text}
+                    className="px-2.5 py-1 rounded-lg text-xs font-mono bg-[#141414] border border-[#242424] text-[#C7FF4A] hover:scale-105 transition-transform cursor-default"
+                    style={{ opacity: Math.min(1.0, 0.4 + w.value / 80) }}
+                  >
+                    #{w.text}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p className="text-xs text-[#73736F] py-3 leading-relaxed">
+                No affective keywords extracted yet. Record a reflection or voice note in the Affective Studio to generate your personalized word cloud.
+              </p>
+            )}
           </Card>
         </div>
       </div>
+
+      {/* Personalized AI Insights */}
+      <Card variant="elevated" padding="none" className="p-6 border-[#2A2A2A]">
+        <div className="flex items-center gap-2 border-b border-[#1C1C1C] pb-3 mb-4">
+          <Sparkles className="h-4 w-4 text-[#C7FF4A]" />
+          <h3 className="font-display text-lg font-bold text-[#F5F5F0]">
+            BEAM AI Longitudinal Observations
+          </h3>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4">
+          {summary?.ai_insights.map((ins, i) => (
+            <div key={i} className="rounded-xl bg-[#0E0E0E] border border-[#1E1E1E] p-4 text-xs text-[#B8B8B0] leading-relaxed">
+              <span className="font-mono text-[#C7FF4A] font-bold block mb-1">0{i + 1} // INSIGHT</span>
+              {ins}
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Modals & Drawers */}
+      <WeeklyCheckInModal
+        isOpen={checkInOpen}
+        onClose={() => setCheckInOpen(false)}
+        onSuccess={handleCheckInSuccess}
+      />
+      <CompanionDrawer
+        isOpen={companionOpen}
+        onClose={() => setCompanionOpen(false)}
+      />
     </div>
   )
 }

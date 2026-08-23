@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/LoginPage'
 import { ModelsPage } from '../pages/ModelsPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { ProfilePage } from '../pages/ProfilePage'
+import { RedditAnalysisPage } from '../pages/RedditAnalysisPage'
 import { RegisterPage } from '../pages/RegisterPage'
 import { ReportsPage } from '../pages/ReportsPage'
 import { SettingsPage } from '../pages/SettingsPage'
@@ -34,6 +35,7 @@ export function AppRouter() {
         <Route element={<AppLayout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/analysis" element={<AnalysisPage />} />
+          <Route path="/reddit" element={<RedditAnalysisPage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/datasets" element={<DatasetsPage />} />
           <Route path="/models" element={<ModelsPage />} />

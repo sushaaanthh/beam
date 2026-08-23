@@ -11,15 +11,15 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    PROJECT_NAME: str = "B.E.A.M."
-    PROJECT_VERSION: str = "1.0.0"
+    PROJECT_NAME: str = "BEAM AI"
+    PROJECT_VERSION: str = "2.0.0"
     API_V1_STR: str = "/api/v1"
 
     ENVIRONMENT: str = Field(default="development")
     DEBUG: bool = Field(default=False)
 
     BACKEND_CORS_ORIGINS: list[str] = Field(
-        default_factory=lambda: ["http://localhost:5173", "http://127.0.0.1:5173"]
+        default_factory=lambda: ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000", "http://127.0.0.1:3000"]
     )
 
     POSTGRES_SERVER: str = "postgres"
@@ -31,15 +31,18 @@ class Settings(BaseSettings):
 
     LOG_LEVEL: str = "INFO"
 
-    JWT_SECRET_KEY: SecretStr = Field(default=SecretStr("change-me-in-development"))
+    JWT_SECRET_KEY: SecretStr = Field(default=SecretStr("beam-ai-development-super-secret-key-2026"))
     JWT_ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
-    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 14
     JWT_ISSUER: str = "beam-api"
 
     # Analysis input limits
     MAX_ANALYSIS_TEXT_CHARS: int = Field(default=20000, gt=0)
     ANALYSIS_LIST_PAGE_SIZE_MAX: int = Field(default=100, gt=0)
+
+    GEMINI_API_KEY: str = Field(default="")
+    GEMINI_MODEL: str = "gemini-3.1-flash-lite"
 
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
