@@ -14,4 +14,12 @@ export default defineConfig({
     port: 4173,
     strictPort: true,
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    // 'forks' workers fail to boot when the project path contains spaces.
+    pool: 'threads',
+    setupFiles: ['src/test/setup.ts'],
+    include: ['src/**/*.test.{ts,tsx}'],
+  },
 })

@@ -1,330 +1,408 @@
-import { useState } from 'react'
-import {
-  Brain,
-  Sparkles,
-  RotateCcw,
-  UploadCloud,
-  FileText,
-  CheckCircle2,
-  Info,
-  Sliders,
-  Terminal,
-  Activity,
-  Layers,
-} from 'lucide-react'
+import { useCallback, useEffect, useRef, useState, type ChangeEvent, type DragEvent } from 'react'
+import { Eraser, Play, UploadCloud } from 'lucide-react'
 
-import { Button } from '../components/Button'
-import { Card } from '../components/Card'
+import {
+  ANALYSIS_POLL_INTERVAL_MS,
+  ANALYSIS_POLL_TIMEOUT_MS,
+  MAX_ANALYSIS_TEXT_CHARS,
+  createAnalysis,
+  fetchAnalysis,
+  getApiErrorMessage,
+} from '../services/api/analysis'
+import type {
+  AnalysisDetail,
+  AnalysisStatus,
+  SourceType,
+} from '../types/analysis'
+import { KeycapBadge } from '../components/keycap'
+import { ProcessingSignal } from '../components/analysis/ProcessingSignal'
+import { ResultWorkspace } from '../components/analysis/ResultWorkspace'
+
+type WorkspaceState =
+  | { phase: 'editing' }
+  | { phase: 'processing'; sessionId: string }
+  | { phase: 'result'; detail: AnalysisDetail }
+  | { phase: 'error'; message: string }
+
+const SOURCE_TYPES: Array<{ value: SourceType; label: string }> = [
+  { value: 'text', label: 'Plain text' },
+  { value: 'discussion', label: 'Discussion thread' },
+  { value: 'social_feed', label: 'Social feed post' },
+  { value: 'review', label: 'Review / comment' },
+]
 
 export function AnalysisPage() {
-  const [inputText, setInputText] = useState('')
-  const [sourceType, setSourceType] = useState('Discussion Forum')
-  const [modelType, setModelType] = useState('RoBERTa-v1.2 (Fine-tuned)')
-  const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [analysisResult, setAnalysisResult] = useState<{
-    primaryEmotion: string
-    confidence: number
-    valence: number
-    arousal: number
-    signals: string[]
-    model: string
-    latency: string
-    distribution: { emotion: string; score: number }[]
-    tokens: { word: string; saliency: number }[]
-  } | null>(null)
+  const [text, setText] = useState('')
+  const [sourceType, setSourceType] = useState<SourceType>('text')
+  const [validationError, setValidationError] = useState<string | null>(null)
+  const [state, setState] = useState<WorkspaceState>({ phase: 'editing' })
+  const [fileName, setFileName] = useState<string | null>(null)
 
-  const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0
-  const charCount = inputText.length
+  const pollTimerRef = useRef<number | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const handleAnalyze = () => {
-    if (!inputText.trim()) return
+  useEffect(
+    () => () => {
+      if (pollTimerRef.current !== null) window.clearTimeout(pollTimerRef.current)
+    },
+    [],
+  )
 
-    setIsAnalyzing(true)
-    setTimeout(() => {
-      // Generate scientific transformer-grade interpretation
-      const words = inputText.trim().split(/\s+/)
-      const tokensWithSaliency = words.slice(0, 30).map((word, i) => {
-        const hash = (word.length * (i + 1)) % 10
-        const saliency = (hash - 3) / 8 // between -0.375 and +0.75
-        return { word, saliency: Number(saliency.toFixed(3)) }
-      })
+  const charCount = text.length
+  const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0
+  const overLimit = charCount > MAX_ANALYSIS_TEXT_CHARS
 
-      setAnalysisResult({
-        primaryEmotion: 'Constructive Validation & Focus',
-        confidence: 94.6,
-        valence: 0.72,
-        arousal: 0.58,
-        signals: [
-          'Goal-directed problem-solving trajectory',
-          'Low emotional volatility / high lexical density',
-          'Sustained positive affective momentum',
-        ],
-        model: modelType,
-        latency: '16.4ms',
-        distribution: [
-          { emotion: 'Constructive Validation', score: 94.6 },
-          { emotion: 'Intellectual Curiosity', score: 78.2 },
-          { emotion: 'Anticipation', score: 45.0 },
-          { emotion: 'Frustration / Friction', score: 12.4 },
-        ],
-        tokens: tokensWithSaliency,
-      })
-      setIsAnalyzing(false)
-    }, 600)
+  const startPolling = useCallback((sessionId: string, startedAt: number) => {
+    const poll = async () => {
+      try {
+        const detail = await fetchAnalysis(sessionId)
+        const terminalStatuses: AnalysisStatus[] = ['completed', 'failed']
+        if (terminalStatuses.includes(detail.status)) {
+          if (detail.status === 'failed') {
+            setState({ phase: 'error', message: 'The analysis failed while processing. Please try again.' })
+            return
+          }
+          setState({ phase: 'result', detail })
+          return
+        }
+        if (Date.now() - startedAt > ANALYSIS_POLL_TIMEOUT_MS) {
+          setState({
+            phase: 'error',
+            message: 'Analysis is taking longer than expected. Check history later for its result.',
+          })
+          return
+        }
+        pollTimerRef.current = window.setTimeout(poll, ANALYSIS_POLL_INTERVAL_MS)
+      } catch (error) {
+        setState({ phase: 'error', message: getApiErrorMessage(error) })
+      }
+    }
+    pollTimerRef.current = window.setTimeout(poll, ANALYSIS_POLL_INTERVAL_MS)
+  }, [])
+
+  const handleAnalyze = async () => {
+    const trimmed = text.trim()
+    if (!trimmed) {
+      setValidationError('Enter or paste some text before starting an analysis.')
+      textareaRef.current?.focus()
+      return
+    }
+    if (overLimit) {
+      setValidationError(`Text exceeds the maximum of ${MAX_ANALYSIS_TEXT_CHARS.toLocaleString()} characters.`)
+      textareaRef.current?.focus()
+      return
+    }
+
+    setValidationError(null)
+    setState({ phase: 'processing', sessionId: '' })
+
+    try {
+      const created = await createAnalysis({ text: trimmed, source_type: sourceType })
+      setState({ phase: 'processing', sessionId: created.session_id })
+
+      // The placeholder service usually completes inside the POST itself;
+      // polling covers pending/processing transitions from future async workers.
+      if (created.status === 'pending' || created.status === 'processing') {
+        startPolling(created.session_id, Date.now())
+        return
+      }
+
+      const detail = await fetchAnalysis(created.session_id)
+      if (detail.status === 'failed') {
+        setState({ phase: 'error', message: 'The analysis failed while processing. Please try again.' })
+        return
+      }
+      setState({ phase: 'result', detail })
+    } catch (error) {
+      setState({ phase: 'error', message: getApiErrorMessage(error) })
+    }
   }
 
   const handleClear = () => {
-    setInputText('')
-    setAnalysisResult(null)
+    setText('')
+    setValidationError(null)
+    setFileName(null)
+    setState({ phase: 'editing' })
+    textareaRef.current?.focus()
   }
 
-  const handleSample = () => {
-    setInputText(
-      "After benchmarking the transformer pipeline against our previous baseline, the inference latency dropped from 120ms to 16ms with zero degradation in F1 score. The explainability attributions now accurately isolate critical emotive transitions."
-    )
+  const loadFile = async (file: File) => {
+    if (!/\.(txt|md)$/i.test(file.name)) {
+      setValidationError('Only plain-text files (.txt, .md) can be loaded.')
+      return
+    }
+    try {
+      const content = await file.text()
+      if (content.length > MAX_ANALYSIS_TEXT_CHARS) {
+        setValidationError(
+          `"${file.name}" exceeds the maximum of ${MAX_ANALYSIS_TEXT_CHARS.toLocaleString()} characters.`,
+        )
+        return
+      }
+      setText(content.replace(/\r\n/g, '\n'))
+      setFileName(file.name)
+      setValidationError(null)
+      setState({ phase: 'editing' })
+    } catch {
+      setValidationError('The file could not be read. Try a different plain-text file.')
+    }
   }
+
+  const handleFileSelected = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (file) await loadFile(file)
+  }
+
+  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    const file = event.dataTransfer.files?.[0]
+    if (file) void loadFile(file)
+  }
+
+  const resetToEditor = () => {
+    setState({ phase: 'editing' })
+    textareaRef.current?.focus()
+  }
+
+  const processing = state.phase === 'processing'
 
   return (
-    <div className="space-y-8 max-w-6xl mx-auto">
+    <div className="mx-auto max-w-6xl space-y-6">
       {/* Header */}
-      <div className="border-b border-[#1C1C1C] pb-4">
-        <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
+      <header className="space-y-1 border-b border-line-subtle pb-5">
+        <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-lime">
           WORKSPACE // INFERENCE LAB
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#F5F5F0] tracking-tight mt-1">
-          ANALYZE
+        <h1 className="font-display text-3xl font-semibold tracking-wide text-chalk sm:text-4xl">
+          Analyze
         </h1>
-        <p className="text-xs sm:text-sm text-[#73736F] mt-1">
-          Transform textual behavior into interpretable emotional insights and token saliency trails.
+        <p className="text-xs text-dim sm:text-sm">
+          Transform textual behavior into interpretable emotional insights.
         </p>
-      </div>
+      </header>
 
-      {/* Editor & Controls */}
-      <div className="grid lg:grid-cols-12 gap-6">
-        <div className="lg:col-span-7 space-y-4">
-          <Card variant="default" padding="none" className="p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
-              <span className="text-[11px] font-mono text-[#73736F] uppercase">
-                INPUT STREAM
-              </span>
-              <button
-                type="button"
-                onClick={handleSample}
-                className="text-xs font-mono text-[#C7FF4A] hover:underline"
-              >
-                Load Sample Text
-              </button>
-            </div>
-
-            {/* Textarea */}
-            <div className="relative">
-              <textarea
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder="Paste or type textual behavioral corpus to inspect..."
-                rows={8}
-                className="w-full rounded-lg bg-[#080808] border border-[#1E1E1E] p-4 text-sm text-[#F5F5F0] font-ui placeholder:text-[#444440] focus:border-[#C7FF4A] focus:outline-none focus:ring-1 focus:ring-[#C7FF4A] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] leading-relaxed resize-y"
-              />
-            </div>
-
-            {/* Metadata Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-[#73736F] pt-1">
-              <div className="flex items-center gap-4">
-                <span>CHARS: <strong className="text-[#F5F5F0]">{charCount}</strong></span>
-                <span>WORDS: <strong className="text-[#F5F5F0]">{wordCount}</strong></span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <label className="text-[10px] text-[#555552] uppercase">Source:</label>
-                <select
-                  value={sourceType}
-                  onChange={(e) => setSourceType(e.target.value)}
-                  className="bg-[#121212] border border-[#222222] rounded px-2 py-1 text-xs text-[#F5F5F0] focus:outline-none"
-                >
-                  <option>Discussion Forum</option>
-                  <option>Code Review / PR</option>
-                  <option>Social Feed</option>
-                  <option>Customer Dialogue</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Model & Execution Bar */}
-            <div className="pt-3 border-t border-[#1C1C1C] flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <label className="text-[10px] font-mono text-[#555552] uppercase">Model:</label>
-                <select
-                  value={modelType}
-                  onChange={(e) => setModelType(e.target.value)}
-                  className="bg-[#121212] border border-[#222222] rounded px-2 py-1 text-xs text-[#C7FF4A] font-mono focus:outline-none"
-                >
-                  <option>RoBERTa-v1.2 (Fine-tuned)</option>
-                  <option>BERT-Base-Emotion</option>
-                  <option>DeBERTa-v3-Affect</option>
-                </select>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <Button
-                  variant="ghost"
-                  size="md"
-                  onClick={handleClear}
-                  disabled={!inputText && !analysisResult}
-                >
-                  CLEAR
-                </Button>
-                <Button
-                  variant="primary"
-                  size="md"
-                  isLoading={isAnalyzing}
-                  onClick={handleAnalyze}
-                  disabled={!inputText.trim()}
-                  rightIcon={<span className="font-mono">→</span>}
-                >
-                  ANALYZE
-                </Button>
-              </div>
-            </div>
-          </Card>
-
-          {/* Quick File Ingestion */}
-          <div className="rounded-xl border border-dashed border-[#222222] bg-[#0A0A0A] p-4 flex items-center justify-between text-xs">
-            <div className="flex items-center gap-3">
-              <UploadCloud className="h-5 w-5 text-[#73736F]" />
-              <div>
-                <p className="font-medium text-[#F5F5F0]">Batch Corpus Ingestion</p>
-                <p className="text-[11px] text-[#73736F]">Upload .TXT or .PDF documents for automated inference</p>
-              </div>
-            </div>
-            <Button variant="secondary" size="sm">
-              UPLOAD FILE
-            </Button>
+      {state.phase === 'error' ? (
+        <div
+          role="alert"
+          className="flex items-start justify-between gap-4 rounded-module border border-[#4A1A1A] bg-[#160D0D] p-4"
+        >
+          <div className="space-y-1">
+            <p className="text-sm font-medium text-[#FF8A8A]">Analysis error</p>
+            <p className="text-xs leading-relaxed text-mist">{state.message}</p>
           </div>
+          <button
+            type="button"
+            onClick={resetToEditor}
+            className="kc kc--ghost px-3 py-1.5 text-xs font-ui font-medium uppercase tracking-[0.06em]"
+          >
+            Dismiss
+          </button>
         </div>
+      ) : null}
 
-        {/* Results Area */}
-        <div className="lg:col-span-5">
-          {analysisResult ? (
-            <div className="space-y-4">
-              {/* Primary Emotion Result Card */}
-              <Card variant="elevated" padding="none" className="p-6 space-y-5 border-[#2A2A2A]">
-                <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
-                  <span className="text-[10px] font-mono text-[#C7FF4A] uppercase tracking-wider">
-                    INFERENCE TELEMETRY
-                  </span>
-                  <span className="font-mono text-[10px] text-[#73736F]">
-                    LATENCY: {analysisResult.latency}
-                  </span>
-                </div>
-
-                <div>
-                  <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
-                    PRIMARY EMOTION STATE
-                  </span>
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F5F5F0] mt-1">
-                    {analysisResult.primaryEmotion}
-                  </h3>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs font-mono mb-1">
-                    <span className="text-[#B8B8B0]">Model Confidence</span>
-                    <span className="text-[#C7FF4A] font-bold">{analysisResult.confidence}%</span>
-                  </div>
-                  <div className="h-2 rounded-full bg-[#161616] overflow-hidden">
-                    <div
-                      className="h-full bg-[#C7FF4A] rounded-full"
-                      style={{ width: `${analysisResult.confidence}%` }}
-                    />
-                  </div>
-                </div>
-
-                {/* Granular Emotion Distribution */}
-                <div className="pt-2 space-y-2 border-t border-[#1C1C1C]">
-                  <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
-                    EMOTION DISTRIBUTION
-                  </span>
-                  {analysisResult.distribution.map((dist) => (
-                    <div key={dist.emotion} className="text-xs">
-                      <div className="flex justify-between font-mono text-[11px] mb-0.5">
-                        <span className="text-[#B8B8B0]">{dist.emotion}</span>
-                        <span className="text-[#73736F]">{dist.score}%</span>
-                      </div>
-                      <div className="h-1.5 rounded-full bg-[#141414]">
-                        <div
-                          className="h-full bg-[#8E8E8A] rounded-full"
-                          style={{ width: `${dist.score}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Behavioral Signals */}
-                <div className="pt-2 border-t border-[#1C1C1C]">
-                  <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block mb-2">
-                    OBSERVED BEHAVIORAL SIGNALS
-                  </span>
-                  <ul className="space-y-1.5 text-xs text-[#B8B8B0]">
-                    {analysisResult.signals.map((sig, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-[#C7FF4A] text-xs">▪</span>
-                        <span>{sig}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Card>
-
-              {/* Explainability / SHAP Attribution Module */}
-              <Card variant="default" padding="none" className="p-5 space-y-3">
-                <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-2">
-                  <span className="text-[10px] font-mono text-[#73736F] uppercase">
-                    TOKEN ATTRIBUTION (SHAP SALIENCY)
-                  </span>
-                  <span className="text-[10px] font-mono text-[#C7FF4A]">EXPLAINABLE</span>
-                </div>
-                <p className="text-[11px] text-[#73736F]">
-                  Green highlight indicates positive attribution toward predicted affective state; red indicates divergent friction.
-                </p>
-                <div className="flex flex-wrap gap-1.5 p-3 rounded-lg bg-[#080808] border border-[#1A1A1A]">
-                  {analysisResult.tokens.map((tok, idx) => (
-                    <span
-                      key={idx}
-                      className={`inline-block px-1.5 py-0.5 rounded text-[11px] font-mono ${
-                        tok.saliency > 0.3
-                          ? 'bg-[#C7FF4A]/15 text-[#C7FF4A] border border-[#C7FF4A]/30'
-                          : tok.saliency > 0
-                          ? 'bg-[#181818] text-[#F5F5F0]'
-                          : 'bg-[#220E0E] text-[#FF6B6B] border border-[#4A1A1A]'
-                      }`}
-                    >
-                      {tok.word}
-                    </span>
-                  ))}
-                </div>
-              </Card>
-            </div>
-          ) : (
-            /* Elegant Empty State */
-            <Card
-              variant="default"
-              padding="lg"
-              className="h-full min-h-[380px] flex flex-col items-center justify-center text-center p-8 border-dashed border-[#222222]"
+      {state.phase === 'processing' ? (
+        <section aria-busy="true" className="py-8">
+          <ProcessingSignal sessionId={state.sessionId || undefined} />
+        </section>
+      ) : state.phase === 'result' ? (
+        <ResultWorkspace detail={state.detail} onNewAnalysis={handleClear} />
+      ) : (
+        <div className="grid gap-6 lg:grid-cols-12">
+          {/* Editor column */}
+          <section className="space-y-4 lg:col-span-7" aria-label="Text input">
+            <div
+              className="kc-card p-5"
+              onDragOver={(event) => event.preventDefault()}
+              onDrop={handleDrop}
             >
-              <div className="h-12 w-12 rounded-xl bg-[#121212] border border-[#222222] flex items-center justify-center text-[#73736F] mb-4">
-                <Activity className="h-6 w-6" />
+              <div className="mb-3 flex items-center justify-between border-b border-line-subtle pb-3">
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-dim">
+                  Input Stream
+                </span>
+                {fileName ? (
+                  <KeycapBadge tone="graphite">{fileName}</KeycapBadge>
+                ) : (
+                  <span className="text-[10px] uppercase tracking-[0.14em] text-dim/80">
+                    Drop a .txt file here
+                  </span>
+                )}
               </div>
-              <h3 className="font-display text-lg font-bold text-[#F5F5F0]">
-                AWAITING INPUT TELEMETRY
-              </h3>
-              <p className="text-xs text-[#73736F] max-w-xs mt-1.5 leading-relaxed">
-                Enter text or select a corpus sample in the inference console to initiate multi-head transformer classification and token attribution.
+
+              <textarea
+                ref={textareaRef}
+                value={text}
+                onChange={(event) => {
+                  setText(event.target.value)
+                  if (validationError) setValidationError(null)
+                }}
+                placeholder="Paste text to analyze..."
+                rows={10}
+                maxLength={MAX_ANALYSIS_TEXT_CHARS + 1000}
+                disabled={processing}
+                aria-invalid={validationError ? true : undefined}
+                aria-describedby={validationError ? 'beam-analysis-error' : 'beam-analysis-counts'}
+                className="kc-input resize-y text-sm font-ui leading-relaxed"
+              />
+
+              <div
+                id="beam-analysis-counts"
+                className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-dim"
+              >
+                <div className="flex items-center gap-4">
+                  <span>
+                    Chars{' '}
+                    <strong className={`font-mono ${overLimit ? 'text-[#FF8A8A]' : 'text-chalk'}`}>
+                      {charCount.toLocaleString()}
+                    </strong>{' '}
+                    / {MAX_ANALYSIS_TEXT_CHARS.toLocaleString()}
+                  </span>
+                  <span>
+                    Words{' '}
+                    <strong className="font-mono text-chalk">{wordCount.toLocaleString()}</strong>
+                  </span>
+                </div>
+                {overLimit ? (
+                  <span className="font-mono normal-case text-[#FF8A8A]">
+                    Over the input limit
+                  </span>
+                ) : null}
+              </div>
+
+              {validationError ? (
+                <p
+                  id="beam-analysis-error"
+                  role="alert"
+                  className="mt-3 rounded-keycap border border-[#4A1A1A] bg-[#160D0D] px-3 py-2 text-xs text-[#FF8A8A]"
+                >
+                  {validationError}
+                </p>
+              ) : null}
+            </div>
+
+            {/* Controls */}
+            <div className="kc-card space-y-4 p-5">
+              <div className="flex items-center justify-between border-b border-line-subtle pb-3">
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-dim">
+                  Controls
+                </span>
+                <KeycapBadge tone="outline">Local run</KeycapBadge>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="flex flex-col gap-2">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-dim">
+                    Source type
+                  </span>
+                  <select
+                    value={sourceType}
+                    onChange={(event) => setSourceType(event.target.value as SourceType)}
+                    disabled={processing}
+                    className="kc-input cursor-pointer py-2"
+                  >
+                    {SOURCE_TYPES.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="flex flex-col gap-2">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-dim">
+                    Model
+                  </span>
+                  <select
+                    defaultValue="beam-transformer-v1"
+                    disabled
+                    className="kc-input cursor-not-allowed py-2 opacity-70"
+                    aria-describedby="beam-model-note"
+                  >
+                    <option value="beam-transformer-v1">beam-transformer-v1 · pending</option>
+                  </select>
+                  <span id="beam-model-note" className="text-[10px] leading-relaxed text-dim">
+                    Transformer weights are not deployed yet — sessions complete without predictions.
+                  </span>
+                </label>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5 border-t border-line-subtle pt-4">
+                <button
+                  type="button"
+                  onClick={handleAnalyze}
+                  disabled={processing}
+                  className="kc kc--primary px-5 py-2.5 text-xs font-ui font-semibold uppercase tracking-[0.08em]"
+                >
+                  <Play className="h-3.5 w-3.5" aria-hidden="true" />
+                  {processing ? 'Analyzing…' : 'Analyze'}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  disabled={processing || (!text && !fileName)}
+                  className="kc px-4 py-2.5 text-xs font-ui font-medium uppercase tracking-[0.06em]"
+                >
+                  <Eraser className="h-3.5 w-3.5" aria-hidden="true" />
+                  Clear
+                </button>
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={processing}
+                  className="kc kc--ghost px-4 py-2.5 text-xs font-ui font-medium uppercase tracking-[0.06em]"
+                >
+                  <UploadCloud className="h-4 w-4" aria-hidden="true" />
+                  Upload Text File
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".txt,.md,text/plain"
+                  onChange={handleFileSelected}
+                  className="hidden"
+                  aria-label="Upload a plain text file to analyze"
+                />
+              </div>
+            </div>
+
+            <p className="text-[11px] leading-relaxed text-dim">
+              B.E.A.M. reports model predictions about emotional expression in submitted text.
+              It does not diagnose mental health conditions.
+            </p>
+          </section>
+
+          {/* Side panel */}
+          <aside className="lg:col-span-5" aria-label="Session guidance">
+            <div className="kc-card flex h-full min-h-[320px] flex-col items-center justify-center gap-4 p-8 text-center">
+              <div className="kc pointer-events-none h-12 w-12 rounded-keycap" aria-hidden="true">
+                <Play className="h-5 w-5 text-lime" />
+              </div>
+              <h2 className="font-display text-lg font-semibold uppercase tracking-[0.08em] text-chalk">
+                Awaiting input telemetry
+              </h2>
+              <p className="max-w-xs text-xs leading-relaxed text-dim">
+                Paste text into the input stream and press Analyze. Your session is stored
+                privately in your account history once submitted.
               </p>
-            </Card>
-          )}
+              <ul className="w-full max-w-xs space-y-2 border-t border-line-subtle pt-4 text-left text-[11px] text-dim">
+                <li className="flex items-center justify-between gap-3">
+                  <span>Max input</span>
+                  <span className="font-mono text-mist">{MAX_ANALYSIS_TEXT_CHARS.toLocaleString()} chars</span>
+                </li>
+                <li className="flex items-center justify-between gap-3">
+                  <span>Accepted files</span>
+                  <span className="font-mono text-mist">.txt · .md</span>
+                </li>
+                <li className="flex items-center justify-between gap-3">
+                  <span>Prediction output</span>
+                  <span className="font-mono text-mist">Pending model</span>
+                </li>
+              </ul>
+            </div>
+          </aside>
         </div>
-      </div>
+      )}
     </div>
   )
 }

@@ -6,8 +6,17 @@ from uuid import UUID, uuid4
 from sqlalchemy import DateTime, ForeignKey, Text, func
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.types import JSON
 
 from app.database.base import Base
+
+# Portable columns: identical JSONB/TEXT[] storage on PostgreSQL,
+# plain JSON on other dialects (e.g. SQLite tests).
+JsonDictType = JSON().with_variant(JSONB(none_as_null=True), "postgresql")
+StringListType = (
+    JSON()
+    .with_variant(ARRAY(Text), "postgresql")
+)
 
 
 class Explanation(Base):
@@ -19,8 +28,14 @@ class Explanation(Base):
         nullable=False,
         unique=True,
     )
-    explanation_json: Mapped[dict[str, object] | None] = mapped_column(JSONB, nullable=True)
-    important_keywords: Mapped[list[str] | None] = mapped_column(ARRAY(Text), nullable=True)
+    explanation_json: Mapped[dict[str, object] | None] = mapped_column(
+        JsonDictType,
+        nullable=True,
+    )
+    important_keywords: Mapped[list[str] | None] = mapped_column(
+        StringListType,
+        nullable=True,
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

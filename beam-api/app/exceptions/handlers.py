@@ -29,9 +29,15 @@ def create_exception_handlers(app: FastAPI) -> None:
         request: Request,
         exc: RequestValidationError,
     ) -> JSONResponse:
+        # Strip non-serializable context objects (pydantic v2 embeds
+        # ValueError instances under "ctx") so responses stay valid JSON.
+        safe_errors = [
+            {key: value for key, value in error.items() if key != "ctx"}
+            for error in exc.errors()
+        ]
         return JSONResponse(
             status_code=422,
-            content={"detail": exc.errors()},
+            content={"detail": safe_errors},
         )
 
     @app.exception_handler(Exception)

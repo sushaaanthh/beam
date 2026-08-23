@@ -37,6 +37,10 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     JWT_ISSUER: str = "beam-api"
 
+    # Analysis input limits
+    MAX_ANALYSIS_TEXT_CHARS: int = Field(default=20000, gt=0)
+    ANALYSIS_LIST_PAGE_SIZE_MAX: int = Field(default=100, gt=0)
+
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
         if self.DATABASE_URL:
