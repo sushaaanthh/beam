@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, AlertCircle } from 'lucide-react'
+import axios from 'axios'
 
 import { BrandMark } from '../components/BrandMark'
 import { Button } from '../components/Button'
@@ -43,7 +44,18 @@ export function LoginPage() {
       await login(values)
       const destination = (location.state as { from?: { pathname?: string } } | undefined)?.from?.pathname ?? '/dashboard'
       navigate(destination, { replace: true })
-    } catch (error) {
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 401) {
+          setSubmitError('Incorrect username, email, or password. Please try again.')
+          return
+        }
+        const detail = error.response?.data?.detail
+        if (typeof detail === 'string') {
+          setSubmitError(detail)
+          return
+        }
+      }
       setSubmitError(describeApiError(error, 'Unable to authenticate session.'))
     }
   }
@@ -104,8 +116,9 @@ export function LoginPage() {
             </div>
 
             {submitError && (
-              <div className="p-3 rounded-lg bg-[#1F0C0C] border border-[#5A1C1C] text-xs text-[#FF6B6B]">
-                {submitError}
+              <div className="p-3 rounded-lg bg-[#1F0C0C] border border-[#5A1C1C] text-xs text-[#FF6B6B] flex items-center gap-2">
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                <span>{submitError}</span>
               </div>
             )}
 

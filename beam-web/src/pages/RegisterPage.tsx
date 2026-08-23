@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, LogIn, AlertCircle } from 'lucide-react'
+import axios from 'axios'
 
 import { BrandMark } from '../components/BrandMark'
 import { Button } from '../components/Button'
@@ -29,6 +30,7 @@ export function RegisterPage() {
   const navigate = useNavigate()
   const { register: createAccount } = useAuth()
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isAccountConflict, setIsAccountConflict] = useState(false)
 
   const {
     register,
@@ -46,10 +48,28 @@ export function RegisterPage() {
 
   const onSubmit = async (values: RegisterFormValues) => {
     setSubmitError(null)
+    setIsAccountConflict(false)
     try {
       await createAccount(values)
       navigate('/dashboard', { replace: true })
-    } catch (error) {
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 409) {
+          setIsAccountConflict(true)
+          const detail = error.response?.data?.detail
+          setSubmitError(
+            typeof detail === 'string'
+              ? `${detail}. You can sign in directly.`
+              : 'An account with this username or email already exists. You can sign in directly.'
+          )
+          return
+        }
+        const detail = error.response?.data?.detail
+        if (typeof detail === 'string') {
+          setSubmitError(detail)
+          return
+        }
+      }
       setSubmitError(error instanceof Error ? error.message : 'Unable to create the account right now.')
     }
   }
@@ -113,8 +133,19 @@ export function RegisterPage() {
             />
 
             {submitError && (
-              <div className="p-3 rounded-lg bg-[#1F0C0C] border border-[#5A1C1C] text-xs text-[#FF6B6B]">
-                {submitError}
+              <div className="p-3.5 rounded-xl bg-[#1F0C0C] border border-[#5A1C1C] text-xs text-[#FF6B6B] space-y-2">
+                <div className="flex items-start gap-2">
+                  <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+                  <span>{submitError}</span>
+                </div>
+                {isAccountConflict && (
+                  <Link
+                    to="/login"
+                    className="inline-flex items-center gap-1.5 font-bold text-[#C7FF4A] hover:underline pl-6"
+                  >
+                    <LogIn className="h-3.5 w-3.5" /> Click here to Sign In →
+                  </Link>
+                )}
               </div>
             )}
 
