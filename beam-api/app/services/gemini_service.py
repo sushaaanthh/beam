@@ -39,12 +39,12 @@ Extract:
 9. ai_insight (actionable, empathetic 1-sentence observation)
 10. trigger_words (list of up to 6 key emotional/behavioral words)
 11. lifestyle_prescription:
-    - title (e.g. "🏃 Physical Movement & Outdoor Exposure Needed")
+    - title (e.g. "Physical Movement & Outdoor Exposure Needed")
     - prescription (what the behavioral analysis detected, e.g. extended indoor room duration)
     - recommended_action (actionable physical/mental advice, e.g. 20-30 min brisk walk or light stretching)
     - wellness_target (e.g. "Physical Exercise & Fresh Air")
     - urgency ("LOW", "MEDIUM", or "HIGH")
-    - behavioral_tags (e.g. ["⏱️ Duration: 10 hrs", "🏠 Environment: Confined Indoors", "💻 Load: High Cognitive Work"])
+    - behavioral_tags (e.g. ["Duration: 10 hrs", "Environment: Confined Indoors", "Load: High Cognitive Work"])
 
 Return strictly valid JSON matching this schema.
 """

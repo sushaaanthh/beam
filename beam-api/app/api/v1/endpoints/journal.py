@@ -21,7 +21,7 @@ class LiveJournalRequest(BaseModel):
 class JournalCreateRequest(BaseModel):
     title: str | None = Field(default="Daily Journal Entry")
     content: str = Field(..., min_length=2)
-    mood_emoji: str | None = Field(default="✍️")
+    mood_emoji: str | None = Field(default="")
     model_name: str | None = Field(default="RoBERTa-v1.2")
 
 @router.post("/live")
@@ -38,7 +38,7 @@ def create_journal_entry(payload: JournalCreateRequest, request: Request) -> dic
     entry = {
         "title": payload.title or "Daily Journal Entry",
         "content": payload.content,
-        "mood_emoji": payload.mood_emoji or "✍️",
+        "mood_emoji": payload.mood_emoji or "",
         "primary_emotion": emotion_res["primary_emotion"],
         "confidence": emotion_res["confidence"],
         "valence": emotion_res["valence"],

@@ -61,35 +61,35 @@ def extract_behavioral_lifestyle_prescriptions(text: str) -> dict[str, Any]:
     if has_long_hours:
         match = re.search(r"\b(\d{1,2}\s*(?:hrs|hours|hr)|all day)\b", t)
         tag = match.group(0) if match else "Extended Duration"
-        behavioral_tags.append(f"⏱️ Duration: {tag}")
+        behavioral_tags.append(f"Duration: {tag}")
     if has_indoor_room:
-        behavioral_tags.append("🏠 Environment: Confined Indoors")
+        behavioral_tags.append("Environment: Confined Indoors")
     if has_working:
-        behavioral_tags.append("💻 Load: High Cognitive Work")
+        behavioral_tags.append("Load: High Cognitive Work")
     if has_sleep_debt:
-        behavioral_tags.append("💤 Recovery: Sleep Deficit")
+        behavioral_tags.append("Recovery: Sleep Deficit")
 
     # Generate targeted lifestyle advice
     if (has_long_hours and has_indoor_room) or (has_long_hours and has_working) or has_exercise_omission:
-        title = "🏃 Physical Movement & Outdoor Exposure Needed"
+        title = "Physical Movement & Outdoor Exposure Needed"
         prescription = "High sedentary load detected (extended hours in an indoor room). Your cognitive system is experiencing physical stagnation."
         recommended_action = "Step outside for a 20-30 minute brisk walk, light stretching, or cardio workout. Physical locomotion stimulates cerebral blood flow, releases endorphins, and resets dopamine receptors."
         wellness_target = "Physical Exercise & Fresh Air"
         urgency = "HIGH"
     elif has_sleep_debt:
-        title = "💤 Circadian Sleep & Neural Recovery Priority"
+        title = "Circadian Sleep & Neural Recovery Priority"
         prescription = "Cognitive depletion signals detected from sleep deficit and sustained screen exposure."
         recommended_action = "Dim blue-light devices 45 minutes before sleep, hydrate with electrolytes, and aim for 7.5+ hours of consolidated sleep tonight."
         wellness_target = "Sleep Hygiene & Recovery"
         urgency = "HIGH"
     elif has_indoor_room:
-        title = "🌿 Environmental Reset & Sunlight Exposure"
+        title = "Environmental Reset & Sunlight Exposure"
         prescription = "Continuous indoor confinement reduces serotonin and ocular relaxation."
         recommended_action = "Take a 15-minute break outside in natural daylight to realign circadian rhythms and reduce eye strain."
         wellness_target = "Nature & Sunlight Break"
         urgency = "MEDIUM"
     else:
-        title = "⚖️ Balanced Lifestyle & Cognitive Maintenance"
+        title = "Balanced Lifestyle & Cognitive Maintenance"
         prescription = "Good self-awareness demonstrated in today's reflection."
         recommended_action = "Maintain regular hydration, short micro-breaks every 50 minutes, and steady evening decompression."
         wellness_target = "Cognitive Flow & Balance"

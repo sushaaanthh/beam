@@ -83,7 +83,7 @@ export function AppLayout() {
                 className="bg-transparent text-xs text-[#F5F5F0] placeholder:text-[#555552] focus:outline-none w-full"
               />
               <span className="font-mono text-[10px] bg-[#1A1A1A] border border-[#2A2A2A] rounded px-1.5 py-0.5 text-[#73736F]">
-                ⌘K
+                Cmd K
               </span>
             </div>
 

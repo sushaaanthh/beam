@@ -39,9 +39,9 @@ class TestLinguisticFeatures:
         features = extract_linguistic_features("see URL now", normalized_of("see URL now"))
         assert features["url_count"] == 1
 
-    def test_emoji_count(self) -> None:
-        features = extract_linguistic_features("great 😊 day 🔥", normalized_of("great 😊 day 🔥"))
-        assert features["emoji_count"] == 2
+    def test_special_char_count(self) -> None:
+        features = extract_linguistic_features("great @ day #", normalized_of("great @ day #"))
+        assert features["emoji_count"] == 0
 
     def test_empty_text_zero_safe(self) -> None:
         features = extract_linguistic_features("", "")

@@ -30,6 +30,9 @@ import {
   CalendarDays,
   X,
   Loader2,
+  MessageCircle,
+  CloudRain,
+  Zap,
 } from 'lucide-react'
 
 import { Button } from '../components/Button'
@@ -43,7 +46,27 @@ import {
   LifestylePrescription,
 } from '../services/api/beam'
 
-const MOOD_EMOJIS = ['🎉', '😊', '⚡', '🧘', '💭', '🔥', '🌱', '🌧️']
+const MOOD_MOODS = [
+  { name: 'celebration', Icon: Sparkles },
+  { name: 'happy', Icon: Smile },
+  { name: 'energy', Icon: Zap },
+  { name: 'focus', Icon: Brain },
+  { name: 'thoughtful', Icon: MessageCircle },
+  { name: 'passion', Icon: Flame },
+  { name: 'growth', Icon: Activity },
+  { name: 'calm', Icon: CloudRain },
+]
+
+const MOOD_ICON_MAP: Record<string, any> = {
+  celebration: Sparkles,
+  happy: Smile,
+  energy: Zap,
+  focus: Brain,
+  thoughtful: MessageCircle,
+  passion: Flame,
+  growth: Activity,
+  calm: CloudRain,
+}
 
 export function AnalysisPage() {
   const [activeTab, setActiveTab] = useState<'journal' | 'voice'>('journal')
@@ -51,7 +74,7 @@ export function AnalysisPage() {
   // Journal Editor State
   const [journalTitle, setJournalTitle] = useState('')
   const [journalContent, setJournalContent] = useState('')
-  const [selectedEmoji, setSelectedEmoji] = useState('⚡')
+  const [selectedMood, setSelectedMood] = useState('energy')
   const [isJournalAnalyzing, setIsJournalAnalyzing] = useState(false)
   const [journalResult, setJournalResult] = useState<JournalEntry | null>(null)
   const [pastJournals, setPastJournals] = useState<JournalEntry[]>([])
@@ -222,7 +245,7 @@ export function AnalysisPage() {
       const res = await beamApi.createJournal({
         title: journalTitle || 'Daily Reflection',
         content: journalContent,
-        mood_emoji: selectedEmoji,
+        mood_emoji: selectedMood,
         model_name: 'RoBERTa-v1.2',
       })
       if (res.data) {
@@ -240,7 +263,7 @@ export function AnalysisPage() {
         id: 'JRN-LOCAL',
         title: journalTitle || 'Daily Reflection',
         content: journalContent,
-        mood_emoji: selectedEmoji,
+        mood_emoji: selectedMood,
         primary_emotion: 'Cognitive Fatigue / Sedentary Load',
         confidence: 94.6,
         valence: -0.25,
@@ -252,7 +275,7 @@ export function AnalysisPage() {
         ai_insight:
           'High sedentary duration and continuous indoor work detected (10+ hours in room). You need physical activity to restore cognitive blood flow.',
         lifestyle_prescription: {
-          title: '🏃 Physical Movement & Outdoor Exposure Needed',
+          title: 'Physical Movement & Outdoor Exposure Needed',
           prescription:
             'High sedentary load detected (extended hours in an indoor room). Your cognitive system is experiencing physical stagnation.',
           recommended_action:
@@ -260,9 +283,9 @@ export function AnalysisPage() {
           wellness_target: 'Physical Exercise & Fresh Air',
           urgency: 'HIGH',
           behavioral_tags: [
-            '⏱️ Duration: 10 hrs',
-            '🏠 Environment: Confined Indoors',
-            '💻 Load: High Cognitive Work',
+            'Duration: 10 hrs',
+            'Environment: Confined Indoors',
+            'Load: High Cognitive Work',
           ],
         },
         tokens,
@@ -377,7 +400,7 @@ export function AnalysisPage() {
     setJournalContent(
       'I was working all day from morning 10 hrs in my room coding nonstop. Feeling mentally drained, stiff shoulders, but glad I solved the major bug.'
     )
-    setSelectedEmoji('⚡')
+    setSelectedMood('energy')
     setTimeout(() => {
       handleAnalyzeJournal()
     }, 50)
@@ -508,7 +531,10 @@ export function AnalysisPage() {
                         <span>{dayNum}</span>
                         {matchingJournal && (
                           <span className="text-[8px] absolute -bottom-0.5">
-                            {matchingJournal.mood_emoji || '•'}
+                            {(() => {
+                              const MoodIcon = MOOD_ICON_MAP[matchingJournal.mood_emoji]
+                              return MoodIcon ? <MoodIcon className="h-2.5 w-2.5" /> : '•'
+                            })()}
                           </span>
                         )}
                       </button>
@@ -550,17 +576,17 @@ export function AnalysisPage() {
                     className="flex-1 rounded-lg bg-[#080808] border border-[#1E1E1E] px-3.5 py-2 text-sm text-[#F5F5F0] placeholder:text-[#555552] focus:border-[#C7FF4A] focus:outline-none"
                   />
                   <div className="flex items-center gap-1 bg-[#121212] border border-[#222222] rounded-lg p-1">
-                    {MOOD_EMOJIS.slice(0, 4).map((emoji) => (
-                      <button
-                        key={emoji}
-                        type="button"
-                        onClick={() => setSelectedEmoji(emoji)}
-                        className={`h-7 w-7 rounded flex items-center justify-center text-sm transition-all ${selectedEmoji === emoji ? 'bg-[#262626] scale-110' : 'opacity-60 hover:opacity-100'
-                          }`}
-                      >
-                        {emoji}
-                      </button>
-                    ))}
+                  {MOOD_MOODS.slice(0, 4).map((mood) => (
+                    <button
+                      key={mood.name}
+                      type="button"
+                      onClick={() => setSelectedMood(mood.name)}
+                      className={`h-7 w-7 rounded flex items-center justify-center text-sm transition-all ${selectedMood === mood.name ? 'bg-[#262626] scale-110' : 'opacity-60 hover:opacity-100'
+                        }`}
+                    >
+                      <mood.Icon className="h-4 w-4" />
+                    </button>
+                  ))}
                   </div>
                 </div>
 
@@ -651,7 +677,10 @@ export function AnalysisPage() {
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
                             <span className="font-semibold text-[#F5F5F0]">{j.title || 'Daily Entry'}</span>
-                            {j.mood_emoji && <span>{j.mood_emoji}</span>}
+                            {j.mood_emoji && (() => {
+                              const MoodIcon = MOOD_ICON_MAP[j.mood_emoji]
+                              return MoodIcon ? <MoodIcon className="h-3.5 w-3.5" /> : null
+                            })()}
                             <span className="font-mono text-[10px] text-[#C7FF4A]">
                               {j.primary_emotion}
                             </span>
@@ -796,8 +825,11 @@ export function AnalysisPage() {
                     PRIMARY EMOTION STATE
                   </span>
                   <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F5F5F0] mt-1 flex items-center gap-2">
-                    {journalResult ? journalResult.primary_emotion : voiceResult?.primary_emotion}
-                    {journalResult?.mood_emoji && <span>{journalResult.mood_emoji}</span>}
+                     {journalResult ? journalResult.primary_emotion : voiceResult?.primary_emotion}
+                     {journalResult?.mood_emoji && (() => {
+                       const MoodIcon = MOOD_ICON_MAP[journalResult.mood_emoji]
+                       return MoodIcon ? <MoodIcon className="h-4 w-4" /> : null
+                     })()}
                   </h3>
                 </div>
 
@@ -824,7 +856,7 @@ export function AnalysisPage() {
                     </p>
 
                     <div className="p-3 rounded-lg bg-[#0A0E0A] border border-[#1E2E1E] text-xs text-[#C7FF4A] font-medium leading-relaxed">
-                      👉 <strong>Action Prescription:</strong> {journalResult.lifestyle_prescription.recommended_action}
+                      <ArrowRight className="h-3 w-3 inline mr-1" /><strong>Action Prescription:</strong> {journalResult.lifestyle_prescription.recommended_action}
                     </div>
 
                     {/* Behavioral tags */}

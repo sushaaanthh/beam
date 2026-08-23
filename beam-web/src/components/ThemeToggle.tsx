@@ -1,4 +1,5 @@
 import { useTheme } from '../hooks/useTheme'
+import { Moon, Sun } from 'lucide-react'
 
 export function ThemeToggle({ className = '' }: { className?: string }) {
   const { theme, toggleTheme } = useTheme()
@@ -11,9 +12,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       aria-label="Toggle theme"
       title="Toggle theme mode"
     >
-      <span className="text-xs font-mono">
-        {theme === 'dark' ? '☾' : '☼'}
-      </span>
+      {theme === 'dark' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
     </button>
   )
 }

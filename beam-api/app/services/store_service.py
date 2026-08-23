@@ -62,7 +62,7 @@ def get_notifications(user_id: str = "default") -> list[dict[str, Any]]:
     return _user_notifications.get(user_id, [
         {
             "id": f"NOTIF-WELCOME-{user_id[:6]}",
-            "title": "Welcome to BEAM AI 🎉",
+            "title": "Welcome to BEAM AI",
             "message": "Your workspace is ready. Write your first reflection in Affective Studio to unlock your emotion timeline.",
             "type": "welcome",
             "read": False,
