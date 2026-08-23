@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { classNames } from '../../utils/classNames'
 import { keycapClass } from '../keycap'
+import { BrandMark } from '../BrandMark'
 
 export type NavbarItem = {
   label: string
@@ -47,12 +48,7 @@ export function Navbar({
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-8">
         {/* LEFT — wordmark + descriptor */}
         <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="B.E.A.M. home">
-          <span
-            className="kc pointer-events-none h-9 w-9 font-display text-base font-semibold text-lime shadow-none group-hover:-translate-y-px"
-            aria-hidden="true"
-          >
-            B
-          </span>
+          <BrandMark compact to={undefined} />
           <span className="flex flex-col leading-none">
             <span className="font-display text-lg font-semibold tracking-[0.08em] text-chalk">
               B.E.A.M.
