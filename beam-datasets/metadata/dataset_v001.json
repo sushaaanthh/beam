@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "dedupe_enabled": true,
+    "keep_deleted": false,
+    "language_mode": "allowlist",
+    "languages": [
+      "en"
+    ],
+    "max_chars": 8000,
+    "min_chars": 10,
+    "min_words": 3,
+    "near_duplicate_method": "word-3gram jaccard within subreddit",
+    "near_duplicate_threshold": 0.9,
+    "split": {
+      "seed": 42,
+      "strategy": "grouped by thread_id, sha256(seed:group) ordering",
+      "test_ratio": 0.15,
+      "train_ratio": 0.7,
+      "validation_ratio": 0.15
+    }
+  },
+  "created_at": "2026-08-23T13:11:07+00:00",
+  "dataset_version": "v001",
+  "feature_count": 23,
+  "files": {
+    "features": "features/dataset_v001_features.jsonl",
+    "processed": "processed/dataset_v001.jsonl",
+    "split_test": "splits/dataset_v001_test.jsonl",
+    "split_train": "splits/dataset_v001_train.jsonl",
+    "split_validation": "splits/dataset_v001_validation.jsonl"
+  },
+  "intended_use": "Research corpus for future emotion-model development. No emotion labels are claimed; VADER scores are auxiliary lexical features.",
+  "label_type": "unlabeled",
+  "processing_version": "prep-1.0.0",
+  "quality_report": {
+    "average_cleaned_text_length": 96.0,
+    "duplicate_reasons": {},
+    "duplicate_records": 0,
+    "feature_count": 23,
+    "feature_names": [
+      "average_sentence_length",
+      "average_word_length",
+      "character_count",
+      "comment_count",
+      "emoji_count",
+      "entity_count",
+      "exclamation_count",
+      "is_weekend",
+      "lexical_diversity",
+      "pos_distribution",
+      "posting_hour",
+      "posting_weekday",
+      "punctuation_count",
+      "question_count",
+      "score",
+      "sentence_count",
+      "uppercase_ratio",
+      "url_count",
+      "vader_compound",
+      "vader_negative",
+      "vader_neutral",
+      "vader_positive",
+      "word_count"
+    ],
+    "filter_reasons": {},
+    "filtered_records": 0,
+    "language_distribution": {
+      "en": 16
+    },
+    "nlp_backends": {
+      "spacy_available": false,
+      "vader_available": true
+    },
+    "source_distribution": {
+      "reddit_comment": 8,
+      "reddit_post": 8
+    },
+    "subreddit_distribution": {
+      "AskReddit": 16
+    },
+    "total_records": 16,
+    "unusable_input_rows": 0,
+    "valid_records": 16
+  },
+  "record_count": 16,
+  "source": "beam-datasets\\raw\\sample_reddit.jsonl",
+  "split_statistics": {
+    "test": 2,
+    "train": 12,
+    "validation": 2
+  }
+}

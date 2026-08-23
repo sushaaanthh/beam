@@ -112,6 +112,43 @@ backoff on transient failures; strictly sequential requests.
 
 ## Data cleaning requirements (downstream)
 
+The `beam_ai` dataset pipeline (see `../beam-ai`) automates most of this:
+deterministic cleaning, normalization, quality filtering, deduplication,
+feature extraction and grouped train/validation/test splitting.
+
+```bash
+python -m beam_ai.dataset_pipeline --input beam-datasets/raw/<file>.jsonl \
+    --dataset-version v001 --seed 42
+```
+
+Outputs per version:
+
+| Directory | File | Content |
+|---|---|---|
+| `processed/` | `dataset_<v>.jsonl` | full records: identity + raw/cleaned/normalized text + behavioral metadata + features |
+| `features/` | `dataset_<v>_features.jsonl` | record_id + feature columns only |
+| `splits/` | `dataset_<v>_{train,validation,test}.jsonl` | group-aware splits (no thread leakage) |
+| `metadata/` | `dataset_<v>.json` | versioned metadata: config, counts, split stats, file list |
+| `metadata/` | `quality_report_<v>.json` | filter reasons, duplicates, distributions, NLP backend availability |
+
+Schema highlights: `record_id` (uuid5, deterministic), `source`
+(reddit_post/reddit_comment), `thread_id` (split grouping key),
+`raw_text`/`cleaned_text`/`normalized_text`, `language`,
+`author_pseudonym`, linguistic features (character/word/sentence counts,
+punctuation/question/exclamation counts, uppercase ratio, emoji & URL
+counts, lexical diversity), behavioral metadata (score, comment_count,
+posting_hour/weekday), optional auxiliary NLP scores (`vader_*`, POS
+distribution). VADER values are auxiliary lexical signals — never
+ground-truth emotion labels. Current datasets are **unlabeled**;
+emotion-labeled training data will be introduced as a separate
+`label_type` later.
+
+**Reproducibility:** same raw input + same configuration + same seed
+produce byte-identical processed/features/split files (only metadata's
+`created_at` varies).
+
+Legacy manual guidance below.
+
 1. Filter or impute `body_status != 'available'` rows per experiment.
 2. Deduplicate near-duplicate crossposts manually (Reddit IDs handle
    exact duplicates already).

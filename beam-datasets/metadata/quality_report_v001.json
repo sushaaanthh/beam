@@ -1,0 +1,50 @@
+{
+  "average_cleaned_text_length": 96.0,
+  "duplicate_reasons": {},
+  "duplicate_records": 0,
+  "feature_count": 23,
+  "feature_names": [
+    "average_sentence_length",
+    "average_word_length",
+    "character_count",
+    "comment_count",
+    "emoji_count",
+    "entity_count",
+    "exclamation_count",
+    "is_weekend",
+    "lexical_diversity",
+    "pos_distribution",
+    "posting_hour",
+    "posting_weekday",
+    "punctuation_count",
+    "question_count",
+    "score",
+    "sentence_count",
+    "uppercase_ratio",
+    "url_count",
+    "vader_compound",
+    "vader_negative",
+    "vader_neutral",
+    "vader_positive",
+    "word_count"
+  ],
+  "filter_reasons": {},
+  "filtered_records": 0,
+  "language_distribution": {
+    "en": 16
+  },
+  "nlp_backends": {
+    "spacy_available": false,
+    "vader_available": true
+  },
+  "source_distribution": {
+    "reddit_comment": 8,
+    "reddit_post": 8
+  },
+  "subreddit_distribution": {
+    "AskReddit": 16
+  },
+  "total_records": 16,
+  "unusable_input_rows": 0,
+  "valid_records": 16
+}

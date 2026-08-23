@@ -1,2 +1,24 @@
-# Placeholder requirements for future training and inference workflows.
-# Add the AI stack here as the modules under beam-ai/ are implemented.
+# B.E.A.M. AI — dataset preparation & future modeling
+
+# Core dataset pipeline (python -m beam_ai.dataset_pipeline) uses ONLY the
+# Python standard library. The extras below enable optional feature backends;
+# the pipeline detects their presence at runtime and degrades gracefully.
+
+# Language detection (allowlist filtering)
+langdetect>=1.0.9
+
+# Auxiliary lexical sentiment features (NOT emotion labels)
+vaderSentiment>=3.3.2
+
+# Optional deeper NLP features (POS distribution, entity counts).
+# After installing spaCy you must also download a model, e.g.:
+#   python -m spacy download en_core_web_sm
+spacy>=3.7.0
+
+# Future training stack (NOT required by the dataset pipeline):
+# torch>=2.1
+# transformers>=4.37
+# scikit-learn>=1.4
+
+# Development
+pytest>=8.0
