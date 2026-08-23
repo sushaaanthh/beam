@@ -3,12 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { ArrowRight, Lock, User, ShieldCheck } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 import { BrandMark } from '../components/BrandMark'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { InputField } from '../components/InputField'
+import { describeApiError } from '../services/api/errors'
 import { useAuth } from '../hooks/useAuth'
 
 const loginSchema = z.object({
@@ -43,7 +44,7 @@ export function LoginPage() {
       const destination = (location.state as { from?: { pathname?: string } } | undefined)?.from?.pathname ?? '/dashboard'
       navigate(destination, { replace: true })
     } catch (error) {
-      setSubmitError(error instanceof Error ? error.message : 'Unable to authenticate session.')
+      setSubmitError(describeApiError(error, 'Unable to authenticate session.'))
     }
   }
 

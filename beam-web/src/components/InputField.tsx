@@ -1,10 +1,11 @@
 import { forwardRef, type InputHTMLAttributes, type ReactNode, type TextareaHTMLAttributes } from 'react'
 
 type CommonProps = {
-  label?: string
-  hint?: string
-  error?: string
-  className?: string
+  label?: string | undefined
+  hint?: string | undefined
+  /** react-hook-form supplies `string | undefined`; accept both explicitly. */
+  error?: string | undefined
+  className?: string | undefined
   action?: ReactNode
 }
 
