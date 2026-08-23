@@ -1,0 +1,39 @@
+# B.E.A.M. training configuration — realistic transformer run.
+#
+# PREREQUISITES (checked at runtime, never assumed):
+#   * beam-datasets/splits/dataset_<dataset_version>_*.jsonl exist
+#   * the dataset metadata carries a label schema (or set `labels` below)
+#   * model weights downloadable / present in the HF cache
+#
+# This config is NOT executed automatically. Start training explicitly:
+#   python -m beam_ai.training --config beam-ai/configs/train_distilbert.yaml
+
+model_name: distilbert-base-uncased
+model_type: distilbert
+model_init: pretrained
+
+# Data ------------------------------------------------------------------
+# v001 is currently UNLABELED; training will refuse to start until a
+# labeled dataset version exists. Leave labels null to consume the
+# metadata label schema, or list explicit labels here once annotation
+# lands.
+dataset_version: v001
+labels: null          # e.g. [joy, sadness, anger, fear, neutral]
+text_column: cleaned_text
+label_column: label
+
+# Optimization ----------------------------------------------------------
+learning_rate: 2.0e-05
+batch_size: 16
+epochs: 3
+max_sequence_length: 128
+random_seed: 42
+warmup_ratio: 0.1
+weight_decay: 0.01
+
+# Class imbalance — keep off until the class distribution justifies it.
+class_weighting: none        # none | balanced
+sampling_strategy: none      # none | inverse_frequency
+
+# Output / runtime ------------------------------------------------------
+device: auto                 # auto | cpu | cuda

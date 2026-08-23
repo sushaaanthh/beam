@@ -123,7 +123,7 @@ export function LandingPage() {
                 B.E.A.M.
               </h1>
               <p className="max-w-xl font-display text-xl font-normal normal-case leading-snug tracking-wide text-mist sm:text-2xl">
-                Understand emotional behavior through transformer intelligence.
+                A Deep Learning Framework for Detecting Hedonic Emotional States via Eudaimonic Behavioral Analysis of Online Users.
               </p>
             </div>
 

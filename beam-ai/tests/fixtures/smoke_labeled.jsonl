@@ -1,0 +1,48 @@
+{"record_id": "smoke-0000", "cleaned_text": "I feel so happy today (variant 0)", "label": "joy"}
+{"record_id": "smoke-0001", "cleaned_text": "This is great news and I am glad (variant 1)", "label": "joy"}
+{"record_id": "smoke-0002", "cleaned_text": "Pure joy, love this moment (variant 2)", "label": "joy"}
+{"record_id": "smoke-0003", "cleaned_text": "Feeling happy and grateful right now (variant 3)", "label": "joy"}
+{"record_id": "smoke-0004", "cleaned_text": "I feel so happy today (variant 4)", "label": "joy"}
+{"record_id": "smoke-0005", "cleaned_text": "This is great news and I am glad (variant 5)", "label": "joy"}
+{"record_id": "smoke-0006", "cleaned_text": "Pure joy, love this moment (variant 6)", "label": "joy"}
+{"record_id": "smoke-0007", "cleaned_text": "Feeling happy and grateful right now (variant 7)", "label": "joy"}
+{"record_id": "smoke-0008", "cleaned_text": "I feel so happy today (variant 8)", "label": "joy"}
+{"record_id": "smoke-0009", "cleaned_text": "This is great news and I am glad (variant 9)", "label": "joy"}
+{"record_id": "smoke-0010", "cleaned_text": "Pure joy, love this moment (variant 10)", "label": "joy"}
+{"record_id": "smoke-0011", "cleaned_text": "Feeling happy and grateful right now (variant 11)", "label": "joy"}
+{"record_id": "smoke-0012", "cleaned_text": "I feel sad and down today (variant 0)", "label": "sadness"}
+{"record_id": "smoke-0013", "cleaned_text": "This is terrible, I am so sad (variant 1)", "label": "sadness"}
+{"record_id": "smoke-0014", "cleaned_text": "Feeling down about the bad news (variant 2)", "label": "sadness"}
+{"record_id": "smoke-0015", "cleaned_text": "My heart is heavy and sad (variant 3)", "label": "sadness"}
+{"record_id": "smoke-0016", "cleaned_text": "I feel sad and down today (variant 4)", "label": "sadness"}
+{"record_id": "smoke-0017", "cleaned_text": "This is terrible, I am so sad (variant 5)", "label": "sadness"}
+{"record_id": "smoke-0018", "cleaned_text": "Feeling down about the bad news (variant 6)", "label": "sadness"}
+{"record_id": "smoke-0019", "cleaned_text": "My heart is heavy and sad (variant 7)", "label": "sadness"}
+{"record_id": "smoke-0020", "cleaned_text": "I feel sad and down today (variant 8)", "label": "sadness"}
+{"record_id": "smoke-0021", "cleaned_text": "This is terrible, I am so sad (variant 9)", "label": "sadness"}
+{"record_id": "smoke-0022", "cleaned_text": "Feeling down about the bad news (variant 10)", "label": "sadness"}
+{"record_id": "smoke-0023", "cleaned_text": "My heart is heavy and sad (variant 11)", "label": "sadness"}
+{"record_id": "smoke-0024", "cleaned_text": "I am so angry about this mess (variant 0)", "label": "anger"}
+{"record_id": "smoke-0025", "cleaned_text": "This makes me furious and mad (variant 1)", "label": "anger"}
+{"record_id": "smoke-0026", "cleaned_text": "I hate how this turned out (variant 2)", "label": "anger"}
+{"record_id": "smoke-0027", "cleaned_text": "Absolutely angry at the outcome (variant 3)", "label": "anger"}
+{"record_id": "smoke-0028", "cleaned_text": "I am so angry about this mess (variant 4)", "label": "anger"}
+{"record_id": "smoke-0029", "cleaned_text": "This makes me furious and mad (variant 5)", "label": "anger"}
+{"record_id": "smoke-0030", "cleaned_text": "I hate how this turned out (variant 6)", "label": "anger"}
+{"record_id": "smoke-0031", "cleaned_text": "Absolutely angry at the outcome (variant 7)", "label": "anger"}
+{"record_id": "smoke-0032", "cleaned_text": "I am so angry about this mess (variant 8)", "label": "anger"}
+{"record_id": "smoke-0033", "cleaned_text": "This makes me furious and mad (variant 9)", "label": "anger"}
+{"record_id": "smoke-0034", "cleaned_text": "I hate how this turned out (variant 10)", "label": "anger"}
+{"record_id": "smoke-0035", "cleaned_text": "Absolutely angry at the outcome (variant 11)", "label": "anger"}
+{"record_id": "smoke-0036", "cleaned_text": "The report is on the desk (variant 0)", "label": "neutral"}
+{"record_id": "smoke-0037", "cleaned_text": "Meeting scheduled for tomorrow noon (variant 1)", "label": "neutral"}
+{"record_id": "smoke-0038", "cleaned_text": "Please review the attached file (variant 2)", "label": "neutral"}
+{"record_id": "smoke-0039", "cleaned_text": "The train arrives at six (variant 3)", "label": "neutral"}
+{"record_id": "smoke-0040", "cleaned_text": "The report is on the desk (variant 4)", "label": "neutral"}
+{"record_id": "smoke-0041", "cleaned_text": "Meeting scheduled for tomorrow noon (variant 5)", "label": "neutral"}
+{"record_id": "smoke-0042", "cleaned_text": "Please review the attached file (variant 6)", "label": "neutral"}
+{"record_id": "smoke-0043", "cleaned_text": "The train arrives at six (variant 7)", "label": "neutral"}
+{"record_id": "smoke-0044", "cleaned_text": "The report is on the desk (variant 8)", "label": "neutral"}
+{"record_id": "smoke-0045", "cleaned_text": "Meeting scheduled for tomorrow noon (variant 9)", "label": "neutral"}
+{"record_id": "smoke-0046", "cleaned_text": "Please review the attached file (variant 10)", "label": "neutral"}
+{"record_id": "smoke-0047", "cleaned_text": "The train arrives at six (variant 11)", "label": "neutral"}

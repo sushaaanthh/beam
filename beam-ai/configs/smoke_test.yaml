@@ -1,0 +1,36 @@
+# B.E.A.M. SMOKE TEST configuration.
+#
+# Verifies the full plumbing (config -> data -> labels -> tokenizer ->
+# factory -> one batch through the model) in seconds on CPU with NO
+# network access and NO trained weights:
+#   * tiny_random builds a small randomly-initialised DistilBERT locally;
+#   * the fixture JSONL is clearly synthetic and used only to prove that
+#     data/labels/tokenization wire together.
+#
+# It does NOT train a real model and produces NO performance numbers.
+
+model_name: tiny-distilbert-smoke
+model_type: distilbert
+model_init: tiny_random
+
+dataset_version: smoke
+split_files:
+  train: ../tests/fixtures/smoke_labeled.jsonl
+  validation: ../tests/fixtures/smoke_labeled.jsonl
+  test: ../tests/fixtures/smoke_labeled.jsonl
+labels: [joy, sadness, anger, neutral]
+text_column: cleaned_text
+label_column: label
+
+learning_rate: 5.0e-04
+batch_size: 4
+epochs: 1
+max_sequence_length: 32
+random_seed: 42
+warmup_ratio: 0.2
+weight_decay: 0.0
+
+class_weighting: none
+sampling_strategy: none
+
+device: cpu

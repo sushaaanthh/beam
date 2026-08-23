@@ -1,24 +1,37 @@
-# B.E.A.M. AI — dataset preparation & future modeling
+# B.E.A.M. AI — dataset preparation, training & inference
+#
+# The dataset pipeline (python -m beam_ai.dataset_pipeline) itself only
+# needs the standard library plus pydantic/pyyaml. Everything below
+# enables training/inference infrastructure; optional backends degrade
+# gracefully when absent.
 
-# Core dataset pipeline (python -m beam_ai.dataset_pipeline) uses ONLY the
-# Python standard library. The extras below enable optional feature backends;
-# the pipeline detects their presence at runtime and degrades gracefully.
+# --- shared configuration ---
+pydantic>=2.6
+pydantic-settings>=2.1
+PyYAML>=6.0
 
-# Language detection (allowlist filtering)
-langdetect>=1.0.9
+# --- dataset pipeline extras ---
+langdetect>=1.0.9          # language filtering (optional; degrades to 'off')
+vaderSentiment>=3.3.2      # auxiliary lexical sentiment features (NOT labels)
 
-# Auxiliary lexical sentiment features (NOT emotion labels)
-vaderSentiment>=3.3.2
+# --- ML stack: training / evaluation / inference ---
+torch>=2.2                 # CPU wheels are sufficient: pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers>=4.40         # tested with 5.x; BERT / RoBERTa / DistilBERT via Auto classes
+tokenizers>=0.15           # installed with transformers
+numpy>=1.26
+pandas>=2.0                # analysis notebooks / metric tables
+scikit-learn>=1.4          # evaluation metrics
 
-# Optional deeper NLP features (POS distribution, entity counts).
-# After installing spaCy you must also download a model, e.g.:
+# --- optional deeper NLP features (dataset pipeline) ---
+# After installing spaCy also download a model:
 #   python -m spacy download en_core_web_sm
-spacy>=3.7.0
+spacy>=3.7
 
-# Future training stack (NOT required by the dataset pipeline):
-# torch>=2.1
-# transformers>=4.37
-# scikit-learn>=1.4
+# --- experiment tracking ---
+# A lightweight internal JSONL tracker ships with the package
+# (beam_ai.training.tracker). If you later prefer MLflow, install it and
+# swap the tracker implementation - call sites stay unchanged.
+# mlflow>=2.10
 
-# Development
+# --- development ---
 pytest>=8.0
