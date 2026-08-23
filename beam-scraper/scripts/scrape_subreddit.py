@@ -131,11 +131,11 @@ def run(args: argparse.Namespace) -> int:
             continue
 
         print(
-            f"[r/{summary.subreddit}] posts stored={summary.posts_stored} "
-            f"updated={summary.posts_updated} duplicates={summary.duplicates} "
-            f"comments stored={summary.comments_stored} "
+            f"[r/{summary.subreddit}] posts discovered={summary.posts_discovered} "
+            f"inserted={summary.posts_inserted} updated={summary.posts_updated} "
+            f"duplicates={summary.duplicates} comments inserted={summary.comments_inserted} "
             f"errors={len(summary.parse_errors) + len(summary.storage_errors)} "
-            f"duration={summary.duration_seconds}s"
+            f"status={summary.status} duration={summary.duration_seconds}s"
         )
 
     return exit_code

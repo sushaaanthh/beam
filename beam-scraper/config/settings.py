@@ -48,6 +48,12 @@ class Settings(BaseSettings):
     BACKOFF_BASE_SECONDS: float = Field(default=2.0, gt=0)
     LOG_LEVEL: str = "INFO"
 
+    # --- Privacy ----------------------------------------------------------------
+    # Salt for pseudonymizing author handles. Changing it re-anonymizes all
+    # authors (existing rows keep their stored pseudonym). Not a secret in the
+    # security sense - it prevents trivial reversal of short handles only.
+    AUTHOR_HASH_SALT: str = "beam-scraper-author-v1"
+
     @field_validator("REDDIT_USER_AGENT")
     @classmethod
     def _user_agent_not_blank(cls, value: str) -> str:

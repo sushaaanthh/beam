@@ -55,7 +55,8 @@ Defaults come from environment variables (`SUBREDDITS`, `POST_LIMIT`,
 `COMMENT_LIMIT`, `SCRAPE_SORT`, `TIME_FILTER`, `INCLUDE_COMMENTS`) so any
 subreddit list can be configured without code changes.
 
-Exports are written to `../beam-datasets/exports/` by default.
+Exports are written to `../beam-datasets/raw/` by default (timestamped
+filenames, read-only against the database).
 
 ## Architecture
 
@@ -110,12 +111,18 @@ Credentials never appear in logs.
 Collected **only**: post/comment text and public metadata needed for the
 dataset (ids, subreddit, timestamps, scores, ratios, flags, permalinks).
 
+**Authors are anonymized, not stored.** The public handle is replaced at
+parse time by a deterministic salted pseudonym (HMAC-SHA256, first 16 hex
+chars; salt via `AUTHOR_HASH_SALT`). This preserves within-dataset
+capabilities (deduplication, per-author thread integrity) while making the
+original handle unrecoverable from the stored value alone. Deleted or
+suspended authors are stored as NULL.
+
 Never collected: emails, real names, profile descriptions, private
 messages, follower/friend graphs, location, or any private account
-information. Author fields keep the pseudonymous public handle only where
-Reddit exposes it and become NULL when deleted. Deleted/removed content
-is preserved *as a status flag* rather than silently dropped, which keeps
-the dataset honest about what was visible at collection time.
+information. Deleted/removed content is preserved *as a status flag*
+rather than silently dropped, which keeps the dataset honest about what
+was visible at collection time.
 
 ## Testing
 

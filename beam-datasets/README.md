@@ -26,7 +26,7 @@ Two tables back every export, written by the Reddit ingestion pipeline:
 | `title` | text | Post title as displayed |
 | `body` | text, nullable | Self-text; NULL when unavailable (see body_status) |
 | `body_status` | enum | `available` / `removed` / `deleted` / `empty` |
-| `author` | string, nullable | Pseudonymous public handle; NULL if deleted/suspended |
+| `author` | string, nullable | **Anonymized** author pseudonym (HMAC-SHA256, salted, 16 hex chars). Raw handles are never persisted. NULL if deleted/suspended |
 | `created_utc` | timestamptz | Post creation time (UTC) |
 | `score` | int | Net score at retrieval time |
 | `upvote_ratio` | float | 0–1 ratio at retrieval time |
@@ -101,7 +101,8 @@ backoff on transient failures; strictly sequential requests.
 * Only publicly accessible content is collected, via the official API.
 * The dataset is used for emotion-expression research on *text*, never to
   profile, identify, or contact individual users.
-* Author handles are pseudonymous and retained solely for deduplication
+* Author handles are never stored — only salted pseudonyms, retained
+  solely for deduplication
   and thread integrity; they must not be published in derived corpora.
 * Deleted/removed content is recorded as a status, respecting user
   deletion intent; original text is never recoverable or guessed.
@@ -115,7 +116,9 @@ backoff on transient failures; strictly sequential requests.
 2. Deduplicate near-duplicate crossposts manually (Reddit IDs handle
    exact duplicates already).
 3. Normalize whitespace/encoding; consider markdown stripping.
-4. Remove bot-generated content (e.g. authors ending in `bot`) as needed.
+4. Remove bot-generated content as needed (bot pseudonyms cannot be
+   detected by name suffix anymore — filter by repeated low-effort bodies
+   or known subreddit bot lists instead).
 5. Re-check `stickied` moderation posts before including in analysis.
 6. Split train/validation/test by `reddit_post_id` hash to avoid leakage
    across comments of one thread.

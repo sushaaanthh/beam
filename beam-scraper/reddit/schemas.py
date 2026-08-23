@@ -8,18 +8,24 @@ production, mocks in tests) and receive validated records or a raised
 Content policy:
 * `[removed]`, `[deleted]` and empty bodies are flagged via `body_status`
   and stored as NULL text — never silently discarded.
-* Author names are pseudonymous public handles kept only where Reddit
-  itself exposes them; deleted authors become NULL.
+* Author handles are NEVER persisted. They are replaced by a deterministic
+  salted pseudonym (`pseudonymize_author`) so within-dataset joins remain
+  possible while the original handle stays unrecoverable from the stored
+  value alone. Deleted/suspended authors become NULL.
 """
 
 from __future__ import annotations
 
+import hashlib
+import hmac
 from datetime import datetime, timezone
 from enum import Enum
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 REMOVED_MARKERS = {"[removed]", "[deleted]"}
+
+_DEFAULT_SALT = "beam-scraper-author-v1"
 
 
 class BodyStatus(str, Enum):
@@ -60,6 +66,25 @@ def classify_body(raw_body: object) -> tuple[str | None, BodyStatus]:
 def clean_author(raw_author: object) -> str | None:
     """Deleted/suspended authors arrive as '[deleted]' or None."""
     return _clean_text(raw_author)
+
+
+def pseudonymize_author(handle: str | None) -> str | None:
+    """Map an author handle to a stable anonymous identifier.
+
+    The raw handle never leaves this function. The salt comes from settings
+    (AUTHOR_HASH_SALT) with a stable fallback; changing the salt re-anonymizes
+    future collections but does not affect already-stored rows.
+    """
+    if not handle:
+        return None
+    try:
+        from config.settings import get_settings
+
+        salt = get_settings().AUTHOR_HASH_SALT
+    except Exception:  # pragma: no cover - settings always available in practice
+        salt = _DEFAULT_SALT
+    digest = hmac.new(salt.encode("utf-8"), handle.encode("utf-8"), hashlib.sha256)
+    return digest.hexdigest()[:16]
 
 
 class PostRecord(BaseModel):
@@ -143,7 +168,7 @@ def parse_submission(submission: object, retrieved_at: datetime | None = None) -
         title=str(title),
         body=body,
         body_status=body_status,
-        author=clean_author(getattr(submission, "author", None)),
+        author=pseudonymize_author(clean_author(getattr(submission, "author", None))),
         created_utc=datetime.fromtimestamp(float(created), tz=timezone.utc),
         score=int(getattr(submission, "score", 0) or 0),
         upvote_ratio=float(getattr(submission, "upvote_ratio", 0.0) or 0.0),
@@ -185,7 +210,7 @@ def parse_comment(
         subreddit=subreddit,
         body=body,
         body_status=body_status,
-        author=clean_author(getattr(comment, "author", None)),
+        author=pseudonymize_author(clean_author(getattr(comment, "author", None))),
         parent_id=parent_id,
         depth=max(0, int(depth)),
         created_utc=datetime.fromtimestamp(float(created), tz=timezone.utc),

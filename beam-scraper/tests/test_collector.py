@@ -111,7 +111,7 @@ class TestSubredditCollection:
             subreddit="AskReddit", limit=10, sort="new", include_comments=False
         )
 
-        assert summary.posts_stored == 2
+        assert summary.posts_inserted == 2
         assert summary.duplicates == 0
         assert summary.parse_errors == []
         assert summary.duration_seconds >= 0
@@ -125,7 +125,7 @@ class TestSubredditCollection:
 
         summary = collector.collect_subreddit(subreddit="AskReddit", limit=10)
 
-        assert summary.posts_stored == 1  # healthy record survived
+        assert summary.posts_inserted == 1  # healthy record survived
         assert len(summary.parse_errors) >= 1
 
     def test_duplicates_counted_not_reinserted(self, storage: Storage) -> None:
@@ -139,7 +139,7 @@ class TestSubredditCollection:
             subreddit="AskReddit", limit=10, include_comments=False
         )
 
-        assert summary.posts_stored == 1
+        assert summary.posts_inserted == 1
         assert summary.posts_updated == 1
         assert summary.duplicates == 1
 
@@ -159,7 +159,7 @@ class TestSubredditCollection:
             posts = list(session.scalars(select(RedditPost)))
             comments = {c.reddit_comment_id: c for c in session.scalars(select(RedditComment))}
 
-        assert summary.posts_stored == 1
+        assert summary.posts_inserted == 1
         assert set(comments) == {"c1", "c2"}
         assert comments["c1"].depth == 0
         assert comments["c2"].depth == 1
@@ -177,7 +177,7 @@ class TestSubredditCollection:
             comments = list(session.scalars(select(RedditComment)))
 
         assert stored_post.reddit_post_id == "xyz"
-        assert summary.comments_stored == 1
+        assert summary.comments_inserted == 1
         assert comments[0].post_id == "xyz"
 
     def test_top_sort_passes_time_filter(self, storage: Storage) -> None:
@@ -200,4 +200,4 @@ class TestSubredditCollection:
         )
 
         assert received["time_filter"] == "week"
-        assert summary.posts_stored == 1
+        assert summary.posts_inserted == 1

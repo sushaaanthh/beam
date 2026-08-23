@@ -113,10 +113,10 @@ def run(args: argparse.Namespace) -> int:
     )
 
     print(
-        f"[r/{summary.subreddit}] post {post_id}: stored={summary.posts_stored} "
-        f"duplicates={summary.duplicates} comments stored={summary.comments_stored} "
+        f"[r/{summary.subreddit}] post {post_id}: inserted={summary.posts_inserted} "
+        f"duplicates={summary.duplicates} comments inserted={summary.comments_inserted} "
         f"errors={len(summary.parse_errors) + len(summary.storage_errors)} "
-        f"duration={summary.duration_seconds}s"
+        f"status={summary.status} duration={summary.duration_seconds}s"
     )
     return 0
 

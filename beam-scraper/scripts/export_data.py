@@ -24,7 +24,7 @@ from config.settings import get_settings  # noqa: E402
 from reddit.models import RedditComment, RedditPost  # noqa: E402
 from reddit.storage import Storage  # noqa: E402
 
-DEFAULT_EXPORT_DIR = Path(__file__).resolve().parents[2] / "beam-datasets" / "exports"
+DEFAULT_EXPORT_DIR = Path(__file__).resolve().parents[2] / "beam-datasets" / "raw"
 
 POST_FIELDS = [
     "reddit_post_id",
@@ -73,7 +73,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--comments", action="store_true", help="export comments instead of posts")
     parser.add_argument("--subreddit", default=None, help="restrict export to one subreddit")
     parser.add_argument("--limit", type=int, default=None, help="maximum rows to export")
-    parser.add_argument("--out", default=None, help="output file path (default: timestamped file in beam-datasets/exports)")
+    parser.add_argument("--out", default=None, help="output file path (default: timestamped file in beam-datasets/raw)")
     return parser
 
 
