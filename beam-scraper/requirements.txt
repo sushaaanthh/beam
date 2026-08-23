@@ -1,2 +1,10 @@
-# Placeholder requirements for the future Reddit scraping service.
-# This file stays intentionally minimal until the scraper is implemented.
+# B.E.A.M. Reddit data ingestion pipeline
+# Python 3.11+
+praw==7.8.1
+SQLAlchemy==2.0.25
+pydantic==2.6.1
+pydantic-settings==2.1.0
+python-dotenv==1.0.1
+
+# Development / testing
+pytest==8.0.0
