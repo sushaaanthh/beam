@@ -242,15 +242,16 @@ export function AnalysisPage() {
     setIsJournalAnalyzing(true)
 
     try {
-      const res = await beamApi.createJournal({
+      const res: any = await beamApi.createJournal({
         title: journalTitle || 'Daily Reflection',
         content: journalContent,
         mood_emoji: selectedMood,
         model_name: 'RoBERTa-v1.2',
       })
-      if (res.data) {
-        setJournalResult(res.data)
-        loadPastJournals()
+      const journalData = res?.data ?? res
+      if (journalData) {
+        setJournalResult(journalData)
+        await loadPastJournals()
       }
     } catch {
       // Fallback calculation

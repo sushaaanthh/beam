@@ -34,4 +34,14 @@ class User(Base):
         cascade="all, delete-orphan",
         passive_deletes=True,
     )
+    journals: Mapped[list["Journal"]] = relationship(
+        back_populates="user",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+    reddit_caches: Mapped[list["RedditCache"]] = relationship(
+        back_populates="user",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
     audit_logs: Mapped[list["AuditLog"]] = relationship(back_populates="user")

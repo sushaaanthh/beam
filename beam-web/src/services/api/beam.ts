@@ -106,6 +106,10 @@ export interface RedditAnalysisResult {
     trigger_words: string[]
   }[]
   timeline_vector: { index: number; emotion: string; valence: number }[]
+  cached?: boolean
+  cache_updated_at?: string
+  cache_age_seconds?: number
+  is_fresh?: boolean
 }
 
 export interface DashboardSummary {
@@ -199,9 +203,14 @@ export const beamApi = {
     return res.data
   },
 
-  // Priority 4: Social Media & Reddit
-  analyzeReddit: async (payload: { identifier: string; source_type?: string; max_items?: number }): Promise<{ status: string; data: RedditAnalysisResult }> => {
+  analyzeReddit: async (payload: { identifier: string; source_type?: string; max_items?: number; force_refresh?: boolean }): Promise<{ status: string; data: RedditAnalysisResult }> => {
     const res = await apiClient.post('/social/reddit', payload)
+    return res.data
+  },
+  getCachedReddit: async (identifier: string, source_type?: string): Promise<{ status: string; has_cache: boolean; data: RedditAnalysisResult | null }> => {
+    const res = await apiClient.get('/social/reddit/cached', {
+      params: { identifier, source_type: source_type || 'username' }
+    })
     return res.data
   },
   getBenchmarks: async () => {

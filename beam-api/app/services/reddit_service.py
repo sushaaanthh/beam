@@ -4,9 +4,17 @@ import httpx
 import logging
 from typing import Any
 from collections import Counter
+from datetime import datetime, timezone, timedelta
+from uuid import UUID
+
+from app.database.session import SessionLocal
+from app.models.reddit_cache import RedditCache
 from app.services.emotion_service import analyze_emotion
 
 logger = logging.getLogger(__name__)
+
+# Cache freshness duration: 1 day (24 hours)
+CACHE_TTL = timedelta(days=1)
 
 # Sample realistic public Reddit corpora for immediate live testing
 PRESET_REDDIT_DEMOS = {
@@ -16,6 +24,13 @@ PRESET_REDDIT_DEMOS = {
         "Spent 4 hours debugging CUDA memory allocation crash before realizing it was an off-by-one tensor indexing bug.",
         "Excited to start my summer machine learning internship next month!",
         "Feeling exhausted after exam week, planning to take a complete rest day on Saturday."
+    ],
+    "r/pondicherry": [
+        "Singapore like Governance. When Monthly preventive maintaince are done how will sudden tehnical issue occurs? Well may be this is what Singapore Governance looks like.",
+        "The promenade beach road looks vibrant in the evenings with light breeze and cultural stalls.",
+        "Heritage buildings along White Town need better conservation guidelines to retain Franco-Tamil architecture.",
+        "Exploring cafes near Goubert Avenue. Great coffee and relaxed seaside ambiance.",
+        "Auroville road repairs completed recently, making the commute much smoother."
     ],
     "r/learnmachinelearning": [
         "Can someone explain the mathematical intuition behind multi-head attention vs self-attention in transformers?",
@@ -28,8 +43,107 @@ PRESET_REDDIT_DEMOS = {
         "Burnt out from continuous ad-hoc stakeholder requests without clear metric definitions.",
         "Benchmarking Polars against Pandas 2.0 showed 5x faster ingestion on 50GB parquet datasets.",
         "Navigating company restructuring has been stressful, but looking forward to upcoming projects."
+    ],
+    "r/mentalhealth": [
+        "Taking time to step back from screens and taking daily walks has significantly reduced my anxiety levels.",
+        "Grateful for having friends who listen without judging when things get overwhelming.",
+        "Small reminder that healing isn't linear, celebrating the minor milestones every day.",
+        "Journaling every morning has given me clarity on what triggers my stress."
     ]
 }
+
+
+def _safe_parse_uuid(val: str | None) -> UUID | None:
+    if not val or val == "default":
+        return None
+    try:
+        return UUID(str(val))
+    except (ValueError, TypeError):
+        return None
+
+
+def get_cached_reddit_analysis(
+    identifier: str,
+    source_type: str = "username",
+    user_id: str = "default",
+    max_age: timedelta = CACHE_TTL
+) -> dict[str, Any] | None:
+    """
+    Retrieves cached Reddit analysis for a specific user and Reddit source
+    if cached within max_age (defaults to 1 day).
+    """
+    cleaned_id = identifier.strip().lstrip("u/").lstrip("r/").strip().lower()
+    cache_key = f"{user_id}:{source_type}:{cleaned_id}"
+    parsed_uuid = _safe_parse_uuid(user_id)
+
+    try:
+        with SessionLocal() as db:
+            query = db.query(RedditCache).filter(RedditCache.id == cache_key)
+            if parsed_uuid:
+                query = query.filter(RedditCache.user_id == parsed_uuid)
+            record = query.first()
+
+            if record and record.data:
+                now = datetime.now(timezone.utc)
+                record_updated = record.updated_at
+                if record_updated.tzinfo is None:
+                    record_updated = record_updated.replace(tzinfo=timezone.utc)
+
+                age = now - record_updated
+                is_fresh = age < max_age
+
+                result_data = dict(record.data)
+                result_data["cached"] = True
+                result_data["cache_updated_at"] = record_updated.isoformat()
+                result_data["cache_age_seconds"] = int(age.total_seconds())
+                result_data["is_fresh"] = is_fresh
+
+                if is_fresh:
+                    return result_data
+    except Exception as e:
+        logger.error(f"Error querying Reddit cache: {e}")
+
+    return None
+
+
+def save_cached_reddit_analysis(
+    identifier: str,
+    source_type: str,
+    data: dict[str, Any],
+    user_id: str = "default"
+) -> None:
+    """
+    Saves or updates cached Reddit analysis in the database for the account.
+    """
+    cleaned_id = identifier.strip().lstrip("u/").lstrip("r/").strip().lower()
+    cache_key = f"{user_id}:{source_type}:{cleaned_id}"
+    parsed_uuid = _safe_parse_uuid(user_id)
+    now = datetime.now(timezone.utc)
+
+    # Avoid storing redundant cache flags inside raw data JSON
+    data_to_store = {k: v for k, v in data.items() if k not in {"cached", "cache_updated_at", "cache_age_seconds", "is_fresh"}}
+
+    try:
+        with SessionLocal() as db:
+            record = db.query(RedditCache).filter(RedditCache.id == cache_key).first()
+            if record:
+                record.data = data_to_store
+                record.updated_at = now
+            else:
+                record = RedditCache(
+                    id=cache_key,
+                    user_id=parsed_uuid,
+                    identifier=cleaned_id,
+                    source_type=source_type,
+                    data=data_to_store,
+                    updated_at=now,
+                    created_at=now,
+                )
+                db.add(record)
+            db.commit()
+    except Exception as e:
+        logger.error(f"Error saving Reddit cache: {e}")
+
 
 async def fetch_live_reddit_posts(identifier: str, source_type: str = "subreddit", max_items: int = 5) -> list[str]:
     """
@@ -109,29 +223,45 @@ async def fetch_live_reddit_posts(identifier: str, source_type: str = "subreddit
 
     return collected[:max_items]
 
+
 async def analyze_reddit_source(
     identifier: str,
     source_type: str = "username",  # 'username' or 'subreddit'
-    max_items: int = 5
+    max_items: int = 5,
+    user_id: str = "default",
+    force_refresh: bool = False
 ) -> dict[str, Any]:
     """
     Fetches real live posts from the requested Reddit source,
     runs RoBERTa transformer emotion inference on each post, and generates
     affective distribution, longitudinal timeline, and keyword attribution.
+
+    Automatically checks and caches results per user account for 1 day.
+    If cached within 1 day and force_refresh is False, returns the cached analysis.
     """
     cleaned_id = identifier.strip().lstrip("u/").lstrip("r/").strip()
-    
+
+    # Check cache first if not explicitly forcing fresh recomputation
+    if not force_refresh:
+        cached = get_cached_reddit_analysis(
+            identifier=cleaned_id,
+            source_type=source_type,
+            user_id=user_id,
+            max_age=CACHE_TTL
+        )
+        if cached:
+            return cached
+
     # 1. Fetch live posts
     posts_text = await fetch_live_reddit_posts(cleaned_id, source_type=source_type, max_items=max_items)
 
-    # If no live posts retrieved, check if it was one of the verified explicit presets, otherwise return empty results
+    # If no live posts retrieved, check if it was one of the verified explicit presets
     if not posts_text:
         key = f"r/{cleaned_id}" if source_type == "subreddit" else f"u/{cleaned_id}"
         if key in PRESET_REDDIT_DEMOS:
             posts_text = PRESET_REDDIT_DEMOS[key]
         else:
-            # Genuine empty/not found source: return empty state without mixing unrelated demo data
-            return {
+            empty_result = {
                 "source": f"u/{cleaned_id}" if source_type == "username" else f"r/{cleaned_id}",
                 "source_type": source_type,
                 "total_posts_analyzed": 0,
@@ -141,8 +271,12 @@ async def analyze_reddit_source(
                 "top_keywords": [],
                 "analyzed_posts": [],
                 "timeline_vector": [],
-                "message": f"No public submissions found for {source_type} '{cleaned_id}'."
+                "message": f"No public submissions found for {source_type} '{cleaned_id}'.",
+                "cached": False,
+                "cache_updated_at": datetime.now(timezone.utc).isoformat(),
             }
+            save_cached_reddit_analysis(cleaned_id, source_type, empty_result, user_id=user_id)
+            return empty_result
 
     # 2. Run batch RoBERTa emotion analysis across all collected posts
     analyzed_items = []
@@ -178,7 +312,7 @@ async def analyze_reddit_source(
     avg_valence = round(sum(item["valence"] for item in analyzed_items) / max(total, 1), 2)
     top_keywords = [w for w, _ in Counter(all_keywords).most_common(10)]
 
-    return {
+    computed_result = {
         "source": f"u/{cleaned_id}" if source_type == "username" else f"r/{cleaned_id}",
         "source_type": source_type,
         "total_posts_analyzed": total,
@@ -190,5 +324,12 @@ async def analyze_reddit_source(
         "timeline_vector": [
             {"index": i + 1, "emotion": item["primary_emotion"], "valence": item["valence"]}
             for i, item in enumerate(analyzed_items)
-        ]
+        ],
+        "cached": False,
+        "cache_updated_at": datetime.now(timezone.utc).isoformat(),
     }
+
+    # Store in cache for 1 day
+    save_cached_reddit_analysis(cleaned_id, source_type, computed_result, user_id=user_id)
+
+    return computed_result

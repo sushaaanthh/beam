@@ -60,3 +60,14 @@ class RefreshTokenRequest(BaseModel):
 
 class LogoutRequest(BaseModel):
     refresh_token: str | None = None
+
+
+class SendOtpRequest(BaseModel):
+    identifier: str = Field(min_length=3, max_length=255)
+
+
+class PasswordResetRequest(BaseModel):
+    identifier: str = Field(min_length=3, max_length=255)
+    otp: str = Field(min_length=4, max_length=8)
+    new_password: str = Field(min_length=8, max_length=128)
+

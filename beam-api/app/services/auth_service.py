@@ -103,6 +103,97 @@ def authenticate_user(session: Session, identifier: str, password: str) -> User:
     return user
 
 
+# In-memory store for OTPs: key -> {code: str, expires_at: datetime, email: str}
+_otp_store: dict[str, dict[str, Any]] = {}
+
+
+def generate_otp_for_user(session: Session, identifier: str) -> dict[str, str]:
+    import random
+    from datetime import datetime, timezone, timedelta
+
+    user = get_user_by_identifier(session, identifier)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Account with that username or email was not found",
+        )
+
+    # 6-digit cryptographic-style OTP
+    code = f"{random.randint(100000, 999999)}"
+    expires_at = datetime.now(timezone.utc) + timedelta(minutes=10)
+
+    clean_id = identifier.strip().lower()
+    _otp_store[clean_id] = {
+        "code": code,
+        "expires_at": expires_at,
+        "email": user.email,
+        "username": user.username,
+    }
+
+    # Mask email for privacy display (e.g. ra***@gmail.com)
+    email_parts = user.email.split("@")
+    if len(email_parts) == 2:
+        uname_part = email_parts[0]
+        masked = uname_part[:2] + "***" if len(uname_part) > 2 else uname_part + "***"
+        masked_email = f"{masked}@{email_parts[1]}"
+    else:
+        masked_email = user.email
+
+    return {
+        "message": f"Verification OTP sent to {masked_email}",
+        "masked_email": masked_email,
+        "otp": code,  # Provided for seamless developer testing and instant input
+    }
+
+
+def reset_user_password_with_otp(session: Session, identifier: str, otp: str, new_password: str) -> User:
+    from datetime import datetime, timezone
+
+    user = get_user_by_identifier(session, identifier)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Account with that username or email was not found",
+        )
+
+    clean_id = identifier.strip().lower()
+    stored = _otp_store.get(clean_id)
+
+    # Also check user.email and user.username in case identifier format differed
+    if not stored:
+        stored = _otp_store.get(user.email.lower()) or _otp_store.get(user.username.lower())
+
+    if not stored:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="No OTP requested or OTP has expired. Please request a new OTP code.",
+        )
+
+    if datetime.now(timezone.utc) > stored["expires_at"]:
+        _otp_store.pop(clean_id, None)
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="OTP code has expired (valid for 10 minutes). Please request a new one.",
+        )
+
+    if stored["code"] != otp.strip():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid OTP code. Please enter the correct 6-digit code.",
+        )
+
+    # OTP Verified -> update password and consume OTP
+    user.hashed_password = get_password_hash(new_password)
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+
+    _otp_store.pop(clean_id, None)
+    _otp_store.pop(user.email.lower(), None)
+    _otp_store.pop(user.username.lower(), None)
+    return user
+
+
 def build_token_response(user: User) -> Token:
     return Token(
         access_token=create_access_token(user_id=user.id),

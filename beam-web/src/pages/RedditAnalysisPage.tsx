@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   MessageSquare,
   Sparkles,
@@ -10,6 +10,9 @@ import {
   Layers,
   CheckCircle2,
   AlertCircle,
+  Clock,
+  RotateCw,
+  Database,
 } from 'lucide-react'
 
 import { Button } from '../components/Button'
@@ -25,13 +28,37 @@ const presetSources = [
 ]
 
 export function RedditAnalysisPage() {
-  const [redditInput, setRedditInput] = useState('u/student_dev')
-  const [sourceType, setSourceType] = useState<'username' | 'subreddit'>('username')
+  const [redditInput, setRedditInput] = useState('r/pondicherry')
+  const [sourceType, setSourceType] = useState<'username' | 'subreddit'>('subreddit')
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [redditResult, setRedditResult] = useState<RedditAnalysisResult | null>(null)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
-  const handleAnalyzeReddit = async () => {
+  // Automatic Instant Cache Loader: when target account/subreddit changes,
+  // load cached analysis immediately so user never has to click button again and again!
+  useEffect(() => {
+    let isCancelled = false
+    const checkCache = async () => {
+      const clean = redditInput.trim()
+      if (!clean) return
+      try {
+        const cachedRes = await beamApi.getCachedReddit(clean, sourceType)
+        if (!isCancelled && cachedRes?.has_cache && cachedRes.data) {
+          setRedditResult(cachedRes.data)
+          setErrorMsg(null)
+        }
+      } catch {
+        // Fallback or ignore network latency
+      }
+    }
+
+    checkCache()
+    return () => {
+      isCancelled = true
+    }
+  }, [redditInput, sourceType])
+
+  const handleAnalyzeReddit = async (forceRefresh = false) => {
     if (!redditInput.trim() || isAnalyzing) return
     setIsAnalyzing(true)
     setErrorMsg(null)
@@ -41,11 +68,12 @@ export function RedditAnalysisPage() {
         identifier: redditInput.trim(),
         source_type: sourceType,
         max_items: 5,
+        force_refresh: forceRefresh,
       })
       if (res.data) {
         setRedditResult(res.data)
       }
-    } catch (err: any) {
+    } catch {
       setErrorMsg(`Failed to load posts for ${redditInput.trim()}. Please ensure the Reddit account/subreddit is public.`)
       setRedditResult(null)
     } finally {
@@ -73,6 +101,21 @@ export function RedditAnalysisPage() {
             Injest live Reddit submissions, comments, and community threads to compute longitudinal affective trajectories, sentiment valence, and keyword emotion attributions.
           </p>
         </div>
+
+        {/* 1-Day Auto Cache Status Badge */}
+        {redditResult && (
+          <div className="flex items-center gap-2 self-start md:self-auto bg-[#111111] border border-[#222222] px-3 py-1.5 rounded-lg text-xs font-mono">
+            <Database className="h-3.5 w-3.5 text-[#C7FF4A]" />
+            <span className="text-[#8E8E88]">
+              {redditResult.cached ? 'Loaded from 24h Cache' : 'Freshly Ingested & Cached'}
+            </span>
+            {redditResult.cache_updated_at && (
+              <span className="text-[10px] text-[#555550]">
+                • Synced: {new Date(redditResult.cache_updated_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Query Bar */}
@@ -94,7 +137,7 @@ export function RedditAnalysisPage() {
                   }}
                   className={`text-xs font-mono px-2 py-0.5 rounded border transition-colors ${
                     redditInput === preset.value
-                      ? 'border-[#FF4500] text-[#FF5722] bg-[#FF4500]/10'
+                      ? 'border-[#FF4500] text-[#FF5722] bg-[#FF4500]/10 font-bold'
                       : 'border-[#222222] text-[#73736F] hover:text-[#F5F5F0] hover:border-[#333333]'
                   }`}
                 >
@@ -142,16 +185,42 @@ export function RedditAnalysisPage() {
               />
             </div>
 
+            {/* Force Refresh / Sync Button */}
+            <Button
+              variant="outline"
+              size="md"
+              isLoading={isAnalyzing}
+              onClick={() => handleAnalyzeReddit(true)}
+              className="border-[#2E2E2E] hover:border-[#FF4500] text-[#8E8E88] hover:text-[#F5F5F0] whitespace-nowrap text-xs font-mono"
+              title="Force fetch new posts right now and update 24h cache"
+              leftIcon={<RotateCw className="h-3.5 w-3.5" />}
+            >
+              Sync Live
+            </Button>
+
             <Button
               variant="primary"
               size="md"
               isLoading={isAnalyzing}
-              onClick={handleAnalyzeReddit}
+              onClick={() => handleAnalyzeReddit(false)}
               className="bg-[#FF4500] hover:bg-[#FF5722] text-white whitespace-nowrap"
               rightIcon={<ArrowRight className="h-4 w-4" />}
             >
               Analyze Posts
             </Button>
+          </div>
+
+          {/* 1-day auto update notice */}
+          <div className="flex items-center justify-between text-[11px] font-mono text-[#555550] pt-1">
+            <span className="flex items-center gap-1.5">
+              <Clock className="h-3 w-3 text-[#FF5722]" />
+              Auto-cached per account • Updates automatically once every 24 hours
+            </span>
+            {redditResult?.cached && (
+              <span className="text-[#C7FF4A]">
+                ✓ Showing instant cached analysis
+              </span>
+            )}
           </div>
 
           {errorMsg && (
@@ -163,25 +232,25 @@ export function RedditAnalysisPage() {
         </div>
       </Card>
 
-      {/* Initial state placeholder */}
-      {!redditResult && !isAnalyzing && (
-        <Card variant="outline" padding="lg" className="border-dashed border-[#222222] text-center py-12">
+      {/* Empty State / Not Run Yet */}
+      {!redditResult && !isAnalyzing && !errorMsg && (
+        <Card variant="outline" padding="lg" className="border-[#222222] text-center py-12">
           <div className="max-w-md mx-auto space-y-3">
             <div className="h-12 w-12 rounded-full bg-[#FF4500]/10 border border-[#FF4500]/20 flex items-center justify-center mx-auto text-[#FF5722]">
               <MessageSquare className="h-6 w-6" />
             </div>
             <h3 className="font-display text-lg font-semibold text-[#F5F5F0]">Ready for Social Emotion Mining</h3>
             <p className="text-xs text-[#73736F] leading-relaxed">
-              Select a demo preset above or enter any public Reddit user / community to parse multi-class affective distributions, emotion trajectories, and keyword attributions.
+              Select a preset above or type any public Reddit account / community. Results are saved into your account and refreshed automatically once a day.
             </p>
             <div className="pt-2">
               <Button
                 variant="outline"
                 size="sm"
-                onClick={handleAnalyzeReddit}
+                onClick={() => handleAnalyzeReddit(false)}
                 className="border-[#333333] hover:border-[#FF4500] text-xs font-mono"
               >
-                Run Default Analysis (u/student_dev)
+                Run Analysis for {redditInput}
               </Button>
             </div>
           </div>
@@ -208,13 +277,20 @@ export function RedditAnalysisPage() {
           {/* Distribution & Key Stats (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <Card variant="elevated" padding="none" className="p-6 space-y-5 border-[#2A2A2A]">
-              <div className="border-b border-[#1C1C1C] pb-3">
-                <span className="text-[10px] font-mono text-[#FF5722] uppercase tracking-wider block">
-                  SOURCE: {redditResult.source}
-                </span>
-                <h3 className="font-display text-xl font-bold text-[#F5F5F0] mt-0.5">
-                  DOMINANT: {redditResult.dominant_emotion}
-                </h3>
+              <div className="border-b border-[#1C1C1C] pb-3 flex items-start justify-between">
+                <div>
+                  <span className="text-[10px] font-mono text-[#FF5722] uppercase tracking-wider block">
+                    SOURCE: {redditResult.source}
+                  </span>
+                  <h3 className="font-display text-xl font-bold text-[#F5F5F0] mt-0.5">
+                    DOMINANT: {redditResult.dominant_emotion}
+                  </h3>
+                </div>
+                {redditResult.cached && (
+                  <span className="px-2 py-0.5 text-[10px] font-mono rounded bg-[#1A1A1A] border border-[#2E2E2E] text-[#C7FF4A]">
+                    CACHED (24H)
+                  </span>
+                )}
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -249,11 +325,11 @@ export function RedditAnalysisPage() {
                           <span className="text-[10px] text-[#73736F]">#{idx + 1}</span>
                           {item.emotion}
                         </span>
-                        <span className="text-[#FF5722] font-bold">{item.percentage}%</span>
+                        <span className="text-[#8E8E88]">{item.percentage}%</span>
                       </div>
-                      <div className="h-1.5 w-full bg-[#1A1A1A] rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 rounded-full bg-[#1A1A1A] overflow-hidden">
                         <div
-                          className="h-full bg-[#FF4500] rounded-full transition-all duration-500"
+                          className="h-full bg-gradient-to-r from-[#FF4500] to-[#FF8C00] rounded-full transition-all duration-500"
                           style={{ width: `${item.percentage}%` }}
                         />
                       </div>
@@ -264,15 +340,15 @@ export function RedditAnalysisPage() {
 
               {/* Top Trigger Keywords */}
               {redditResult.top_keywords && redditResult.top_keywords.length > 0 && (
-                <div className="pt-2 border-t border-[#1C1C1C]">
-                  <span className="text-xs font-mono text-[#73736F] uppercase tracking-wider block mb-2">
-                    Key Attribution Terms
+                <div className="space-y-2 pt-2 border-t border-[#1C1C1C]">
+                  <span className="text-xs font-mono text-[#73736F] uppercase tracking-wider block">
+                    Salient Emotion Attribution Terms
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {redditResult.top_keywords.map((kw) => (
                       <span
                         key={kw}
-                        className="px-2 py-0.5 bg-[#141414] border border-[#222222] rounded text-[11px] font-mono text-[#D4D4D0]"
+                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#141414] border border-[#222222] text-[#E0E0DC]"
                       >
                         #{kw}
                       </span>
@@ -282,79 +358,73 @@ export function RedditAnalysisPage() {
               )}
             </Card>
 
-            {/* Longitudinal timeline trajectory */}
-            <Card variant="elevated" padding="none" className="p-6 border-[#2A2A2A] space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-[#73736F] uppercase tracking-wider">
-                  Longitudinal Valence Vector
-                </span>
-                <span className="text-[10px] font-mono text-[#C7FF4A]">Sequential Post Flow</span>
+            {/* Model Architecture Info */}
+            <Card variant="outline" padding="sm" className="border-[#222222] bg-[#0A0A0A] p-4 text-xs font-mono space-y-2">
+              <div className="flex items-center gap-2 text-[#FF5722]">
+                <Layers className="h-4 w-4" />
+                <span className="font-semibold uppercase">Inference Pipeline Specifications</span>
               </div>
-              <div className="flex items-center gap-2 pt-2">
-                {redditResult.timeline_vector.map((point) => (
-                  <div key={point.index} className="flex-1 flex flex-col items-center gap-1">
-                    <div className="h-20 w-full bg-[#0E0E0E] border border-[#1E1E1E] rounded flex items-end justify-center p-1 relative group">
-                      <div
-                        className={`w-full rounded-sm transition-all ${
-                          point.valence >= 0 ? 'bg-[#C7FF4A]' : 'bg-[#FF6B6B]'
-                        }`}
-                        style={{ height: `${Math.max(15, Math.abs(point.valence) * 100)}%` }}
-                      />
-                      <div className="absolute -top-7 hidden group-hover:block bg-[#1A1A1A] text-[9px] font-mono px-1.5 py-0.5 rounded border border-[#333333] whitespace-nowrap z-10 text-[#F5F5F0]">
-                        {point.emotion} ({point.valence > 0 ? `+${point.valence}` : point.valence})
-                      </div>
-                    </div>
-                    <span className="text-[9px] font-mono text-[#73736F]">P{point.index}</span>
-                  </div>
-                ))}
-              </div>
+              <p className="text-[11px] text-[#73736F] leading-relaxed">
+                Posts analyzed through RoBERTa-large with GoEmotions 27-class taxonomy. Affective representations are aggregated into dimensional valence scores [-1.0, +1.0] and stored per user account.
+              </p>
             </Card>
           </div>
 
-          {/* Granular Posts Stream (7 cols) */}
+          {/* Feed of Ingested Posts with Emotion Tagging (7 cols) */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="flex items-center justify-between px-1">
-              <span className="text-xs font-mono text-[#73736F] uppercase tracking-wider">
+            <div className="flex items-center justify-between pb-1">
+              <h3 className="font-display text-base font-semibold text-[#F5F5F0] flex items-center gap-2">
+                <Activity className="h-4 w-4 text-[#FF5722]" />
                 Post-by-Post Inference Feed ({redditResult.analyzed_posts.length})
+              </h3>
+              <span className="text-[11px] font-mono text-[#73736F]">
+                RoBERTa Classifier Active
               </span>
-              <span className="text-[10px] font-mono text-[#FF5722]">RoBERTa Classifier Active</span>
             </div>
 
             <div className="space-y-3">
               {redditResult.analyzed_posts.map((post) => (
-                <div
+                <Card
                   key={post.id}
-                  className="p-4 bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl hover:border-[#333333] transition-all space-y-3"
+                  variant="outline"
+                  padding="none"
+                  className="p-4 border-[#222222] bg-[#0A0A0A] hover:border-[#333333] transition-colors space-y-2.5"
                 >
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center justify-between gap-2 border-b border-[#1A1A1A] pb-2">
                     <span className="text-[10px] font-mono text-[#555550]">{post.id}</span>
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-0.5 bg-[#FF4500]/15 text-[#FF5722] border border-[#FF4500]/30 rounded text-[11px] font-mono font-medium">
-                        {post.primary_emotion}
-                      </span>
-                      <span className="text-[11px] font-mono text-[#C7FF4A]">{post.confidence}% conf</span>
-                    </div>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-[#FF4500]/10 text-[#FF5722] border border-[#FF4500]/20">
+                      {post.primary_emotion}
+                      <span className="text-[#8E8E88] ml-1">{post.confidence}% conf</span>
+                    </span>
                   </div>
 
-                  <p className="text-sm text-[#D4D4D0] leading-relaxed font-sans italic">
+                  <p className="text-xs text-[#E0E0DC] leading-relaxed italic">
                     "{post.text}"
                   </p>
 
-                  <div className="flex items-center justify-between pt-2 border-t border-[#141414] text-[10px] font-mono text-[#73736F]">
+                  <div className="flex items-center justify-between pt-1 text-[11px] font-mono text-[#73736F]">
                     <div className="flex items-center gap-2">
                       <span>Valence:</span>
-                      <span className={post.valence >= 0 ? 'text-[#C7FF4A]' : 'text-[#FF6B6B]'}>
+                      <strong className={post.valence >= 0 ? 'text-[#C7FF4A]' : 'text-[#FF6B6B]'}>
                         {post.valence > 0 ? `+${post.valence}` : post.valence}
-                      </span>
+                      </strong>
                     </div>
+
                     {post.trigger_words && post.trigger_words.length > 0 && (
-                      <div className="flex items-center gap-1">
-                        <span className="text-[#555550]">Triggers:</span>
-                        <span className="text-[#A3A39E]">{post.trigger_words.join(', ')}</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] text-[#555550]">Triggers:</span>
+                        {post.trigger_words.slice(0, 3).map((tw) => (
+                          <span
+                            key={tw}
+                            className="text-[10px] px-1.5 py-0.2 rounded bg-[#161616] text-[#A0A09A]"
+                          >
+                            {tw}
+                          </span>
+                        ))}
                       </div>
                     )}
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           </div>
