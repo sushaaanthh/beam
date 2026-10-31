@@ -5,39 +5,39 @@ import { KeycapBadge, KeycapCard, KeycapPanel } from '../components/keycap'
 import {
   Container,
   FeatureModule,
-  MetricDisplay,
   SectionHeading,
   StatusIndicator,
   TechnicalLabel,
 } from '../components/global'
 import { keycapClass } from '../components/keycap'
 import { HeroVisual } from '../components/landing/HeroVisual'
+import { playTapSound } from '../utils/tapSound'
 
 const researchStages = [
   {
     step: '01',
     title: 'Collect',
-    desc: 'Ingest raw textual streams and behavioral telemetry across online discussions.',
+    desc: 'Ingest raw text and behavioral telemetry from online discussions.',
   },
   {
     step: '02',
     title: 'Clean',
-    desc: 'Apply rigorous token cleaning, de-identification, and noise filtering.',
+    desc: 'Clean tokens, remove identifying details, and filter noise.',
   },
   {
     step: '03',
     title: 'Analyze',
-    desc: 'Extract deep semantic embeddings and behavioral signal vectors.',
+    desc: 'Extract semantic embeddings and behavioral signal vectors.',
   },
   {
     step: '04',
     title: 'Infer',
-    desc: 'Multi-head transformer classification across granular emotional dimensions.',
+    desc: 'Classify granular emotional dimensions with transformer models.',
   },
   {
     step: '05',
     title: 'Explain',
-    desc: 'Compute SHAP attribution scores and confidence distributions for full transparency.',
+    desc: 'Prepare confidence and attribution data for transparent outputs.',
   },
 ]
 
@@ -47,21 +47,21 @@ const capabilities = [
     code: 'SIGNAL_EXTRACTION',
     icon: <Activity className="h-4.5 w-4.5" />,
     title: 'Behavioral Signals',
-    desc: 'Models language patterns, interaction cues, and behavioral signals to detect subtle affective transitions across large volumes of textual data — the raw sensory layer of the pipeline.',
+    desc: 'Extracts linguistic patterns, interaction cues, and behavioral indicators from text.',
   },
   {
     index: '02',
     code: 'TRANSFORMER_CORE',
     icon: <Brain className="h-4.5 w-4.5" />,
     title: 'Transformer Analysis',
-    desc: 'Fine-tuned RoBERTa representations with contextual attention layers classify emotional states with calibrated precision across granular, human-readable emotion dimensions.',
+    desc: 'Uses contextual transformer representations to identify emotional patterns in text.',
   },
   {
     index: '03',
     code: 'XAI_FRAMEWORK',
     icon: <Sliders className="h-4.5 w-4.5" />,
     title: 'Explainable Outputs',
-    desc: 'Attention attribution and token saliency expose exactly which linguistic evidence drove each prediction — no black-box labels, only traceable reasoning.',
+    desc: 'Surfaces the linguistic factors that contribute to each model prediction.',
   },
 ]
 
@@ -96,14 +96,13 @@ const attributionTokens = [
 ]
 
 const techStack = [
-  'PyTorch',
-  'HuggingFace Transformers',
-  'RoBERTa',
-  'FastAPI',
-  'React',
-  'PostgreSQL',
-  'scikit-learn',
-  'SHAP',
+  { category: 'Frontend', technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'React Router', 'Axios'] },
+  { category: 'Backend', technologies: ['Python', 'FastAPI', 'SQLAlchemy', 'Alembic', 'Pydantic', 'Uvicorn'] },
+  { category: 'AI / Machine Learning', technologies: ['PyTorch', 'Hugging Face Transformers', 'BERT / RoBERTa', 'spaCy', 'scikit-learn'] },
+  { category: 'Data Processing', technologies: ['NumPy', 'Pandas'] },
+  { category: 'Data Collection', technologies: ['PRAW', 'Reddit API'] },
+  { category: 'Database & Auth', technologies: ['PostgreSQL', 'JWT'] },
+  { category: 'Infrastructure', technologies: ['Docker', 'Docker Compose'] },
 ]
 
 export function LandingPage() {
@@ -133,19 +132,13 @@ export function LandingPage() {
             </p>
 
             <div className="flex flex-wrap items-center gap-3.5 pt-1">
-              <Link to="/analysis" className={keycapClass('primary', 'lg')}>
+              <Link to="/register" onClick={playTapSound} className={keycapClass('primary', 'lg')}>
                 Start Analysis →
               </Link>
-              <a href="#research" className={keycapClass('graphite', 'lg')}>
+              <a href="#research" onClick={playTapSound} className={keycapClass('graphite', 'lg')}>
                 Explore Research
               </a>
             </div>
-
-            <dl className="grid max-w-lg grid-cols-3 gap-6 border-t border-line-subtle pt-7">
-              <MetricDisplay value="94.8%" label="F1 Validation" />
-              <MetricDisplay value="28" label="Emotion Classes" />
-              <MetricDisplay value="SHAP" label="Explainability" tone="lime" />
-            </dl>
           </div>
 
           <div className="lg:col-span-5">
@@ -188,7 +181,7 @@ export function LandingPage() {
       </section>
 
       {/* ================= CORE CAPABILITIES ================= */}
-      <section id="features" className="scroll-mt-24 border-b border-line-subtle">
+      <section id="capabilities" className="scroll-mt-24 border-b border-line-subtle">
         <Container className="space-y-10 py-16 sm:py-20 lg:py-24">
           <SectionHeading
             eyebrow="Core Capabilities"
@@ -217,7 +210,7 @@ export function LandingPage() {
       </section>
 
       {/* ================= INTERPRETABILITY ================= */}
-      <section id="architecture" className="scroll-mt-24 border-b border-line-subtle bg-deep/40">
+      <section id="interpretability" className="scroll-mt-24 border-b border-line-subtle bg-deep/40">
         <Container className="space-y-10 py-16 sm:py-20 lg:py-24">
           <SectionHeading
             eyebrow="Explainable AI"
@@ -251,7 +244,7 @@ export function LandingPage() {
             <div className="mt-8 rounded-module border border-line-subtle bg-surface p-5">
               <div className="mb-4 flex items-center justify-between">
                 <TechnicalLabel>Token Attribution · SHAP</TechnicalLabel>
-                <StatusIndicator label="Sample Trace" tone="idle" pulse={false} />
+                <StatusIndicator label="Illustrative Sample" tone="idle" pulse={false} />
               </div>
               <div className="flex flex-wrap gap-2">
                 {attributionTokens.map((token) => (
@@ -268,8 +261,7 @@ export function LandingPage() {
                 ))}
               </div>
               <p className="mt-4 text-xs leading-relaxed text-dim">
-                Each token carries a signed contribution score, so a prediction can always be
-                traced back to the exact words that produced it.
+                Illustrative token-level attribution showing how evidence can be traced to source text.
               </p>
             </div>
           </KeycapPanel>
@@ -277,20 +269,29 @@ export function LandingPage() {
       </section>
 
       {/* ================= TECHNOLOGY ================= */}
-      <section id="documentation" className="scroll-mt-24 border-b border-line-subtle">
+      <section id="technology" className="scroll-mt-24 border-b border-line-subtle">
         <Container className="space-y-10 py-16 sm:py-20 lg:py-24">
           <SectionHeading
-            eyebrow="Stack & Documentation"
-            title="Technology"
-            description="A deliberately boring, production-grade stack. Full pipeline documentation lives in the repository /docs directory."
+            eyebrow="Technology Stack"
+            title="Built with a focused research stack"
+            description="The tools used across the B.E.A.M. web client, API, model workflows, and data pipeline."
           />
-          <ul className="flex flex-wrap gap-3" aria-label="Technology stack">
-            {techStack.map((tech) => (
-              <li key={tech}>
-                <TechnicalLabel>{tech}</TechnicalLabel>
-              </li>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-label="Technology stack">
+            {techStack.map((group) => (
+              <div key={group.category} className="rounded-module border border-line-subtle bg-surface p-5">
+                <h3 className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-chalk">
+                  {group.category}
+                </h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {group.technologies.map((technology) => (
+                    <li key={technology}>
+                      <TechnicalLabel>{technology}</TechnicalLabel>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </Container>
       </section>
 
@@ -304,14 +305,11 @@ export function LandingPage() {
               <h2 className="font-display text-4xl font-semibold tracking-tight text-chalk sm:text-5xl">
                 Ready to Analyze?
               </h2>
-              <p className="mx-auto max-w-md text-sm leading-relaxed text-mist sm:text-base">
-                Explore textual behavior through an interpretable deep learning pipeline.
-              </p>
               <div className="flex flex-wrap justify-center gap-3.5 pt-2">
-                <Link to="/analysis" className={keycapClass('primary', 'lg')}>
+                <Link to="/register" onClick={playTapSound} className={keycapClass('primary', 'lg')}>
                   Start Analysis →
                 </Link>
-                <a href="#research" className={keycapClass('graphite', 'lg')}>
+                <a href="#research" onClick={playTapSound} className={keycapClass('graphite', 'lg')}>
                   View Research
                 </a>
               </div>

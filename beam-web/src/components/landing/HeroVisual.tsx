@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { colors, fonts } from '../../design/tokens'
+import { colors } from '../../design/tokens'
 
 type Particle = {
   x: number
@@ -235,29 +235,6 @@ export function HeroVisual() {
       {/* Canvas stage */}
       <div ref={frameRef} className="relative h-64 bg-base sm:h-72 lg:h-[300px]">
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between px-5 pb-3 text-[10px] tracking-[0.12em] text-dim"
-          style={{ fontFamily: fonts.ui }}
-        >
-          <span>CH_01 · VALENCE</span>
-          <span className="text-lime">CONF 0.942</span>
-        </div>
-      </div>
-
-      {/* Channel readouts */}
-      <div className="grid grid-cols-3 divide-x divide-line-subtle border-t border-line-subtle text-center">
-        {[
-          { label: 'Tokens / s', value: '142.8' },
-          { label: 'Latency', value: '14.2ms' },
-          { label: 'Layers', value: '12' },
-        ].map((stat) => (
-          <div key={stat.label} className="px-3 py-3">
-            <p className="font-display text-sm font-semibold text-chalk">{stat.value}</p>
-            <p className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.18em] text-dim">
-              {stat.label}
-            </p>
-          </div>
-        ))}
       </div>
     </div>
   )

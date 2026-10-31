@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { classNames } from '../../utils/classNames'
 import { keycapClass } from '../keycap'
 import { BrandMark } from '../BrandMark'
+import { playTapSound } from '../../utils/tapSound'
 
 export type NavbarItem = {
   label: string
@@ -22,7 +23,7 @@ export function Navbar({
   items = [],
   signInTo = '/login',
   ctaLabel = 'START ANALYSIS →',
-  ctaTo = '/analysis',
+  ctaTo = '/register',
   className,
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -48,7 +49,7 @@ export function Navbar({
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-8">
         {/* LEFT — wordmark + descriptor */}
         <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="B.E.A.M. home">
-          <BrandMark compact to={undefined} />
+          <BrandMark compact to="" />
           <span className="flex flex-col leading-none">
             <span className="font-display text-lg font-semibold tracking-[0.08em] text-chalk">
               B.E.A.M.
@@ -66,6 +67,7 @@ export function Navbar({
               <Link
                 key={item.label}
                 to={item.to}
+                onClick={playTapSound}
                 className="rounded-keycap px-3.5 py-1.5 text-xs font-medium text-mist transition-colors duration-150 hover:bg-raised hover:text-chalk"
               >
                 {item.label}
@@ -76,10 +78,10 @@ export function Navbar({
 
         {/* RIGHT — actions */}
         <div className="hidden items-center gap-2.5 lg:flex">
-          <Link to={signInTo} className={keycapClass('ghost', 'sm')}>
+          <Link to={signInTo} onClick={playTapSound} className={keycapClass('ghost', 'sm')}>
             Sign In
           </Link>
-          <Link to={ctaTo} className={keycapClass('primary', 'sm')}>
+          <Link to={ctaTo} onClick={playTapSound} className={keycapClass('primary', 'sm')}>
             {ctaLabel}
           </Link>
         </div>
@@ -87,7 +89,10 @@ export function Navbar({
         {/* Mobile menu toggle */}
         <button
           type="button"
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() => {
+            playTapSound()
+            setMenuOpen((open) => !open)
+          }}
           className="kc h-9 w-9 lg:hidden"
           aria-expanded={menuOpen}
           aria-controls="beam-mobile-menu"
@@ -107,7 +112,7 @@ export function Navbar({
               <Link
                 key={item.label}
                 to={item.to}
-                onClick={closeMenu}
+                onClick={() => { playTapSound(); closeMenu() }}
                 className="rounded-keycap px-3 py-2.5 text-sm font-medium text-mist transition-colors duration-150 hover:bg-raised hover:text-chalk"
               >
                 {item.label}
@@ -115,10 +120,10 @@ export function Navbar({
             ))}
           </nav>
           <div className="mt-4 flex flex-col gap-2.5 border-t border-line-subtle pt-4">
-            <Link to={signInTo} onClick={closeMenu} className={keycapClass('ghost', 'md', 'w-full')}>
+            <Link to={signInTo} onClick={() => { playTapSound(); closeMenu() }} className={keycapClass('ghost', 'md', 'w-full')}>
               Sign In
             </Link>
-            <Link to={ctaTo} onClick={closeMenu} className={keycapClass('primary', 'md', 'w-full')}>
+            <Link to={ctaTo} onClick={() => { playTapSound(); closeMenu() }} className={keycapClass('primary', 'md', 'w-full')}>
               {ctaLabel}
             </Link>
           </div>
