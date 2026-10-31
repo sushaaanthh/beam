@@ -113,7 +113,6 @@ export function LandingPage() {
         <Container className="grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:py-24">
           <div className="space-y-7 lg:col-span-7">
             <div className="flex items-center gap-4">
-              <StatusIndicator label="Operational" />
               <TechnicalLabel tone="lime">Behavioral Emotion Analysis Model</TechnicalLabel>
             </div>
 
