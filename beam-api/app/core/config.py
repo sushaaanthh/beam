@@ -19,7 +19,13 @@ class Settings(BaseSettings):
     DEBUG: bool = Field(default=False)
 
     BACKEND_CORS_ORIGINS: list[str] = Field(
-        default_factory=lambda: ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000", "http://127.0.0.1:3000"]
+        default_factory=lambda: [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "https://beam-major.vercel.app",
+        ]
     )
 
     POSTGRES_SERVER: str = "postgres"
@@ -59,6 +65,10 @@ class Settings(BaseSettings):
             # SQLAlchemy 2.x no longer recognises as a dialect.
             if url.startswith("postgres://"):
                 url = url.replace("postgres://", "postgresql+psycopg2://", 1)
+            elif url.startswith("postgresql+psycopg://"):
+                url = url.replace(
+                    "postgresql+psycopg://", "postgresql+psycopg2://", 1
+                )
             elif url.startswith("postgresql://"):
                 url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
             return url

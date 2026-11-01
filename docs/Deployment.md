@@ -14,8 +14,9 @@ These are already applied in this repository:
   (`dnspython`, `SpeechRecognition`, `reportlab`) and excludes unused ML
   packages (`torch`, `transformers`, `spacy`, `scikit-learn`).
 - `beam-api/Dockerfile` binds Uvicorn to Render's `$PORT`.
-- `beam-api/app/core/config.py` normalises `postgres://` and
-  `postgresql://` URLs to the `postgresql+psycopg2://` SQLAlchemy dialect.
+- `beam-api/app/core/config.py` normalises `postgres://`,
+  `postgresql://`, and `postgresql+psycopg://` URLs to the
+  `postgresql+psycopg2://` SQLAlchemy dialect.
 - `beam-api/.dockerignore` keeps `.env`, the local SQLite file, caches, and
   tests out of the image.
 - `beam-web/vercel.json` provides the SPA rewrite to `index.html`.
@@ -28,9 +29,10 @@ These are already applied in this repository:
 1. Push this repository to GitHub.
 2. Render Dashboard -> **New +** -> **Blueprint**.
 3. Select the repository. Render reads `render.yaml`.
-4. Enter `GEMINI_API_KEY` when prompted (or leave it blank; the API falls back
+4. When prompted, paste the Neon `DATABASE_URL` (or the Render Postgres URL).
+5. Enter `GEMINI_API_KEY` when prompted (or leave it blank; the API falls back
    to lexicon analysis).
-5. After the first deploy, replace `BACKEND_CORS_ORIGINS` with the real Vercel
+6. After the first deploy, replace `BACKEND_CORS_ORIGINS` with the real Vercel
    URL (see step 4).
 
 ### Option B: Manual
