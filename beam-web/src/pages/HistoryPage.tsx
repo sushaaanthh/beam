@@ -31,14 +31,12 @@ export function HistoryPage() {
   const [loading, setLoading] = useState(true)
   const [selectedRecord, setSelectedRecord] = useState<JournalEntry | null>(null)
 
-  // Replay Modal State
   const [replayOpen, setReplayOpen] = useState(false)
   const [replayIndex, setReplayIndex] = useState(0)
   const [isReplaying, setIsReplaying] = useState(false)
   const [replaySpeed, setReplaySpeed] = useState<1 | 2>(1)
   const replayIntervalRef = useRef<any>(null)
 
-  // Compare Mode State
   const [compareMode, setCompareMode] = useState(false)
   const [compareSelectedIds, setCompareSelectedIds] = useState<string[]>([])
 
@@ -75,7 +73,6 @@ export function HistoryPage() {
     }
   }
 
-  // AI Emotion Timeline Replay Handlers
   const startReplay = () => {
     if (records.length === 0) return
     setReplayOpen(true)
@@ -127,7 +124,6 @@ export function HistoryPage() {
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#1C1C1C] pb-4">
         <div>
           <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
@@ -172,7 +168,6 @@ export function HistoryPage() {
         </div>
       </div>
 
-      {/* Compare Banner */}
       {compareMode && (
         <div className="p-4 rounded-xl bg-[#121212] border border-[#222222] flex items-center justify-between text-xs">
           <div className="flex items-center gap-2 text-[#B8B8B0]">
@@ -191,7 +186,6 @@ export function HistoryPage() {
         </div>
       )}
 
-      {/* Search & Filter Bar */}
       {records.length > 0 && (
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <div className="relative flex-1 w-full">
@@ -207,13 +201,11 @@ export function HistoryPage() {
         </div>
       )}
 
-      {/* History Content */}
       {loading ? (
         <div className="p-12 text-center text-xs font-mono text-[#73736F]">
           Loading analysis history...
         </div>
       ) : records.length === 0 ? (
-        /* Empty State for New Accounts */
         <Card
           variant="default"
           padding="lg"
@@ -235,7 +227,6 @@ export function HistoryPage() {
           </Link>
         </Card>
       ) : (
-        /* History Table */
         <Card variant="default" padding="none" className="overflow-hidden border-[#222222]">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-ui">
@@ -317,7 +308,6 @@ export function HistoryPage() {
         </Card>
       )}
 
-      {/* Side-by-Side Comparison Modal */}
       {compareMode && comparedEntries.length === 2 && (
         <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-[#242424] space-y-4">
           <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
@@ -355,11 +345,9 @@ export function HistoryPage() {
         </div>
       )}
 
-      {/* Killer Feature: AI Emotion Timeline Replay Modal */}
       {replayOpen && currentReplayEntry && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
           <div className="relative w-full max-w-2xl rounded-2xl bg-[#0C0C0C] border border-[#2A2A2A] p-6 shadow-2xl space-y-6">
-            {/* Header */}
             <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-4">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-[#C7FF4A] animate-pulse" />
@@ -379,7 +367,6 @@ export function HistoryPage() {
               </button>
             </div>
 
-            {/* Replay Stage Card */}
             <div className="p-6 rounded-2xl bg-[#141414] border border-[#242424] space-y-5 relative overflow-hidden">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs text-[#C7FF4A] bg-[#1E1E1E] px-2.5 py-1 rounded-lg border border-[#333333]">
@@ -390,7 +377,6 @@ export function HistoryPage() {
                 </span>
               </div>
 
-              {/* Surfacing Text */}
               <div className="space-y-1.5">
                 <h4 className="font-display text-lg font-bold text-[#F5F5F0]">
                   {currentReplayEntry.title} {currentReplayEntry.mood_emoji}
@@ -400,7 +386,6 @@ export function HistoryPage() {
                 </p>
               </div>
 
-              {/* Dynamic Emotion Transition */}
               <div className="grid grid-cols-3 gap-3 text-center">
                 <div className="p-3 rounded-xl bg-[#0C0C0C] border border-[#1E1E1E]">
                   <span className="text-[10px] text-[#73736F] font-mono block">Emotion State</span>
@@ -422,7 +407,6 @@ export function HistoryPage() {
                 </div>
               </div>
 
-              {/* Highlighting SHAP Trigger Keywords */}
               {currentReplayEntry.trigger_words && currentReplayEntry.trigger_words.length > 0 && (
                 <div>
                   <span className="text-[10px] font-mono text-[#73736F] uppercase block mb-1.5">
@@ -442,7 +426,6 @@ export function HistoryPage() {
               )}
             </div>
 
-            {/* Replay Controls & Timeline Scrubber */}
             <div className="space-y-3 pt-2 border-t border-[#1C1C1C]">
               <input
                 type="range"
@@ -506,7 +489,6 @@ export function HistoryPage() {
         </div>
       )}
 
-      {/* Details Modal / Glass Dialog */}
       {selectedRecord && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-150">
           <div className="relative w-full max-w-xl rounded-2xl bg-[#0E0E0E] border border-[#2A2A2A] p-6 shadow-2xl space-y-5">
@@ -563,7 +545,6 @@ export function HistoryPage() {
                 </div>
               </div>
 
-              {/* Trigger Words */}
               {selectedRecord.trigger_words && selectedRecord.trigger_words.length > 0 && (
                 <div>
                   <span className="text-[10px] font-mono text-[#73736F] uppercase block mb-1">

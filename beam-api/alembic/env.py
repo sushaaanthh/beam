@@ -5,7 +5,6 @@ from alembic import context
 
 from app.core.config import settings
 from app.database.base import Base
-# ensure models are loaded
 import app.models
 
 config = context.config

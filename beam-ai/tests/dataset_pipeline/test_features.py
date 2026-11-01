@@ -18,7 +18,7 @@ class TestLinguisticFeatures:
         normalized = normalized_of(cleaned)
         features = extract_linguistic_features(cleaned, normalized)
 
-        assert features["question_count"] == 3  # ? ! ? — question marks only
+        assert features["question_count"] == 3
         assert features["exclamation_count"] == 1
         assert features["word_count"] == 7
         assert features["sentence_count"] == 2
@@ -26,7 +26,6 @@ class TestLinguisticFeatures:
 
     def test_uppercase_ratio(self) -> None:
         features = extract_linguistic_features("ALL CAPS shout", normalized_of("ALL CAPS shout"))
-        # letters: A L L C A P S s h o u t = 12; uppercase = 7
         assert abs(features["uppercase_ratio"] - round(7 / 12, 4)) < 1e-9
 
     def test_lexical_diversity(self) -> None:
@@ -54,7 +53,7 @@ class TestBehavioralFeatures:
     def test_timestamp_derived_fields(self) -> None:
         from datetime import datetime, timezone
 
-        created = datetime(2026, 8, 1, 13, 30, tzinfo=timezone.utc)  # Saturday
+        created = datetime(2026, 8, 1, 13, 30, tzinfo=timezone.utc)
         features = extract_behavioral_features(
             created_utc=created, score=12, num_comments=3, subreddit="AskReddit"
         )
@@ -84,7 +83,6 @@ class TestOptionalNlpFeatures:
         assert scores["vader_compound"] > 0
 
     def test_vader_scores_are_auxiliary_not_labels(self) -> None:
-        # Contract: fields exist with float-or-None values and no label column.
         scores = extract_vader_features("anything")
         assert set(scores) == {"vader_positive", "vader_negative", "vader_neutral", "vader_compound"}
         for value in scores.values():

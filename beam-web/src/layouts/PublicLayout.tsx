@@ -14,7 +14,6 @@ const publicNavItems: NavbarItem[] = [
 export function PublicLayout() {
   const location = useLocation()
 
-  // Smooth-scroll to hash targets after SPA navigation (e.g. from /login).
   useEffect(() => {
     if (!location.hash) return
     const target = document.getElementById(location.hash.slice(1))

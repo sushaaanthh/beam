@@ -117,7 +117,7 @@ class TestSubredditCollection:
         assert summary.duration_seconds >= 0
 
     def test_malformed_post_does_not_abort_run(self, storage: Storage) -> None:
-        broken = make_submission(id="", title="no id")  # invalid: empty id
+        broken = make_submission(id="", title="no id")
         good = make_submission(id="ok1")
 
         reddit = FakeReddit({"AskReddit": [broken, good]}, {})
@@ -125,7 +125,7 @@ class TestSubredditCollection:
 
         summary = collector.collect_subreddit(subreddit="AskReddit", limit=10)
 
-        assert summary.posts_inserted == 1  # healthy record survived
+        assert summary.posts_inserted == 1
         assert len(summary.parse_errors) >= 1
 
     def test_duplicates_counted_not_reinserted(self, storage: Storage) -> None:
@@ -144,7 +144,6 @@ class TestSubredditCollection:
         assert summary.duplicates == 1
 
     def test_comment_collection_stores_nested_tree(self, storage: Storage) -> None:
-        # Build: top comment c1 with reply c2 (depth 1).
         c1 = make_comment(id="c1", parent_id="t3_p1")
         setattr(c1, "replies", FakeReplies([make_comment(id="c2", parent_id="t1_c1")]))
 

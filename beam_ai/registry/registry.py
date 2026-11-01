@@ -44,7 +44,6 @@ class Registry:
     def __init__(self, path: str | Path | None = None) -> None:
         self.path = Path(path) if path else REGISTRY_FILE
 
-    # ---------- persistence ----------
 
     def _read(self) -> list[dict[str, Any]]:
         if not self.path.exists():
@@ -65,7 +64,6 @@ class Registry:
             if os.path.exists(tmp_name):
                 os.unlink(tmp_name)
 
-    # ---------- operations ----------
 
     def register(
         self,

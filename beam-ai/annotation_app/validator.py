@@ -24,7 +24,7 @@ class AnnotationValidator:
     def __init__(self, schema: Schema, source_records: list[SourceRecord]):
         self.schema = schema
         self.source_ids = {r.record_id for r in source_records}
-        self.existing_annotations: dict[str, dict] = {}  # record_id -> annotation
+        self.existing_annotations: dict[str, dict] = {}
 
     def load_existing(self, annotator_id: str) -> None:
         """Load existing annotations for an annotator to check duplicates."""
@@ -47,22 +47,18 @@ class AnnotationValidator:
 
     def validate(self, annotation: dict) -> None:
         """Validate an annotation record. Raises ValidationError on failure."""
-        # Required fields: must be present, but None is allowed for nullable fields
         for field in self.schema.required:
             if field not in annotation:
                 raise ValidationError(field, f"Required field '{field}' is missing")
 
-        # Record ID
         record_id = str(annotation.get("record_id", ""))
         if record_id not in self.source_ids:
             raise ValidationError("record_id", f"Record ID '{record_id}' not found in source dataset")
 
-        # Primary emotion
         primary = str(annotation.get("primary_emotion", ""))
         if primary not in self.schema.primary_emotions:
             raise ValidationError("primary_emotion", f"'{primary}' is not a valid emotion ID")
 
-        # Secondary emotion (nullable)
         secondary = annotation.get("secondary_emotion")
         if secondary is not None:
             secondary_str = str(secondary)
@@ -71,19 +67,16 @@ class AnnotationValidator:
             if secondary_str == primary:
                 raise ValidationError("secondary_emotion", "Secondary emotion must differ from primary emotion")
 
-        # Intensity
         intensity = annotation.get("intensity")
         if not isinstance(intensity, int) or not (self.schema.get_intensity_range()[0] <= intensity <= self.schema.get_intensity_range()[1]):
             min_i, max_i = self.schema.get_intensity_range()
             raise ValidationError("intensity", f"Intensity must be an integer between {min_i} and {max_i}")
 
-        # Confidence
         confidence = annotation.get("confidence")
         if not isinstance(confidence, int) or not (self.schema.get_confidence_range()[0] <= confidence <= self.schema.get_confidence_range()[1]):
             min_c, max_c = self.schema.get_confidence_range()
             raise ValidationError("confidence", f"Confidence must be an integer between {min_c} and {max_c}")
 
-        # Context flags
         flags = annotation.get("context_flags", [])
         if not isinstance(flags, list):
             raise ValidationError("context_flags", "Context flags must be a list")
@@ -91,22 +84,18 @@ class AnnotationValidator:
             if flag not in self.schema.context_flags:
                 raise ValidationError("context_flags", f"'{flag}' is not a valid context flag")
 
-        # Annotator ID
         annotator_id = str(annotation.get("annotator_id", ""))
         if not validate_annotator_id(annotator_id):
             raise ValidationError("annotator_id", "Annotator ID must be alphanumeric with underscores")
 
-        # Timestamp
         ts = annotation.get("annotation_timestamp")
         if not ts or not str(ts).endswith("Z"):
             raise ValidationError("annotation_timestamp", "Timestamp must be ISO-8601 UTC format ending with 'Z'")
 
-        # Notes (optional, but must be string or null)
         notes = annotation.get("notes")
         if notes is not None and not isinstance(notes, str):
             raise ValidationError("notes", "Notes must be a string or null")
 
-        # No unknown top-level fields beyond schema
         allowed_fields = set(self.schema.properties.keys()) | {"record_id", "text"}
         unknown = set(annotation.keys()) - allowed_fields
         if unknown:

@@ -40,7 +40,6 @@ export function playTapSound() {
 
   if (context.state === 'suspended') {
     void context.resume().then(() => scheduleTap(context)).catch(() => {
-      // Audio is optional; navigation should continue if the browser blocks it.
     })
     return
   }

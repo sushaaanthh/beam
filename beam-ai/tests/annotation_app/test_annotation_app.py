@@ -9,7 +9,6 @@ from pathlib import Path
 
 import pytest
 
-# Ensure beam_ai is importable
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from annotation_app.config import (
@@ -35,17 +34,11 @@ from annotation_app.storage import AnnotationStorage
 from annotation_app.validator import AnnotationValidator, ValidationError
 
 
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 TEST_ANNOTATOR = "TEST_ANNOTATOR_X"
 
 
-# ---------------------------------------------------------------------------
-# Fixtures
-# ---------------------------------------------------------------------------
 
 @pytest.fixture(scope="module")
 def taxonomy() -> Taxonomy:
@@ -78,9 +71,6 @@ def temp_annotations_dir(tmp_path: Path) -> Path:
     return tmp_path
 
 
-# ---------------------------------------------------------------------------
-# Test: Pilot source loading
-# ---------------------------------------------------------------------------
 
 class TestPilotSourceLoading:
     """Test loading of pilot source data."""
@@ -115,9 +105,6 @@ class TestPilotSourceLoading:
         assert original_hash == new_hash, "Source file was modified during loading"
 
 
-# ---------------------------------------------------------------------------
-# Test: Pilot manifest generation
-# ---------------------------------------------------------------------------
 
 class TestPilotManifest:
     """Test pilot manifest generation."""
@@ -164,9 +151,6 @@ class TestPilotManifest:
         assert len(loaded["record_ids"]) == 16
 
 
-# ---------------------------------------------------------------------------
-# Test: Taxonomy loading
-# ---------------------------------------------------------------------------
 
 class TestTaxonomyLoading:
     """Test taxonomy loading and structure."""
@@ -203,9 +187,6 @@ class TestTaxonomyLoading:
         assert not taxonomy.validate_id("INVALID_EMOTION")
 
 
-# ---------------------------------------------------------------------------
-# Test: Schema validation
-# ---------------------------------------------------------------------------
 
 class TestSchemaValidation:
     """Test schema loading and validation."""
@@ -232,7 +213,7 @@ class TestSchemaValidation:
             "annotation_timestamp": "2026-10-05T00:00:00Z",
             "notes": None,
         }
-        validator.validate(annotation)  # Should not raise
+        validator.validate(annotation)
 
     def test_invalid_primary_emotion(self, validator: AnnotationValidator, source_records: list[SourceRecord]) -> None:
         record = source_records[0]
@@ -353,9 +334,6 @@ class TestSchemaValidation:
             validator.validate(annotation)
 
 
-# ---------------------------------------------------------------------------
-# Test: Duplicate handling
-# ---------------------------------------------------------------------------
 
 class TestDuplicateHandling:
     """Test duplicate annotation handling."""
@@ -367,14 +345,11 @@ class TestDuplicateHandling:
         assert existing is not None
 
     def test_no_duplicate_for_new_record(self, validator: AnnotationValidator, source_records: list[SourceRecord]) -> None:
-        record = source_records[1]  # Different record
+        record = source_records[1]
         existing = validator.check_duplicate(TEST_ANNOTATOR, record.record_id)
         assert existing is None
 
 
-# ---------------------------------------------------------------------------
-# Test: Annotation persistence
-# ---------------------------------------------------------------------------
 
 class TestAnnotationPersistence:
     """Test annotation storage and persistence."""
@@ -383,7 +358,6 @@ class TestAnnotationPersistence:
         import os
         os.environ["ANNOTATOR_ID"] = TEST_ANNOTATOR
         from annotation_app.config import ANNOTATIONS_DIR as REAL_DIR
-        # Use temp dir
         storage = AnnotationStorage(TEST_ANNOTATOR)
         record = source_records[0]
         annotation = {
@@ -436,7 +410,6 @@ class TestAnnotationPersistence:
         loaded = storage.get_annotation(record.record_id)
         assert loaded["primary_emotion"] == "CALM_SERENITY"
         assert loaded["intensity"] == 4
-        # Should still have only one annotation per record
         all_anns = storage.load_all()
         record_ids = [a["record_id"] for a in all_anns]
         assert record_ids.count(record.record_id) == 1
@@ -460,17 +433,12 @@ class TestAnnotationPersistence:
             "notes": None,
         }
         storage_a.save(annotation)
-        # B should not see A's annotation
         b_ann = storage_b.get_annotation(record.record_id)
         assert b_ann is None, "Annotator isolation violated: B can see A's annotation"
-        # A should see their own
         a_ann = storage_a.get_annotation(record.record_id)
         assert a_ann is not None
 
 
-# ---------------------------------------------------------------------------
-# Test: Source dataset unchanged
-# ---------------------------------------------------------------------------
 
 class TestSourceDatasetUnchanged:
     """Verify source dataset is not modified."""
@@ -480,7 +448,6 @@ class TestSourceDatasetUnchanged:
 
     def test_raw_file_not_modified(self) -> None:
         original_content = SOURCE_DATA_PATH.read_bytes()
-        # Load all data
         _ = load_source_records()
         new_content = SOURCE_DATA_PATH.read_bytes()
         assert original_content == new_content, "Raw source file was modified"

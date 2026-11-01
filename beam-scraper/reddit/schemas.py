@@ -81,7 +81,7 @@ def pseudonymize_author(handle: str | None) -> str | None:
         from config.settings import get_settings
 
         salt = get_settings().AUTHOR_HASH_SALT
-    except Exception:  # pragma: no cover - settings always available in practice
+    except Exception:
         salt = _DEFAULT_SALT
     digest = hmac.new(salt.encode("utf-8"), handle.encode("utf-8"), hashlib.sha256)
     return digest.hexdigest()[:16]
@@ -144,9 +144,6 @@ class CommentRecord(BaseModel):
         return cleaned
 
 
-# --------------------------------------------------------------------------
-# Parsers (attribute-bag based so tests can pass simple mocks)
-# --------------------------------------------------------------------------
 
 def parse_submission(submission: object, retrieved_at: datetime | None = None) -> PostRecord:
     reddit_id = getattr(submission, "id", None)
@@ -194,7 +191,6 @@ def parse_comment(
     if not reddit_id or not str(reddit_id).strip():
         raise ParseError("comment has no id")
 
-    # MoreComment objects have no body/created_utc and are expanded by PRAW.
     created = getattr(comment, "created_utc", None)
     if created is None:
         raise ParseError(f"comment {reddit_id} has no created_utc")

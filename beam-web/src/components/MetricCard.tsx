@@ -76,9 +76,8 @@ export function MetricCard({
         )}
       </div>
 
-      {/* Subtle bottom sparkline visual */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#161616] overflow-hidden">
-        <div 
+        <div
           className="h-full bg-gradient-to-r from-transparent via-[#C7FF4A]/40 to-transparent transition-all duration-300 group-hover:via-[#C7FF4A]"
           style={{ width: `${Math.min(100, Math.max(20, (sparkline[sparkline.length - 1] || 50)))}%` }}
         />

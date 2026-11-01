@@ -41,7 +41,7 @@ def artifact_dir_for(model_name: str, version: str, models_root: Path | None = N
 
 
 def save_artifact(
-    model,  # HFEmotionModel
+    model,
     directory: str | Path,
     *,
     training_config_snapshot: dict | None = None,
@@ -75,7 +75,6 @@ def save_artifact(
         "label_to_id": model.labels.label_to_id,
         "max_sequence_length": model.tokenizer_pipeline.max_length,
         "training_config": snapshot,
-        # Honesty contract: null until a real evaluation has measured it.
         "metrics": metrics,
         "status": status,
         "untrained_weights": bool(snapshot.get("model_init") == "tiny_random"),
@@ -84,8 +83,6 @@ def save_artifact(
         json.dumps(metadata, indent=2, ensure_ascii=False), encoding="utf-8"
     )
     if training_config_snapshot:
-        # NOTE: must NOT be named config.json — that filename belongs to
-        # the HuggingFace model config and is required to reload weights.
         (directory / "training_config.json").write_text(
             json.dumps(training_config_snapshot, indent=2, ensure_ascii=False),
             encoding="utf-8",

@@ -25,7 +25,6 @@ class TestDeduplication:
         assert second.duplicate and second.reason == "duplicate_exact"
 
     def test_near_duplicate_within_subreddit(self) -> None:
-        # 21 tokens, only the final word differs -> Jaccard = 18/20 = 0.90.
         head = (
             "i have been feeling really anxious about the upcoming exam all "
             "week long and i cannot seem to focus on"
@@ -112,7 +111,6 @@ class TestSplitting:
         for value in assignment.values():
             counts[value] += 1
         assert sum(counts.values()) == 100
-        # Within rounding tolerance of 70/15/15.
         assert abs(counts["train"] - 70) <= 2
         assert abs(counts["validation"] - 15) <= 2
         assert abs(counts["test"] - 15) <= 2
@@ -148,7 +146,6 @@ class TestEndToEndBuild:
         for i in range(12):
             rows.append(post_row(post_id=f"p{i}", title=f"Title number {i}", body=f"This is unique discussion body number {i} with enough words to pass filters.", score=i))
             rows.append(comment_row(comment_id=f"c{i}a", post_id=f"p{i}", body=f"A reply to thread {i} sharing feelings of joy and relief today."))
-        # Exact duplicate of p3 (same title AND body, different Reddit id).
         rows.append(post_row(post_id="dup", title="Title number 3", body="This is unique discussion body number 3 with enough words to pass filters."))
         rows.append(post_row(post_id="short", title="", body="hi"))
         rows.append(post_row(post_id="removed", body="[removed]", body_status="removed"))
@@ -176,7 +173,6 @@ class TestEndToEndBuild:
         for split_name in ("train", "validation", "test"):
             assert Path(result.files[f"split_{split_name}"]).exists()
 
-        # Raw input untouched.
         assert raw_file.read_bytes() == raw_bytes_before
 
     def test_counts_and_duplicate_reason(self, tmp_path: Path) -> None:
@@ -184,11 +180,9 @@ class TestEndToEndBuild:
 
         report = json.loads((datasets_root / "metadata" / "quality_report_v001.json").read_text())
         assert report["total_records"] == len(self._sample_rows())
-        # The full duplicate of p3 is caught by exact normalized-text match.
         assert report["duplicate_reasons"].get("duplicate_exact", 0) >= 1
         assert "too_short" in report["filter_reasons"]
         assert "content_removed" in report["filter_reasons"]
-        # 12 threads survive; the dup/short/removed rows are filtered or deduped.
         assert report["valid_records"] == 24
 
     def test_thread_grouping_prevents_leakage(self, tmp_path: Path) -> None:
@@ -204,7 +198,6 @@ class TestEndToEndBuild:
         for thread_id, split_name in split_rows:
             threads_by_split.setdefault(split_name, set()).add(thread_id)
 
-        # No thread appears in more than one split.
         seen: set = set()
         for threads in threads_by_split.values():
             assert not (threads & seen), "thread leaked across splits"
@@ -256,7 +249,7 @@ class TestEndToEndBuild:
         for label, path in result.files.items():
             data = Path(path).read_bytes()
             digest = hashlib.sha256(data).hexdigest()
-            if label == "metadata":  # created_at timestamp intentionally varies
+            if label == "metadata":
                 payload = json.loads(data)
                 payload.pop("created_at")
                 digest = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()

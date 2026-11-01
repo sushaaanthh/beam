@@ -34,8 +34,6 @@ export function RedditAnalysisPage() {
   const [redditResult, setRedditResult] = useState<RedditAnalysisResult | null>(null)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
-  // Automatic Instant Cache Loader: when target account/subreddit changes,
-  // load cached analysis immediately so user never has to click button again and again!
   useEffect(() => {
     let isCancelled = false
     const checkCache = async () => {
@@ -48,7 +46,6 @@ export function RedditAnalysisPage() {
           setErrorMsg(null)
         }
       } catch {
-        // Fallback or ignore network latency
       }
     }
 
@@ -83,7 +80,6 @@ export function RedditAnalysisPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-200">
-      {/* Header Banner */}
       <div className="border-b border-[#1C1C1C] pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
@@ -102,7 +98,6 @@ export function RedditAnalysisPage() {
           </p>
         </div>
 
-        {/* 1-Day Auto Cache Status Badge */}
         {redditResult && (
           <div className="flex items-center gap-2 self-start md:self-auto bg-[#111111] border border-[#222222] px-3 py-1.5 rounded-lg text-xs font-mono">
             <Database className="h-3.5 w-3.5 text-[#C7FF4A]" />
@@ -118,7 +113,6 @@ export function RedditAnalysisPage() {
         )}
       </div>
 
-      {/* Query Bar */}
       <Card variant="elevated" padding="none" className="p-6 border-[#222222] bg-[#0A0A0A]">
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
@@ -148,7 +142,6 @@ export function RedditAnalysisPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3">
-            {/* Type selector */}
             <div className="flex items-center gap-1 bg-[#121212] border border-[#222222] rounded-lg p-1">
               <button
                 type="button"
@@ -170,7 +163,6 @@ export function RedditAnalysisPage() {
               </button>
             </div>
 
-            {/* Input field */}
             <div className="relative flex-1 w-full">
               <input
                 type="text"
@@ -185,7 +177,6 @@ export function RedditAnalysisPage() {
               />
             </div>
 
-            {/* Force Refresh / Sync Button */}
             <Button
               variant="outline"
               size="md"
@@ -210,7 +201,6 @@ export function RedditAnalysisPage() {
             </Button>
           </div>
 
-          {/* 1-day auto update notice */}
           <div className="flex items-center justify-between text-[11px] font-mono text-[#555550] pt-1">
             <span className="flex items-center gap-1.5">
               <Clock className="h-3 w-3 text-[#FF5722]" />
@@ -232,7 +222,6 @@ export function RedditAnalysisPage() {
         </div>
       </Card>
 
-      {/* Empty State / Not Run Yet */}
       {!redditResult && !isAnalyzing && !errorMsg && (
         <Card variant="outline" padding="lg" className="border-[#222222] text-center py-12">
           <div className="max-w-md mx-auto space-y-3">
@@ -257,7 +246,6 @@ export function RedditAnalysisPage() {
         </Card>
       )}
 
-      {/* Results Grid */}
       {redditResult && redditResult.total_posts_analyzed === 0 && (
         <Card variant="outline" padding="lg" className="border-[#222222] text-center py-10">
           <div className="max-w-md mx-auto space-y-2">
@@ -274,7 +262,6 @@ export function RedditAnalysisPage() {
 
       {redditResult && redditResult.total_posts_analyzed > 0 && (
         <div className="grid lg:grid-cols-12 gap-6 animate-in fade-in duration-200">
-          {/* Distribution & Key Stats (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <Card variant="elevated" padding="none" className="p-6 space-y-5 border-[#2A2A2A]">
               <div className="border-b border-[#1C1C1C] pb-3 flex items-start justify-between">
@@ -312,7 +299,6 @@ export function RedditAnalysisPage() {
                 </div>
               </div>
 
-              {/* Emotion distribution bars */}
               <div className="space-y-3 pt-2">
                 <span className="text-xs font-mono text-[#73736F] uppercase tracking-wider block">
                   Affective Distribution (%)
@@ -338,7 +324,6 @@ export function RedditAnalysisPage() {
                 </div>
               </div>
 
-              {/* Top Trigger Keywords */}
               {redditResult.top_keywords && redditResult.top_keywords.length > 0 && (
                 <div className="space-y-2 pt-2 border-t border-[#1C1C1C]">
                   <span className="text-xs font-mono text-[#73736F] uppercase tracking-wider block">
@@ -358,7 +343,6 @@ export function RedditAnalysisPage() {
               )}
             </Card>
 
-            {/* Model Architecture Info */}
             <Card variant="outline" padding="sm" className="border-[#222222] bg-[#0A0A0A] p-4 text-xs font-mono space-y-2">
               <div className="flex items-center gap-2 text-[#FF5722]">
                 <Layers className="h-4 w-4" />
@@ -370,7 +354,6 @@ export function RedditAnalysisPage() {
             </Card>
           </div>
 
-          {/* Feed of Ingested Posts with Emotion Tagging (7 cols) */}
           <div className="lg:col-span-7 space-y-4">
             <div className="flex items-center justify-between pb-1">
               <h3 className="font-display text-base font-semibold text-[#F5F5F0] flex items-center gap-2">

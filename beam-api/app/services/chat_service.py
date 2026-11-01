@@ -7,7 +7,6 @@ from app.services.gemini_service import generate_chat_with_gemini
 
 logger = logging.getLogger(__name__)
 
-# Context-aware empathetic response strategies
 RESPONSE_TEMPLATES = {
     "Pride / Accomplishment": [
         "That's a major milestone! Celebrating these wins builds strong psychological momentum. What part of the breakthrough felt most rewarding?",
@@ -52,11 +51,9 @@ def generate_companion_reply(
     history: list[dict[str, Any]], 
     recent_journals: list[dict[str, Any]] | None = None
 ) -> dict[str, Any]:
-    # 1. Analyze emotion of the current user message with Gemini 3.1 Flash Lite
     emotion_data = analyze_emotion(user_message, model_name="Gemini 3.1 Flash Lite")
     primary_emotion = emotion_data["primary_emotion"]
     
-    # 2. Try generating reply with Gemini 3.1 Flash Lite
     gemini_reply = generate_chat_with_gemini(
         user_message=user_message,
         recent_journals=recent_journals,
@@ -66,7 +63,6 @@ def generate_companion_reply(
     if gemini_reply:
         reply_text = gemini_reply
     else:
-        # Contextual Memory from recent journals fallback
         memory_prefix = ""
         if recent_journals and len(recent_journals) > 0 and len(history) <= 2:
             latest_j = recent_journals[0]

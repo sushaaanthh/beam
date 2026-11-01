@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -17,7 +16,6 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    // 'forks' workers fail to boot when the project path contains spaces.
     pool: 'threads',
     setupFiles: ['src/test/setup.ts'],
     include: ['src/**/*.test.{ts,tsx}'],

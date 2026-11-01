@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:  # pragma: no cover
+if TYPE_CHECKING:
     from transformers import PreTrainedTokenizerBase
 
 
@@ -49,7 +49,6 @@ class TokenizerPipeline:
             max_length=self.max_length,
             return_tensors="pt",
         )
-        # Keep only what models need — deterministic column order.
         return {
             "input_ids": encoded["input_ids"],
             "attention_mask": encoded["attention_mask"],

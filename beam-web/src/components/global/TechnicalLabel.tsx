@@ -8,7 +8,6 @@ type TechnicalLabelProps = {
   className?: string
 }
 
-/** Monospace-flavoured uppercase micro label used across the instrument UI. */
 export function TechnicalLabel({ children, tone = 'graphite', as: Tag = 'span', className }: TechnicalLabelProps) {
   return (
     <Tag

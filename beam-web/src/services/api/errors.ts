@@ -1,12 +1,5 @@
 import axios from 'axios'
 
-/**
- * Maps any API/network failure to a specific, useful message.
- *
- * Distinguishes: no connection ("Network Error"), timeouts, and individual
- * HTTP statuses (401/403/404/422/500) so the UI never shows a generic
- * "Network Error" when the server actually responded.
- */
 export function describeApiError(error: unknown, fallback = 'An unexpected error occurred.'): string {
   if (axios.isAxiosError(error)) {
     if (!error.response) {

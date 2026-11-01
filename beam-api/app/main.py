@@ -41,11 +41,9 @@ def create_application() -> FastAPI:
         lifespan=lifespan,
     )
 
-    # 1. Add Auth and Exception handlers
     add_auth_middleware(application)
     create_exception_handlers(application)
 
-    # 2. Add CORSMiddleware as the outermost layer
     cors_origins = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",

@@ -19,7 +19,6 @@ logger = logging.getLogger(__name__)
 
 T = TypeVar("T")
 
-# prawcore exceptions that are worth retrying with backoff.
 RETRYABLE_EXCEPTIONS = (
     prawcore.exceptions.ResponseException,
     prawcore.exceptions.RequestException,
@@ -71,7 +70,7 @@ class RateLimiter:
             try:
                 self._pace()
                 return operation()
-            except RETRYABLE_EXCEPTIONS as error:  # noqa: PERF203 - retry loop
+            except RETRYABLE_EXCEPTIONS as error:
                 last_error = error
                 status = getattr(error, "response", None)
                 delay = backoff_delays(self.backoff_base, attempt + 1)[-1]

@@ -43,13 +43,11 @@ export async function deleteAnalysis(sessionId: string): Promise<void> {
   await apiClient.delete(`/analysis/${sessionId}`)
 }
 
-/** Maps API/network failures to safe, user-facing messages. Never exposes stack traces. */
 export function getApiErrorMessage(error: unknown): string {
   if (axios.isAxiosError(error)) {
     const status = error.response?.status
     const detail: unknown = error.response?.data?.detail
 
-    // Server faults get a curated message; raw detail may leak internals.
     if (status === 500 || status === undefined) {
       return status === 500
         ? 'B.E.A.M. could not complete the analysis. Please try again later.'
@@ -59,7 +57,6 @@ export function getApiErrorMessage(error: unknown): string {
       return detail
     }
     if (Array.isArray(detail)) {
-      // FastAPI validation errors — surface the first message only.
       const first = detail[0] as { msg?: string } | undefined
       if (first?.msg) return `Invalid input: ${first.msg}`
     }

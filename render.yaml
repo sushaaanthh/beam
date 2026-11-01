@@ -3,7 +3,6 @@ services:
     name: beam-api
     runtime: docker
     plan: free
-    # Neon database is in ap-southeast-1 (Singapore); keep the API close to it.
     region: singapore
     rootDir: beam-api
     dockerfilePath: ./Dockerfile
@@ -16,7 +15,6 @@ services:
         value: "false"
       - key: LOG_LEVEL
         value: INFO
-      # Paste the Neon connection string when Render prompts for this value.
       - key: DATABASE_URL
         sync: false
       - key: JWT_SECRET_KEY

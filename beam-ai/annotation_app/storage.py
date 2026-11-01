@@ -17,7 +17,7 @@ class AnnotationStorage:
             raise ValueError(f"Invalid annotator ID: {annotator_id}")
         self.annotator_id = annotator_id
         self.path = ANNOTATIONS_DIR / f"{annotator_id}.jsonl"
-        self._index: dict[str, int] = {}  # record_id -> byte offset
+        self._index: dict[str, int] = {}
         self._rebuild_index()
 
     def _rebuild_index(self) -> None:
@@ -70,17 +70,14 @@ class AnnotationStorage:
         if not record_id:
             raise ValueError("Annotation missing record_id")
 
-        # Ensure timestamp
         if "annotation_timestamp" not in annotation:
             annotation["annotation_timestamp"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
         line = json.dumps(annotation, ensure_ascii=False) + "\n"
 
         if record_id in self._index:
-            # Update existing: rewrite entire file
             self._update_existing(annotation, line)
         else:
-            # Append new
             with open(self.path, "a", encoding="utf-8") as f:
                 f.write(line)
             self._index[record_id] = self.path.stat().st_size - len(line) if self.path.exists() else 0

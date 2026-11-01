@@ -1,9 +1,3 @@
-/**
- * B.E.A.M. design tokens — programmatic mirror of the CSS token layer
- * (src/index.css @theme). Components should prefer the generated Tailwind
- * utilities / .kc classes; use these values when JS/Canvas needs raw tokens.
- */
-
 export const colors = {
   base: '#050505',
   deep: '#080808',
@@ -40,7 +34,6 @@ export const transitions = {
   easeTactile: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
 } as const
 
-/** Keycap travel in px */
 export const keycapDepth = {
   lift: -1,
   press: 1,

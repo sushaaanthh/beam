@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING
 
 from pydantic import BaseModel, Field
 
-if TYPE_CHECKING:  # pragma: no cover
+if TYPE_CHECKING:
     from beam_ai.training.config import TrainingConfig
 
 
@@ -27,7 +27,6 @@ class LabelSchemaError(ValueError):
 class LabelConfig(BaseModel):
     labels: list[str] = Field(..., min_length=2)
 
-    # ---------- mappings (explicit by design) ----------
 
     @property
     def label_to_id(self) -> dict[str, int]:
@@ -57,7 +56,6 @@ class LabelConfig(BaseModel):
                 f"Unknown label id {label_id!r}. Valid ids: 0..{len(self.labels) - 1}"
             ) from None
 
-    # ---------- resolution ----------
 
     @classmethod
     def resolve(cls, config: "TrainingConfig") -> "LabelConfig":

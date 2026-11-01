@@ -53,7 +53,6 @@ export function AppLayout() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#F5F5F0] flex flex-col selection:bg-[#C7FF4A] selection:text-[#050505]">
-      {/* Top Application Bar */}
       <header className="sticky top-0 z-40 border-b border-[#1C1C1C] bg-[#080808]/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -73,7 +72,6 @@ export function AppLayout() {
             </div>
           </div>
 
-          {/* Header Search & Actions */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-2 bg-[#0E0E0E] border border-[#222222] rounded-lg px-3 py-1.5 text-xs text-[#73736F] w-64 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
               <Search className="h-3.5 w-3.5 text-[#555552]" />
@@ -88,7 +86,6 @@ export function AppLayout() {
             </div>
 
             <div className="flex items-center gap-2">
-              {/* Companion Quick Button */}
               <button
                 type="button"
                 onClick={() => setCompanionOpen(true)}
@@ -136,9 +133,7 @@ export function AppLayout() {
         </div>
       </header>
 
-      {/* Main Grid: Sidebar + Workspace */}
       <div className="flex-1 flex max-w-[1920px] w-full mx-auto">
-        {/* Persistent Left Sidebar */}
         <aside
           className={`
             fixed inset-y-0 left-0 z-30 w-64 bg-[#080808] border-r border-[#1C1C1C] px-3 py-4 flex flex-col justify-between
@@ -182,7 +177,6 @@ export function AppLayout() {
             </div>
           </div>
 
-          {/* System Status Keycap Module at Sidebar Bottom */}
           <div className="mt-auto pt-4 border-t border-[#181818]">
             <div className="rounded-lg bg-[#0E0E0E] border border-[#1E1E1E] p-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
               <div className="flex items-center justify-between">
@@ -209,13 +203,11 @@ export function AppLayout() {
           />
         )}
 
-        {/* Right Application Workspace */}
         <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 overflow-y-auto">
           <Outlet />
         </main>
       </div>
 
-      {/* BEAM AI Companion Drawer */}
       <CompanionDrawer isOpen={companionOpen} onClose={() => setCompanionOpen(false)} />
     </div>
   )

@@ -7,6 +7,4 @@ raw dataset files / database rows as input.
 
 __version__ = "0.1.0"
 
-# Bumped whenever preprocessing/feature logic changes in an observable way.
-# Stored on every processed record so datasets remain auditable.
 PROCESSING_VERSION = "prep-1.0.0"

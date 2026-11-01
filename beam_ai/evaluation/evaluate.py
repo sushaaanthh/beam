@@ -67,7 +67,7 @@ def collect_predictions(model, texts: list[str], batch_size: int = 32) -> list[i
 
 def evaluate_split(
     model,
-    split_data,  # SplitData
+    split_data,
     *,
     batch_size: int = 32,
 ) -> dict:
@@ -127,7 +127,6 @@ def evaluate_artifact(
         metrics=metrics,
     )
 
-    # Persist next to the artifact so the registry can pick it up.
     metadata["metrics"] = metrics
     metadata["status"] = "validated" if metadata.get("status") == "training" else metadata.get("status")
     (directory / "metadata.json").write_text(

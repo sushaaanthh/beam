@@ -145,7 +145,6 @@ export interface WellnessMetrics {
 }
 
 export const beamApi = {
-  // Priority 1: Journal AI
   predictLiveEmotion: async (text: string): Promise<LiveEmotionResult> => {
     const res = await apiClient.post('/journal/live', { text })
     return res.data
@@ -167,7 +166,6 @@ export const beamApi = {
     return res.data
   },
 
-  // Priority 2: Voice AI
   transcribeAudio: async (formData: FormData): Promise<{ status: string; transcript: string }> => {
     const res = await apiClient.post('/voice/transcribe', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
@@ -185,7 +183,6 @@ export const beamApi = {
     return res.data
   },
 
-  // Priority 3: Chat Companion with Memory
   sendChatMessage: async (message: string) => {
     const res = await apiClient.post('/chat', { message })
     return res.data
@@ -218,7 +215,6 @@ export const beamApi = {
     return res.data
   },
 
-  // Module 5: Wellness
   submitCheckIn: async (payload: {
     energy_level: number
     stress_level: number
@@ -234,13 +230,11 @@ export const beamApi = {
     return res.data
   },
 
-  // Module 8: Dashboard
   getDashboardSummary: async () => {
     const res = await apiClient.get('/dashboard/summary')
     return res.data
   },
 
-  // Module 9: Notifications
   getNotifications: async () => {
     const res = await apiClient.get('/notifications')
     return res.data
@@ -250,12 +244,10 @@ export const beamApi = {
     return res.data
   },
 
-  // Module 10: Privacy
   exportPrivacyData: async () => {
     const res = await apiClient.post('/privacy/export')
     return res.data
   },
 
-  // Reports
   downloadReportUrl: '/reports/download',
 }

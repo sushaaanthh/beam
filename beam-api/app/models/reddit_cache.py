@@ -16,7 +16,7 @@ JsonPortableType = JSON().with_variant(JSONB(none_as_null=True), "postgresql")
 class RedditCache(Base):
     __tablename__ = "reddit_cache"
 
-    id: Mapped[str] = mapped_column(String(100), primary_key=True)  # composite: e.g. "{user_id}:{source_type}:{cleaned_identifier}"
+    id: Mapped[str] = mapped_column(String(100), primary_key=True)
     user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="CASCADE"),
         nullable=True,

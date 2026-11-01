@@ -2,7 +2,6 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { classNames } from '../../utils/classNames'
 
 type KeycapIconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  /** Required for accessibility — icon-only buttons must be labelled. */
   'aria-label': string
   size?: 'sm' | 'md'
   children: ReactNode

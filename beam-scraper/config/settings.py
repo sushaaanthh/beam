@@ -26,15 +26,12 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # --- Reddit credentials -------------------------------------------------
     REDDIT_CLIENT_ID: str = ""
     REDDIT_CLIENT_SECRET: str = ""
     REDDIT_USER_AGENT: str = "windows:beam-research-scraper:v1.0 (research data collection)"
 
-    # --- Storage ------------------------------------------------------------
     DATABASE_URL: str = "postgresql+psycopg2://postgres:postgres@localhost:5432/beam_db"
 
-    # --- Collection defaults (CLI can override per run) ----------------------
     SUBREDDITS: str = "AskReddit,CasualConversation"
     POST_LIMIT: int = Field(default=100, ge=1, le=1000)
     COMMENT_LIMIT: int = Field(default=200, ge=0, le=2000)
@@ -42,16 +39,11 @@ class Settings(BaseSettings):
     TIME_FILTER: TimeFilter = "month"
     INCLUDE_COMMENTS: bool = True
 
-    # --- Politeness / observability ------------------------------------------
     MIN_REQUEST_INTERVAL_SECONDS: float = Field(default=1.1, ge=0.1)
     MAX_RETRIES: int = Field(default=5, ge=1, le=10)
     BACKOFF_BASE_SECONDS: float = Field(default=2.0, gt=0)
     LOG_LEVEL: str = "INFO"
 
-    # --- Privacy ----------------------------------------------------------------
-    # Salt for pseudonymizing author handles. Changing it re-anonymizes all
-    # authors (existing rows keep their stored pseudonym). Not a secret in the
-    # security sense - it prevents trivial reversal of short handles only.
     AUTHOR_HASH_SALT: str = "beam-scraper-author-v1"
 
     @field_validator("REDDIT_USER_AGENT")

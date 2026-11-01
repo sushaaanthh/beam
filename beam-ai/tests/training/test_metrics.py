@@ -38,7 +38,6 @@ class TestComputedValues:
         assert metrics["f1_weighted"] == pytest.approx(((2 / 3) * 2 + 0.8 * 2 + 1 * 1) / 5)
 
     def test_confusion_matrix_layout(self, metrics):
-        # rows=true class, cols=predicted
         assert metrics["confusion_matrix"] == [[1, 1, 0], [0, 2, 0], [0, 0, 1]]
 
     def test_per_class_block(self, metrics):
@@ -60,7 +59,6 @@ class TestEdgeCases:
             compute_classification_metrics([], [], LABELS)
 
     def test_zero_division_guarded_not_crashing(self):
-        # Class 'b' never predicted nor true -> zero_division handled as 0.
         result = compute_classification_metrics([0], [0], ["a", "b"])
         assert result["per_class"]["b"] == {
             "precision": 0.0,

@@ -16,7 +16,6 @@ import re
 import unicodedata
 from functools import lru_cache
 
-# Small, high-frequency contraction map (documented expansion only).
 _CONTRACTIONS = {
     "won't": "will not",
     "can't": "can not",
@@ -39,7 +38,6 @@ _WHITESPACE = re.compile(r"\s+")
 
 @lru_cache(maxsize=1)
 def _contraction_patterns() -> list[tuple[re.Pattern[str], str]]:
-    # Longer keys first so e.g. "won't" wins over the generic "n't".
     items = sorted(_CONTRACTIONS.items(), key=lambda kv: -len(kv[0]))
     return [(re.compile(re.escape(k), re.IGNORECASE), v) for k, v in items]
 

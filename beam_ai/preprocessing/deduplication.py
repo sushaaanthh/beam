@@ -30,7 +30,7 @@ from beam_ai.preprocessing.normalization import shingles
 @dataclass(frozen=True, slots=True)
 class DedupeVerdict:
     duplicate: bool
-    reason: str | None  # 'duplicate_exact' | 'duplicate_near' | None
+    reason: str | None
 
 
 def jaccard(a: frozenset, b: frozenset) -> float:
@@ -48,9 +48,7 @@ class Deduplicator:
     def __init__(self, near_threshold: float = 0.9, enabled: bool = True) -> None:
         self.enabled = enabled
         self.near_threshold = near_threshold
-        # subreddit -> set of normalized texts already kept
         self._seen_exact: dict[str, set[str]] = {}
-        # subreddit -> list[(sort_key, shingles)]
         self._near_index: dict[str, list[tuple[str, frozenset]]] = {}
 
     def check(
@@ -69,21 +67,16 @@ class Deduplicator:
 
         seen_exact = self._seen_exact.setdefault(subreddit, set())
 
-        # --- exact (within subreddit) ---------------------------------------
         if normalized_text in seen_exact:
             return DedupeVerdict(True, "duplicate_exact")
 
-        # --- near (within subreddit only) -----------------------------------
         current = shingles(normalized_text)
         bucket = self._near_index.setdefault(subreddit, [])
         for _, other in bucket:
             if jaccard(current, other) >= self.near_threshold:
-                # Register exact form even on rejection so later dupes of the
-                # rejected text resolve to the same reason deterministically.
                 seen_exact.add(normalized_text)
                 return DedupeVerdict(True, "duplicate_near")
 
-        # --- keep: register --------------------------------------------------
         seen_exact.add(normalized_text)
         bucket.append((f"{sort_key}|{record_id}", current))
         return DedupeVerdict(False, None)

@@ -156,7 +156,6 @@ def generate_pilot_manifest(records: list[SourceRecord], taxonomy: Taxonomy, sch
         "creation_timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
-    # Deterministic hash of record IDs for verification
     ids_string = ",".join(record_ids)
     manifest["record_ids_hash"] = hashlib.sha256(ids_string.encode()).hexdigest()[:16]
 

@@ -20,9 +20,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from config.settings import get_settings  # noqa: E402
-from reddit.models import RedditComment, RedditPost  # noqa: E402
-from reddit.storage import Storage  # noqa: E402
+from config.settings import get_settings
+from reddit.models import RedditComment, RedditPost
+from reddit.storage import Storage
 
 DEFAULT_EXPORT_DIR = Path(__file__).resolve().parents[2] / "beam-datasets" / "raw"
 

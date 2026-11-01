@@ -48,7 +48,6 @@ export function DashboardPage() {
         setSummary(res)
       }
     } catch {
-      // Clean zero-initialized fallback for new accounts
       setSummary({
         wellness_gauge: 0,
         dominant_emotion: 'Awaiting First Entry',
@@ -106,7 +105,6 @@ export function DashboardPage() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      {/* Dashboard Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#1C1C1C] pb-6">
         <div>
           <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
@@ -147,7 +145,6 @@ export function DashboardPage() {
         </div>
       </div>
 
-      {/* Wellness & Behavioral Metrics Row */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
           title="WELLNESS GAUGE"
@@ -183,9 +180,7 @@ export function DashboardPage() {
         />
       </div>
 
-      {/* Grid: Weekly Affective Oscillation + 28-Day Mood Heatmap */}
       <div className="grid lg:grid-cols-12 gap-6">
-        {/* Weekly Trend (7 cols) */}
         <div className="lg:col-span-7">
           <Card variant="default" padding="none" className="p-6 space-y-5 border-[#222222]">
             <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
@@ -202,7 +197,6 @@ export function DashboardPage() {
               </span>
             </div>
 
-            {/* Bar & Trend Visualizer */}
             <div className="space-y-3.5 pt-1">
               {summary?.weekly_trend.map((day) => (
                 <div key={day.day} className="space-y-1">
@@ -224,9 +218,7 @@ export function DashboardPage() {
           </Card>
         </div>
 
-        {/* 28-Day Calendar Activity Heatmap + Word Cloud (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          {/* Calendar Heatmap */}
           <Card variant="default" padding="none" className="p-6 border-[#222222]">
             <div className="border-b border-[#1C1C1C] pb-3 mb-4">
               <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
@@ -237,7 +229,6 @@ export function DashboardPage() {
               </h3>
             </div>
 
-            {/* Heatmap Grid */}
             <div className="grid grid-cols-7 gap-2">
               {summary?.calendar_heatmap.map((item, idx) => (
                 <div
@@ -269,7 +260,6 @@ export function DashboardPage() {
             </div>
           </Card>
 
-          {/* Word Cloud Chips */}
           <Card variant="default" padding="none" className="p-6 border-[#222222]">
             <div className="border-b border-[#1C1C1C] pb-3 mb-3">
               <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
@@ -301,7 +291,6 @@ export function DashboardPage() {
         </div>
       </div>
 
-      {/* Personalized AI Insights */}
       <Card variant="elevated" padding="none" className="p-6 border-[#2A2A2A]">
         <div className="flex items-center gap-2 border-b border-[#1C1C1C] pb-3 mb-4">
           <Sparkles className="h-4 w-4 text-[#C7FF4A]" />
@@ -320,7 +309,6 @@ export function DashboardPage() {
         </div>
       </Card>
 
-      {/* Modals & Drawers */}
       <WeeklyCheckInModal
         isOpen={checkInOpen}
         onClose={() => setCheckInOpen(false)}

@@ -9,7 +9,6 @@ from app.services.gemini_service import analyze_emotion_with_gemini
 
 logger = logging.getLogger(__name__)
 
-# Canonical GoEmotions / Hedonic Affect taxonomy
 EMOTION_TAXONOMY = {
     "Joy / Fulfillment": {"valence": 0.85, "arousal": 0.65, "category": "positive"},
     "Pride / Accomplishment": {"valence": 0.80, "arousal": 0.70, "category": "positive"},
@@ -50,7 +49,6 @@ def extract_behavioral_lifestyle_prescriptions(text: str) -> dict[str, Any]:
     """
     t = text.lower()
     
-    # 1. Sedentary / Work Duration Detection (e.g. "10 hrs", "working all day", "in my room")
     has_long_hours = bool(re.search(r"(\b\d{1,2}\s*(?:hrs|hours|hr)\b|all day|all night|morning to night|nonstop|continuous)", t))
     has_indoor_room = bool(re.search(r"(in my room|in the room|bedroom|desk|stuck inside|haven't left|closed room)", t))
     has_working = bool(re.search(r"(working|coding|studying|grinding|debugging|assignments|screen|laptop)", t))
@@ -69,7 +67,6 @@ def extract_behavioral_lifestyle_prescriptions(text: str) -> dict[str, Any]:
     if has_sleep_debt:
         behavioral_tags.append("Recovery: Sleep Deficit")
 
-    # Generate targeted lifestyle advice
     if (has_long_hours and has_indoor_room) or (has_long_hours and has_working) or has_exercise_omission:
         title = "Physical Movement & Outdoor Exposure Needed"
         prescription = "High sedentary load detected (extended hours in an indoor room). Your cognitive system is experiencing physical stagnation."
@@ -161,7 +158,6 @@ def analyze_emotion(text: str, model_name: str = "Gemini 3.1 Flash Lite") -> dic
     words = re.findall(r"\b[\w'-]+\b", cleaned.lower())
     total_words = max(len(words), 1)
 
-    # Word impact calculations (SHAP token attribution)
     tokens_with_saliency = []
     pos_impact = 0.0
     neg_impact = 0.0
@@ -192,7 +188,6 @@ def analyze_emotion(text: str, model_name: str = "Gemini 3.1 Flash Lite") -> dic
             "saliency": round(saliency, 2)
         })
 
-    # Try Gemini 3.1 Flash Lite first
     gemini_result = analyze_emotion_with_gemini(cleaned)
     if gemini_result:
         primary_emotion = gemini_result.get("primary_emotion", "Cognitive Fatigue / Sedentary Load")
@@ -208,7 +203,6 @@ def analyze_emotion(text: str, model_name: str = "Gemini 3.1 Flash Lite") -> dic
         trigger_words = gemini_result.get("trigger_words") or [t["word"] for t in tokens_with_saliency if abs(t["saliency"]) >= 0.15][:8]
         actual_model = "Gemini 3.1 Flash Lite"
     else:
-        # High performance deterministic fallback
         net_valence = pos_impact - neg_impact
         if "10 hrs" in cleaned.lower() or "working all day" in cleaned.lower() or "in my room" in cleaned.lower() and net_valence < 0.2:
             primary_emotion = "Cognitive Fatigue / Sedentary Load"
@@ -269,7 +263,6 @@ def analyze_emotion(text: str, model_name: str = "Gemini 3.1 Flash Lite") -> dic
 
         actual_model = "Gemini 3.1 Flash Lite"
 
-    # Build distribution across primary taxonomy
     distribution = []
     base_score = round(confidence, 1)
     distribution.append({"emotion": primary_emotion, "score": base_score})

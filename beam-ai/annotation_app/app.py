@@ -7,7 +7,6 @@ from pathlib import Path
 
 import streamlit as st
 
-# Ensure beam_ai is importable
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from annotation_app.config import (
@@ -65,7 +64,6 @@ def main() -> None:
         layout="wide",
     )
 
-    # Check annotator ID
     if not ANNOTATOR_ID or not validate_annotator_id(ANNOTATOR_ID):
         st.error(
             "**ANNOTATOR_ID environment variable is not set or invalid.**\n\n"
@@ -78,7 +76,6 @@ def main() -> None:
         )
         st.stop()
 
-    # Load data
     try:
         taxonomy = load_taxonomy()
         schema = load_schema()
@@ -87,32 +84,25 @@ def main() -> None:
         st.error(f"Failed to load required data: {e}")
         st.stop()
 
-    # Ensure pilot manifest
     ensure_pilot_manifest(records, taxonomy, schema)
 
-    # Initialize session state
     init_session_state(records)
 
-    # Storage and validator
     storage = AnnotationStorage(ANNOTATOR_ID)
     validator = AnnotationValidator(schema, records)
     validator.load_existing(ANNOTATOR_ID)
 
-    # Header
     st.title("📝 B.E.A.M. Annotation Interface")
     st.caption(f"Annotator: `{ANNOTATOR_ID}` | Pilot: v001 ({len(records)} records)")
 
-    # Guidelines
     render_guidelines_expander()
 
     st.divider()
 
-    # Navigation
     current_index = st.session_state.current_index
     total = len(records)
     completed = storage.get_completed_count()
 
-    # Handle navigation requests
     if st.session_state.navigate_to is not None:
         idx = st.session_state.navigate_to
         if 0 <= idx < total:
@@ -122,10 +112,8 @@ def main() -> None:
         st.session_state.navigate_to = None
         st.rerun()
 
-    # Progress
     render_progress(completed, total, current_index)
 
-    # Navigation buttons
     col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 2])
     with col1:
         if st.button("⏮️ Previous", disabled=current_index == 0):
@@ -155,36 +143,29 @@ def main() -> None:
 
     st.divider()
 
-    # Current record
     record = records[current_index]
     render_record(record, current_index, total)
 
     st.divider()
 
-    # Check for existing annotation
     existing = storage.get_annotation(record.record_id)
     if existing:
         st.success("✅ Annotation exists for this record. You can update it below.")
     else:
         st.info("📝 No annotation yet for this record. Please complete the form below.")
 
-    # Annotation form
     result = render_annotation_form(record, existing, taxonomy, schema, key_prefix="ann")
 
     if result:
         try:
-            # Validate
             validator.validate(result)
 
-            # Save
             storage.save(result)
 
-            # Update state
             st.session_state.submitted = True
             st.session_state.validation_error = None
             st.success(f"✅ Annotation saved for record {record.record_id}")
 
-            # Auto-advance after short delay
             import time
             time.sleep(0.5)
             if current_index < total - 1:
@@ -198,11 +179,9 @@ def main() -> None:
         except Exception as e:
             st.error(f"❌ Failed to save annotation: {e}")
 
-    # Show validation error if any
     if st.session_state.validation_error:
         st.error(st.session_state.validation_error)
 
-    # Footer
     st.divider()
     st.caption(
         "B.E.A.M. Annotation Interface | Pilot v001 | "

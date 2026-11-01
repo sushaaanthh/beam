@@ -43,7 +43,6 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 14
     JWT_ISSUER: str = "beam-api"
 
-    # Analysis input limits
     MAX_ANALYSIS_TEXT_CHARS: int = Field(default=20000, gt=0)
     ANALYSIS_LIST_PAGE_SIZE_MAX: int = Field(default=100, gt=0)
 
@@ -61,8 +60,6 @@ class Settings(BaseSettings):
     def SQLALCHEMY_DATABASE_URI(self) -> str:
         url = self.DATABASE_URL
         if url:
-            # Render (and some providers) hand out postgres:// URLs, which
-            # SQLAlchemy 2.x no longer recognises as a dialect.
             if url.startswith("postgres://"):
                 url = url.replace("postgres://", "postgresql+psycopg2://", 1)
             elif url.startswith("postgresql+psycopg://"):

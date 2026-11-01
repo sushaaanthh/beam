@@ -60,7 +60,6 @@ export function ResultWorkspace({
 
   return (
     <div className="space-y-5" aria-live="polite">
-      {/* Primary emotion + confidence */}
       <KeycapPanel
         eyebrow="Inference Report"
         title={detail.title ?? 'Untitled Session'}
@@ -101,7 +100,6 @@ export function ResultWorkspace({
         </div>
       </KeycapPanel>
 
-      {/* Emotion distribution */}
       <KeycapPanel
         eyebrow="Model Prediction"
         title="Emotion Distribution"
@@ -133,7 +131,6 @@ export function ResultWorkspace({
         )}
       </KeycapPanel>
 
-      {/* Behavioral signals */}
       <KeycapPanel
         eyebrow="Observed Pattern"
         title="Behavioral Signals"
@@ -163,7 +160,6 @@ export function ResultWorkspace({
         )}
       </KeycapPanel>
 
-      {/* Explainability */}
       <KeycapPanel
         eyebrow="Evidence Trail"
         title="Explainability"
@@ -189,7 +185,6 @@ export function ResultWorkspace({
         )}
       </KeycapPanel>
 
-      {/* Model information */}
       <KeycapPanel eyebrow="System" title="Model Information">
         <dl className="grid gap-x-8 gap-y-3 text-xs sm:grid-cols-2">
           <div className="flex justify-between gap-4 sm:block">

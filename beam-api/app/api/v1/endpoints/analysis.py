@@ -80,7 +80,6 @@ def create_analysis(
     except (SQLAlchemyError, Exception) as exc:
         db.rollback()
         logger.exception("Analysis inference failed for session %s", session.id)
-        # Best-effort failure marker in a clean transaction.
         try:
             session.status = AnalysisStatus.FAILED.value
             session.completed_at = datetime.now(timezone.utc)
@@ -174,9 +173,6 @@ def delete_analysis(
     return {"message": "Analysis deleted successfully"}
 
 
-# --------------------------------------------------------------------------
-# Mapping helpers
-# --------------------------------------------------------------------------
 
 def _prediction_from_session(session: AnalysisSession) -> PredictionPayload | None:
     prediction = session.prediction

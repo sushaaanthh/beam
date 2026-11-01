@@ -53,7 +53,6 @@ class ExperimentTracker:
                 "run_id": run_id,
                 "epoch": epoch,
                 "train_loss": train_loss,
-                # Real values computed on the validation split this epoch.
                 "val_metrics": {
                     key: value
                     for key, value in val_metrics.items()
@@ -79,7 +78,6 @@ class ExperimentTracker:
                 "event": "run_finished",
                 "run_id": run_id,
                 "status": status,
-                # None until a real evaluation has measured something.
                 "metrics": metrics,
                 "artifact_path": artifact_path,
                 "training_duration_seconds": round(duration_seconds, 3),

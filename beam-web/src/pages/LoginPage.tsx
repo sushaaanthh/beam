@@ -39,8 +39,7 @@ export function LoginPage() {
   const location = useLocation()
   const { login } = useAuth()
   const [submitError, setSubmitError] = useState<string | null>(null)
-  
-  // Password Recovery & OTP State
+
   const [isResetMode, setIsResetMode] = useState(false)
   const [resetSuccess, setResetSuccess] = useState<string | null>(null)
   const [resetError, setResetError] = useState<string | null>(null)
@@ -114,7 +113,7 @@ export function LoginPage() {
       setOtpSentMessage(res.message)
       if (res.otp) {
         setActiveOtpCode(res.otp)
-        setResetValue('otp', res.otp) // Pre-fill for instantaneous seamless experience
+        setResetValue('otp', res.otp)
       }
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
@@ -154,17 +153,14 @@ export function LoginPage() {
   return (
     <div className="min-h-[calc(100vh-140px)] flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-6">
-        {/* Centered Brand Icon */}
         <div className="text-center space-y-2">
           <div className="inline-block">
             <BrandMark />
           </div>
         </div>
 
-        {/* Tactile Keycap Authentication Card */}
         <Card variant="default" padding="none" className="p-8 space-y-6 border-[#242424] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_40px_rgba(0,0,0,0.8)]">
           {isResetMode ? (
-            /* Reset Password View with OTP */
             <>
               <div className="border-b border-[#1C1C1C] pb-4">
                 <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
@@ -204,7 +200,6 @@ export function LoginPage() {
                 </div>
               ) : (
                 <form className="space-y-4" onSubmit={handleSubmitReset(onResetSubmit)}>
-                  {/* Identifier & Send OTP Action */}
                   <div className="space-y-1.5">
                     <InputField
                       label="Username or Registered Email"
@@ -240,7 +235,6 @@ export function LoginPage() {
                     </div>
                   </div>
 
-                  {/* OTP Notification Banner */}
                   {otpSentMessage && (
                     <div className="p-3 bg-[#111A11] border border-[#234224] rounded-lg text-xs space-y-1">
                       <div className="flex items-center gap-1.5 text-[#C7FF4A] font-semibold">
@@ -258,7 +252,6 @@ export function LoginPage() {
                     </div>
                   )}
 
-                  {/* OTP Input */}
                   <InputField
                     label="6-Digit Verification OTP"
                     placeholder="Enter 6-digit code (e.g. 123456)"
@@ -266,7 +259,6 @@ export function LoginPage() {
                     {...registerReset('otp')}
                   />
 
-                  {/* New Password */}
                   <InputField
                     label="New Password"
                     type="password"
@@ -276,7 +268,6 @@ export function LoginPage() {
                     {...registerReset('newPassword')}
                   />
 
-                  {/* Confirm Password */}
                   <InputField
                     label="Confirm New Password"
                     type="password"
@@ -325,7 +316,6 @@ export function LoginPage() {
               )}
             </>
           ) : (
-            /* Regular Sign In View */
             <>
               <div className="border-b border-[#1C1C1C] pb-4">
                 <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">

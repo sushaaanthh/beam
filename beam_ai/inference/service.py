@@ -93,7 +93,6 @@ class TransformerInferenceService:
         if target is not None:
             self._try_load(target)
 
-    # ------------------------------------------------------------------ #
 
     def _try_load(self, artifact_dir: Path) -> None:
         try:
@@ -113,7 +112,7 @@ class TransformerInferenceService:
             metadata = load_artifact_metadata(artifact_dir)
             self._model_name = metadata.get("model_name")
             self._model_version = metadata.get("model_version")
-        except Exception as exc:  # surface as explicit unavailable state
+        except Exception as exc:
             self._model = None
             self._load_error = f"Failed to load artifact '{artifact_dir}': {exc}"
 
@@ -129,7 +128,6 @@ class TransformerInferenceService:
     def model_identity(self) -> tuple[str | None, str | None]:
         return self._model_name, self._model_version
 
-    # ------------------------------------------------------------------ #
 
     def predict(self, text: str) -> PredictionResult:
         if not isinstance(text, str) or not text.strip():

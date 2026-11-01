@@ -16,7 +16,6 @@ from unittest.mock import patch
 
 import pytest
 
-# Ensure app package is importable when running tests directly
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
@@ -78,7 +77,7 @@ class TestProductionDatabaseFallback:
         monkeypatch.setenv("JWT_SECRET_KEY", "test-secret-for-unit-test-only")
 
         production_settings = Settings(_env_file=())
-        production_settings.ENVIRONMENT = "production"  # type: ignore[misc]
+        production_settings.ENVIRONMENT = "production"
 
         with patch("app.database.session.get_settings", return_value=production_settings):
             with pytest.raises(RuntimeError, match="Production database unreachable"):

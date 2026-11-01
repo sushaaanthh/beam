@@ -42,10 +42,8 @@ export function ReportsPage() {
   const handleDownloadPdf = async () => {
     setDownloading(true)
     try {
-      // Trigger live PDF download from FastAPI ReportLab backend
       window.open(`${API_V1_URL}/reports/download`, '_blank')
     } catch {
-      // Fallback
     } finally {
       setTimeout(() => setDownloading(false), 1000)
     }

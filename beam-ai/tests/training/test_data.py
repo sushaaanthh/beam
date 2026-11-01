@@ -71,6 +71,5 @@ class TestSampling:
         pytest.importorskip("torch")
         sampler = build_sampler([0, 0, 0, 1], "inverse_frequency")
         assert sampler is not None
-        # minority class upweighted: weight ratio = count(majority)/count(minority) = 3
         weights = list(sampler.weights)
         assert weights[3] == pytest.approx(weights[0] * 3)

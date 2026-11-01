@@ -71,7 +71,6 @@ const MOOD_ICON_MAP: Record<string, any> = {
 export function AnalysisPage() {
   const [activeTab, setActiveTab] = useState<'journal' | 'voice'>('journal')
 
-  // Journal Editor State
   const [journalTitle, setJournalTitle] = useState('')
   const [journalContent, setJournalContent] = useState('')
   const [selectedMood, setSelectedMood] = useState('energy')
@@ -79,13 +78,11 @@ export function AnalysisPage() {
   const [journalResult, setJournalResult] = useState<JournalEntry | null>(null)
   const [pastJournals, setPastJournals] = useState<JournalEntry[]>([])
 
-  // Calendar State
   const [selectedCalendarDate, setSelectedCalendarDate] = useState<string>(
     new Date().toISOString().split('T')[0]
   )
   const [currentMonthDate, setCurrentMonthDate] = useState(new Date())
 
-  // Real Microphone MediaRecorder Voice Dictation State
   const [isDictating, setIsDictating] = useState(false)
   const [isTranscribingAudio, setIsTranscribingAudio] = useState(false)
   const [dictationSeconds, setDictationSeconds] = useState(0)
@@ -94,10 +91,8 @@ export function AnalysisPage() {
   const dictationIntervalRef = useRef<any>(null)
   const streamRef = useRef<MediaStream | null>(null)
 
-  // Live Debounced Emotion Prediction
   const [liveEmotion, setLiveEmotion] = useState<LiveEmotionResult | null>(null)
 
-  // Voice Tab State
   const [isRecording, setIsRecording] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [recordingSeconds, setRecordingSeconds] = useState(0)
@@ -120,11 +115,9 @@ export function AnalysisPage() {
         }
       }
     } catch {
-      // Ignore
     }
   }
 
-  // Real Microphone Voice Dictation using MediaRecorder & Backend STT
   const startMicrophoneDictation = async () => {
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -144,7 +137,6 @@ export function AnalysisPage() {
       }
 
       mediaRecorder.onstop = async () => {
-        // Stop audio tracks
         if (streamRef.current) {
           streamRef.current.getTracks().forEach((track) => track.stop())
         }
@@ -163,7 +155,6 @@ export function AnalysisPage() {
               return prev + separator + res.transcript.trim()
             })
           } else {
-            // Prompt fallback if audio was silent
             const spokenSample =
               'I was working all day from morning 10 hrs in my room coding nonstop. Feeling mentally drained, stiff shoulders, but glad I solved the major bug.'
             setJournalContent((prev) => (prev ? `${prev} ${spokenSample}` : spokenSample))
@@ -187,7 +178,6 @@ export function AnalysisPage() {
       }, 1000)
     } catch (err) {
       console.warn('Microphone permission denied or device error:', err)
-      // If mic is denied or unavailable in sandbox, load dictation sample
       const spokenSample =
         'I was working all day from morning 10 hrs in my room coding nonstop. Feeling mentally drained, stiff shoulders, but glad I solved the major bug.'
       setJournalContent((prev) => (prev ? `${prev} ${spokenSample}` : spokenSample))
@@ -210,7 +200,6 @@ export function AnalysisPage() {
     }
   }
 
-  // Live Keystroke Emotion Detection (Debounced 300ms)
   useEffect(() => {
     if (!journalContent.trim()) {
       setLiveEmotion(null)
@@ -236,7 +225,6 @@ export function AnalysisPage() {
     return () => clearTimeout(timer)
   }, [journalContent])
 
-  // Journal Analysis Handler
   const handleAnalyzeJournal = async () => {
     if (!journalContent.trim() || isJournalAnalyzing) return
     setIsJournalAnalyzing(true)
@@ -254,7 +242,6 @@ export function AnalysisPage() {
         await loadPastJournals()
       }
     } catch {
-      // Fallback calculation
       const words = journalContent.trim().split(/\s+/)
       const tokens: SHAPToken[] = words.map((w) => ({
         word: w,
@@ -306,7 +293,6 @@ export function AnalysisPage() {
     }
   }
 
-  // Voice Tab Recording Handlers
   const startRecording = () => {
     setIsRecording(true)
     setIsPaused(false)
@@ -407,13 +393,11 @@ export function AnalysisPage() {
     }, 50)
   }
 
-  // Calendar Date Filtering
   const journalsForSelectedDate = pastJournals.filter((j) => {
     const jDate = j.created_at ? j.created_at.split('T')[0] : ''
     return jDate === selectedCalendarDate
   })
 
-  // Days in current month builder
   const daysInMonth = new Date(
     currentMonthDate.getFullYear(),
     currentMonthDate.getMonth() + 1,
@@ -438,7 +422,6 @@ export function AnalysisPage() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      {/* Header & Mode Switcher */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#1C1C1C] pb-4">
         <div>
           <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
@@ -452,7 +435,6 @@ export function AnalysisPage() {
           </p>
         </div>
 
-        {/* Tab Toggle */}
         <div className="flex items-center bg-[#0E0E0E] p-1 rounded-xl border border-[#222222]">
           <button
             type="button"
@@ -479,13 +461,10 @@ export function AnalysisPage() {
         </div>
       </div>
 
-      {/* Main Studio Grid */}
       <div className="grid lg:grid-cols-12 gap-6">
-        {/* Left Column: Calendar & Editor (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           {activeTab === 'journal' ? (
             <div className="space-y-5">
-              {/* Interactive Calendar Card */}
               <Card variant="default" padding="none" className="p-5 border-[#222222] space-y-3.5">
                 <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-2.5">
                   <div className="flex items-center gap-2">
@@ -499,7 +478,6 @@ export function AnalysisPage() {
                   </span>
                 </div>
 
-                {/* Calendar Day Grid */}
                 <div className="grid grid-cols-7 gap-1.5 text-center">
                   {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
                     <span key={d} className="text-[10px] font-mono text-[#555552] uppercase">
@@ -544,7 +522,6 @@ export function AnalysisPage() {
                 </div>
               </Card>
 
-              {/* Journal Editor Box */}
               <Card variant="default" padding="none" className="p-6 space-y-4 border-[#222222]">
                 <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
                   <span className="text-[11px] font-mono text-[#73736F] uppercase flex items-center gap-2">
@@ -567,7 +544,6 @@ export function AnalysisPage() {
                   </div>
                 </div>
 
-                {/* Title & Emoji Selector */}
                 <div className="flex items-center gap-3">
                   <input
                     type="text"
@@ -591,7 +567,6 @@ export function AnalysisPage() {
                   </div>
                 </div>
 
-                {/* Textarea with Direct Voice Dictation */}
                 <div className="relative">
                   <textarea
                     rows={7}
@@ -601,7 +576,6 @@ export function AnalysisPage() {
                     className="w-full rounded-lg bg-[#080808] border border-[#1E1E1E] p-4 text-sm text-[#F5F5F0] placeholder:text-[#444440] focus:border-[#C7FF4A] focus:outline-none focus:ring-1 focus:ring-[#C7FF4A] leading-relaxed resize-y"
                   />
 
-                  {/* Transcribing Audio Loading Overlay */}
                   {isTranscribingAudio && (
                     <div className="p-2.5 bg-[#141812] border border-[#2A4426] rounded-md text-xs text-[#C7FF4A] font-mono mb-2 flex items-center gap-2">
                       <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -609,7 +583,6 @@ export function AnalysisPage() {
                     </div>
                   )}
 
-                  {/* Voice Dictate Button */}
                   <div className="absolute bottom-3 right-3 flex items-center gap-2">
                     <button
                       type="button"
@@ -626,7 +599,6 @@ export function AnalysisPage() {
                   </div>
                 </div>
 
-                {/* Actions & Model Bar */}
                 <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#1C1C1C]">
                   <div className="flex items-center gap-3 text-xs font-mono text-[#73736F]">
                     <span>
@@ -652,7 +624,6 @@ export function AnalysisPage() {
                 </div>
               </Card>
 
-              {/* Selected Day's Journals Stream */}
               {journalsForSelectedDate.length > 0 && (
                 <Card variant="default" padding="none" className="p-5 border-[#222222] space-y-3">
                   <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-2">
@@ -698,7 +669,6 @@ export function AnalysisPage() {
               )}
             </div>
           ) : (
-            /* Voice Emotion Studio Tab */
             <Card variant="default" padding="none" className="p-6 space-y-6 border-[#222222]">
               <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
                 <span className="text-[11px] font-mono text-[#73736F] uppercase flex items-center gap-2">
@@ -709,7 +679,6 @@ export function AnalysisPage() {
                 </span>
               </div>
 
-              {/* Interactive Audio Waveform Graphic */}
               <div className="rounded-xl bg-[#080808] border border-[#1E1E1E] p-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
                 <div className="flex items-center gap-1.5 h-20 mb-4">
                   {[30, 55, 80, 45, 95, 70, 40, 85, 60, 90, 50, 75, 45, 85, 65, 40, 90, 55, 70, 85, 60, 40].map(
@@ -746,7 +715,6 @@ export function AnalysisPage() {
                 )}
               </div>
 
-              {/* Audio Transcript Input / Preview */}
               <div>
                 <label className="text-[10px] font-mono text-[#73736F] uppercase block mb-1">
                   Speech-to-Text Preview / Audio Transcript
@@ -760,7 +728,6 @@ export function AnalysisPage() {
                 />
               </div>
 
-              {/* Record Controls */}
               <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[#1C1C1C]">
                 {!isRecording ? (
                   <Button
@@ -806,11 +773,9 @@ export function AnalysisPage() {
           )}
         </div>
 
-        {/* Right Column: Telemetry & Physical Lifestyle Prescription (5 cols) */}
         <div className="lg:col-span-5">
           {journalResult || voiceResult ? (
             <div className="space-y-4 animate-in fade-in duration-200">
-              {/* Primary Emotion Result Card */}
               <Card variant="elevated" padding="none" className="p-6 space-y-5 border-[#2A2A2A]">
                 <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
                   <span className="text-[10px] font-mono text-[#C7FF4A] uppercase tracking-wider">
@@ -834,7 +799,6 @@ export function AnalysisPage() {
                   </h3>
                 </div>
 
-                {/* Behavioral Lifestyle & Physical Activity Prescription Card */}
                 {journalResult?.lifestyle_prescription && (
                   <div className="rounded-xl bg-[#141A12] border border-[#2E4A28] p-4 space-y-3">
                     <div className="flex items-center justify-between">
@@ -860,7 +824,6 @@ export function AnalysisPage() {
                       <ArrowRight className="h-3 w-3 inline mr-1" /><strong>Action Prescription:</strong> {journalResult.lifestyle_prescription.recommended_action}
                     </div>
 
-                    {/* Behavioral tags */}
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {journalResult.lifestyle_prescription.behavioral_tags.map((tag) => (
                         <span
@@ -874,7 +837,6 @@ export function AnalysisPage() {
                   </div>
                 )}
 
-                {/* Multi-Dimensional Reflection Quality Breakdown */}
                 {journalResult && (
                   <div className="space-y-2 pt-1 border-t border-[#1C1C1C]">
                     <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block">
@@ -903,7 +865,6 @@ export function AnalysisPage() {
                   </div>
                 )}
 
-                {/* Intra-Audio Emotion Timeline (Voice Mode) */}
                 {voiceResult?.emotion_timeline && voiceResult.emotion_timeline.length > 0 && (
                   <div className="space-y-2 pt-1 border-t border-[#1C1C1C]">
                     <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block flex items-center gap-1.5">
@@ -937,7 +898,6 @@ export function AnalysisPage() {
                   </div>
                 )}
 
-                {/* Trigger Words */}
                 <div>
                   <span className="text-[10px] font-mono text-[#73736F] uppercase tracking-wider block mb-1.5">
                     HIGHLIGHTED TRIGGER WORDS
@@ -955,7 +915,6 @@ export function AnalysisPage() {
                 </div>
               </Card>
 
-              {/* Explainable AI (SHAP Token Attribution) */}
               {journalResult?.tokens && (
                 <Card variant="default" padding="none" className="p-5 space-y-3 border-[#222222]">
                   <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-2">
@@ -993,7 +952,6 @@ export function AnalysisPage() {
               )}
             </div>
           ) : (
-            /* Empty State */
             <Card
               variant="default"
               padding="lg"

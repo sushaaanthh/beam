@@ -40,12 +40,6 @@ class MockAnalysisService(AnalysisService):
         session.status = AnalysisStatus.PROCESSING.value
         db.flush()
 
-        # --- Placeholder boundary -------------------------------------
-        # A real implementation would tokenize `analysis_input.cleaned_text`,
-        # run the transformer forward pass, compute SHAP attributions and
-        # persist EmotionPrediction / BehaviorMetric / Explanation rows here.
-        # None of that exists yet; nothing is fabricated below.
-        # ----------------------------------------------------------------
 
         elapsed_ms = max(0, round((time.perf_counter() - started) * 1000))
         session.status = AnalysisStatus.COMPLETED.value

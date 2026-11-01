@@ -26,7 +26,6 @@ def generate_beam_pdf_report(
     
     styles = getSampleStyleSheet()
     
-    # Custom styles
     title_style = ParagraphStyle(
         'DocTitle',
         parent=styles['Heading1'],
@@ -67,7 +66,6 @@ def generate_beam_pdf_report(
     
     story = []
     
-    # Header Banner
     story.append(Paragraph("B.E.A.M.  A I", ParagraphStyle('Brand', fontSize=10, textColor=colors.HexColor('#4F46E5'), fontName='Helvetica-Bold')))
     story.append(Paragraph(report_title, title_style))
     generated_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
@@ -75,7 +73,6 @@ def generate_beam_pdf_report(
     story.append(Spacer(1, 10))
     story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor('#E2E8F0'), spaceAfter=15))
     
-    # Section 1: Executive Behavioral Wellness Summary
     story.append(Paragraph("1. Executive Behavioral Wellness Summary", section_heading))
     
     wellness_score = wellness_data.get("wellness_score", 84)
@@ -109,7 +106,6 @@ def generate_beam_pdf_report(
     story.append(t1)
     story.append(Spacer(1, 15))
     
-    # Section 2: Explainable AI & SHAP Saliency Analysis
     story.append(Paragraph("2. Explainable AI (SHAP Token Attribution Sample)", section_heading))
     story.append(Paragraph(
         "BEAM AI computes Shapley Additive Explanations (SHAP) across multi-head transformer embeddings to isolate positive and negative linguistic attribution vectors:",
@@ -137,7 +133,6 @@ def generate_beam_pdf_report(
     story.append(t2)
     story.append(Spacer(1, 15))
     
-    # Section 3: Longitudinal Observations & Personalized AI Insights
     story.append(Paragraph("3. Behavioral Trajectory & Personalized Observations", section_heading))
     insights = wellness_data.get("recommendations", [
         "Consistent journaling observed with steady positive affective momentum.",

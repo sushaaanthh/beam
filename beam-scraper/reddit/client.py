@@ -47,9 +47,8 @@ class RedditClient:
                 check_for_updates=False,
                 check_for_async=False,
             )
-            # Read-only: the scraper never authenticates as a user account.
             self._reddit.read_only = True
-        except Exception as error:  # config errors from PRAW
+        except Exception as error:
             raise RedditClientError(f"failed to initialise Reddit client: {error}") from error
 
     @property
@@ -61,7 +60,6 @@ class RedditClient:
         try:
             _ = self._reddit.auth.scopes()
         except prawcore.exceptions.InsufficientScope:
-            # Expected for script apps in read-only mode; credentials are valid.
             return True
         except prawcore.exceptions.OAuthException as error:
             raise RedditClientError(f"Reddit rejected the credentials: {error}") from error

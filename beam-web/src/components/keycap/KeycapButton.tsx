@@ -16,10 +16,6 @@ export const keycapSizeClasses: Record<KeycapSize, string> = {
   lg: 'px-6 py-3 text-sm tracking-[0.08em]',
 }
 
-/**
- * Shared class string so anchors/links can render as keycaps too
- * (an <a> must never wrap a <button>).
- */
 export function keycapClass(
   variant: KeycapVariant = 'graphite',
   size: KeycapSize = 'md',
