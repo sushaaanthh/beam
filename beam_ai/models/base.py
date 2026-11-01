@@ -27,7 +27,7 @@ class BaseEmotionModel(ABC):
     device: str
 
     @abstractmethod
-    def forward_batch(self, input_ids, attention_mask):  # -> logits tensor
+    def forward_batch(self, input_ids, attention_mask):
         ...
 
     @abstractmethod
@@ -43,7 +43,6 @@ class BaseEmotionModel(ABC):
     def num_labels(self) -> int:
         ...
 
-    # ---------- shared helpers ----------
 
     def predict(self, texts: list[str]) -> list[tuple[str, float]]:
         """Greedy (label, confidence) pairs — real softmax outputs."""
@@ -57,9 +56,9 @@ class BaseEmotionModel(ABC):
     def _move_to_device(self) -> None:
         try:
             import torch
-        except ImportError as exc:  # pragma: no cover
+        except ImportError as exc:
             raise RuntimeError("PyTorch is required to run models.") from exc
-        self.torch_ref = torch  # kept for subclasses; avoids re-import churn
+        self.torch_ref = torch
         if hasattr(self, "hf_model") and self.hf_model is not None:
             self.hf_model.to(device=torch.device(self.device))
 

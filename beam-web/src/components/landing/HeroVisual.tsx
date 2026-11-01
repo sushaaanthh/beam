@@ -32,13 +32,6 @@ function createParticle(width: number, height: number): Particle {
   }
 }
 
-/**
- * Abstract signal-matrix visualisation:
- * textual signals (particles), behavioral patterns (drift paths),
- * transformer processing (link mesh), emotional states (lime peaks).
- * Lightweight canvas — no libraries, paused off-screen, static when
- * prefers-reduced-motion is set.
- */
 export function HeroVisual() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const frameRef = useRef<HTMLDivElement>(null)
@@ -88,7 +81,6 @@ export function HeroVisual() {
     }
 
     const drawWaves = () => {
-      // Thin baseline signals — one restrained lime carrier wave.
       const waves = [
         { yRatio: 0.32, color: 'rgba(184, 184, 176, 0.16)', amp: height * 0.05, freq: 1.4 },
         { yRatio: 0.52, color: 'rgba(115, 115, 111, 0.22)', amp: height * 0.07, freq: 1.0 },
@@ -112,7 +104,6 @@ export function HeroVisual() {
     }
 
     const drawParticlesAndLinks = () => {
-      // Link mesh — transformer attention metaphor.
       ctx.lineWidth = 1
       for (let i = 0; i < particles.length; i++) {
         const a = particles[i]
@@ -221,7 +212,6 @@ export function HeroVisual() {
     <div className="kc-panel overflow-hidden" role="img"
       aria-label="Abstract visualization of textual signal particles flowing through transformer layers with highlighted emotional state peaks"
     >
-      {/* Frame header */}
       <div className="flex items-center justify-between border-b border-line-subtle px-5 py-3.5">
         <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-dim">
           SIGNAL MATRIX
@@ -232,7 +222,6 @@ export function HeroVisual() {
         </span>
       </div>
 
-      {/* Canvas stage */}
       <div ref={frameRef} className="relative h-64 bg-base sm:h-72 lg:h-[300px]">
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
       </div>

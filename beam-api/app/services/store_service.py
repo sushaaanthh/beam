@@ -11,7 +11,6 @@ from app.models.journal import Journal
 
 logger = logging.getLogger(__name__)
 
-# Fallback in-memory stores for unauthenticated/demo sessions or if DB fails
 _user_journals: dict[str, list[dict[str, Any]]] = {}
 _user_voice_notes: dict[str, list[dict[str, Any]]] = {}
 _user_chat_messages: dict[str, list[dict[str, Any]]] = {}
@@ -77,7 +76,6 @@ def get_journals(user_id: str = "default") -> list[dict[str, Any]]:
         except Exception as e:
             logger.error(f"Error reading journals from database for user {user_id}: {e}")
 
-    # Fallback to in-memory store
     return _user_journals.get(user_id, [])
 
 
@@ -121,7 +119,6 @@ def add_journal(entry: dict[str, Any], user_id: str = "default") -> dict[str, An
         except Exception as e:
             logger.error(f"Error persisting journal to database for user {user_id}: {e}")
 
-    # Also keep in in-memory for fallback
     if user_id not in _user_journals:
         _user_journals[user_id] = []
     _user_journals[user_id].insert(0, entry)

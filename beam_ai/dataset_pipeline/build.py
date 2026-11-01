@@ -74,7 +74,6 @@ def build_dataset(
     splits_dir = datasets_root / "splits"
     metadata_dir = datasets_root / "metadata"
 
-    # ---- 1. Load raw rows ----------------------------------------------------
     if input_path is not None:
         raw_rows = list(iter_input_rows(input_path))
         source_description = str(input_path)
@@ -97,7 +96,6 @@ def build_dataset(
     )
     language_filter = LanguageFilter(settings)
 
-    # ---- 2. Clean -> filter -> normalize -> language -> dedupe -----------------
     candidates: list[dict[str, Any]] = []
     for row in sorted(raw_rows, key=_sort_key):
         cleaned = clean_text(row["raw_text"])
@@ -147,7 +145,6 @@ def build_dataset(
             }
         )
 
-    # ---- 3. Features ------------------------------------------------------------
     for candidate in candidates:
         features: dict[str, Any] = {}
         features.update(extract_linguistic_features(candidate["cleaned_text"], candidate["normalized_text"]))
@@ -164,7 +161,6 @@ def build_dataset(
         features.update(pos)
         candidate.update(features)
 
-    # ---- 4. Splits (grouped by thread) -------------------------------------------
     thread_ids = [candidate["thread_id"] for candidate in candidates]
     assignment = assign_splits(
         thread_ids,
@@ -188,7 +184,6 @@ def build_dataset(
             "dataset_version": settings.dataset_version,
             "processing_version": PROCESSING_VERSION,
         }
-        # Merge feature columns (everything outside identity/text/metadata).
         for key, value in candidate.items():
             if key not in base_set:
                 if key not in feature_keys:
@@ -196,7 +191,6 @@ def build_dataset(
                 record[key] = value
         records.append(record)
 
-    # ---- 5. Write outputs -----------------------------------------------------------
     version = settings.dataset_version
     processed_path = processed_dir / f"dataset_{version}.jsonl"
     features_path = features_dir / f"dataset_{version}_features.jsonl"
@@ -230,7 +224,7 @@ def build_dataset(
     def _relative(path_value: str | Path) -> str:
         try:
             return Path(path_value).resolve().relative_to(datasets_root.resolve()).as_posix()
-        except ValueError:  # outside root — keep absolute
+        except ValueError:
             return str(path_value)
 
     metadata = build_metadata(

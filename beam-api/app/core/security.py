@@ -15,7 +15,6 @@ REFRESH_TOKEN_TYPE = "refresh"
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     try:
-        # Truncate to 72 bytes as required by standard bcrypt
         pwd_bytes = plain_password.encode("utf-8")[:72]
         hash_bytes = hashed_password.encode("utf-8")
         return bcrypt.checkpw(pwd_bytes, hash_bytes)
@@ -24,7 +23,6 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 def get_password_hash(password: str) -> str:
-    # Truncate to 72 bytes as required by standard bcrypt
     pwd_bytes = password.encode("utf-8")[:72]
     salt = bcrypt.gensalt()
     return bcrypt.hashpw(pwd_bytes, salt).decode("utf-8")

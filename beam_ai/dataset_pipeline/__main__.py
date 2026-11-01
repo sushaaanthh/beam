@@ -21,13 +21,12 @@ import argparse
 import sys
 from pathlib import Path
 
-# Allow `python -m beam_ai.dataset_pipeline` from repo root OR beam-ai/.
 _ROOT = Path(__file__).resolve().parents[2]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-from beam_ai.configs.pipeline_settings import PipelineSettings  # noqa: E402
-from beam_ai.dataset_pipeline.build import build_dataset  # noqa: E402
+from beam_ai.configs.pipeline_settings import PipelineSettings
+from beam_ai.dataset_pipeline.build import build_dataset
 
 
 def build_parser() -> argparse.ArgumentParser:

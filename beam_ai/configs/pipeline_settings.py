@@ -21,40 +21,22 @@ class PipelineSettings(BaseSettings):
         extra="ignore",
     )
 
-    # --- Quality filters ------------------------------------------------------
-    # Defaults chosen for short-form social text: Reddit comments are often
-    # very short yet emotionally expressive ("so happy for you"), so floors
-    # are deliberately low. Tune via config, not code.
     min_chars: int = Field(default=10, ge=1)
     max_chars: int = Field(default=8000, ge=1)
     min_words: int = Field(default=3, ge=0)
-    keep_deleted: bool = False  # removed/deleted bodies are dropped by default
+    keep_deleted: bool = False
 
-    # --- Deduplication ----------------------------------------------------------
-    # exact: normalized_text equality.
-    # near : word-3-gram Jaccard similarity >= threshold within the same
-    #        subreddit. 0.9 keeps legitimately similar discussions separate;
-    #        lower it only if you accept losing near-identical variants.
     dedupe_enabled: bool = True
     near_duplicate_threshold: float = Field(default=0.9, ge=0.0, le=1.0)
 
-    # --- Language -----------------------------------------------------------------
-    # mode:
-    #   off      -> no language detection (language recorded as 'unknown')
-    #   allowlist-> detect language when langdetect is installed and keep only
-    #               `languages`; others are filtered WITH a recorded reason.
-    # If langdetect is not installed, allowlist mode degrades to 'off' and the
-    # quality report says so - nothing is silently discarded.
     language_mode: str = Field(default="allowlist", pattern="^(off|allowlist)$")
-    languages: str = "en"  # comma-separated allowlist
+    languages: str = "en"
 
-    # --- Split ----------------------------------------------------------------------
     train_ratio: float = Field(default=0.70, gt=0, lt=1)
     validation_ratio: float = Field(default=0.15, ge=0, lt=1)
     test_ratio: float = Field(default=0.15, ge=0, lt=1)
     random_seed: int = Field(default=42)
 
-    # --- Identity ---------------------------------------------------------------------
     dataset_version: str = "v001"
     namespace_uuid: str = "6f6f6e6b-beam-beam-beam-beam00000000"
 

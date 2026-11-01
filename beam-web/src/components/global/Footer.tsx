@@ -10,7 +10,6 @@ export function Footer() {
     <footer className="relative z-10 border-t border-line-subtle bg-deep">
       <Container className="flex flex-col gap-10 py-12">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-          {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <BrandMark compact to={undefined} />
@@ -30,7 +29,6 @@ export function Footer() {
             <StatusIndicator label="System Nominal" tone="operational" />
           </div>
 
-          {/* Pipeline */}
           <nav aria-label="Research pipeline" className="space-y-3">
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-dim">
               Pipeline
@@ -47,7 +45,6 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Stack summary */}
           <div className="space-y-3">
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-dim">
               Research Stack

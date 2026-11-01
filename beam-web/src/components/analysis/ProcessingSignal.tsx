@@ -1,9 +1,5 @@
 import { KeycapPanel } from '../keycap'
 
-/**
- * Restrained processing state — a slow, low-amplitude signal sweep.
- * Global CSS disables animations under prefers-reduced-motion.
- */
 export function ProcessingSignal({ sessionId }: { sessionId?: string | undefined }) {
   return (
     <KeycapPanel
@@ -20,7 +16,6 @@ export function ProcessingSignal({ sessionId }: { sessionId?: string | undefined
         Analyzing Text
       </h2>
 
-      {/* Signal sweep */}
       <div className="flex h-10 items-end gap-1.5" aria-hidden="true">
         {[0, 1, 2, 3, 4].map((bar) => (
           <span

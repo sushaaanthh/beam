@@ -84,7 +84,7 @@ class TestCommentParsing:
         )
         assert record.reddit_comment_id == "c1"
         assert record.post_id == "abc123"
-        assert record.parent_id == "abc123"  # t3_ prefix stripped
+        assert record.parent_id == "abc123"
         assert record.depth == 2
         assert record.body_status is BodyStatus.AVAILABLE
 
@@ -128,7 +128,6 @@ class TestAuthorAnonymization:
 
     def test_handle_replaced_by_deterministic_pseudonym(self) -> None:
         record = parse_submission(make_submission(author="research_observer"))
-        # Not the raw handle, stable across calls, 16 lowercase hex chars.
         assert record.author != "research_observer"
         assert PSEUDONYM_PATTERN.match(record.author or "")
         again = parse_submission(make_submission(author="research_observer"))

@@ -28,7 +28,7 @@ FILLER = [f"tok{i}" for i in range(99)]
 def build_vocab_dict() -> dict[str, int]:
     """Ordered token -> id with standard special-token positions."""
     vocab: dict[str, int] = {"[PAD]": 0}
-    for index, filler in enumerate(FILLER, start=1):  # ids 1..99
+    for index, filler in enumerate(FILLER, start=1):
         vocab[filler] = index
     vocab["[UNK]"] = 100
     vocab["[CLS]"] = 101

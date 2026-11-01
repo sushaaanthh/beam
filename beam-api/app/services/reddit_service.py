@@ -13,10 +13,8 @@ from app.services.emotion_service import analyze_emotion
 
 logger = logging.getLogger(__name__)
 
-# Cache freshness duration: 1 day (24 hours)
 CACHE_TTL = timedelta(days=1)
 
-# Sample realistic public Reddit corpora for immediate live testing
 PRESET_REDDIT_DEMOS = {
     "u/student_dev": [
         "Finally finished our senior design machine learning benchmark! Results exceeded our baseline by 14%.",
@@ -120,7 +118,6 @@ def save_cached_reddit_analysis(
     parsed_uuid = _safe_parse_uuid(user_id)
     now = datetime.now(timezone.utc)
 
-    # Avoid storing redundant cache flags inside raw data JSON
     data_to_store = {k: v for k, v in data.items() if k not in {"cached", "cache_updated_at", "cache_age_seconds", "is_fresh"}}
 
     try:
@@ -155,7 +152,6 @@ async def fetch_live_reddit_posts(identifier: str, source_type: str = "subreddit
     cleaned_id = identifier.strip().lstrip("u/").lstrip("r/").strip()
     collected: list[str] = []
 
-    # 1. Primary: Arctic-Shift index
     try:
         url = (
             f"https://arctic-shift.photon-reddit.com/api/posts/search?subreddit={cleaned_id}&limit={max_items}"
@@ -176,7 +172,6 @@ async def fetch_live_reddit_posts(identifier: str, source_type: str = "subreddit
     except Exception as e:
         logger.info("Arctic-shift live fetch attempt error: %s", e)
 
-    # 2. Secondary: PullPush public endpoint
     if not collected:
         try:
             url = (
@@ -197,7 +192,6 @@ async def fetch_live_reddit_posts(identifier: str, source_type: str = "subreddit
         except Exception as e:
             logger.info("PullPush live Reddit fetch attempt error: %s", e)
 
-    # 3. Tertiary: Direct Reddit JSON endpoint
     if not collected:
         try:
             url = (
@@ -226,7 +220,7 @@ async def fetch_live_reddit_posts(identifier: str, source_type: str = "subreddit
 
 async def analyze_reddit_source(
     identifier: str,
-    source_type: str = "username",  # 'username' or 'subreddit'
+    source_type: str = "username",
     max_items: int = 5,
     user_id: str = "default",
     force_refresh: bool = False
@@ -241,7 +235,6 @@ async def analyze_reddit_source(
     """
     cleaned_id = identifier.strip().lstrip("u/").lstrip("r/").strip()
 
-    # Check cache first if not explicitly forcing fresh recomputation
     if not force_refresh:
         cached = get_cached_reddit_analysis(
             identifier=cleaned_id,
@@ -252,10 +245,8 @@ async def analyze_reddit_source(
         if cached:
             return cached
 
-    # 1. Fetch live posts
     posts_text = await fetch_live_reddit_posts(cleaned_id, source_type=source_type, max_items=max_items)
 
-    # If no live posts retrieved, check if it was one of the verified explicit presets
     if not posts_text:
         key = f"r/{cleaned_id}" if source_type == "subreddit" else f"u/{cleaned_id}"
         if key in PRESET_REDDIT_DEMOS:
@@ -278,7 +269,6 @@ async def analyze_reddit_source(
             save_cached_reddit_analysis(cleaned_id, source_type, empty_result, user_id=user_id)
             return empty_result
 
-    # 2. Run batch RoBERTa emotion analysis across all collected posts
     analyzed_items = []
     emotions_list = []
     all_keywords = []
@@ -300,7 +290,6 @@ async def analyze_reddit_source(
             "timestamp": f"Item {idx + 1}"
         })
 
-    # 3. Aggregate Emotion Distribution Percentages
     total = len(emotions_list)
     counts = Counter(emotions_list)
     distribution = [
@@ -329,7 +318,6 @@ async def analyze_reddit_source(
         "cache_updated_at": datetime.now(timezone.utc).isoformat(),
     }
 
-    # Store in cache for 1 day
     save_cached_reddit_analysis(cleaned_id, source_type, computed_result, user_id=user_id)
 
     return computed_result

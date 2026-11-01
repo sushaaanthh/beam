@@ -10,7 +10,6 @@ from sqlalchemy.types import JSON
 
 from app.database.base import Base
 
-# Portable JSON: JSONB on PostgreSQL, plain JSON elsewhere (e.g. SQLite tests).
 EmotionDistributionType = JSON().with_variant(JSONB(none_as_null=True), "postgresql")
 
 

@@ -46,7 +46,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
         setDailySummary(res.data.summary)
       }
     } catch {
-      // Ignore
     }
   }
 
@@ -91,7 +90,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
     setInput('')
     setLoading(true)
 
-    // Optimistic user bubble
     const tempUserMsg: ChatMessage = {
       id: `TMP-${Date.now()}`,
       sender: 'user',
@@ -108,7 +106,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
       }
       loadSummary()
     } catch {
-      // Offline fallback
       setTimeout(() => {
         setMessages((prev) => [
           ...prev,
@@ -142,7 +139,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
 
   return (
     <div className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#080808] border-l border-[#1F1F1F] shadow-2xl flex flex-col animate-in slide-in-from-right duration-200">
-      {/* Header */}
       <div className="p-4 border-b border-[#1C1C1C] bg-[#0C0C0C] flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <div className="h-8 w-8 rounded-lg bg-[#C7FF4A]/10 border border-[#C7FF4A]/30 flex items-center justify-center text-[#C7FF4A]">
@@ -176,7 +172,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
         </div>
       </div>
 
-      {/* Daily Trajectory Summary Banner */}
       {dailySummary && (
         <div className="px-4 py-2.5 bg-[#121212] border-b border-[#1C1C1C] flex items-start gap-2 text-[11px] text-[#B8B8B0]">
           <Sparkles className="h-3.5 w-3.5 text-[#C7FF4A] shrink-0 mt-0.5" />
@@ -187,7 +182,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
         </div>
       )}
 
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((m) => {
           const isUser = m.sender === 'user'
@@ -202,7 +196,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
               >
                 <p>{m.message}</p>
 
-                {/* Emotion telemetry badge per message */}
                 {m.detected_emotion && (
                   <div
                     className={`mt-2 pt-1.5 border-t border-[#222222] flex items-center justify-between text-[10px] font-mono ${
@@ -216,7 +209,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
                   </div>
                 )}
 
-                {/* Trigger word chips */}
                 {m.trigger_words && m.trigger_words.length > 0 && isUser && (
                   <div className="flex flex-wrap gap-1 mt-1.5 pt-1 border-t border-[#222222]">
                     {m.trigger_words.map((tw) => (
@@ -243,7 +235,6 @@ export function CompanionDrawer({ isOpen, onClose }: CompanionDrawerProps) {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Form */}
       <form onSubmit={handleSend} className="p-3 border-t border-[#1C1C1C] bg-[#0A0A0A]">
         <div className="flex items-center gap-2 bg-[#121212] border border-[#222222] rounded-xl px-3 py-1.5 focus-within:border-[#C7FF4A]">
           <input

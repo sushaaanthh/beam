@@ -3,7 +3,6 @@ import { forwardRef, type InputHTMLAttributes, type ReactNode, type TextareaHTML
 type CommonProps = {
   label?: string | undefined
   hint?: string | undefined
-  /** react-hook-form supplies `string | undefined`; accept both explicitly. */
   error?: string | undefined
   className?: string | undefined
   action?: ReactNode

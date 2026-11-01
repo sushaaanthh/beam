@@ -45,7 +45,6 @@ export function WeeklyCheckInModal({ isOpen, onClose, onSuccess }: WeeklyCheckIn
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-150">
       <div className="w-full max-w-lg rounded-2xl bg-[#0A0A0A] border border-[#222222] shadow-2xl overflow-hidden">
-        {/* Header */}
         <div className="p-5 border-b border-[#1C1C1C] flex items-center justify-between bg-[#0E0E0E]">
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-xl bg-[#C7FF4A]/10 border border-[#C7FF4A]/30 flex items-center justify-center text-[#C7FF4A]">
@@ -69,9 +68,7 @@ export function WeeklyCheckInModal({ isOpen, onClose, onSuccess }: WeeklyCheckIn
           </button>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
-          {/* Sliders */}
           <div className="space-y-4">
             <div>
               <div className="flex justify-between text-xs font-mono mb-1.5">
@@ -134,7 +131,6 @@ export function WeeklyCheckInModal({ isOpen, onClose, onSuccess }: WeeklyCheckIn
             </div>
           </div>
 
-          {/* Free-text Reflection */}
           <div>
             <label className="text-xs font-mono text-[#73736F] uppercase block mb-1.5">
               Free-form Reflection (Optional NLP Analysis)
@@ -148,7 +144,6 @@ export function WeeklyCheckInModal({ isOpen, onClose, onSuccess }: WeeklyCheckIn
             />
           </div>
 
-          {/* Actions */}
           <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#1C1C1C]">
             <Button variant="ghost" size="sm" type="button" onClick={onClose}>
               Cancel

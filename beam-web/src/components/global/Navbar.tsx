@@ -7,7 +7,6 @@ import { playTapSound } from '../../utils/tapSound'
 
 export type NavbarItem = {
   label: string
-  /** Route path, e.g. "/#features" */
   to: string
 }
 
@@ -47,7 +46,6 @@ export function Navbar({
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-8">
-        {/* LEFT — wordmark + descriptor */}
         <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="B.E.A.M. home">
           <BrandMark compact to="" />
           <span className="flex flex-col leading-none">
@@ -60,7 +58,6 @@ export function Navbar({
           </span>
         </Link>
 
-        {/* CENTER — section navigation */}
         {items.length > 0 ? (
           <nav aria-label="Primary" className="hidden items-center gap-1 rounded-module border border-line-subtle bg-surface p-1 lg:flex">
             {items.map((item) => (
@@ -76,7 +73,6 @@ export function Navbar({
           </nav>
         ) : null}
 
-        {/* RIGHT — actions */}
         <div className="hidden items-center gap-2.5 lg:flex">
           <Link to={signInTo} onClick={playTapSound} className={keycapClass('ghost', 'sm')}>
             Sign In
@@ -86,7 +82,6 @@ export function Navbar({
           </Link>
         </div>
 
-        {/* Mobile menu toggle */}
         <button
           type="button"
           onClick={() => {
@@ -104,7 +99,6 @@ export function Navbar({
         </button>
       </div>
 
-      {/* Mobile panel */}
       {menuOpen ? (
         <div id="beam-mobile-menu" className="border-t border-line-subtle bg-deep px-4 pb-5 pt-3 sm:px-6 lg:hidden">
           <nav aria-label="Primary mobile" className="flex flex-col gap-1">

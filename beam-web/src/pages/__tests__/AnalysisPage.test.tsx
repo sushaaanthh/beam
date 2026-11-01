@@ -108,12 +108,10 @@ describe('AnalysisPage', () => {
       source_type: 'text',
     })
 
-    // Result workspace renders with explicit unavailability markers.
     expect(await screen.findByText(/primary emotion/i)).toBeInTheDocument()
     expect(screen.getAllByText(/pending model/i).length).toBeGreaterThan(0)
     expect(screen.getAllByText(/not deployed/i).length).toBeGreaterThan(0)
 
-    // No fabricated predictions are ever displayed.
     expect(screen.queryByText(/joy|frustration|excitement/i)).not.toBeInTheDocument()
   })
 

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-# beam_ai/utils/paths.py -> parents[0]=utils, [1]=beam_ai, [2]=repo root
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 DATASETS_DIR = REPO_ROOT / "beam-datasets"

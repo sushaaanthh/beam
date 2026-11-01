@@ -16,16 +16,12 @@ from pathlib import Path
 
 import pytest
 
-# Resolve project root so tests run from any CWD
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from beam_ai.dataset_pipeline.io_utils import read_jsonl  # noqa: E402
+from beam_ai.dataset_pipeline.io_utils import read_jsonl
 
 
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
 
 TAXONOMY_PATH = PROJECT_ROOT / "beam-datasets" / "annotation" / "taxonomy.yaml"
 SCHEMA_PATH = PROJECT_ROOT / "beam-datasets" / "annotation" / "schema.json"
@@ -34,15 +30,12 @@ GUIDELINES_PATH = PROJECT_ROOT / "beam-datasets" / "annotation" / "annotation_gu
 QUALITY_PATH = PROJECT_ROOT / "beam-datasets" / "annotation" / "quality_protocol.md"
 
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 
 def _load_yaml(path: Path) -> dict:
     """Load a YAML file without adding a runtime dependency."""
     try:
-        import yaml  # type: ignore[import-untyped]
-    except ImportError as exc:  # pragma: no cover - optional dep
+        import yaml
+    except ImportError as exc:
         pytest.skip(f"PyYAML not installed: {exc}")
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
@@ -51,9 +44,6 @@ def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-# ---------------------------------------------------------------------------
-# Taxonomy tests
-# ---------------------------------------------------------------------------
 
 class TestTaxonomyFile:
     """taxonomy.yaml must exist and be parseable."""
@@ -139,9 +129,6 @@ class TestTaxonomyFile:
         assert len(ids) == 10, "Do not introduce additional emotion classes without documented taxonomy revision"
 
 
-# ---------------------------------------------------------------------------
-# Schema tests
-# ---------------------------------------------------------------------------
 
 class TestSchemaFile:
     """schema.json must exist and be valid JSON with correct constraints."""
@@ -199,9 +186,6 @@ class TestSchemaFile:
         assert schema.get("additionalProperties") is False
 
 
-# ---------------------------------------------------------------------------
-# Example annotation tests
-# ---------------------------------------------------------------------------
 
 class TestExampleAnnotations:
     """examples.jsonl must contain valid annotations matching the schema."""
@@ -309,9 +293,6 @@ class TestExampleAnnotations:
         assert has_null_secondary, "Examples should include at least one annotation with null secondary_emotion"
 
 
-# ---------------------------------------------------------------------------
-# Annotation file existence tests
-# ---------------------------------------------------------------------------
 
 class TestAnnotationFiles:
     """All required annotation files must exist."""
@@ -323,9 +304,6 @@ class TestAnnotationFiles:
         assert QUALITY_PATH.exists(), f"Missing quality protocol: {QUALITY_PATH}"
 
 
-# ---------------------------------------------------------------------------
-# Dataset v001 must remain unlabeled
-# ---------------------------------------------------------------------------
 
 class TestDatasetV001Unlabeled:
     """v001 must not be modified to pretend it is labeled."""

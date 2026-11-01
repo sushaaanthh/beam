@@ -104,7 +104,6 @@ def authenticate_user(session: Session, identifier: str, password: str) -> User:
     return user
 
 
-# In-memory store for OTPs: key -> {code: str, expires_at: datetime, email: str}
 _otp_store: dict[str, dict[str, Any]] = {}
 
 
@@ -119,7 +118,6 @@ def generate_otp_for_user(session: Session, identifier: str) -> dict[str, str]:
             detail="Account with that username or email was not found",
         )
 
-    # 6-digit cryptographic-style OTP
     code = f"{random.randint(100000, 999999)}"
     expires_at = datetime.now(timezone.utc) + timedelta(minutes=10)
 
@@ -131,7 +129,6 @@ def generate_otp_for_user(session: Session, identifier: str) -> dict[str, str]:
         "username": user.username,
     }
 
-    # Mask email for privacy display (e.g. ra***@gmail.com)
     email_parts = user.email.split("@")
     if len(email_parts) == 2:
         uname_part = email_parts[0]
@@ -143,7 +140,7 @@ def generate_otp_for_user(session: Session, identifier: str) -> dict[str, str]:
     return {
         "message": f"Verification OTP sent to {masked_email}",
         "masked_email": masked_email,
-        "otp": code,  # Provided for seamless developer testing and instant input
+        "otp": code,
     }
 
 
@@ -160,7 +157,6 @@ def reset_user_password_with_otp(session: Session, identifier: str, otp: str, ne
     clean_id = identifier.strip().lower()
     stored = _otp_store.get(clean_id)
 
-    # Also check user.email and user.username in case identifier format differed
     if not stored:
         stored = _otp_store.get(user.email.lower()) or _otp_store.get(user.username.lower())
 
@@ -183,7 +179,6 @@ def reset_user_password_with_otp(session: Session, identifier: str, otp: str, ne
             detail="Invalid OTP code. Please enter the correct 6-digit code.",
         )
 
-    # OTP Verified -> update password and consume OTP
     user.hashed_password = get_password_hash(new_password)
     session.add(user)
     session.commit()

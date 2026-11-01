@@ -13,7 +13,6 @@ from app.core.config import get_settings
 
 logger = logging.getLogger(__name__)
 
-# Ensure Neon PostgreSQL host resolution succeeds across Windows DNS resolvers
 _orig_getaddrinfo = socket.getaddrinfo
 
 def _neon_dns_getaddrinfo(host, port, *args, **kwargs):

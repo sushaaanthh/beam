@@ -32,12 +32,10 @@ def _parse_datetime(value: Any) -> datetime | None:
     if isinstance(value, datetime):
         return value
     text = str(value).strip()
-    # Numeric epoch seconds.
     try:
         return datetime.fromtimestamp(float(text), tz=timezone.utc)
     except ValueError:
         pass
-    # ISO-8601 (scraper exports use trailing Z).
     try:
         parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
         return parsed.astimezone(timezone.utc)
@@ -153,7 +151,7 @@ def iter_database_rows(database_url: str | None = None) -> Iterator[dict[str, An
     if scraper_root not in sys.path:
         sys.path.insert(0, scraper_root)
 
-    from reddit.storage import Storage  # noqa: PLC0415 - deliberate lazy import
+    from reddit.storage import Storage
 
     if not database_url:
         raise ValueError("db input requires DATABASE_URL (e.g. --db-url or DATABASE_URL env)")

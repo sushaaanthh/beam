@@ -10,8 +10,6 @@ from sqlalchemy.types import JSON
 
 from app.database.base import Base
 
-# Portable columns: identical JSONB/TEXT[] storage on PostgreSQL,
-# plain JSON on other dialects (e.g. SQLite tests).
 JsonDictType = JSON().with_variant(JSONB(none_as_null=True), "postgresql")
 StringListType = (
     JSON()

@@ -22,7 +22,7 @@ def _get_user_id_from_req(request: Request) -> str:
 
 class RedditAnalysisRequest(BaseModel):
     identifier: str = Field(default="u/student_dev", min_length=2)
-    source_type: str = Field(default="username")  # 'username' or 'subreddit'
+    source_type: str = Field(default="username")
     max_items: int = Field(default=5, ge=1, le=100)
     force_refresh: bool = Field(default=False)
 

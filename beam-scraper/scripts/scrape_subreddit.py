@@ -17,13 +17,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from config.settings import SettingsError, get_settings  # noqa: E402
-from reddit.client import RedditClient, RedditClientError  # noqa: E402
-from reddit.collector import SubredditCollector  # noqa: E402
-from reddit.logging_setup import configure_logging  # noqa: E402
-from reddit.post_collector import SORT_MODES, TIME_FILTERS  # noqa: E402
-from reddit.rate_limit import RateLimitExceeded, RateLimiter  # noqa: E402
-from reddit.storage import Storage  # noqa: E402
+from config.settings import SettingsError, get_settings
+from reddit.client import RedditClient, RedditClientError
+from reddit.collector import SubredditCollector
+from reddit.logging_setup import configure_logging
+from reddit.post_collector import SORT_MODES, TIME_FILTERS
+from reddit.rate_limit import RateLimitExceeded, RateLimiter
+from reddit.storage import Storage
 
 
 def build_parser() -> argparse.ArgumentParser:

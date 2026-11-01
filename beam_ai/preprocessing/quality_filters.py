@@ -12,14 +12,13 @@ from dataclasses import dataclass
 from beam_ai.configs.pipeline_settings import PipelineSettings
 from beam_ai.preprocessing.normalization import word_tokens
 
-# Body statuses produced by the scraper for deleted/removed content.
 DELETED_STATUSES = {"removed", "deleted"}
 
 
 @dataclass(frozen=True, slots=True)
 class FilterDecision:
     kept: bool
-    reason: str | None  # None when kept; otherwise a stable machine-readable tag
+    reason: str | None
 
 
 def evaluate_quality(

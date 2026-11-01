@@ -33,7 +33,6 @@ export function SettingsPage() {
       </div>
 
       <div className="space-y-6">
-        {/* Analysis Preferences */}
         <Card variant="default" padding="none" className="p-6 space-y-4">
           <div className="flex items-center gap-2 border-b border-[#1C1C1C] pb-3">
             <Sliders className="h-4 w-4 text-[#C7FF4A]" />
@@ -74,7 +73,6 @@ export function SettingsPage() {
           </div>
         </Card>
 
-        {/* Model Preferences */}
         <Card variant="default" padding="none" className="p-6 space-y-4">
           <div className="flex items-center gap-2 border-b border-[#1C1C1C] pb-3">
             <Cpu className="h-4 w-4 text-[#C7FF4A]" />
@@ -102,7 +100,6 @@ export function SettingsPage() {
           </div>
         </Card>
 
-        {/* Notifications & Privacy */}
         <Card variant="default" padding="none" className="p-6 space-y-4">
           <div className="flex items-center gap-2 border-b border-[#1C1C1C] pb-3">
             <Bell className="h-4 w-4 text-[#C7FF4A]" />

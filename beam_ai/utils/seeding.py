@@ -27,21 +27,20 @@ def set_seeds(seed: int, deterministic_torch: bool = True) -> None:
         import numpy as np
 
         np.random.seed(seed)
-    except ImportError:  # pragma: no cover - numpy ships with torch stack
+    except ImportError:
         pass
 
     try:
         import torch
 
         torch.manual_seed(seed)
-        if torch.cuda.is_available():  # pragma: no cover - CPU dev machines
+        if torch.cuda.is_available():
             torch.cuda.manual_seed_all(seed)
         torch.backends.cudnn.benchmark = False
         if deterministic_torch:
             try:
                 torch.use_deterministic_algorithms(True, warn_only=True)
-            except TypeError:  # older torch without warn_only
+            except TypeError:
                 torch.use_deterministic_algorithms(True)
     except ImportError:
-        # Torch-free environments (e.g. pure config tests) are fine.
         pass

@@ -10,7 +10,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from beam_ai.configs.pipeline_settings import PipelineSettings  # noqa: E402
+from beam_ai.configs.pipeline_settings import PipelineSettings
 
 
 def make_settings(**overrides) -> PipelineSettings:
@@ -37,7 +37,6 @@ def post_row(
         "title": title,
         "body": body,
         "body_status": body_status or "",
-        # Scraper already pseudonymizes authors before storage/export.
         "author": f"{post_id}a1b2c3d4e5f60718"[:16],
         "created_utc": created_utc,
         "score": score,
@@ -79,6 +78,5 @@ def write_jsonl(path: Path, rows: list[dict]) -> Path:
 
 @pytest.fixture()
 def default_settings() -> PipelineSettings:
-    # Deterministic settings; language allowlist off unless a test opts in.
     settings = make_settings(language_mode="off")
     yield settings

@@ -47,7 +47,6 @@ def render_record(record: SourceRecord, index: int, total: int) -> None:
         else:
             st.warning(f"Body unavailable (status: {record.body_status})")
 
-    # Safe metadata
     with st.expander("📊 Context (metadata)", expanded=False):
         meta = record.safe_metadata
         for k, v in meta.items():
@@ -92,7 +91,6 @@ def render_annotation_form(
     key_prefix: str,
 ) -> dict | None:
     """Render the annotation form for a record."""
-    # Normalize existing to empty dict to safely handle .get() calls
     existing = existing or {}
 
     form_key = f"{key_prefix}_{record.record_id}"
@@ -100,7 +98,6 @@ def render_annotation_form(
     with st.form(key=form_key):
         st.markdown("### Emotion Classification")
 
-        # Primary emotion
         primary_options = taxonomy.ids
         primary_display = {e["id"]: e["display_name"] for e in taxonomy.emotions}
         primary_defs = {e["id"]: e["definition"] for e in taxonomy.emotions}
@@ -122,7 +119,6 @@ def render_annotation_form(
 
         st.divider()
 
-        # Secondary emotion
         secondary_options = [None] + taxonomy.ids
         secondary_display = {None: "None"}
         secondary_display.update({e["id"]: e["display_name"] for e in taxonomy.emotions})
@@ -144,7 +140,6 @@ def render_annotation_form(
 
         st.divider()
 
-        # Intensity
         col1, col2 = st.columns(2)
         with col1:
             intensity = st.slider(
@@ -162,7 +157,6 @@ def render_annotation_form(
 
         st.divider()
 
-        # Confidence
         confidence = st.slider(
             "Confidence (1-3)",
             min_value=1,
@@ -178,7 +172,6 @@ def render_annotation_form(
 
         st.divider()
 
-        # Context flags
         st.markdown("**Context Flags**")
         st.caption("Select all that apply")
         context_options = schema.context_flags
@@ -192,7 +185,6 @@ def render_annotation_form(
 
         st.divider()
 
-        # Notes
         notes_default = existing.get("notes", "")
         notes = st.text_area(
             "Notes (optional)",
@@ -203,7 +195,6 @@ def render_annotation_form(
 
         st.divider()
 
-        # Submit
         submitted = st.form_submit_button("💾 Save Annotation", type="primary", use_container_width=True)
 
         if submitted:

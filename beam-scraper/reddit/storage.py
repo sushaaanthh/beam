@@ -41,11 +41,10 @@ class StorageStats:
 def _make_engine(database_url: str) -> Engine:
     if database_url.startswith("sqlite"):
         engine = create_engine(database_url, connect_args={"check_same_thread": False})
-        # SQLite ignores FKs unless explicitly enabled per connection.
         from sqlalchemy import event
 
         @event.listens_for(engine, "connect")
-        def _enable_sqlite_fk(dbapi_connection, _record):  # noqa: ANN001
+        def _enable_sqlite_fk(dbapi_connection, _record):
             cursor = dbapi_connection.cursor()
             cursor.execute("PRAGMA foreign_keys=ON")
             cursor.close()
@@ -71,7 +70,6 @@ class Storage:
     def session(self) -> Session:
         return self._session_factory()
 
-    # -- Posts ---------------------------------------------------------------
 
     def save_post(self, session: Session, record: PostRecord) -> str:
         """Insert or update a post. Returns 'inserted' | 'updated' | 'unchanged'."""
@@ -110,7 +108,6 @@ class Storage:
             or post.is_nsfw != record.is_nsfw
             or post.stickied != record.stickied
         )
-        # Mutable metadata refresh; first-seen `retrieved_at` is kept.
         post.title = record.title
         post.body = record.body
         post.body_status = record.body_status.value
@@ -126,7 +123,6 @@ class Storage:
         post.updated_at = utc_now()
         return "updated" if changed else "unchanged"
 
-    # -- Comments --------------------------------------------------------------
 
     def save_comment(self, session: Session, record: CommentRecord) -> str:
         comment = session.scalar(
@@ -162,7 +158,6 @@ class Storage:
         comment.updated_at = utc_now()
         return "updated" if changed else "unchanged"
 
-    # -- Read helpers (used by export utility; strictly read-only) ---------------
 
     def iter_posts(self, subreddit: str | None = None):
         with self.session() as session:

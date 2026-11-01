@@ -45,7 +45,6 @@ def assign_splits(
 
     n_train = int(round(train_ratio * total_groups))
     n_validation = int(round(validation_ratio * total_groups))
-    # Largest-remainder correction so the three counts sum exactly.
     n_test = total_groups - n_train - n_validation
 
     assignment: dict[str, str] = {}

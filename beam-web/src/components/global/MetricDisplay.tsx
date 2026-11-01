@@ -3,7 +3,6 @@ import { classNames } from '../../utils/classNames'
 type MetricDisplayProps = {
   value: string
   label: string
-  /** 'lime' highlights the value with the accent — use sparingly. */
   tone?: 'chalk' | 'lime'
   className?: string
 }

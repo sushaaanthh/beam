@@ -72,7 +72,6 @@ class TestNormalization:
         raw = "**So** happy!!! @"
         cleaned = clean_text(raw)
         normalized = normalize_text(cleaned)
-        # Raw preserved by caller; cleaned keeps emphasis words; normalized is canonical.
         assert cleaned == "So happy! @"
         assert normalized == "so happy! @"
 

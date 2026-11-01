@@ -2,7 +2,6 @@ import type { HTMLAttributes } from 'react'
 import { classNames } from '../../utils/classNames'
 
 type KeycapCardProps = HTMLAttributes<HTMLDivElement> & {
-  /** Adds restrained tactile hover lift. Only for non-interactive framing. */
   interactive?: boolean
 }
 

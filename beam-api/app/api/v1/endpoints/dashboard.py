@@ -24,7 +24,6 @@ def get_dashboard_summary(request: Request) -> dict[str, Any]:
     notifications = get_notifications(user_id)
     wellness = calculate_wellness_metrics(journals)
 
-    # Word cloud extraction from journal entries
     all_words = []
     for j in journals:
         words = re.findall(r"\b[a-zA-Z]{4,}\b", j.get("content", "").lower())
@@ -33,7 +32,6 @@ def get_dashboard_summary(request: Request) -> dict[str, Any]:
     top_words = Counter(all_words).most_common(12)
     word_cloud = [{"text": w, "value": count * 10 + 20} for w, count in top_words]
 
-    # Calendar Heatmap (28 days) - Active only if user recorded entries on those days
     calendar_heatmap = []
     for day in range(28, 0, -1):
         if len(journals) > 0 and day <= min(len(journals), 14):

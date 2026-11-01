@@ -105,6 +105,5 @@ def list_user_sessions(
 
 
 def delete_session(db: Session, session: AnalysisSession) -> None:
-    # ORM cascades remove input/prediction/metrics/explanation rows.
     db.delete(session)
     db.flush()

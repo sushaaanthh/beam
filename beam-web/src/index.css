@@ -1,12 +1,6 @@
-/* ==========================================================================
-   B.E.A.M. DESIGN SYSTEM — single source of truth
-   Tactile keycap interface. Monochrome graphite + restrained lime accent.
-   ========================================================================== */
-
 @import "tailwindcss";
 
 @theme {
-  /* ---- Color tokens ---------------------------------------------------- */
   --color-base: #050505;
   --color-deep: #080808;
   --color-surface: #0d0d0d;
@@ -21,17 +15,11 @@
   --color-dim: #73736f;
 
   --color-lime: #c7ff4a;
-
-  /* ---- Typography tokens ----------------------------------------------- */
   --font-display: "Oswald", "Arial Narrow", "Segoe UI", sans-serif;
   --font-ui: "Product Sans", "Google Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  /* ---- Radii tokens ----------------------------------------------------- */
   --radius-keycap: 7px;
   --radius-module: 12px;
   --radius-panel: 18px;
-
-  /* ---- Elevation / keycap depth tokens ---------------------------------- */
   --shadow-keycap:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     inset 0 -2px 0 rgba(0, 0, 0, 0.38),
@@ -59,13 +47,10 @@
     0 8px 24px -6px rgba(0, 0, 0, 0.7);
   --shadow-well:
     inset 0 2px 5px rgba(0, 0, 0, 0.6);
-
-  /* ---- Motion tokens ----------------------------------------------------- */
   --ease-tactile: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 :root {
-  /* Semantic aliases (usable anywhere, including non-Tailwind CSS) */
   --beam-duration-tactile: 160ms;
   --beam-keycap-lift: -1px;
   --beam-keycap-press: 1px;
@@ -148,10 +133,6 @@
     }
   }
 }
-
-/* --------------------------------------------------------------------------
-   Display typography
-   -------------------------------------------------------------------------- */
 @layer components {
   .font-display {
     font-family: var(--font-display);
@@ -162,11 +143,6 @@
   .font-ui {
     font-family: var(--font-ui);
   }
-
-/* --------------------------------------------------------------------------
-   KEYCAP PRIMITIVE — tactile physical depth
-   Hover: translateY(-1px) · Pressed: translateY(1px) · 160ms
-   -------------------------------------------------------------------------- */
 .kc {
   position: relative;
   display: inline-flex;
@@ -214,8 +190,6 @@
   opacity: 0.45;
   cursor: not-allowed;
 }
-
-/* Variant: lime primary */
 .kc--primary {
   background: var(--color-lime);
   border-color: var(--accent-subtle, #a8d83a);
@@ -232,8 +206,6 @@
   background: var(--accent-subtle, #a8d83a);
   box-shadow: var(--shadow-keycap-primary-pressed);
 }
-
-/* Variant: ghost */
 .kc--ghost {
   background: transparent;
   border-color: transparent;
@@ -246,10 +218,6 @@
   color: var(--color-chalk);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.4);
 }
-
-/* --------------------------------------------------------------------------
-   KEYCAP SURFACES — cards & panels
-   -------------------------------------------------------------------------- */
 .kc-card {
   position: relative;
   background: var(--color-surface);
@@ -276,10 +244,6 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.03),
     var(--shadow-module);
 }
-
-/* --------------------------------------------------------------------------
-   KEYCAP INPUT WELL — recessed
-   -------------------------------------------------------------------------- */
 .kc-input {
   width: 100%;
   background: #0c0c0c;
@@ -305,10 +269,6 @@
 .kc-input[aria-invalid="true"] {
   border-color: #b45454;
 }
-
-/* --------------------------------------------------------------------------
-   TECHNICAL LABEL CHIP
-   -------------------------------------------------------------------------- */
 .tech-label {
   display: inline-flex;
   align-items: center;
@@ -333,15 +293,9 @@
   border-color: rgba(199, 255, 74, 0.25);
   background: rgba(199, 255, 74, 0.05);
 }
-
-/* Legacy aliases kept for existing dashboard pages */
 .keycap-card { background: var(--color-surface); border: 1px solid var(--color-line-subtle); border-radius: var(--radius-module); box-shadow: var(--shadow-module); }
 .keycap-card-elevated { background: var(--color-raised); border: 1px solid var(--color-line); border-radius: var(--radius-module); }
 .keycap-card-hover:hover { border-color: var(--color-line); }
-
-/* --------------------------------------------------------------------------
-   BACKDROPS
-   -------------------------------------------------------------------------- */
 .instrument-grid {
   background-size: 32px 32px;
   background-image:
@@ -355,8 +309,6 @@
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
-
-/* Status pulse (restrained) */
   .beam-pulse {
     animation: beam-pulse 2.4s var(--ease-tactile) infinite;
   }

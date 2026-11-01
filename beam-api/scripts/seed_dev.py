@@ -32,17 +32,15 @@ NOTE: development use only. Never run against production data.
 import os
 import sys
 
-# Ensure we connect to localhost when running outside docker.
 if not os.getenv("DATABASE_URL"):
     if not os.getenv("POSTGRES_SERVER") or os.getenv("POSTGRES_SERVER") == "postgres":
         os.environ["POSTGRES_SERVER"] = "localhost"
 
-# Add the parent directory to sys.path
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-from app.core.security import get_password_hash  # noqa: E402
-from app.database.session import SessionLocal  # noqa: E402
-from app.models.user import User  # noqa: E402
+from app.core.security import get_password_hash
+from app.database.session import SessionLocal
+from app.models.user import User
 
 TEST_USERNAME = "tester"
 TEST_EMAIL = "tester@beam.example.com"
@@ -54,7 +52,6 @@ OTHER_TEST_EMAILS = ["test@beam.local", "tester@beam.local"]
 def seed() -> int:
     db = SessionLocal()
     try:
-        # First, find existing dev/test users we want to clean up or reset.
         target_usernames = [TEST_USERNAME] + OTHER_TEST_USERNAMES
         target_emails = [TEST_EMAIL] + OTHER_TEST_EMAILS
 

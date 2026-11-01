@@ -71,7 +71,7 @@ class TestArtifactRoundtrip:
         metadata_file = artifact_dir / "metadata.json"
         assert metadata_file.exists()
         assert (artifact_dir / "training_config.json").exists()
-        assert (artifact_dir / "config.json").exists()  # HF model config
+        assert (artifact_dir / "config.json").exists()
 
         loaded = load_model_from_artifact(artifact_dir)
         text = ["I feel happy today"]

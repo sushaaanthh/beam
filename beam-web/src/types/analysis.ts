@@ -18,7 +18,6 @@ export type EmotionDistributionItem = {
   score: number
 }
 
-/** Model-derived prediction. Fields are null until a real model is deployed. */
 export type PredictionPayload = {
   primary_emotion: string | null
   confidence: number | null

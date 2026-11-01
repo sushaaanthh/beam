@@ -42,7 +42,7 @@ class TestRegistration:
             "status",
         ):
             assert field in entry
-        assert entry["metrics"] is None  # nothing measured yet -> None
+        assert entry["metrics"] is None
 
     def test_re_register_replaces_same_version(self, registry):
         _register(registry)
@@ -61,7 +61,7 @@ class TestStatusLifecycle:
         assert updated["status"] == "validated"
 
     def test_production_requires_validated(self, registry):
-        _register(registry)  # status=training, no metrics
+        _register(registry)
         with pytest.raises(RegistryError, match="production"):
             registry.update_status("roberta-emotion", "v001", "production")
 

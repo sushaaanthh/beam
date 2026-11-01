@@ -4,12 +4,10 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-# Project root: beam-ai/annotation_app/ -> beam-ai/ -> project root
 ANNOTATION_APP_DIR = Path(__file__).resolve().parent
 BEAM_AI_DIR = ANNOTATION_APP_DIR.parent
 PROJECT_ROOT = BEAM_AI_DIR.parent
 
-# Authoritative data paths
 TAXONOMY_PATH = PROJECT_ROOT / "beam-datasets" / "annotation" / "taxonomy.yaml"
 SCHEMA_PATH = PROJECT_ROOT / "beam-datasets" / "annotation" / "schema.json"
 GUIDELINES_PATH = PROJECT_ROOT / "beam-datasets" / "annotation" / "annotation_guidelines.md"
@@ -17,7 +15,6 @@ SOURCE_DATA_PATH = PROJECT_ROOT / "beam-datasets" / "raw" / "sample_reddit.jsonl
 ANNOTATIONS_DIR = PROJECT_ROOT / "beam-datasets" / "annotations" / "pilot"
 MANIFEST_PATH = ANNOTATIONS_DIR / "pilot_manifest.json"
 
-# Environment
 ANNOTATOR_ID = os.environ.get("ANNOTATOR_ID", "").strip().upper()
 
 

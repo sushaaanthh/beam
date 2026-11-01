@@ -108,7 +108,6 @@ const techStack = [
 export function LandingPage() {
   return (
     <div id="overview">
-      {/* ================= HERO ================= */}
       <section className="instrument-grid border-b border-line-subtle">
         <Container className="grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:py-24">
           <div className="space-y-7 lg:col-span-7">
@@ -146,7 +145,6 @@ export function LandingPage() {
         </Container>
       </section>
 
-      {/* ================= RESEARCH FLOW ================= */}
       <section id="research" className="scroll-mt-24 border-b border-line-subtle bg-deep/40">
         <Container className="space-y-10 py-16 sm:py-20 lg:py-24">
           <SectionHeading
@@ -179,7 +177,6 @@ export function LandingPage() {
         </Container>
       </section>
 
-      {/* ================= CORE CAPABILITIES ================= */}
       <section id="capabilities" className="scroll-mt-24 border-b border-line-subtle">
         <Container className="space-y-10 py-16 sm:py-20 lg:py-24">
           <SectionHeading
@@ -208,7 +205,6 @@ export function LandingPage() {
         </Container>
       </section>
 
-      {/* ================= INTERPRETABILITY ================= */}
       <section id="interpretability" className="scroll-mt-24 border-b border-line-subtle bg-deep/40">
         <Container className="space-y-10 py-16 sm:py-20 lg:py-24">
           <SectionHeading
@@ -239,7 +235,6 @@ export function LandingPage() {
               ))}
             </ul>
 
-            {/* Evidence strip — token-level attribution sample */}
             <div className="mt-8 rounded-module border border-line-subtle bg-surface p-5">
               <div className="mb-4 flex items-center justify-between">
                 <TechnicalLabel>Token Attribution · SHAP</TechnicalLabel>
@@ -267,7 +262,6 @@ export function LandingPage() {
         </Container>
       </section>
 
-      {/* ================= TECHNOLOGY ================= */}
       <section id="technology" className="scroll-mt-24 border-b border-line-subtle">
         <Container className="space-y-10 py-16 sm:py-20 lg:py-24">
           <SectionHeading
@@ -294,7 +288,6 @@ export function LandingPage() {
         </Container>
       </section>
 
-      {/* ================= FINAL CTA ================= */}
       <section className="bg-deep/40">
         <Container className="py-16 sm:py-20 lg:py-24">
           <KeycapPanel bodyClassName="relative overflow-hidden p-8 text-center sm:p-14">
