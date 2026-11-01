@@ -1,16 +1,10 @@
-databases:
-  - name: beam-postgres
-    databaseName: beam_db
-    user: beam
-    plan: free
-    region: oregon
-
 services:
   - type: web
     name: beam-api
     runtime: docker
     plan: free
-    region: oregon
+    # Neon database is in ap-southeast-1 (Singapore); keep the API close to it.
+    region: singapore
     rootDir: beam-api
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/v1/health
@@ -22,10 +16,9 @@ services:
         value: "false"
       - key: LOG_LEVEL
         value: INFO
+      # Paste the Neon connection string when Render prompts for this value.
       - key: DATABASE_URL
-        fromDatabase:
-          name: beam-postgres
-          property: connectionString
+        sync: false
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: JWT_ALGORITHM

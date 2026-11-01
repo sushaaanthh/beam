@@ -59,6 +59,10 @@ class Settings(BaseSettings):
             # SQLAlchemy 2.x no longer recognises as a dialect.
             if url.startswith("postgres://"):
                 url = url.replace("postgres://", "postgresql+psycopg2://", 1)
+            elif url.startswith("postgresql+psycopg://"):
+                url = url.replace(
+                    "postgresql+psycopg://", "postgresql+psycopg2://", 1
+                )
             elif url.startswith("postgresql://"):
                 url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
             return url
