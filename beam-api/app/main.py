@@ -52,6 +52,7 @@ def create_application() -> FastAPI:
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:8000",
+        "https://beam-major.vercel.app",
     ]
     if settings.BACKEND_CORS_ORIGINS:
         for o in settings.BACKEND_CORS_ORIGINS:

@@ -30,7 +30,7 @@ services:
       - key: JWT_ISSUER
         value: beam-api
       - key: BACKEND_CORS_ORIGINS
-        value: '["https://your-project.vercel.app"]'
+        value: '["https://beam-major.vercel.app"]'
       - key: GEMINI_API_KEY
         sync: false
       - key: GEMINI_MODEL
