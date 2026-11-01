@@ -36,9 +36,6 @@ Thumbs.db
 .coverage
 htmlcov/
 
-# Docker
-.dockerignore
-
 # Model artifacts and experiments
 beam-models/checkpoints/
 beam-models/experiments/

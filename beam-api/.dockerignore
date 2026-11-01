@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+beam.db
+__pycache__/
+**/__pycache__/
+.pytest_cache/
+.pytest_cache
+tests/
+scripts/
+postman/
+.git/
+.gitignore
