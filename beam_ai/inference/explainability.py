@@ -25,13 +25,13 @@ class TokenAttribution:
     token: str
     start: int
     end: int
-    importance: float  # real score from the explaining method
+    importance: float
 
 
 @dataclass
 class ExplanationPayload:
     schema_version: str = EXPLANATION_SCHEMA_VERSION
-    method: str | None = None  # e.g. "shap", "lime", "gradient"
+    method: str | None = None
     important_tokens: list[TokenAttribution] = field(default_factory=list)
     feature_importance: dict[str, float] = field(default_factory=dict)
     metadata: dict[str, Any] = field(default_factory=dict)

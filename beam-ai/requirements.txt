@@ -35,3 +35,6 @@ spacy>=3.7
 
 # --- development ---
 pytest>=8.0
+
+# --- annotation interface ---
+streamlit>=1.35

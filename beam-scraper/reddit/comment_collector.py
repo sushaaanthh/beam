@@ -98,7 +98,7 @@ class CommentCollector:
 
         try:
             self._walk_forest(submission.comments, visit)
-        except Exception as error:  # malformed forest node — keep what we have
+        except Exception as error:
             logger.warning(
                 "comment_walk_error",
                 extra={"post_id": post_id, "error": type(error).__name__},

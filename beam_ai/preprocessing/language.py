@@ -18,18 +18,18 @@ from dataclasses import dataclass
 
 from beam_ai.configs.pipeline_settings import PipelineSettings
 
-try:  # optional dependency - pipeline works without it
+try:
     from langdetect import DetectorFactory, detect as _detect
 
-    DetectorFactory.seed = 0  # deterministic detection
+    DetectorFactory.seed = 0
     LANGDETECT_AVAILABLE = True
-except ImportError:  # pragma: no cover - depends on environment
+except ImportError:
     LANGDETECT_AVAILABLE = False
 
 
 @dataclass(frozen=True, slots=True)
 class LanguageDecision:
-    language: str       # detected code, configured value, or 'unknown'
+    language: str
     kept: bool
     reason: str | None
 
@@ -40,7 +40,6 @@ class LanguageFilter:
         self.allowlist = set(settings.resolved_languages())
         self.available = LANGDETECT_AVAILABLE
         if self.mode == "allowlist" and not self.available:
-            # Documented degradation instead of silent behavior.
             self.mode = "off"
             self.degraded = True
         else:
@@ -53,7 +52,6 @@ class LanguageFilter:
         try:
             detected = (_detect(text[:1000]) or "unknown").lower()
         except Exception:
-            # langdetect raises LangDetectException on e.g. digit-only text.
             return LanguageDecision("unknown", True, None)
 
         if detected in self.allowlist:

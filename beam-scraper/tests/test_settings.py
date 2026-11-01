@@ -11,14 +11,13 @@ def test_defaults_are_research_safe(clean_env) -> None:
     settings = Settings(_env_file=None)
     assert settings.POST_LIMIT == 100
     assert settings.SCRAPE_SORT == "new"
-    assert settings.MIN_REQUEST_INTERVAL_SECONDS >= 1.0  # conservative pacing
+    assert settings.MIN_REQUEST_INTERVAL_SECONDS >= 1.0
     assert "AskReddit" in settings.subreddit_list
 
 
 def test_subreddit_list_is_configurable_and_cleaned(clean_env, monkeypatch) -> None:
     monkeypatch.setenv("SUBREDDITS", " r/askreddit , CasualConversation ,, askreddit ")
     settings = Settings(_env_file=None)
-    # deduplicated (case-insensitive), r/ prefix stripped
     assert settings.subreddit_list == ["askreddit", "CasualConversation"]
 
 

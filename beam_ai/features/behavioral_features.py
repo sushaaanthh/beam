@@ -26,9 +26,8 @@ def extract_behavioral_features(
     }
 
     if created_utc is not None:
-        # Reddit timestamps are epoch seconds; keep UTC for determinism.
         hour = created_utc.hour
-        weekday = created_utc.weekday()  # 0=Monday
+        weekday = created_utc.weekday()
         features["posting_hour"] = hour
         features["posting_weekday"] = weekday
         features["is_weekend"] = weekday >= 5

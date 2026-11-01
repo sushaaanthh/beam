@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "B.E.A.M. Annotation Record",
+  "description": "Machine-readable schema for a single human annotation of a Reddit post or comment.",
+  "type": "object",
+  "required": [
+    "record_id",
+    "text",
+    "primary_emotion",
+    "secondary_emotion",
+    "intensity",
+    "confidence",
+    "context_flags",
+    "annotator_id",
+    "annotation_timestamp"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Stable record identifier from the source dataset (e.g., dataset_v001 record_id).",
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "text": {
+      "type": "string",
+      "description": "The text being annotated. Should match the source record's normalized_text or cleaned_text as specified by the annotation protocol.",
+      "minLength": 1,
+      "maxLength": 50000
+    },
+    "primary_emotion": {
+      "type": "string",
+      "description": "Dominant expressed emotion label from the B.E.A.M. taxonomy.",
+      "enum": [
+        "JOY_FULFILLMENT",
+        "PRIDE_ACCOMPLISHMENT",
+        "HOPE_OPTIMISM",
+        "CURIOSITY_FOCUS",
+        "CALM_SERENITY",
+        "NEUTRAL_ANALYTICAL",
+        "APPREHENSION_ANXIETY",
+        "FRUSTRATION_FRICTION",
+        "SADNESS_DEJECTION",
+        "OVERWHELMED_BURNOUT"
+      ]
+    },
+    "secondary_emotion": {
+      "type": ["string", "null"],
+      "description": "Secondary emotion when a second emotion materially contributes to interpretation. Null if no secondary emotion is clearly present.",
+      "enum": [
+        null,
+        "JOY_FULFILLMENT",
+        "PRIDE_ACCOMPLISHMENT",
+        "HOPE_OPTIMISM",
+        "CURIOSITY_FOCUS",
+        "CALM_SERENITY",
+        "NEUTRAL_ANALYTICAL",
+        "APPREHENSION_ANXIETY",
+        "FRUSTRATION_FRICTION",
+        "SADNESS_DEJECTION",
+        "OVERWHELMED_BURNOUT"
+      ]
+    },
+    "intensity": {
+      "type": "integer",
+      "description": "Ordinal intensity of emotional expression, 1 (very low) to 5 (very high). Does not represent clinical severity.",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "confidence": {
+      "type": "integer",
+      "description": "Annotator certainty in the assigned labels, 1 (uncertain) to 3 (confident).",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "context_flags": {
+      "type": "array",
+      "description": "Controlled set of pragmatic and situational context indicators.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PERSONAL_EXPERIENCE",
+          "THIRD_PARTY_EXPERIENCE",
+          "HYPOTHETICAL",
+          "FICTIONAL",
+          "QUOTED_TEXT",
+          "NEWS_OR_REPORTING",
+          "HUMOR",
+          "SARCASM",
+          "NOSTALGIA",
+          "ADVICE_SEEKING",
+          "ADVICE_GIVING",
+          "ACHIEVEMENT",
+          "LOSS",
+          "RELATIONSHIP",
+          "ACADEMIC",
+          "WORK",
+          "FAMILY",
+          "HEALTH",
+          "FINANCIAL",
+          "SOCIAL_CONFLICT",
+          "SELF_HARM_REFERENCE",
+          "THREAT_REFERENCE",
+          "VIOLENCE_REFERENCE"
+        ]
+      },
+      "maxItems": 20,
+      "uniqueItems": true
+    },
+    "annotator_id": {
+      "type": "string",
+      "description": "Stable anonymous identifier for the annotator. Must not contain personal identifying information.",
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "annotation_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of when the annotation was completed."
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Free-text explanation for ambiguous cases, label choices, or special considerations. Null if not applicable.",
+      "maxLength": 5000
+    }
+  },
+  "additionalProperties": false
+}

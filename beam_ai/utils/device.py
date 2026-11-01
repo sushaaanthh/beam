@@ -14,7 +14,7 @@ def resolve_device(preference: str = "auto") -> str:
 
     try:
         import torch
-    except ImportError as exc:  # pragma: no cover - guarded by requirements
+    except ImportError as exc:
         raise RuntimeError(
             "PyTorch is required for training/inference. "
             "Install it from beam-ai/requirements.txt."

@@ -8,7 +8,7 @@ B.E.A.M. is split into independently deployable and maintainable service areas.
 - `beam-web/`: React frontend built with Vite.
 - `beam-ai/`: Training, inference, preprocessing, evaluation, and explainability workflows.
 - `beam-scraper/`: Independent Reddit collection scaffold for future ingestion jobs.
-- `beam-datasets/`: Raw, processed, external, and exported datasets.
+- `beam-datasets/`: Raw, processed, external, and exported datasets. Includes the human annotation framework under `beam-datasets/annotation/`.
 - `beam-models/`: Checkpoints, production models, and experiment artifacts.
 
 ## Flow

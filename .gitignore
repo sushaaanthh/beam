@@ -19,7 +19,7 @@ beam-scraper/logs/
 
 # Environment files
 .env
-*.env
+.env.*
 !.env.example
 
 # OS files
@@ -30,5 +30,25 @@ Thumbs.db
 *.db
 *.sqlite
 *.sqlite3
+
+# Test caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Model artifacts and experiments
+beam-models/checkpoints/
+beam-models/experiments/
+beam-models/production/
+*.pt
+*.bin
+*.safetensors
+*.pkl
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
 
 .arcide

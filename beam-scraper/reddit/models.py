@@ -15,8 +15,6 @@ from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Index, Integer, Str
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
-# Portable PK type: real UUIDs on PostgreSQL, 32-char text elsewhere.
-# Defaults are uuid4().hex so the value binds cleanly on every dialect.
 UuidType = String(32).with_variant(UUID(as_uuid=True), "postgresql")
 
 

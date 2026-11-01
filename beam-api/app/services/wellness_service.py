@@ -20,7 +20,6 @@ def calculate_wellness_metrics(
     - Overall Wellness Score = (Consistency * 0.30) + (PositiveRatio * 0.40) + (Engagement * 0.30)
     """
     if not journal_entries:
-        # Clean 0-initialized state for fresh accounts
         return {
             "wellness_score": 0,
             "consistency_score": 0,
@@ -69,7 +68,6 @@ def calculate_wellness_metrics(
 
     wellness_score = int((consistency_score * 0.30) + (positive_ratio * 0.40) + (engagement_score * 0.30))
 
-    # Determine dominant emotion
     from collections import Counter
     dominant = Counter(emotions).most_common(1)[0][0] if emotions else "Awaiting Data"
 

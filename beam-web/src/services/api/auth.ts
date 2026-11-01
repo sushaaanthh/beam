@@ -29,3 +29,20 @@ export async function fetchCurrentUser(): Promise<User> {
   const response = await apiClient.get<User>('/users/me')
   return response.data
 }
+
+export async function sendOtpRequest(identifier: string): Promise<{ message: string; masked_email: string; otp?: string }> {
+  const response = await authClient.post<{ message: string; masked_email: string; otp?: string }>('/auth/send-otp', {
+    identifier,
+  })
+  return response.data
+}
+
+export async function resetPasswordWithOtpRequest(identifier: string, otp: string, newPassword: string): Promise<string> {
+  const response = await authClient.post<{ message: string }>('/auth/reset-password', {
+    identifier,
+    otp,
+    new_password: newPassword,
+  })
+  return response.data.message
+}
+

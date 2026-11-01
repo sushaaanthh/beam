@@ -50,7 +50,6 @@ class Trainer:
         self.tracker = tracker or ExperimentTracker()
         self.registry = registry or Registry()
 
-    # ------------------------------------------------------------------ #
 
     def _build_dataloaders(self, splits):
         import torch
@@ -69,7 +68,7 @@ class Trainer:
         from beam_ai.training.data import build_sampler
 
         sampler = build_sampler(splits["train"].label_ids, self.config.sampling_strategy)
-        shuffle = sampler is None  # WeightedRandomSampler replaces shuffling
+        shuffle = sampler is None
 
         train_loader = DataLoader(
             list(zip(splits["train"].texts, splits["train"].label_ids)),
@@ -103,12 +102,9 @@ class Trainer:
             preds = logits.argmax(dim=-1).tolist()
             y_pred.extend(preds)
 
-        # Re-derive ground truth deterministically from the split order.
         for batch in val_loader:
             labels_all.extend(batch["labels"].tolist())
 
-        # NOTE: iterating the loader twice keeps batching identical because
-        # shuffle=False for the validation loader.
         y_true = labels_all
         from beam_ai.evaluation.metrics import compute_classification_metrics
 
@@ -129,7 +125,6 @@ class Trainer:
         ]
         return torch.tensor(weights, dtype=torch.float32)
 
-    # ------------------------------------------------------------------ #
 
     def train(self) -> TrainResult:
         import torch
@@ -147,7 +142,6 @@ class Trainer:
         device = resolve_device(cfg.device)
         set_seeds(cfg.random_seed)
 
-        # 1. dataset -------------------------------------------------------
         from beam_ai.training.data import load_dataset_splits
 
         splits = load_dataset_splits(cfg, self.label_config)
@@ -157,13 +151,11 @@ class Trainer:
             raise ValueError("Validation split is empty; refusing to train without it.")
         self._train_label_ids = list(splits["train"].label_ids)
 
-        # 2. tokenizer + model ----------------------------------------------
         from beam_ai.models.factory import create_model
         from beam_ai.training.tokenization import TokenizerPipeline
 
         tokenizer = None
         if cfg.model_init == "tiny_random":
-            # Offline, in-memory WordPiece tokenizer for plumbing runs.
             from beam_ai.training.offline import build_tiny_tokenizer
 
             tokenizer = TokenizerPipeline(
@@ -180,7 +172,6 @@ class Trainer:
         self.model.device = device
         self.model.hf_model.to(device)
 
-        # 3. bookkeeping ------------------------------------------------------
         snapshot = cfg.to_serialisable()
         model_version = next_model_version(cfg.model_name, cfg.output_directory)
         snapshot["model_version"] = model_version
@@ -202,7 +193,6 @@ class Trainer:
 
         train_loader, val_loader = self._build_dataloaders(splits)
 
-        # 4. optimization setup -------------------------------------------------
         no_decay = ("bias", "LayerNorm.weight")
         grouped_params = [
             {
@@ -235,7 +225,6 @@ class Trainer:
         loss_fn = CrossEntropyLoss(weight=self._class_weight_tensor())
         loss_fn.to(device)
 
-        # 5. epochs -----------------------------------------------------------------
         best_f1 = -1.0
         best_epoch = 0
         best_state: dict | None = None
@@ -302,7 +291,6 @@ class Trainer:
                     for name, param in self.model.hf_model.state_dict().items()
                 }
 
-        # 6. final artifact (best epoch weights) ------------------------------
         if best_state is not None:
             self.model.hf_model.load_state_dict(best_state)
             self.model.hf_model.to(device)
@@ -340,7 +328,6 @@ class Trainer:
             created_at=None,
         )
         if final_metrics:
-            # Real validation-split measurements -> validated (NOT production).
             self.registry.set_metrics(cfg.model_name, model_version, final_metrics)
 
         return TrainResult(

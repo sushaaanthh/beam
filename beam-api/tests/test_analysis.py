@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import os
 import uuid
 from collections.abc import Generator
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+os.environ.setdefault("JWT_SECRET_KEY", "test-secret-for-unit-test-only")
 
 import pytest
 from fastapi.testclient import TestClient
@@ -82,9 +85,6 @@ def _register_and_login(client: TestClient, suffix: str) -> dict[str, str]:
     return {"Authorization": f"Bearer {token}"}
 
 
-# --------------------------------------------------------------------------
-# Authentication
-# --------------------------------------------------------------------------
 
 def test_create_requires_authentication(client: TestClient) -> None:
     response = client.post(
@@ -106,9 +106,6 @@ def test_delete_requires_authentication(client: TestClient) -> None:
     assert client.delete(f"/api/v1/analysis/{uuid.uuid4()}").status_code == 401
 
 
-# --------------------------------------------------------------------------
-# Creation + validation
-# --------------------------------------------------------------------------
 
 def test_create_analysis_completes_without_fabricated_predictions(client: TestClient) -> None:
     headers = _register_and_login(client, "create")
@@ -128,16 +125,13 @@ def test_create_analysis_completes_without_fabricated_predictions(client: TestCl
     assert detail.status_code == 200
     payload = detail.json()
 
-    # Status transitioned through the placeholder service.
     assert payload["status"] == "completed"
     assert payload["completed_at"] is not None
 
-    # Input metadata is real.
     assert payload["input"]["raw_text"] == SAMPLE_TEXT
     assert payload["input"]["char_count"] == len(SAMPLE_TEXT)
     assert payload["input"]["word_count"] == len(SAMPLE_TEXT.split())
 
-    # Model-dependent outputs are explicitly absent, never fabricated.
     assert payload["prediction"] is None
     assert payload["primary_emotion"] is None
     assert payload["confidence"] is None
@@ -178,9 +172,6 @@ def test_create_rejects_missing_fields(client: TestClient) -> None:
     assert response.status_code == 422
 
 
-# --------------------------------------------------------------------------
-# Ownership / privacy
-# --------------------------------------------------------------------------
 
 def test_user_cannot_access_another_users_session(client: TestClient) -> None:
     owner_headers = _register_and_login(client, "owner")
@@ -205,9 +196,6 @@ def test_user_cannot_access_another_users_session(client: TestClient) -> None:
     assert str(session_id) not in ids
 
 
-# --------------------------------------------------------------------------
-# Retrieval: list, search, filter, sort, pagination
-# --------------------------------------------------------------------------
 
 def _create_sessions(client: TestClient, headers: dict[str, str], titles: list[str]) -> list[str]:
     ids = []
@@ -248,7 +236,6 @@ def test_list_supports_pagination_search_filter_sort(client: TestClient) -> None
     assert default_list["page_size"] == 20
     assert len(default_list["items"]) == 3
 
-    # Sort ascending puts the oldest first ("alpha" was created first).
     asc = client.get("/api/v1/analysis?sort=created_asc", headers=headers).json()
     assert [item["title"] for item in asc["items"]] == [
         "alpha report",
@@ -264,7 +251,7 @@ def test_list_supports_pagination_search_filter_sort(client: TestClient) -> None
     assert search["items"][0]["title"] == "beta report"
 
     body_search = client.get("/api/v1/analysis?search=memo corpus", headers=headers).json()
-    assert body_search["total"] == 0  # search matches exact substrings only
+    assert body_search["total"] == 0
     content_search = client.get("/api/v1/analysis?search=text gamma", headers=headers).json()
     assert content_search["total"] == 1
     assert content_search["items"][0]["title"] == "gamma memo"
@@ -286,9 +273,6 @@ def test_list_supports_pagination_search_filter_sort(client: TestClient) -> None
     assert failed["total"] == 0
 
 
-# --------------------------------------------------------------------------
-# Deletion + cascade
-# --------------------------------------------------------------------------
 
 def test_delete_removes_session_and_children(client: TestClient) -> None:
     headers = _register_and_login(client, "deleter")
@@ -302,7 +286,6 @@ def test_delete_removes_session_and_children(client: TestClient) -> None:
     listing = client.get("/api/v1/analysis", headers=headers).json()
     assert listing["total"] == 0
 
-    # Deleting again is a clean 404.
     assert client.delete(f"/api/v1/analysis/{session_id}", headers=headers).status_code == 404
 
 

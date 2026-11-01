@@ -26,8 +26,6 @@ def extract_linguistic_features(cleaned_text: str, normalized_text: str) -> dict
     words = word_tokens(normalized)
     word_count = len(words)
 
-    # Sentences split on .!? followed by whitespace/end; a trailing fragment
-    # without terminal punctuation still counts as one sentence if non-empty.
     parts = [p for p in _SENTENCE_SPLIT.split(cleaned) if p.strip()]
     sentence_count = len(parts) if parts else (1 if cleaned.strip() else 0)
 

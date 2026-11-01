@@ -56,7 +56,7 @@ def create_model(
         if tokenizer is None:
             raise ValueError("tiny_random init requires a tokenizer (offline vocab).")
         pipeline = tokenizer
-        device = "cpu"  # tiny models exist for plumbing checks; keep them on CPU
+        device = "cpu"
     else:
         hf_config = AutoConfig.from_pretrained(config.model_name, num_labels=num_labels)
         hf_model = AutoModelForSequenceClassification.from_pretrained(
@@ -87,7 +87,7 @@ def load_model_from_artifact(artifact_dir: str | Path, device: str = "auto") -> 
 
     try:
         from transformers import AutoModelForSequenceClassification, AutoTokenizer
-    except ImportError as exc:  # pragma: no cover
+    except ImportError as exc:
         raise RuntimeError("transformers is required to load artifacts.") from exc
 
     metadata = json.loads(metadata_file.read_text(encoding="utf-8"))

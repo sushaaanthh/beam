@@ -29,12 +29,11 @@ def run_smoke_test(config_path: str) -> int:
         message = detail if ok else f"{type(error).__name__}: {error}"
         checks.append((name, ok, message))
 
-    # 1. configuration ---------------------------------------------------
     config: TrainingConfig | None = None
     try:
         config = TrainingConfig.from_yaml(config_path)
         detail = f"{config.model_name} / dataset {config.dataset_version} / seed {config.random_seed}"
-    except Exception as exc:  # noqa: BLE001 - report any failure honestly
+    except Exception as exc:
         record("configuration loads", exc)
     else:
         record("configuration loads", None, detail)
@@ -43,7 +42,6 @@ def run_smoke_test(config_path: str) -> int:
         _report(checks)
         return 1
 
-    # 3. labels (before data so mappings exist) ----------------------------
     label_config = None
     try:
         from beam_ai.training.labels import LabelConfig
@@ -59,7 +57,6 @@ def run_smoke_test(config_path: str) -> int:
         _report(checks)
         return 1
 
-    # 2. dataset -----------------------------------------------------------
     splits = None
     try:
         from beam_ai.training.data import load_dataset_splits
@@ -80,8 +77,8 @@ def run_smoke_test(config_path: str) -> int:
         return 1
 
     try:
-        import torch  # noqa: F401
-        from transformers import PreTrainedTokenizerFast  # noqa: F401
+        import torch
+        from transformers import PreTrainedTokenizerFast
 
         from beam_ai.training.offline import build_tiny_tokenizer
         from beam_ai.training.tokenization import TokenizerPipeline
@@ -90,7 +87,6 @@ def run_smoke_test(config_path: str) -> int:
         _report(checks)
         return 1
 
-    # 4. tokenizer ---------------------------------------------------------
     tokenizer_pipeline = None
     try:
         tokenizer_pipeline = TokenizerPipeline(
@@ -107,7 +103,6 @@ def run_smoke_test(config_path: str) -> int:
     except Exception as exc:
         record("tokenizer initializes", exc)
 
-    # 5. model factory --------------------------------------------------------
     model = None
     try:
         from beam_ai.models.factory import create_model
@@ -123,19 +118,16 @@ def run_smoke_test(config_path: str) -> int:
         _report(checks)
         return 1
 
-    # 6. one batch through the model -----------------------------------------
     try:
         texts = splits["train"].texts[: config.batch_size]
         labels = splits["train"].label_ids[: config.batch_size]
         batch = tokenizer_pipeline.encode_batch(texts)
 
-        # Inference path: no_grad logits with expected shape.
         logits = model.forward_batch(batch["input_ids"], batch["attention_mask"])
         expected = (len(texts), label_config.num_labels)
         if tuple(logits.shape) != expected:
             raise AssertionError(f"logits shape {tuple(logits.shape)} != {expected}")
 
-        # Training path: mirrors Trainer — grad-enabled forward/backward.
         model.hf_model.train()
         output = model.hf_model(
             input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]

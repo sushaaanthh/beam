@@ -48,7 +48,7 @@ class TestScrapeSubredditArgs:
 
     def test_r_prefix_stripped_later_not_rejected(self, scrape_subreddit) -> None:
         args = scrape_subreddit.build_parser().parse_args(["--subreddit", "r/AskReddit"])
-        assert args.subreddit == ["r/AskReddit"]  # normalised at run time
+        assert args.subreddit == ["r/AskReddit"]
 
     def test_invalid_sort_rejected(self, scrape_subreddit, capsys) -> None:
         with pytest.raises(SystemExit):
@@ -75,7 +75,6 @@ class TestScrapePostArgs:
 
     def test_post_id_requires_subreddit_flag(self, scrape_post) -> None:
         args = scrape_post.build_parser().parse_args(["--post-id", "abc123"])
-        # Validation happens at resolution time, not parse time.
         assert scrape_post.resolve_target(args) is None
 
     def test_url_form_parses_without_subreddit(self, scrape_post) -> None:

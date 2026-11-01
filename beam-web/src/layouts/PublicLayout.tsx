@@ -5,17 +5,15 @@ import { Footer } from '../components/global/Footer'
 import { Navbar, type NavbarItem } from '../components/global/Navbar'
 
 const publicNavItems: NavbarItem[] = [
-  { label: 'Overview', to: '/#overview' },
-  { label: 'Features', to: '/#features' },
-  { label: 'Research', to: '/#research' },
-  { label: 'Architecture', to: '/#architecture' },
-  { label: 'Documentation', to: '/#documentation' },
+  { label: 'Research Flow', to: '/#research' },
+  { label: 'Core Capabilities', to: '/#capabilities' },
+  { label: 'Interpretability', to: '/#interpretability' },
+  { label: 'Technology Stack', to: '/#technology' },
 ]
 
 export function PublicLayout() {
   const location = useLocation()
 
-  // Smooth-scroll to hash targets after SPA navigation (e.g. from /login).
   useEffect(() => {
     if (!location.hash) return
     const target = document.getElementById(location.hash.slice(1))

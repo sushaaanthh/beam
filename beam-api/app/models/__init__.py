@@ -6,12 +6,16 @@ from app.models.audit_log import AuditLog
 from app.models.behavior_metric import BehaviorMetric
 from app.models.emotion_prediction import EmotionPrediction
 from app.models.explanation import Explanation
+from app.models.journal import Journal
+from app.models.reddit_cache import RedditCache
 from app.models.model_version import ModelVersion
 from app.models.user import User
 
 __all__ = [
 	"Base",
 	"User",
+	"Journal",
+	"RedditCache",
 	"AnalysisSession",
 	"AnalysisInput",
 	"EmotionPrediction",

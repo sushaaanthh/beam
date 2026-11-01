@@ -6,17 +6,45 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_token_data, get_current_user, get_database_session
 from app.models.user import User
-from app.schemas.auth import LogoutRequest, RefreshTokenRequest, Token, UserCreate
+from app.schemas.auth import (
+    LogoutRequest,
+    PasswordResetRequest,
+    RefreshTokenRequest,
+    SendOtpRequest,
+    Token,
+    UserCreate,
+)
 from app.services.auth_service import (
     authenticate_user,
     build_token_response,
     create_user,
+    generate_otp_for_user,
     issue_refreshed_tokens,
+    reset_user_password_with_otp,
     revoke_refresh_token,
     revoke_token,
 )
 
 router = APIRouter(prefix="/auth")
+
+
+@router.post("/send-otp", status_code=status.HTTP_200_OK)
+def send_otp(
+    payload: SendOtpRequest,
+    db: Session = Depends(get_database_session),
+) -> dict[str, str]:
+    return generate_otp_for_user(db, payload.identifier)
+
+
+@router.post("/reset-password", status_code=status.HTTP_200_OK)
+def reset_password(
+    payload: PasswordResetRequest,
+    db: Session = Depends(get_database_session),
+) -> dict[str, str]:
+    reset_user_password_with_otp(db, payload.identifier, payload.otp, payload.new_password)
+    return {"message": "Password reset successfully. You can now log in with your new password."}
+
+
 
 
 @router.post("/register", status_code=status.HTTP_201_CREATED)

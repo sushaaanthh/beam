@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { colors, fonts } from '../../design/tokens'
+import { colors } from '../../design/tokens'
 
 type Particle = {
   x: number
@@ -32,13 +32,6 @@ function createParticle(width: number, height: number): Particle {
   }
 }
 
-/**
- * Abstract signal-matrix visualisation:
- * textual signals (particles), behavioral patterns (drift paths),
- * transformer processing (link mesh), emotional states (lime peaks).
- * Lightweight canvas — no libraries, paused off-screen, static when
- * prefers-reduced-motion is set.
- */
 export function HeroVisual() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const frameRef = useRef<HTMLDivElement>(null)
@@ -88,7 +81,6 @@ export function HeroVisual() {
     }
 
     const drawWaves = () => {
-      // Thin baseline signals — one restrained lime carrier wave.
       const waves = [
         { yRatio: 0.32, color: 'rgba(184, 184, 176, 0.16)', amp: height * 0.05, freq: 1.4 },
         { yRatio: 0.52, color: 'rgba(115, 115, 111, 0.22)', amp: height * 0.07, freq: 1.0 },
@@ -112,7 +104,6 @@ export function HeroVisual() {
     }
 
     const drawParticlesAndLinks = () => {
-      // Link mesh — transformer attention metaphor.
       ctx.lineWidth = 1
       for (let i = 0; i < particles.length; i++) {
         const a = particles[i]
@@ -221,7 +212,6 @@ export function HeroVisual() {
     <div className="kc-panel overflow-hidden" role="img"
       aria-label="Abstract visualization of textual signal particles flowing through transformer layers with highlighted emotional state peaks"
     >
-      {/* Frame header */}
       <div className="flex items-center justify-between border-b border-line-subtle px-5 py-3.5">
         <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-dim">
           SIGNAL MATRIX
@@ -232,32 +222,8 @@ export function HeroVisual() {
         </span>
       </div>
 
-      {/* Canvas stage */}
       <div ref={frameRef} className="relative h-64 bg-base sm:h-72 lg:h-[300px]">
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between px-5 pb-3 text-[10px] tracking-[0.12em] text-dim"
-          style={{ fontFamily: fonts.ui }}
-        >
-          <span>CH_01 · VALENCE</span>
-          <span className="text-lime">CONF 0.942</span>
-        </div>
-      </div>
-
-      {/* Channel readouts */}
-      <div className="grid grid-cols-3 divide-x divide-line-subtle border-t border-line-subtle text-center">
-        {[
-          { label: 'Tokens / s', value: '142.8' },
-          { label: 'Latency', value: '14.2ms' },
-          { label: 'Layers', value: '12' },
-        ].map((stat) => (
-          <div key={stat.label} className="px-3 py-3">
-            <p className="font-display text-sm font-semibold text-chalk">{stat.value}</p>
-            <p className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.18em] text-dim">
-              {stat.label}
-            </p>
-          </div>
-        ))}
       </div>
     </div>
   )

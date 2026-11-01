@@ -24,7 +24,6 @@ class ConfigError(ValueError):
 class TrainingConfig(BaseModel):
     """Single source of truth for one training run."""
 
-    # --- model ---
     model_name: str = Field(..., description="Hub id or local path, e.g. distilbert-base-uncased")
     model_type: str = Field(
         default="transformer_classifier",
@@ -38,7 +37,6 @@ class TrainingConfig(BaseModel):
         "offline/tiny runs); defaults to model_name.",
     )
 
-    # --- data ---
     dataset_version: str = Field(..., description="Dataset version under beam-datasets/, e.g. v001")
     datasets_root: Path = Field(default_factory=lambda: DATASETS_DIR)
     text_column: str = "cleaned_text"
@@ -54,7 +52,6 @@ class TrainingConfig(BaseModel):
         "Used by smoke tests; defaults to versioned files under <datasets_root>/splits/.",
     )
 
-    # --- optimization ---
     learning_rate: float = 2e-5
     batch_size: int = 16
     epochs: int = 3
@@ -64,11 +61,9 @@ class TrainingConfig(BaseModel):
     weight_decay: float = 0.01
     gradient_clip_norm: float = 1.0
 
-    # --- imbalance handling (kept OFF until evidence justifies them) ---
     class_weighting: Literal["none", "balanced"] = "none"
     sampling_strategy: Literal["none", "inverse_frequency"] = "none"
 
-    # --- output / runtime ---
     output_directory: Path = Field(default_factory=lambda: MODELS_DIR)
     device: Literal["auto", "cpu", "cuda", "gpu"] = "auto"
 
@@ -132,7 +127,6 @@ class TrainingConfig(BaseModel):
         """JSON-safe snapshot for experiment tracking."""
         return json.loads(self.model_dump_json())
 
-    # ---------- derived paths ----------
 
     @property
     def metadata_file(self) -> Path:
@@ -146,7 +140,6 @@ class TrainingConfig(BaseModel):
             return Path(self.split_files[split])
         return self.datasets_root / "splits" / f"dataset_{self.dataset_version}_{split}.jsonl"
 
-    # ---------- loaders ----------
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> "TrainingConfig":
@@ -160,7 +153,6 @@ class TrainingConfig(BaseModel):
         if not isinstance(raw, dict):
             raise ConfigError(f"Configuration root must be a mapping, got {type(raw).__name__}")
         config = cls(**raw)
-        # Resolve relative paths against the YAML location, then repo root.
         config = cls(**_resolve_paths(json.loads(config.model_dump_json()), path))
         return config
 

@@ -56,7 +56,6 @@ class TestValidators:
         ],
     )
     def test_invalid_values_rejected(self, field, value):
-        # pydantic wraps validator ValueErrors into ValidationError.
         with pytest.raises(ValidationError):
             TrainingConfig(**_base_kwargs(**{field: value}))
 

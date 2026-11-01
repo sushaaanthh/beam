@@ -52,7 +52,6 @@ class PostCollector:
             return subreddit.new
         if sort == "rising":
             return subreddit.rising
-        # top: Reddit requires an explicit time filter.
         return lambda **kwargs: subreddit.top(time_filter=time_filter, **kwargs)
 
     def fetch_submission(self, subreddit: str, post_id: str) -> Any:

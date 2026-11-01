@@ -1,0 +1,294 @@
+taxonomy_version: 1.0.0
+taxonomy_name: B.E.A.M. Hedonic-Eudaimonic Emotion Taxonomy
+description: Ten emotion classes designed to capture hedonic (pleasure-related) and eudaimonic (meaning/fulfillment-related) emotional states expressed in online text. The taxonomy is intentionally coarse
+  to support reliable human annotation at scale while remaining expressive enough for the research questions of the B.E.A.M. project.
+emotions:
+- id: JOY_FULFILLMENT
+  display_name: Joy / Fulfillment
+  valence: positive
+  definition: A state of pleasure, satisfaction, or contentment arising from personal experience, achievement, sensory enjoyment, or social connection. Includes both momentary joy and deeper fulfillment.
+  inclusion_criteria:
+  - The author expresses personal pleasure, happiness, or satisfaction.
+  - The author describes an experience that brought them joy or fulfillment.
+  - The author reflects on something they value or find meaningful in a positive way.
+  exclusion_criteria:
+  - The positive emotion is directed entirely toward another person's experience.
+  - The text is primarily humorous or sarcastic with no genuine positive affect.
+  linguistic_indicators:
+  - 'Explicit positive affect words: happy, glad, excited, wonderful, grateful, content, peaceful, satisfied.'
+  - Exclamation marks used to express personal enthusiasm.
+  - Present-tense or past-tense constructions describing positive experience.
+  behavioral_contextual_indicators:
+  - Personal storytelling about a positive event.
+  - Sharing an achievement or milestone.
+  - Expressing gratitude or appreciation.
+  - Describing social connection or belonging.
+  hedonic_eudaimonic_relationship: Captures both immediate pleasure (hedonic) and deeper meaning-based fulfillment (eudaimonic). The label does not distinguish between them.
+  examples:
+  - I finally finished my degree today. I'm so happy I could cry.
+  - Just got back from a week in the mountains. Feeling incredibly peaceful.
+  - My partner surprised me with breakfast in bed. Best morning ever.
+  confusing_neighbors:
+  - 'PRIDE_ACCOMPLISHMENT: Joy/Fulfillment is broader; Pride/Accomplishment is specifically tied to personal achievement.'
+  - 'HOPE_OPTIMISM: Joy/Fulfillment describes current affect; Hope/Optimism is future-oriented.'
+  - 'NEUTRAL_ANALYTICAL: When positive emotion is reported about another person, it may be better classified as neutral.'
+- id: PRIDE_ACCOMPLISHMENT
+  display_name: Pride / Accomplishment
+  valence: positive
+  definition: A positive emotion arising from the author's own achievement, effort, or mastery of a challenge. It involves self-evaluation and recognition of one's own capabilities or progress.
+  inclusion_criteria:
+  - The author takes personal credit for an achievement or effort.
+  - The author reflects on their own growth, skill, or perseverance.
+  - The author explicitly states pride in themselves or their work.
+  exclusion_criteria:
+  - The pride is vicarious (proud of someone else).
+  - The achievement is hypothetical or attributed to another person.
+  linguistic_indicators:
+  - 'Explicit pride markers: proud, accomplished, achieved, nailed it, crushed it, earned, mastered.'
+  - 'First-person possessives: my hard work, my effort, my achievement.'
+  - 'Contrast with prior difficulty: after months of struggling...'
+  behavioral_contextual_indicators:
+  - Describing a completed goal or milestone.
+  - Reflecting on personal growth or learning.
+  - Sharing credentials, promotions, or completions.
+  hedonic_eudaimonic_relationship: Primarily eudaimonic -- tied to meaning, growth, and self-realization though it carries positive hedonic tone.
+  examples:
+  - After 6 months of daily practice, I passed my black belt exam. I'm incredibly proud of myself.
+  - I built my first working app from scratch. No tutorial, just debugging for weeks.
+  - Today I realized I'm no longer the person who let anxiety control every decision.
+  confusing_neighbors:
+  - 'JOY_FULFILLMENT: Joy/Fulfillment is broader emotional positivity; Pride/Accomplishment requires personal achievement attribution.'
+  - 'HOPE_OPTIMISM: Pride is retrospective; Hope/Optimism is prospective.'
+  - 'NEUTRAL_ANALYTICAL: If the author is merely reporting facts about an achievement without emotional tone, use neutral.'
+- id: HOPE_OPTIMISM
+  display_name: Hope & Optimism
+  valence: positive
+  definition: A forward-looking positive emotion involving expectation of a better future, confidence in positive outcomes, or desire for positive change. Includes optimism about personal circumstances,
+    others, or the world.
+  inclusion_criteria:
+  - The author expresses positive expectations about the future.
+  - The author describes confidence that something will improve or succeed.
+  - The author articulates a desire for positive change paired with belief that it is attainable.
+  exclusion_criteria:
+  - The author is merely reporting neutral facts about the future.
+  - The author is describing another person's hope rather than their own.
+  - The text is hypothetical without genuine optimism.
+  linguistic_indicators:
+  - 'Forward-looking markers: hope, hopeful, optimistic, looking forward, excited for, confident.'
+  - Future tense constructions paired with positive affect.
+  - 'Conditional or modal expressions: I think I can, Things might get better.'
+  behavioral_contextual_indicators:
+  - Discussing plans, goals, or aspirations.
+  - Describing recovery or healing processes.
+  - Expressing faith in personal or collective progress.
+  hedonic_eudaimonic_relationship: Contains both hedonic (anticipatory pleasure) and eudaimonic (meaningful future direction) components.
+  examples:
+  - I know things are hard right now, but I genuinely believe I'll get through this.
+  - Starting my master's program next month. I'm optimistic about where this leads.
+  - After two years of treatment, my doctor says I'm in remission. I have so much hope.
+  confusing_neighbors:
+  - 'JOY_FULFILLMENT: Hope/Optimism is future-oriented; Joy/Fulfillment describes current or past affect.'
+  - 'CURIOSITY_FOCUS: Curiosity is directed at knowledge or exploration; Hope is directed at desired outcomes.'
+  - 'NEUTRAL_ANALYTICAL: If the author is speculating without emotional investment, use neutral.'
+- id: CURIOSITY_FOCUS
+  display_name: Curiosity & Focus
+  valence: neutral
+  definition: An engaged, interested, or concentrated cognitive state directed at learning, understanding, solving, or exploring. Includes intellectual curiosity, focused attention, and problem-solving
+    engagement.
+  inclusion_criteria:
+  - The author expresses interest in learning, understanding, or figuring something out.
+  - The author describes focused attention on a task, problem, or topic.
+  - The author asks questions or seeks knowledge without emotional urgency.
+  exclusion_criteria:
+  - The author is expressing anxiety about not knowing something.
+  - The author is venting frustration about a problem without engagement.
+  linguistic_indicators:
+  - 'Curiosity markers: wondering, curious, interested in, learning about, figuring out.'
+  - 'Focus markers: concentrating, focused on, working through, analyzing, examining.'
+  - Question marks indicating genuine inquiry rather than rhetorical complaint.
+  behavioral_contextual_indicators:
+  - Describing study, research, or skill-building.
+  - Sharing discoveries or aha moments.
+  - Engaging with complex problems or puzzles.
+  hedonic_eudaimonic_relationship: Primarily eudaimonic -- tied to growth, understanding, and meaning-making. The label is intentionally neutral in valence because engaged cognition can be pleasant or effortful.
+  examples:
+  - I've been reading about how LLMs handle attention mechanisms. The math is fascinating.
+  - Does anyone have resources on how sleep cycles affect emotional regulation?
+  - Spent the afternoon debugging a race condition. Finally figured it out. The logic is beautiful.
+  confusing_neighbors:
+  - 'HOPE_OPTIMISM: Curiosity is about knowledge; Hope is about desired outcomes.'
+  - 'APPREHENSION_ANXIETY: If curiosity is driven by worry about the unknown, the primary may be anxiety.'
+  - 'NEUTRAL_ANALYTICAL: If the author is purely factual without engagement, use neutral.'
+- id: CALM_SERENITY
+  display_name: Calm & Serenity
+  valence: positive
+  definition: A state of tranquility, peace, or relaxed alertness. Includes both low-arousal calm and deeper serenity or contentment. Does not require active joy; peaceful neutrality qualifies.
+  inclusion_criteria:
+  - The author describes a peaceful, quiet, or restful state.
+  - The author reflects on feeling untroubled, centered, or grounded.
+  - The author describes a setting or activity that induces calm.
+  exclusion_criteria:
+  - The author is describing numbness, dissociation, or emotional blunting.
+  - The author is reporting a neutral state without positive peace.
+  linguistic_indicators:
+  - 'Calm markers: calm, peaceful, serene, relaxed, quiet, still, grounded, centered.'
+  - 'Low-arousal constructions: simple declarative sentences, minimal punctuation.'
+  - Nature or sensory descriptions paired with restfulness.
+  behavioral_contextual_indicators:
+  - Describing rest, meditation, nature exposure, or low-stimulation activities.
+  - Reflecting on emotional regulation or recent de-escalation.
+  - Sharing routines that promote well-being.
+  hedonic_eudaimonic_relationship: Strongly eudaimonic -- tied to well-being, balance, and sustainable psychological health rather than momentary pleasure.
+  examples:
+  - Went for a walk without my phone today. The world feels quieter when you're not rushing.
+  - I've been practicing breathing exercises before bed. The constant anxiety has calmed down significantly.
+  - Sitting on the porch watching the rain. No agenda, no notifications. This is what peace feels like.
+  confusing_neighbors:
+  - 'JOY_FULFILLMENT: Calm/Serenity is low-arousal; Joy/Fulfillment is higher-arousal positive affect.'
+  - 'NEUTRAL_ANALYTICAL: If the author is merely reporting facts about a calm activity without affective tone, use neutral.'
+  - 'SADNESS_DEJECTION: Calm is peaceful; Sadness involves pain or loss.'
+- id: NEUTRAL_ANALYTICAL
+  display_name: Neutral / Analytical
+  valence: neutral
+  definition: Content that is primarily factual, informative, or observational without strong emotional coloring. Includes reporting, advice-giving, technical discussion, and emotional content directed
+    at third parties.
+  inclusion_criteria:
+  - The author is reporting facts, sharing information, or asking practical questions.
+  - The author describes another person's emotions without expressing their own strong affect.
+  - The author is being analytical, critical, or evaluative without strong emotional investment.
+  exclusion_criteria:
+  - Any genuine emotion is clearly present and dominant.
+  - The author is suppressing or masking strong emotion.
+  linguistic_indicators:
+  - 'Factual markers: I think, based on, research shows, according to, data suggests.'
+  - 'Low affect diversity: limited emotional vocabulary, even tone.'
+  - 'Imperative or instructional language: you should, try, consider.'
+  behavioral_contextual_indicators:
+  - Advice-giving or instructional content.
+  - News sharing or event reporting.
+  - Technical or procedural discussion.
+  - Political or social commentary without strong personal emotion.
+  hedonic_eudaimonic_relationship: The baseline category. It is not the absence of emotion but the absence of a clearly dominant emotional state in the author's own expressed experience.
+  examples:
+  - Here's a summary of the latest research on CBT effectiveness for adolescent anxiety.
+  - My friend went through a breakup last week. She's been pretty down. Anyone have advice?
+  - The new GPU architecture doubles throughput for inference workloads. Details in the linked paper.
+  confusing_neighbors:
+  - 'All other labels: Neutral/Analytical is the default when no other emotion is clearly dominant.'
+  - 'CURIOSITY_FOCUS: If the author is genuinely engaged and interested, Curiosity/Focus may be more appropriate.'
+  - 'APPREHENSION_ANXIETY: If anxiety is present but not dominant, use the dominant emotion as primary.'
+- id: APPREHENSION_ANXIETY
+  display_name: Apprehension / Anxiety
+  valence: negative
+  definition: A state of worry, nervousness, fear, or unease about anticipated negative outcomes. Includes both clinical anxiety descriptions and everyday apprehension about future events.
+  inclusion_criteria:
+  - The author expresses worry, fear, or nervousness about a future event or uncertain outcome.
+  - The author describes physical or cognitive symptoms of anxiety.
+  - The author reflects on past events with ongoing anxiety about recurrence.
+  exclusion_criteria:
+  - The author is merely reporting a factual diagnosis without expressing anxiety.
+  - The anxiety is clearly directed at another person's situation and the author is unaffected.
+  linguistic_indicators:
+  - 'Anxiety markers: anxious, nervous, worried, scared, afraid, panic, dread, terrified, uneasy.'
+  - 'Catastrophic or uncertain constructions: I''m afraid, What if, I can''t help but think.'
+  - 'Physical symptom descriptions: heart racing, can''t sleep, tight chest, stomach dropping.'
+  behavioral_contextual_indicators:
+  - Describing upcoming tests, interviews, performances, or medical results.
+  - Sharing health concerns or symptom searches.
+  - Discussing financial or social uncertainty.
+  hedonic_eudaimonic_relationship: Primarily hedonic -- involves unpleasant affective experience -- though it may be tied to eudaimonic concerns such as fear of failing to meet personal values.
+  examples:
+  - I have my PhD defense tomorrow. I've been preparing for three years and I'm terrified I'll blank.
+  - My chest has been tight for three days. I know it's anxiety but I can't shake the feeling something is wrong.
+  - I keep replaying that conversation where I sounded stupid. What if they all think I'm incompetent?
+  confusing_neighbors:
+  - 'SADNESS_DEJECTION: Anxiety is future-oriented fear; Sadness is present or past-oriented pain.'
+  - 'FRUSTRATION_FRICTION: Frustration involves blocked goals; Anxiety involves uncertain or threatening outcomes.'
+  - 'NEUTRAL_ANALYTICAL: If anxiety is mentioned analytically rather than expressed, use neutral.'
+- id: FRUSTRATION_FRICTION
+  display_name: Frustration / Friction
+  valence: negative
+  definition: A negative emotion arising from blocked goals, obstacles, repeated failure, or perceived incompetence. Includes irritation, anger at circumstances, and the emotional cost of persistent friction.
+  inclusion_criteria:
+  - The author describes obstacles, repeated failures, or goal blockage.
+  - The author expresses irritation, anger, or exasperation at a situation or system.
+  - The author reflects on the emotional toll of ongoing difficulty.
+  exclusion_criteria:
+  - The author is merely reporting a frustrating fact without emotional response.
+  - The frustration is vicarious and the author is unaffected.
+  linguistic_indicators:
+  - 'Frustration markers: frustrated, annoyed, irritated, fed up, sick of, tired of.'
+  - 'Goal-blockage language: I can''t, won''t let me, keeps breaking, no matter what.'
+  - Repetition or escalation markers.
+  behavioral_contextual_indicators:
+  - Describing repeated failures or systemic barriers.
+  - Venting about work, technology, bureaucracy, or relationships.
+  - Reflecting on wasted time or effort.
+  hedonic_eudaimonic_relationship: Primarily hedonic -- involves unpleasant experience -- though it may reflect thwarted eudaimonic goals such as growth, autonomy, or meaning.
+  examples:
+  - I've applied to 40 jobs this month. No responses. I know it's the market but it's soul-crushing.
+  - My laptop crashes every time I open more than three tabs. I can't work like this.
+  - I asked for help three times and no one responded. I'm done being the one who has to chase people.
+  confusing_neighbors:
+  - 'APPREHENSION_ANXIETY: Frustration involves blocked goals; Anxiety involves uncertain outcomes.'
+  - 'SADNESS_DEJECTION: Frustration is energetic and externalizing; Sadness is deflating and internalizing.'
+  - 'OVERWHELMED_BURNOUT: Frustration may be a component of burnout but is not the same as chronic exhaustion.'
+- id: SADNESS_DEJECTION
+  display_name: Sadness / Dejection
+  valence: negative
+  definition: A state of emotional pain, loss, dejection, or low mood. Includes grief, disappointment, loneliness, and the emotional aftermath of negative events.
+  inclusion_criteria:
+  - The author expresses personal emotional pain, disappointment, or low mood.
+  - The author describes a loss, rejection, or adverse event and its emotional impact.
+  - The author reflects on feelings of isolation, rejection, or meaninglessness.
+  exclusion_criteria:
+  - The author is merely reporting a sad event about another person.
+  - The author is describing clinical depression as a diagnosis without expressing sadness.
+  - The sadness is clearly hypothetical or fictional.
+  linguistic_indicators:
+  - 'Sadness markers: sad, depressed, lonely, heartbroken, devastated, empty, numb, hopeless.'
+  - 'Loss constructions: lost, gone, passed away, ended, broke up, rejected, failed.'
+  - 'Low-energy language: minimal punctuation, simple sentences, passive constructions.'
+  behavioral_contextual_indicators:
+  - Describing loss, rejection, or isolation.
+  - Reflecting on past failures or regrets.
+  - Expressing disconnection or alienation.
+  hedonic_eudaimonic_relationship: Primarily hedonic -- involves unpleasant experience -- though it may reflect thwarted eudaimonic needs such as connection, purpose, or growth.
+  examples:
+  - My dog passed away last week. The house is so quiet. I keep waiting to hear her nails on the floor.
+  - I've been single for five years. Last night I cried at a rom-com because I forgot what it felt like to be loved.
+  - I got rejected from every program I applied to. I'm starting to think I'm just not cut out for this.
+  confusing_neighbors:
+  - 'OVERWHELMED_BURNOUT: Sadness involves emotional pain; Burnout involves chronic exhaustion and detachment.'
+  - 'APPREHENSION_ANXIETY: Sadness is present or past-oriented pain; Anxiety is future-oriented fear.'
+  - 'FRUSTRATION_FRICTION: Sadness is deflating; Frustration is energetic.'
+- id: OVERWHELMED_BURNOUT
+  display_name: Overwhelmed / Burnout
+  valence: negative
+  definition: A state of chronic exhaustion, emotional depletion, or inability to cope with sustained demands. Distinct from momentary stress by its persistence and the sense that recovery resources are
+    insufficient.
+  inclusion_criteria:
+  - The author describes chronic exhaustion that does not resolve with rest.
+  - The author expresses emotional depletion, cynicism, or detachment from previously meaningful activities.
+  - The author reflects on sustained demands that exceed their coping capacity.
+  exclusion_criteria:
+  - The author is describing a single stressful event rather than chronic depletion.
+  - The exhaustion is purely physical without emotional depletion.
+  linguistic_indicators:
+  - 'Burnout markers: burned out, exhausted, depleted, can''t keep going, nothing left, checked out.'
+  - 'Chronicity markers: always, constantly, every day, for months, for years.'
+  - 'Inadequacy markers: not enough, can''t do anything right, failing at everything.'
+  behavioral_contextual_indicators:
+  - Describing sustained work, caregiving, or academic pressure.
+  - Reflecting on emotional numbness or reduced capacity for care.
+  - Discussing failed recovery attempts or vacation that did not help.
+  hedonic_eudaimonic_relationship: Reflects thwarted eudaimonic functioning -- the author cannot engage in meaning-making, growth, or authentic living because resources are depleted. It is both hedonic
+    (unpleasant) and eudaimonic (meaning-blocked).
+  examples:
+  - I'm a nurse. Three years of pandemic shifts and I don't feel anything anymore. I come home and stare at the wall.
+  - I've been working 60-hour weeks for eight months. Everyone says to take a vacation but I don't think a week off will fix this.
+  - I used to love programming. Now I open my IDE and feel nothing. I don't know how to get that back.
+  confusing_neighbors:
+  - 'SADNESS_DEJECTION: Burnout is chronic exhaustion and detachment; Sadness is acute emotional pain.'
+  - 'FRUSTRATION_FRICTION: Burnout involves depletion; Frustration involves energetic blockage.'
+  - 'APPREHENSION_ANXIETY: Burnout may co-occur with anxiety but is not primarily fear-based.'

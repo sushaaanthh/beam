@@ -29,7 +29,7 @@ class TestPostDeduplication:
             assert second == "updated"
             posts = list(session.scalars(select(RedditPost)))
             assert len(posts) == 1
-            assert posts[0].score == 99  # mutable metadata refreshed
+            assert posts[0].score == 99
 
     def test_identical_repost_is_unchanged(self, storage: Storage) -> None:
         with storage.session() as session:
@@ -49,13 +49,11 @@ class TestPostDeduplication:
             storage.save_post(session, later)
             session.commit()
             stored = session.scalar(select(RedditPost))
-            # SQLite drops tzinfo; compare wall-clock instants.
             assert stored.retrieved_at.replace(tzinfo=None) == original.retrieved_at.replace(tzinfo=None)
 
 
 class TestCommentDeduplication:
     def test_comments_require_parent_post(self, storage: Storage) -> None:
-        # FK: comment cannot outlive/precede its post.
         with pytest.raises(Exception):
             with storage.session() as session:
                 record = parse_comment(

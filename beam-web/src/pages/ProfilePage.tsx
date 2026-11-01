@@ -33,7 +33,6 @@ export function ProfilePage() {
         </p>
       </div>
 
-      {/* Main Profile Keycap Card */}
       <Card variant="default" padding="none" className="p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
@@ -65,7 +64,6 @@ export function ProfilePage() {
         </div>
       </Card>
 
-      {/* Metrics Row */}
       <div className="grid sm:grid-cols-3 gap-4">
         <Card variant="default" padding="none" className="p-4">
           <span className="text-[10px] font-mono text-[#73736F] uppercase">Account Created</span>
@@ -84,7 +82,6 @@ export function ProfilePage() {
         </Card>
       </div>
 
-      {/* Security & Access */}
       <Card variant="default" padding="none" className="p-6 space-y-4">
         <div className="border-b border-[#1C1C1C] pb-3">
           <span className="text-[10px] font-mono text-[#73736F] uppercase">Security</span>

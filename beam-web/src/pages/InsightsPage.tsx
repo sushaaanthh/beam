@@ -55,9 +55,7 @@ export function InsightsPage() {
         </div>
       </div>
 
-      {/* Grid: Temporal Trends + Feature Importance */}
       <div className="grid lg:grid-cols-12 gap-6">
-        {/* Temporal Trends */}
         <div className="lg:col-span-7">
           <Card variant="default" padding="none" className="p-6 space-y-5">
             <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
@@ -79,7 +77,6 @@ export function InsightsPage() {
               </div>
             </div>
 
-            {/* Bar Chart Representation */}
             <div className="space-y-4 pt-2">
               {temporalTrends.map((t) => (
                 <div key={t.period} className="space-y-1">
@@ -106,7 +103,6 @@ export function InsightsPage() {
           </Card>
         </div>
 
-        {/* Feature Importance Matrix */}
         <div className="lg:col-span-5">
           <Card variant="default" padding="none" className="p-6 space-y-5">
             <div className="border-b border-[#1C1C1C] pb-3">

@@ -106,6 +106,10 @@ export interface RedditAnalysisResult {
     trigger_words: string[]
   }[]
   timeline_vector: { index: number; emotion: string; valence: number }[]
+  cached?: boolean
+  cache_updated_at?: string
+  cache_age_seconds?: number
+  is_fresh?: boolean
 }
 
 export interface DashboardSummary {
@@ -141,7 +145,6 @@ export interface WellnessMetrics {
 }
 
 export const beamApi = {
-  // Priority 1: Journal AI
   predictLiveEmotion: async (text: string): Promise<LiveEmotionResult> => {
     const res = await apiClient.post('/journal/live', { text })
     return res.data
@@ -163,7 +166,6 @@ export const beamApi = {
     return res.data
   },
 
-  // Priority 2: Voice AI
   transcribeAudio: async (formData: FormData): Promise<{ status: string; transcript: string }> => {
     const res = await apiClient.post('/voice/transcribe', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
@@ -181,7 +183,6 @@ export const beamApi = {
     return res.data
   },
 
-  // Priority 3: Chat Companion with Memory
   sendChatMessage: async (message: string) => {
     const res = await apiClient.post('/chat', { message })
     return res.data
@@ -199,9 +200,14 @@ export const beamApi = {
     return res.data
   },
 
-  // Priority 4: Social Media & Reddit
-  analyzeReddit: async (payload: { identifier: string; source_type?: string; max_items?: number }): Promise<{ status: string; data: RedditAnalysisResult }> => {
+  analyzeReddit: async (payload: { identifier: string; source_type?: string; max_items?: number; force_refresh?: boolean }): Promise<{ status: string; data: RedditAnalysisResult }> => {
     const res = await apiClient.post('/social/reddit', payload)
+    return res.data
+  },
+  getCachedReddit: async (identifier: string, source_type?: string): Promise<{ status: string; has_cache: boolean; data: RedditAnalysisResult | null }> => {
+    const res = await apiClient.get('/social/reddit/cached', {
+      params: { identifier, source_type: source_type || 'username' }
+    })
     return res.data
   },
   getBenchmarks: async () => {
@@ -209,7 +215,6 @@ export const beamApi = {
     return res.data
   },
 
-  // Module 5: Wellness
   submitCheckIn: async (payload: {
     energy_level: number
     stress_level: number
@@ -225,13 +230,11 @@ export const beamApi = {
     return res.data
   },
 
-  // Module 8: Dashboard
   getDashboardSummary: async () => {
     const res = await apiClient.get('/dashboard/summary')
     return res.data
   },
 
-  // Module 9: Notifications
   getNotifications: async () => {
     const res = await apiClient.get('/notifications')
     return res.data
@@ -241,12 +244,10 @@ export const beamApi = {
     return res.data
   },
 
-  // Module 10: Privacy
   exportPrivacyData: async () => {
     const res = await apiClient.post('/privacy/export')
     return res.data
   },
 
-  // Reports
   downloadReportUrl: '/reports/download',
 }

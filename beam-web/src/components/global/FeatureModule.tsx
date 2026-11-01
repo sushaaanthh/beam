@@ -13,10 +13,6 @@ type FeatureModuleProps = {
   className?: string
 }
 
-/**
- * Major pipeline module — a large tactile keycap card used in
- * "Core Capabilities" style sections.
- */
 export function FeatureModule({
   index,
   title,

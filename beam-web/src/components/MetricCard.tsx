@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Card } from './Card'
+import { TrendingUp, TrendingDown } from 'lucide-react'
 
 export type MetricCardProps = {
   title: string
@@ -67,17 +68,16 @@ export function MetricCard({
                 : 'text-[#73736F]'
             }`}
           >
-            {trend.direction === 'up' && '▲'}
-            {trend.direction === 'down' && '▼'}
+            {trend.direction === 'up' && <TrendingUp className="h-3.5 w-3.5" />}
+            {trend.direction === 'down' && <TrendingDown className="h-3.5 w-3.5" />}
             <span>{trend.value}</span>
             {trend.label && <span className="text-[#73736F] text-[10px] ml-1">{trend.label}</span>}
           </div>
         )}
       </div>
 
-      {/* Subtle bottom sparkline visual */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#161616] overflow-hidden">
-        <div 
+        <div
           className="h-full bg-gradient-to-r from-transparent via-[#C7FF4A]/40 to-transparent transition-all duration-300 group-hover:via-[#C7FF4A]"
           style={{ width: `${Math.min(100, Math.max(20, (sparkline[sparkline.length - 1] || 50)))}%` }}
         />

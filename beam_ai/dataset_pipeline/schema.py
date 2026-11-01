@@ -11,8 +11,6 @@ from datetime import datetime, timezone
 
 from beam_ai import PROCESSING_VERSION
 
-# Stable namespace so record_id = uuid5(namespace, source_id) is
-# reproducible across runs and machines.
 _NAMESPACE = uuid.UUID("6f6f6e6b-bea1-bea2-bea3-bea000000000")
 
 IDENTITY_FIELDS = (
@@ -30,7 +28,7 @@ METADATA_FIELDS = (
     "language",
     "created_utc",
     "author_pseudonym",
-    "filter_reason",   # null for kept records; reason tags live in reports only
+    "filter_reason",
 )
 
 VERSION_FIELDS = (
@@ -38,7 +36,6 @@ VERSION_FIELDS = (
     "processing_version",
 )
 
-# Full column order used by writers (features appended at runtime).
 BASE_FIELDS: tuple[str, ...] = IDENTITY_FIELDS + TEXT_FIELDS + METADATA_FIELDS + VERSION_FIELDS
 
 

@@ -31,7 +31,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"CONFIG ERROR: {exc}")
         return 2
     if args.device:
-        config.device = args.device  # type: ignore[assignment]
+        config.device = args.device
 
     from beam_ai.models.factory import create_model
     from beam_ai.training.data import load_dataset_splits
@@ -53,7 +53,7 @@ def main(argv: list[str] | None = None) -> int:
         tokenizer = None
         if config.model_init == "tiny_random":
             from beam_ai.training.offline import build_tiny_tokenizer
-            from transformers import PreTrainedTokenizerFast  # noqa: F401
+            from transformers import PreTrainedTokenizerFast
 
             tokenizer = TokenizerPipeline(
                 build_tiny_tokenizer(), max_length=config.max_sequence_length

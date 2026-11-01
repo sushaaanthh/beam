@@ -16,7 +16,7 @@ def label_config():
 
 @pytest.fixture(scope="session")
 def tiny_tokenizer():
-    pytest.importorskip("torch")  # noqa: F841 - guard heavy deps together
+    pytest.importorskip("torch")
     pytest.importorskip("transformers")
     from beam_ai.training.offline import build_tiny_tokenizer
     from beam_ai.training.tokenization import TokenizerPipeline

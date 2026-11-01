@@ -54,7 +54,6 @@ const verifiedDatasets = [
 export function DatasetsPage() {
   const [activeTab, setActiveTab] = useState<'reddit' | 'benchmarks'>('reddit')
 
-  // Reddit Analyzer State
   const [redditInput, setRedditInput] = useState('u/student_dev')
   const [sourceType, setSourceType] = useState<'username' | 'subreddit'>('username')
   const [isAnalyzing, setIsAnalyzing] = useState(false)
@@ -74,7 +73,6 @@ export function DatasetsPage() {
         setRedditResult(res.data)
       }
     } catch {
-      // Fallback demo result
       setRedditResult({
         source: redditInput.trim(),
         source_type: sourceType,
@@ -127,7 +125,6 @@ export function DatasetsPage() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      {/* Header & Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#1C1C1C] pb-4">
         <div>
           <span className="text-[10px] font-mono text-[#C7FF4A] tracking-wider uppercase">
@@ -141,7 +138,6 @@ export function DatasetsPage() {
           </p>
         </div>
 
-        {/* Tab Switcher */}
         <div className="flex items-center bg-[#0E0E0E] p-1 rounded-xl border border-[#222222]">
           <button
             type="button"
@@ -169,9 +165,7 @@ export function DatasetsPage() {
       </div>
 
       {activeTab === 'reddit' ? (
-        /* Priority 4: Reddit Username / Subreddit Analyzer */
         <div className="space-y-6">
-          {/* Search Box */}
           <Card variant="default" padding="none" className="p-6 border-[#222222] space-y-4">
             <div className="flex items-center justify-between border-b border-[#1C1C1C] pb-3">
               <span className="text-[11px] font-mono text-[#73736F] uppercase flex items-center gap-2">
@@ -246,10 +240,8 @@ export function DatasetsPage() {
             </div>
           </Card>
 
-          {/* Results Grid */}
           {redditResult && (
             <div className="grid lg:grid-cols-12 gap-6 animate-in fade-in duration-200">
-              {/* Distribution & Key Stats (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
                 <Card variant="elevated" padding="none" className="p-6 space-y-5 border-[#2A2A2A]">
                   <div className="border-b border-[#1C1C1C] pb-3">
@@ -261,7 +253,6 @@ export function DatasetsPage() {
                     </h3>
                   </div>
 
-                  {/* Emotion Percentages */}
                   <div className="space-y-3">
                     <span className="text-[10px] font-mono text-[#73736F] uppercase block">
                       AFFECTIVE DISTRIBUTION
@@ -282,7 +273,6 @@ export function DatasetsPage() {
                     ))}
                   </div>
 
-                  {/* Top Keywords */}
                   <div className="pt-2 border-t border-[#1C1C1C]">
                     <span className="text-[10px] font-mono text-[#73736F] uppercase block mb-2">
                       EXTRACTED AFFECTIVE KEYWORDS
@@ -301,7 +291,6 @@ export function DatasetsPage() {
                 </Card>
               </div>
 
-              {/* Analyzed Posts List (7 cols) */}
               <div className="lg:col-span-7">
                 <Card variant="default" padding="none" className="p-6 border-[#222222] space-y-4">
                   <div className="border-b border-[#1C1C1C] pb-3 flex items-center justify-between">
@@ -331,7 +320,6 @@ export function DatasetsPage() {
           )}
         </div>
       ) : (
-        /* Benchmark Corpora Catalog */
         <Card variant="default" padding="none" className="overflow-hidden border-[#222222]">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-ui">

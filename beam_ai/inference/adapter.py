@@ -19,8 +19,6 @@ from beam_ai.inference.service import TransformerInferenceService
 
 class TransformerAnalysisAdapter:
     def __init__(self, service: TransformerInferenceService | None = None) -> None:
-        # Default construction resolves production artifact via registry;
-        # with nothing registered the adapter reports unavailable honestly.
         self.service = service or TransformerInferenceService()
 
     @property
@@ -49,7 +47,6 @@ class TransformerAnalysisAdapter:
             "model_name": result["model_name"],
             "model_version": result["model_version"],
             "inference_time_ms": result["inference_time_ms"],
-            # Placeholder until an explainer is implemented (never faked).
             "explanation_schema_version": EXPLANATION_SCHEMA_VERSION,
             "explanation": None,
         }

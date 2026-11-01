@@ -77,7 +77,7 @@ def extract_pos_features(normalized_text: str) -> dict[str, object]:
     if nlp is None or not normalized_text:
         return {"pos_distribution": None, "entity_count": None}
 
-    doc = nlp(normalized_text[:5000])  # bound cost on pathological inputs
+    doc = nlp(normalized_text[:5000])
     counts: dict[str, int] = {}
     for token in doc:
         pos = token.pos_ or "X"

@@ -22,7 +22,6 @@ def process_voice_audio(
     duration_seconds = 4.5
     transcript = ""
     
-    # 1. Attempt WAV duration & header extraction
     try:
         if audio_bytes.startswith(b"RIFF"):
             with wave.open(io.BytesIO(audio_bytes), "rb") as wf:
@@ -33,7 +32,6 @@ def process_voice_audio(
     except Exception as e:
         logger.warning("Could not compute WAV duration: %s", e)
 
-    # 2. Transcribe real audio if audio_bytes is provided and valid
     if audio_bytes and len(audio_bytes) > 200:
         try:
             recognizer = sr.Recognizer()
@@ -44,18 +42,14 @@ def process_voice_audio(
         except Exception as e:
             logger.info("Speech recognizer fallback: %s", e)
 
-    # 3. If explicit transcript was passed from frontend live recognition, prioritize it
     if fallback_transcript and fallback_transcript.strip():
         transcript = fallback_transcript.strip()
 
-    # 4. If still empty, use user-oriented clean fallback
     if not transcript:
         transcript = "I was working all day from morning 10 hours in my room without moving, feeling exhausted but finished the project."
 
-    # Run textual emotion analysis on the complete transcript
     emotion_data = analyze_emotion(transcript, model_name="Whisper-Base + RoBERTa-v1.2")
 
-    # Segment intra-audio emotion timeline (Time slice breakdowns)
     total_dur = max(duration_seconds, 4.0)
     seg1_end = round(total_dur * 0.35, 1)
     seg2_end = round(total_dur * 0.70, 1)
@@ -100,7 +94,6 @@ def process_voice_audio(
         }
     ]
 
-    # Acoustic Amplitude Waveform
     waveform_amplitudes = [
         0.25, 0.45, 0.68, 0.82, 0.55, 0.30, 0.72, 0.89, 0.94, 0.60,
         0.42, 0.78, 0.65, 0.88, 0.70, 0.40, 0.62, 0.85, 0.50, 0.20

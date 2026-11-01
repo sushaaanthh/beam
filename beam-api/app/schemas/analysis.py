@@ -16,7 +16,6 @@ class AnalysisStatus(str, Enum):
     FAILED = "failed"
 
 
-# Schema-level safety net only; the route enforces the configured limit with 413.
 _SCHEMA_TEXT_HARD_MAX = settings.MAX_ANALYSIS_TEXT_CHARS * 4
 
 

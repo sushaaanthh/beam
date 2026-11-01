@@ -56,5 +56,5 @@ class TestAdapterExplanationPlaceholder:
             service=TransformerInferenceService(artifact_dir=artifact)
         )
         response = adapter.analyze("text")
-        assert response["explanation"] is None  # never faked
+        assert response["explanation"] is None
         assert response["explanation_schema_version"] == EXPLANATION_SCHEMA_VERSION

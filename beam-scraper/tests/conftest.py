@@ -102,6 +102,4 @@ def clean_env(monkeypatch):
     ]
     for key in keys:
         monkeypatch.delenv(key, raising=False)
-    # The repo-root .env would otherwise leak values; pydantic-settings reads
-    # env_file relative to CWD, tests run from beam-scraper where none exists.
     yield

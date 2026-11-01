@@ -8,8 +8,22 @@ Analysis Model research project.
 - `external/`: External reference data and imports.
 - `exports/`: Read-only exports produced by `beam-scraper/scripts/export_data.py`
   (`csv` / `jsonl`, timestamped filenames).
+- `annotation/`: Human annotation framework (taxonomy, guidelines, schema, examples, quality protocol).
 
 The collection tooling lives in [`../beam-scraper`](../beam-scraper).
+
+## Annotation interface
+
+The human annotation interface lives at [`../beam-ai/annotation_app`](../beam-ai/annotation_app). It is a Streamlit application that loads records from `raw/`, presents them to annotators using the authoritative taxonomy and schema, and persists annotations to `annotations/pilot/`.
+
+## Pilot workflow
+
+1. Annotator sets `ANNOTATOR_ID` environment variable (e.g., `ANNOTATOR_A`).
+2. Annotator runs: `streamlit run beam-ai/annotation_app/app.py`
+3. The application loads all 16 records from `raw/sample_reddit.jsonl` and generates `annotations/pilot/pilot_manifest.json`.
+4. Annotator classifies each record using the ten-class emotion taxonomy.
+5. Annotations are saved to `annotations/pilot/ANNOTATOR_A.jsonl` (isolated per annotator).
+6. After all annotators complete the pilot, the annotation lead computes agreement metrics and adjudicates disagreements.
 
 ---
 
@@ -83,7 +97,12 @@ date exists by design — data accumulates across runs.
 Rate limiting: minimum interval between API calls plus exponential
 backoff on transient failures; strictly sequential requests.
 
-## Limitations
+## Dataset versioning
+
+- **v001**: Unlabeled pipeline-validation dataset (16 records). Used to verify preprocessing, feature extraction, and split logic. Not intended for training.
+- **v002**: Intended first supervised annotated dataset. Will be created by human annotators using the framework under `annotation/`. Metadata will use `label_type: supervised`.
+
+The annotation framework (`annotation/`) defines the schema and quality requirements. The reference annotation interface is `beam-ai/annotation_app/`.
 
 * **Snapshot bias** — scores/ratios reflect retrieval time only.
 * **Deletion drift** — content removed between post creation and

@@ -9,11 +9,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
-from app.core.config import settings
+from app.core.config import get_settings
 
 logger = logging.getLogger(__name__)
 
-# Ensure Neon PostgreSQL host resolution succeeds across Windows DNS resolvers
 _orig_getaddrinfo = socket.getaddrinfo
 
 def _neon_dns_getaddrinfo(host, port, *args, **kwargs):
@@ -34,20 +33,26 @@ def _neon_dns_getaddrinfo(host, port, *args, **kwargs):
 socket.getaddrinfo = _neon_dns_getaddrinfo
 
 
-def _build_db_engine() -> Engine:
-    db_uri = settings.SQLALCHEMY_DATABASE_URI
+def _build_db_engine(db_uri: str | None = None) -> Engine:
+    if db_uri is None:
+        db_uri = get_settings().SQLALCHEMY_DATABASE_URI
     connect_args = {}
     if "sqlite" in db_uri:
         connect_args = {"check_same_thread": False}
 
     try:
         eng = create_engine(db_uri, pool_pre_ping=True, connect_args=connect_args)
-        # Test connection
         with eng.connect() as conn:
             logger.info("Connected to primary database: %s", db_uri.split("@")[-1] if "@" in db_uri else db_uri)
         return eng
     except Exception as e:
-        logger.warning("Failed to connect to primary database (%s). Falling back to SQLite.", e)
+        logger.error("Failed to connect to primary database (%s): %s", db_uri.split("@")[-1] if "@" in db_uri else db_uri, e)
+        if get_settings().ENVIRONMENT == "production":
+            raise RuntimeError(
+                f"Production database unreachable: {e}. "
+                "Fix DATABASE_URL or PostgreSQL availability before starting the service."
+            ) from e
+        logger.warning("Falling back to SQLite for development/testing.")
         return create_engine("sqlite:///./beam.db", connect_args={"check_same_thread": False})
 
 

@@ -70,12 +70,10 @@ class SubredditCollector:
         self._comments = CommentCollector(reddit, limiter)
         self._storage = storage
 
-    # -- persistence -----------------------------------------------------------
 
     def _persist_posts(self, session, records: list[PostRecord], summary: ScrapeSummary) -> None:
         for record in records:
             try:
-                # Savepoint per record: one failure never rolls back the batch.
                 with session.begin_nested():
                     action = self._storage.save_post(session, record)
             except SQLAlchemyError as error:
@@ -111,7 +109,6 @@ class SubredditCollector:
             else:
                 summary.duplicate_comments += 1
 
-    # -- public API --------------------------------------------------------------
 
     def collect_subreddit(
         self,
@@ -148,7 +145,7 @@ class SubredditCollector:
                 sort=sort,
                 time_filter=time_filter,
             )
-        except Exception as error:  # listing failure ends this subreddit's run
+        except Exception as error:
             summary.parse_errors.append(f"listing failed: {error}")
             summary.status = "failed"
             logger.error(
@@ -222,7 +219,6 @@ class SubredditCollector:
             },
         )
 
-        # The parent post row must exist first (comments FK onto it).
         from reddit.schemas import parse_submission
 
         try:

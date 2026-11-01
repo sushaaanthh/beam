@@ -3,6 +3,15 @@
 
 B.E.A.M. is an explainable AI framework that detects and analyzes hedonic emotional states through transformer-based behavioral analysis of online users. The platform combines Natural Language Processing, Deep Learning, Behavioral Analytics, and Explainable AI to generate interpretable psychological insights from online textual behavior.
 
+## Live Deployment
+
+| Service | URL |
+| --- | --- |
+| Web App | https://beam-major.vercel.app/ |
+| API | https://beam-major.onrender.com |
+| API Docs | https://beam-major.onrender.com/docs |
+| Health Check | https://beam-major.onrender.com/api/v1/health |
+
 ## Project Overview
 
 B.E.A.M. is organized as a modular workspace so the API, web client, AI workflows, scraper scaffold, datasets, and trained models can evolve independently without sharing implementation concerns.
@@ -14,7 +23,7 @@ B.E.A.M. is organized as a modular workspace so the API, web client, AI workflow
 - `beam-ai/`: Training, inference, preprocessing, evaluation, explainability, and notebook workspace.
 - `beam-scraper/`: Independent Reddit ingestion scaffold for future data collection.
 - `beam-config/`: Shared prompts, environment templates, constants, labels, and settings.
-- `beam-datasets/`: Raw, processed, external, and export datasets.
+- `beam-datasets/`: Raw, processed, external, and export datasets. Includes the human annotation framework under `beam-datasets/annotation/` and the Streamlit annotation interface under `beam-ai/annotation_app/`.
 - `beam-models/`: Checkpoints, production models, and experiments.
 - `docs/`: Architecture, setup, roadmap, and API documentation.
 
@@ -41,6 +50,7 @@ beam/
 - Backend: FastAPI, SQLAlchemy, Alembic, Pydantic Settings, Uvicorn, PostgreSQL
 - AI/ML: PyTorch, HuggingFace Transformers, spaCy, scikit-learn
 - Infrastructure: Docker, Docker Compose
+- Annotation: Streamlit
 
 ## Installation
 
@@ -73,6 +83,14 @@ python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 cd beam-web
 npm install
 npm run dev
+```
+
+### Annotation Interface
+
+```bash
+cd beam-ai
+export ANNOTATOR_ID=ANNOTATOR_A
+streamlit run beam-ai/annotation_app/app.py
 ```
 
 ## Docker Setup

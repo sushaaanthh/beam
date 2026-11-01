@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from pydantic import Field, SecretStr
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -19,7 +19,13 @@ class Settings(BaseSettings):
     DEBUG: bool = Field(default=False)
 
     BACKEND_CORS_ORIGINS: list[str] = Field(
-        default_factory=lambda: ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000", "http://127.0.0.1:3000"]
+        default_factory=lambda: [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "https://beam-major.vercel.app",
+        ]
     )
 
     POSTGRES_SERVER: str = "postgres"
@@ -31,23 +37,38 @@ class Settings(BaseSettings):
 
     LOG_LEVEL: str = "INFO"
 
-    JWT_SECRET_KEY: SecretStr = Field(default=SecretStr("beam-ai-development-super-secret-key-2026"))
+    JWT_SECRET_KEY: SecretStr
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     REFRESH_TOKEN_EXPIRE_DAYS: int = 14
     JWT_ISSUER: str = "beam-api"
 
-    # Analysis input limits
     MAX_ANALYSIS_TEXT_CHARS: int = Field(default=20000, gt=0)
     ANALYSIS_LIST_PAGE_SIZE_MAX: int = Field(default=100, gt=0)
 
     GEMINI_API_KEY: str = Field(default="")
     GEMINI_MODEL: str = "gemini-3.1-flash-lite"
 
+    @field_validator("JWT_SECRET_KEY", mode="before")
+    @classmethod
+    def _reject_empty_jwt_secret(cls, value: object) -> object:
+        if isinstance(value, str) and not value.strip():
+            raise ValueError("JWT_SECRET_KEY must not be blank")
+        return value
+
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
-        if self.DATABASE_URL:
-            return self.DATABASE_URL
+        url = self.DATABASE_URL
+        if url:
+            if url.startswith("postgres://"):
+                url = url.replace("postgres://", "postgresql+psycopg2://", 1)
+            elif url.startswith("postgresql+psycopg://"):
+                url = url.replace(
+                    "postgresql+psycopg://", "postgresql+psycopg2://", 1
+                )
+            elif url.startswith("postgresql://"):
+                url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
+            return url
 
         return (
             f"postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"

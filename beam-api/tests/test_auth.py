@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import os
 from collections.abc import Generator
 from pathlib import Path
+
+os.environ.setdefault("JWT_SECRET_KEY", "test-secret-for-unit-test-only")
 
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine

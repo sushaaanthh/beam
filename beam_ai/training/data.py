@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING, Iterator
 
 from beam_ai.training.labels import LabelSchemaError
 
-if TYPE_CHECKING:  # pragma: no cover
+if TYPE_CHECKING:
     from beam_ai.training.config import TrainingConfig
     from beam_ai.training.labels import LabelConfig
 
