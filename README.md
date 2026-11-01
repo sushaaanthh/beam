@@ -3,6 +3,15 @@
 
 B.E.A.M. is an explainable AI framework that detects and analyzes hedonic emotional states through transformer-based behavioral analysis of online users. The platform combines Natural Language Processing, Deep Learning, Behavioral Analytics, and Explainable AI to generate interpretable psychological insights from online textual behavior.
 
+## Live Deployment
+
+| Service | URL |
+| --- | --- |
+| Web App | https://beam-major.vercel.app/ |
+| API | https://beam-major.onrender.com |
+| API Docs | https://beam-major.onrender.com/docs |
+| Health Check | https://beam-major.onrender.com/api/v1/health |
+
 ## Project Overview
 
 B.E.A.M. is organized as a modular workspace so the API, web client, AI workflows, scraper scaffold, datasets, and trained models can evolve independently without sharing implementation concerns.
